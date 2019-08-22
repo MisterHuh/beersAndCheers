@@ -1,10 +1,8 @@
 import React from 'react';
 
-function ProductListItem() {
+function ProductListItem(props) {
   return (
-    <div className="container">
-      <div className="card"></div>
-    </div>
+    <td>{props.text}</td>
   );
 }
 
