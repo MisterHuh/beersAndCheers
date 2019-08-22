@@ -22,13 +22,19 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <table className="table flex-column">
-        <tbody>
-          <tr>
-            <ProductListItem text="item#1" />
-          </tr>
-        </tbody>
-      </table>
+      <div className="row border border-danger justify-content-center ">
+        {this.state.products.map(item => {
+          return (
+            <ProductListItem
+              key={item.id}
+              img={item.image}
+              name={item.name}
+              price={item.price}
+              shortDesc={item.shortDescription} />
+          );
+        })};
+      </div>
+
     );
   }
 
