@@ -8,6 +8,12 @@ class ProductDetails extends React.Component {
     };
   }
 
+  componentDidMount() {
+    fetch(`/api/products.php?id` + this.props.id)
+      .then(res => res.json())
+      .then(products => this.setState({ products }));
+  }
+
   render() {
     return (
       null
