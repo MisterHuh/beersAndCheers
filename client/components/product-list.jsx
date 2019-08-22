@@ -22,7 +22,7 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="row justify-content-center ">
+      <div className="row justify-content-center" onClick={this.props.onClick}>
         {this.state.products.map(item => {
           return (
             <ProductListItem
