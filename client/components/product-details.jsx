@@ -16,7 +16,7 @@ class ProductDetails extends React.Component {
 
   render() {
     return (
-      null
+      <div className="details">this.state.products</div>
     );
   }
 
