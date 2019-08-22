@@ -7,14 +7,23 @@ class ProductList extends React.Component {
     this.state = {
       products: []
     };
+    this.getProducts = this.getProducts.bind(this);
+  }
+
+  getProducts() {
+    fetch(`/api/products.php`)
+      .then(res => res.json())
+      .then(products => this.setState({ products }));
   }
 
   render() {
     return (
       <table className="table flex-column">
-        <tr>
-          <ProductListItem text="item#1" />
-        </tr>
+        <tbody>
+          <tr>
+            <ProductListItem text="item#1" />
+          </tr>
+        </tbody>
       </table>
     );
   }
