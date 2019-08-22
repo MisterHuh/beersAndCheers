@@ -10,6 +10,10 @@ class ProductList extends React.Component {
     this.getProducts = this.getProducts.bind(this);
   }
 
+  componentDidMount() {
+    this.getProducts();
+  }
+
   getProducts() {
     fetch(`/api/products.php`)
       .then(res => res.json())
