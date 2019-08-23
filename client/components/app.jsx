@@ -36,7 +36,7 @@ export default class App extends React.Component {
       return (
         <div className="container border border-dark">
           <Header />
-          <ProductDetails viewParam={this.state.view.params} setView={this.setView}/>
+          <ProductDetails view={this.state.view.params} setView={this.setView}/>
         </div>
       );
     }

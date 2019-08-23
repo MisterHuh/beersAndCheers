@@ -22,9 +22,7 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="row justify-content-center">
-        <ProductListItem product={this.state.products} setView={this.props.setView}/>
-      </div>
+      <ProductListItem product={this.state.products} setView={this.props.setView}/>
     );
   }
 
