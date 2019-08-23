@@ -1,35 +1,29 @@
 <?php
 
 require_once("functions.php");
+set_exception_handler("error_handler");
 require_once("db_connection.php");
 
-set_exception_handler("error_handler");
-// $output = file_get_contents("./dummy-products-list.json");
-
-if (!$conn) {
-  throw new Exception(mysqli_connect_error());
-};
-
-// print("TEST" . $output);
-
 $query = "SELECT * FROM `products` ORDER BY `price` DESC";
-// refer to php_mysql_querying example
 $result = mysqli_query($conn, $query);
 
-if($result) {
-  throw new Exception(mysqli_connect_error());
+
+if(!$result) {
+  throw new Exception("ERROR: ". mysqli_connect_error($conn));
+  exit();
 }
 
-$output=[];
+$output = array(
+  "success" => "true",
+  "data" => []
+);
 
-while($row = $result->fetch_assoc()) {
-  $output[] = $row;
+while($product = mysqli_fetch_array($result)) {
+  $output["data"][] = $product;
 }
 
-print( json_encode($output));
-
-
-
+$json_output = json_encode($output["data"]);
+print($json_output);
 
 
 ?>
