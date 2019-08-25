@@ -19,6 +19,9 @@ class ProductDetails extends React.Component {
 
   // will render a view of the product's detail
   render() {
+    const styles1 = {
+      width: '200px'
+    };
     if (this.state.products) {
       return (
         <div className="container border border-primary">
@@ -28,13 +31,13 @@ class ProductDetails extends React.Component {
             className="border border-danger">{`< Back to Catalog`}
           </div>
 
-          <div className="card container">
+          <div className="container d-inline">
 
-            <div className="border border-dark d-inline">
-              <img src={this.state.products.image} alt="img" className="img-fluid mt-3" />
+            <div className="border border-dark d-inline" style={styles1} >
+              <img src={this.state.products.image} alt="img" className="img-fluid mt-3" style={styles1} />
             </div>
 
-            <div className="container border border-danger">
+            <div className="container border border-danger d-inline" style={styles1}>
               <div className="mt-3 font-weight-bold">{this.state.products.name}</div>
               <div className="mt-2 text-muted">${(this.state.products.price / 100).toFixed(2)}</div>
               <div className="mt-2">{this.state.products.shortDescription}</div>
