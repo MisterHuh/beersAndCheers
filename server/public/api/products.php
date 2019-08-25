@@ -11,19 +11,15 @@ $result = mysqli_query($conn, $query);
 
 if(!$result) {
   throw new Exception("ERROR: ". mysqli_connect_error($conn));
-  exit();
 }
 
-$output = array(
-  "success" => "true",
-  "data" => []
-);
+$output = [];
 
 while($product = mysqli_fetch_array($result)) {
-  $output["data"][] = $product;
+  $output[] = $product;
 }
 
-$json_output = json_encode($output["data"]);
+$json_output = json_encode($output);
 print($json_output);
 
 
