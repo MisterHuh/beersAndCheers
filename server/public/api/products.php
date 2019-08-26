@@ -10,9 +10,12 @@ $id = $_GET["id"];
 if (empty($id)) {
   $whereClause = "";
   throw new Exception("error: no id inputted ");
-  exit;
 } else {
-  $whereClause = " WHERE `id` = {$id}";
+  if (is_numeric($id)) {
+    $whereClause = " WHERE `id` = {$id}";
+  } else {
+    throw new Exception("error: id needs to be a number");
+  }
 };
 
 $query = "SELECT * FROM `products`" . $whereClause;
