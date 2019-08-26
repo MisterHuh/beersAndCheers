@@ -22,19 +22,7 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="row justify-content-center ">
-        {this.state.products.map(item => {
-          return (
-            <ProductListItem
-              key={item.id}
-              img={item.image}
-              name={item.name}
-              price={item.price}
-              shortDesc={item.shortDescription} />
-          );
-        })};
-      </div>
-
+      <ProductListItem product={this.state.products} setView={this.props.setView}/>
     );
   }
 
