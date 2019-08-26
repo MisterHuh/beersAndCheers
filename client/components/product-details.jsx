@@ -42,6 +42,7 @@ class ProductDetails extends React.Component {
               <div className="my-3 font-weight-bold h3">{this.state.products.name}</div>
               <div className="my-4 text-muted">${(this.state.products.price / 100).toFixed(2)}</div>
               <div className="my-4">{this.state.products.shortDescription}</div>
+              <div className=" border border-dark px-2 py-2 w-50 text-center bg-light">Add to Cart</div>
             </div>
           </div>
 
