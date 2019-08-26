@@ -8,45 +8,45 @@ class ProductDetails extends React.Component {
     };
   }
 
-  // retrieves the details of a specific product id from the server
-  // this one retrives the product info w/ LONGdescription
   componentDidMount(props) {
-    // fetch(`/api/products.php?id=` + 1) // hardcoded to pull Shakeweight
-    fetch(`/api/products.php?id=` + this.props.view.id) // dynamic
+    fetch(`/api/products.php?id=` + this.props.view.id)
       .then(res => res.json())
       .then(products => this.setState({ products }));
   }
 
-  // will render a view of the product's detail
   render() {
-    const styles1 = {
-      width: '200px'
+    const img = {
+      width: '400px'
     };
+
+    const shortDesc = {
+      width: '300px'
+    };
+
     if (this.state.products) {
       return (
-        <div className="container border border-primary">
+        <div className="container mb-4">
 
           <div
             onClick={() => { this.props.setView('catalog', {}); }}
-            className="border border-danger">{`< Back to Catalog`}
+            className="mb-4 w-25 text-primary">{`< Back to Catalog`}
           </div>
 
-          <div className="container d-inline">
+          <div className="d-flex px-o">
 
-            <div className="border border-dark d-inline" style={styles1} >
-              <img src={this.state.products.image} alt="img" className="img-fluid mt-3" style={styles1} />
+            <div className="mr-4 " style={img} >
+              <img src={this.state.products.image} alt="img" className="img-fluid mt-3" style={img} />
             </div>
 
-            <div className="container border border-danger d-inline" style={styles1}>
-              <div className="mt-3 font-weight-bold">{this.state.products.name}</div>
-              <div className="mt-2 text-muted">${(this.state.products.price / 100).toFixed(2)}</div>
-              <div className="mt-2">{this.state.products.shortDescription}</div>
+            <div className="float-right" style={shortDesc}>
+              <div className="my-3 font-weight-bold h3">{this.state.products.name}</div>
+              <div className="my-4 text-muted">${(this.state.products.price / 100).toFixed(2)}</div>
+              <div className="my-4">{this.state.products.shortDescription}</div>
             </div>
+          </div>
 
-            <div className="container border border-warning">
-              <div className="mt-2">{this.state.products.longDescription}</div>
-            </div>
-
+          <div className="my-4">
+            <div className="mt-2">{this.state.products.longDescription}</div>
           </div>
 
         </div>
