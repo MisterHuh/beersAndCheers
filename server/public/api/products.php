@@ -23,12 +23,12 @@ $result = mysqli_query($conn, $query);
 
 $numRows = mysqli_num_rows($result);
 
-if (!$numRows) {
-  throw new Exception("error: invalid ID " . $id);
+if (!$result) {
+  throw new Exception("ERROR: " . mysqli_connect_error($conn));
 }
 
-if(!$result) {
-  throw new Exception("ERROR: ". mysqli_connect_error($conn));
+if (!$numRows) {
+  throw new Exception("error: invalid ID " . $id);
 }
 
 $output = [];
