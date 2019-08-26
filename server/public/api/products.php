@@ -9,7 +9,7 @@ $id = $_GET["id"];
 
 if (empty($id)) {
   $whereClause = "";
-  throw new Exception("error: no id inputted ");
+  throw new Exception("error: no id inputted");
 } else {
   if (is_numeric($id)) {
     $whereClause = " WHERE `id` = {$id}";
@@ -21,6 +21,11 @@ if (empty($id)) {
 $query = "SELECT * FROM `products`" . $whereClause;
 $result = mysqli_query($conn, $query);
 
+$numRows = mysqli_num_rows($result);
+
+if (!$numRows) {
+  throw new Exception("error: invalid ID " . $id);
+}
 
 if(!$result) {
   throw new Exception("ERROR: ". mysqli_connect_error($conn));
