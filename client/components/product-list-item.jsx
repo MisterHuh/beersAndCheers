@@ -10,7 +10,10 @@ function ProductListItem(props) {
             className="card my-3 mx-3 col-3"
             onClick={() => {
               props.setView('details', {
-                'id': item.id
+                'id': item.id,
+                'name': item.name,
+                'price': item.price,
+                'shortDesc': item.shortDescription
               });
             }}>
             <img src={item.image} alt="img" className="img-fluid mt-3" />
