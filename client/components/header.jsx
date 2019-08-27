@@ -11,7 +11,10 @@ function Header(props) {
     <div className="text-center">
       <img className="img-fluid w-25 align-middle mr-5" src={imgUrl} alt="logo" style={size}/>
       <div className="d-inline display-3 align-middle">Wicked Sales</div>
-      <i className="fas fa-shopping-cart ml-5">{props.cartItemCount}items</i>
+      <i
+        className="fas fa-shopping-cart ml-5"
+        onClick={() => { props.setView('cart', {}); }}
+      >{props.cartItemCount}items</i>
     </div>
   );
 }

@@ -12,9 +12,9 @@ function ProductListItem(props) {
               props.setView('details', {
                 'id': item.id,
                 'name': item.name,
+                'image': item.image,
                 'price': item.price,
-                'shortDesc': item.shortDescription
-              });
+                'shortDescription': item.shortDescription });
             }}>
             <img src={item.image} alt="img" className="img-fluid mt-3" />
             <div className="mt-3 font-weight-bold">{item.name}</div>
