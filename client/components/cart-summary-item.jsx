@@ -8,12 +8,18 @@ function CartSummaryItem(props) {
 
   return (
     <React.Fragment>
-      <div className="">
-        <div className="border border-dark my-3 mx-5">
-          <img src={props.indivItem.image} alt="img" className="img-fluid mt-3" style={img}/>
-          <div className="mt-3 font-weight-bold">{props.indivItem.name}</div>
-          <div className="mt-2">{'$' + ((props.indivItem.price) / 100).toFixed(2)}</div>
-          <div className="mt-2">{props.indivItem.shortDescription}</div>
+
+      <div className="container">
+
+        <div className="d-flex border border-dark rounded my-3 mx-5">
+          <img src={props.indivItem.image} alt="img" className="img-fluid" style={img}/>
+
+          <div className="float-right my-3 mx-3">
+            <div className="mt-4 font-weight-bold">{props.indivItem.name}</div>
+            <div className="mt-3 text-muted">{'$' + ((props.indivItem.price) / 100).toFixed(2)}</div>
+            <div className="mt-3">{props.indivItem.shortDescription}</div>
+          </div>
+
         </div>
       </div>
     </React.Fragment>

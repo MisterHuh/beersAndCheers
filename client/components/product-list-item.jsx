@@ -3,11 +3,11 @@ import React from 'react';
 function ProductListItem(props) {
 
   return (
-    <div className="container d-flex row justify-content-center">
+    <div className="container d-flex row justify-content-center mb-5">
       {props.product.map(item => {
         return (
           <div key={item.id}
-            className="card my-3 mx-3 col-3"
+            className="card mt-5 mx-3 col-3"
             onClick={() => {
               props.setView('details', {
                 'id': item.id,
@@ -17,9 +17,9 @@ function ProductListItem(props) {
                 'shortDescription': item.shortDescription });
             }}>
             <img src={item.image} alt="img" className="img-fluid mt-3" />
-            <div className="mt-3 font-weight-bold">{item.name}</div>
-            <div className="mt-2">{'$' + ((item.price) / 100).toFixed(2)}</div>
-            <div className="mt-2">{item.shortDescription}</div>
+            <div className="mt-4 font-weight-bold">{item.name}</div>
+            <div className="mt-3">{'$' + ((item.price) / 100).toFixed(2)}</div>
+            <div className="mt-3">{item.shortDescription}</div>
           </div>
         );
       })

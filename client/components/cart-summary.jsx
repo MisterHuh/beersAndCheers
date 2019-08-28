@@ -14,20 +14,20 @@ function CartSummary(props) {
   }
 
   return (
-    <React.Fragment>
+    <div className="container">
       <div
         onClick={() => { props.setView('catalog', {}); }}
-        className="w-25 text-primary">{`< Back to Catalog`}
+        className="w-25 text-primary mt-3">{`< Back to Catalog`}
       </div>
 
-      <div className="mt-3">Item Total: ${getPrice()}</div>
+      <div className="my-3 text-right font-italic h5">Item Total: ${getPrice()}</div>
 
       {props.cart.map(cart => {
         return (
           <CartSummaryItem setView={props.setView} key={cart.id} indivItem={cart} />
         );
       })}
-    </React.Fragment>
+    </div>
   );
 }
 
