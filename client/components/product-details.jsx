@@ -26,10 +26,10 @@ class ProductDetails extends React.Component {
     if (this.state.products) {
       return (
         <div className="container mb-4">
-
+          <div className="mt-3"></div>
           <div
             onClick={() => { this.props.setView('catalog', {}); }}
-            className="mb-4 w-25 text-primary">{`< Back to Catalog`}
+            className="my-3 w-25 text-primary">{`< Back to Catalog`}
           </div>
 
           <div className="d-flex px-o">
@@ -43,7 +43,9 @@ class ProductDetails extends React.Component {
               <div className="my-4 text-muted">${(this.state.products.price / 100).toFixed(2)}</div>
               <div className="my-4">{this.state.products.shortDescription}</div>
               <div className=" border border-dark px-2 py-2 w-50 text-center bg-light"
-                onClick={() => this.props.addToCart(this.props.view)}>Add to Cart</div>
+                onClick={
+                  () => this.props.addToCart(this.props.view)}
+              >Add to Cart</div>
             </div>
           </div>
 
