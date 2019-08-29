@@ -7,14 +7,10 @@ function ProductListItem(props) {
       {props.product.map(item => {
         return (
           <div key={item.id}
-            className="card mt-5 mx-3 col-3"
+            className="card mt-5 mx-3 col-3 rounded"
             onClick={() => {
               props.setView('details', {
-                'id': item.id,
-                'name': item.name,
-                'image': item.image,
-                'price': item.price,
-                'shortDescription': item.shortDescription });
+                'id': item.id });
             }}>
             <img src={item.image} alt="img" className="img-fluid mt-3" />
             <div className="mt-4 font-weight-bold">{item.name}</div>

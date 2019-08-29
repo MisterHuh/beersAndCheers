@@ -3,20 +3,23 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'checkout',
         params: {}
       },
       cart: []
     };
+    this.price = 0;
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   setView(name, params) {
@@ -48,6 +51,32 @@ export default class App extends React.Component {
       });
   }
 
+  placeOrder(buyerInfo) {
+    event.preventDefault();
+    event.target.reset();
+
+    const incomingOrder = {
+      name: buyerInfo.name,
+      creditCard: buyerInfo.creditCard,
+      shippingAddress: buyerInfo.shippingAddres
+    };
+    incomingOrder['cart'] = this.state.cart;
+
+    const req = {
+      method: 'POST',
+      header: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(incomingOrder)
+    };
+
+    fetch(`/api/orders.php`, req)
+      .then(res => res.json())
+      .then(() => {
+        this.setState({ cart: [] });
+        this.setState({ view: { name: 'catalog', params: {} } });
+      });
+
+  }
+
   componentDidMount() {
     this.getCartItems();
   }
@@ -72,6 +101,13 @@ export default class App extends React.Component {
         <div className="container border border-dark">
           <Header cartItemCount={this.state.cart.length} setView={this.setView} />
           <CartSummary cart={this.state.cart} setView={this.setView} />
+        </div>
+      );
+    } else if (this.state.view.name === 'checkout') {
+      return (
+        <div className="container border border-dark">
+          <Header cartItemCount={this.state.cart.length} setView={this.setView} />
+          <CheckoutForm setView={this.setView} placeOrder={this.placeOrder} cart={this.state.cart} />
         </div>
       );
     }

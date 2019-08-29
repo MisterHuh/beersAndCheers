@@ -44,7 +44,7 @@ class ProductDetails extends React.Component {
               <div className="my-4">{this.state.products.shortDescription}</div>
               <div className=" border border-dark px-2 py-2 w-50 text-center bg-light"
                 onClick={
-                  () => this.props.addToCart(this.props.view)}
+                  () => this.props.addToCart(this.state.products)}
               >Add to Cart</div>
             </div>
           </div>
