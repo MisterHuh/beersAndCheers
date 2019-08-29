@@ -2,7 +2,8 @@ import React from 'react';
 
 function CartSummaryItem(props) {
 
-  const img = {
+  const imgSize = {
+    height: '200px',
     width: '200px'
   };
 
@@ -12,7 +13,7 @@ function CartSummaryItem(props) {
       <div className="container">
 
         <div className="d-flex border border-dark rounded my-3 mx-5">
-          <img src={props.indivItem.image} alt="img" className="img-fluid" style={img}/>
+          <img src={props.indivItem.image} alt="img" className="img-fluid" style={imgSize}/>
 
           <div className="float-right my-3 mx-3">
             <div className="mt-4 font-weight-bold">{props.indivItem.name}</div>

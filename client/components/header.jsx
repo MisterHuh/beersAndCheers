@@ -4,8 +4,8 @@ function Header(props) {
 
   const imgUrl = 'funny_logo.png';
   const size = {
-    // width: '50px',
-    // height: '100px'
+    width: '277px',
+    height: '277px'
   };
 
   return (
