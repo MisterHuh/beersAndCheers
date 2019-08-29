@@ -2,10 +2,7 @@ import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 
 function CartSummary(props) {
-
   let imgSrc = 'emptycart.png';
-  // "server\public\emptycart.png"
-
   let indivItem = props.cart;
   let price = 0;
 
