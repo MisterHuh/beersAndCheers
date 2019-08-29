@@ -33,7 +33,7 @@ if (!$numRows) {
 
 $output = [];
 
-while($product = mysqli_fetch_array($result)) {
+while($product = mysqli_fetch_assoc($result)) {
   $output[] = $product;
 }
 
