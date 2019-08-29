@@ -51,17 +51,7 @@ export default class App extends React.Component {
       });
   }
 
-  placeOrder(buyerInfo) {
-    event.preventDefault();
-    event.target.reset();
-
-    const incomingOrder = {
-      name: buyerInfo.name,
-      creditCard: buyerInfo.creditCard,
-      shippingAddress: buyerInfo.shippingAddres
-    };
-    incomingOrder['cart'] = this.state.cart;
-
+  placeOrder(incomingOrder) {
     const req = {
       method: 'POST',
       header: { 'Content-Type': 'application/json' },
