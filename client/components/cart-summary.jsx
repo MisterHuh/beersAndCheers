@@ -26,32 +26,33 @@ function CartSummary(props) {
 
       </div>
     );
+  } else {
+    return (
+      <div className="container">
+
+        <div
+          onClick={() => { props.setView('catalog', {}); }}
+          className="w-25 text-primary my-3">{`< Back to Catalog`}
+        </div>
+
+        <div className="container d-flex justify-content-between ">
+
+          <div className="font-italic h5 text-muted">Item Total: ${getPrice()}</div>
+
+          <div className="h5">My Cart</div>
+
+          <button className="font-italic h5 rounded bg-primary text-light px-2"
+            onClick={() => { props.setView('checkout', {}); }}>Check Out</button>
+        </div>
+        {props.cart.map(cart => {
+          return (
+            <CartSummaryItem setView={props.setView} key={cart.id} indivItem={cart} />
+          );
+        })}
+      </div>
+    );
   }
 
-  return (
-    <div className="container">
-
-      <div
-        onClick={() => { props.setView('catalog', {}); }}
-        className="w-25 text-primary my-3">{`< Back to Catalog`}
-      </div>
-
-      <div className="container d-flex justify-content-between ">
-
-        <div className="font-italic h5 text-muted">Item Total: ${getPrice()}</div>
-
-        <div className="h5">My Cart</div>
-
-        <button className="font-italic h5 rounded bg-primary text-light px-2"
-          onClick={ () => { props.setView('checkout', {}); }}>Check Out</button>
-      </div>
-      {props.cart.map(cart => {
-        return (
-          <CartSummaryItem setView={props.setView} key={cart.id} indivItem={cart} />
-        );
-      })}
-    </div>
-  );
 }
 
 export default CartSummary;

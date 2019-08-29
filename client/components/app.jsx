@@ -74,7 +74,6 @@ export default class App extends React.Component {
         this.setState({ cart: [] });
         this.setState({ view: { name: 'catalog', params: {} } });
       });
-
   }
 
   componentDidMount() {
@@ -82,34 +81,24 @@ export default class App extends React.Component {
   }
 
   render() {
-    if (this.state.view.name === 'catalog') {
-      return (
-        <div className="container border border-dark">
-          <Header cartItemCount={this.state.cart.length} setView={this.setView} />
-          <ProductList setView={this.setView} />
-        </div>
-      );
-    } else if (this.state.view.name === 'details') {
-      return (
-        <div className="container border border-dark">
-          <Header cartItemCount={this.state.cart.length} setView={this.setView} />
-          <ProductDetails view={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />
-        </div>
-      );
-    } else if (this.state.view.name === 'cart') {
-      return (
-        <div className="container border border-dark">
-          <Header cartItemCount={this.state.cart.length} setView={this.setView} />
-          <CartSummary cart={this.state.cart} setView={this.setView} />
-        </div>
-      );
-    } else if (this.state.view.name === 'checkout') {
-      return (
-        <div className="container border border-dark">
-          <Header cartItemCount={this.state.cart.length} setView={this.setView} />
-          <CheckoutForm setView={this.setView} placeOrder={this.placeOrder} cart={this.state.cart} />
-        </div>
-      );
+    let currentView = this.state.view.name;
+    let displayView = null;
+
+    if (currentView === 'catalog') {
+      displayView = <ProductList setView={this.setView} />;
+    } else if (currentView === 'details') {
+      displayView = <ProductDetails view={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />;
+    } else if (currentView === 'cart') {
+      displayView = <CartSummary cart={this.state.cart} setView={this.setView} />;
+    } else if (currentView === 'checkout') {
+      displayView = <CheckoutForm setView={this.setView} placeOrder={this.placeOrder} cart={this.state.cart} />;
     }
+    return (
+      <div className="container border border-dark">
+        <Header cartItemCount={this.state.cart.length} setView={this.setView} />
+        {displayView}
+      </div>
+    );
+
   }
 }
