@@ -28,7 +28,7 @@ if (!$result) {
 }
 
 if (!$numRows) {
-  throw new Exception("error: invalid ID " . $id);
+  return [];
 }
 
 $output = [];
