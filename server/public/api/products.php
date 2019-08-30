@@ -5,25 +5,23 @@ set_exception_handler("error_handler");
 startup();
 require_once("db_connection.php");
 
-$id = $_GET["id"];
-
-if (empty($id)) {
+if (empty($_GET["id"])) {
   $whereClause = "";
-  print("error: no id inputted");
+  print("error: no id inputted \n");
 } else {
-  if (is_numeric($id)) {
-    $whereClause = " WHERE `p`.`id` = " . $id;
+  if (is_numeric($_GET["id"])) {
+    $whereClause = " WHERE `p`.`id` = " . $_GET["id"];
   } else {
     throw new Exception("error: id needs to be a number");
   }
 };
 
-// $query = "SELECT * FROM `products`" . $whereClause;
-$query = "SELECT p.id, p.name, p.price,
-	i.url
+
+$query = "SELECT p.id, p.name, p.shortDescription, p.price,
+	GROUP_CONCAT(i.url) AS images
 	FROM `products` AS `p`
-    JOIN `images` AS `i`
-	ON i.product_id = p.id" . $whereClause;
+  JOIN `images` AS `i`
+  ON i.product_id = p.id" . $whereClause . " GROUP BY `p`.`id`";
 
 $result = mysqli_query($conn, $query);
 
@@ -39,8 +37,12 @@ if (!$numRows) {
 
 $output = [];
 
-while($product = mysqli_fetch_assoc($result)) {
-  $output[] = $product;
+while($row = mysqli_fetch_assoc($result)) {
+  $images = $row["images"];
+  $imgArray = explode(",", $images);
+  unset($row["images"]);
+  $row["images"] = $imgArray;
+  $output[] = $row;
 }
 
 $json_output = json_encode($output);
