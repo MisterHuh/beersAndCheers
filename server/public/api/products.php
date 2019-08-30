@@ -19,7 +19,11 @@ if (empty($id)) {
 };
 
 // $query = "SELECT * FROM `products`" . $whereClause;
-$query = "SELECT p.id, p.name, p.price, p.shortDescription, i.url FROM `products` AS `p` JOIN `images` AS `i` ON i.product_id = p.id" . $whereClause;
+$query = "SELECT p.id, p.name, p.price,
+	i.url
+	FROM `products` AS `p`
+    JOIN `images` AS `i`
+	ON i.product_id = p.id" . $whereClause;
 
 $result = mysqli_query($conn, $query);
 
