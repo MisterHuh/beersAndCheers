@@ -9,16 +9,18 @@ $id = $_GET["id"];
 
 if (empty($id)) {
   $whereClause = "";
-  throw new Exception("error: no id inputted");
+  print("error: no id inputted");
 } else {
   if (is_numeric($id)) {
-    $whereClause = " WHERE `id` = {$id}";
+    $whereClause = " WHERE `p`.`id` = " . $id;
   } else {
     throw new Exception("error: id needs to be a number");
   }
 };
 
-$query = "SELECT * FROM `products`" . $whereClause;
+// $query = "SELECT * FROM `products`" . $whereClause;
+$query = "SELECT p.id, p.name, p.price, p.shortDescription, i.url FROM `products` AS `p` JOIN `images` AS `i` ON i.product_id = p.id" . $whereClause;
+
 $result = mysqli_query($conn, $query);
 
 $numRows = mysqli_num_rows($result);
