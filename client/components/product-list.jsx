@@ -11,6 +11,7 @@ class ProductList extends React.Component {
   }
 
   componentDidMount() {
+    console.log('ProductList componentDidMount');
     this.getProducts();
   }
 
@@ -21,6 +22,7 @@ class ProductList extends React.Component {
   }
 
   render() {
+    console.log('ProductList reached');
     return (
       <ProductListItem product={this.state.products} setView={this.props.setView}/>
     );
