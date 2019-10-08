@@ -11,18 +11,19 @@ class ProductList extends React.Component {
   }
 
   componentDidMount() {
-    console.log('ProductList componentDidMount');
     this.getProducts();
   }
 
   getProducts() {
     fetch(`/api/products.php`)
       .then(res => res.json())
-      .then(products => this.setState({ products }));
+      .then(products => {
+        console.log(products);
+        this.setState({ products });
+      });
   }
 
   render() {
-    console.log('ProductList reached');
     return (
       <ProductListItem product={this.state.products} setView={this.props.setView}/>
     );
