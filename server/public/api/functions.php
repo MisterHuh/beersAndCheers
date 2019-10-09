@@ -16,10 +16,10 @@ function startup() {
 }
 
 /* need this for backend07 */
-function getBodyData() {
-  $json = file_get_contents('php://input');
-  $data = json_decode($json, true);
-  return $data;
-}
+// function getBodyData() {
+//   $json = file_get_contents('php://input');
+//   $data = json_decode($json, true);
+//   return $data;
+// }
 
 ?>

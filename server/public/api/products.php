@@ -6,11 +6,15 @@ require_once("db_connection.php");
 set_exception_handler("error_handler");
 startUp();
 
+// $json_input = file_get_contents('php://input');
+// $obj = json_decode($json_input, true);
+
 $query = "SELECT * FROM `products`";
 $result = mysqli_query($conn, $query);
 $numRows = mysqli_num_rows($result);
 
-print_r($result);
+// print_r($result);
+// print_r($numRows);
 
 if (!$result) {
   throw new Exception("ERROR: " . mysqli_connect_error($conn));
@@ -23,13 +27,16 @@ if (!$numRows) {
 $output = [];
 
 while($row = mysqli_fetch_assoc($result)) {
+  // print($row);
   $output[] = $row;
-  print($output);
+  // print_r($output);
   // var_dump($output);
 }
 
 $json_output = json_encode($output);
-print($json_output);
+print_r($json_output);
+// print_r($json_output);
+
 
 
 ?>
