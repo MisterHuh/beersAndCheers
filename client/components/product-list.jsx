@@ -25,8 +25,7 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="border border-dark">productList test</div>
-      // <ProductListItem product={this.state.products} setView={this.props.setView}/>
+      <ProductListItem product={this.state.products} setView={this.props.setView}/>
     );
   }
 

@@ -31,9 +31,9 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Header setView={this.setView}/>
+        <Header setView={this.setView} />
         <Carousel />
-        <ProductList />
+        <ProductList setView={this.setView} />
       </div>
     );
   }

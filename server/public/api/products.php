@@ -9,12 +9,10 @@ startUp();
 // $json_input = file_get_contents('php://input');
 // $obj = json_decode($json_input, true);
 
+// $query = "SELECT `name`, `brewery`, `abv`, ibu, type, price FROM `products`";
 $query = "SELECT * FROM `products`";
 $result = mysqli_query($conn, $query);
 $numRows = mysqli_num_rows($result);
-
-// print_r($result);
-// print_r($numRows);
 
 if (!$result) {
   throw new Exception("ERROR: " . mysqli_connect_error($conn));
@@ -27,17 +25,11 @@ if (!$numRows) {
 $output = [];
 
 while($row = mysqli_fetch_assoc($result)) {
-  // print($row);
   $output[] = $row;
-  // print_r($output);
-  // var_dump($output);
 }
 
 $json_output = json_encode($output);
-print_r($json_output);
-// print_r($json_output);
-
-
+print($json_output);
 
 ?>
 
