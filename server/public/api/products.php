@@ -6,11 +6,30 @@ require_once("db_connection.php");
 set_exception_handler("error_handler");
 startUp();
 
-// $json_input = file_get_contents('php://input');
-// $obj = json_decode($json_input, true);
+$json_input = file_get_contents('php://input');
+$obj = json_decode($json_input, true);
+
+if (empty($_GET["id"])) {
+  $whereClause = "";
+  // print("error: no id inputted \n");
+} else {
+  if (is_numeric($_GET["id"])) {
+    $whereClause = " WHERE `products`.`id` = " . $_GET["id"];
+    // print($whereClause);
+  } else {
+    throw new Exception("error: id needs to be a number");
+  }
+};
+
+
+// $query = "SELECT p.id, p.name, p.shortDescription, p.price,
+// 	GROUP_CONCAT(i.url) AS images
+// 	FROM `products` AS `p`
+//   JOIN `images` AS `i`
+//   ON i.product_id = p.id" . $whereClause . " GROUP BY `p`.`id`";
 
 // $query = "SELECT `name`, `brewery`, `abv`, ibu, type, price FROM `products`";
-$query = "SELECT * FROM `products`";
+$query = "SELECT * FROM `products`" . $whereClause;
 $result = mysqli_query($conn, $query);
 $numRows = mysqli_num_rows($result);
 
