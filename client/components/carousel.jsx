@@ -8,7 +8,6 @@ function Carousel() {
     width: '100vw',
     height: '40vh'
   };
-  // style = { carouselSize }
   return (
 
   // <div className="jumbotron mb-0">

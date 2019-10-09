@@ -13,7 +13,8 @@ export default class App extends React.Component {
       view: {
         name: 'catalog',
         product: {}
-      }
+      },
+      cart: {}
     };
     this.setView = this.setView.bind(this);
   }
@@ -29,13 +30,18 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <Header setView={this.setView} />
-        <Carousel />
-        <ProductList setView={this.setView} />
-      </div>
-    );
+    let currentView = this.state.view.name;
+    // let displayView = null;
+
+    if (currentView === 'catalog') {
+      return (
+        <div>
+          <Header setView={this.setView} />
+          <Carousel />
+          <ProductList setView={this.setView} />
+        </div>
+      );
+    }
   }
 
 }
