@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header';
-// import ProductList from './product-list';
+import Carousel from './carousel';
+import ProductList from './product-list';
 // import ProductDetails from './product-details';
 // import CartSummary from './cart-summary';
 // import CheckoutForm from './checkout-form';
@@ -14,9 +15,11 @@ export default class App extends React.Component {
         product: {}
       }
     };
+    this.setView = this.setView.bind(this);
   }
 
   setView(name, product) {
+    console.log('setView clicked');
     this.setState({
       view: {
         name,
@@ -27,7 +30,11 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Header />
+      <div>
+        <Header setView={this.setView}/>
+        <Carousel />
+        <ProductList />
+      </div>
     );
   }
 

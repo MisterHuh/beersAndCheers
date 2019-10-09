@@ -3,12 +3,14 @@
 
 require_once("functions.php");
 require_once("db_connection.php");
-set_exception_handler("errpr_handler");
+set_exception_handler("error_handler");
 startUp();
 
 $query = "SELECT * FROM `products`";
 $result = mysqli_query($conn, $query);
 $numRows = mysqli_num_rows($result);
+
+print_r($result);
 
 if (!$result) {
   throw new Exception("ERROR: " . mysqli_connect_error($conn));
@@ -22,6 +24,8 @@ $output = [];
 
 while($row = mysqli_fetch_assoc($result)) {
   $output[] = $row;
+  print($output);
+  // var_dump($output);
 }
 
 $json_output = json_encode($output);
