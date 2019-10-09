@@ -12,7 +12,7 @@ export default class App extends React.Component {
     this.state = {
       view: {
         name: 'catalog',
-        id: {}
+        id: ''
       },
       cart: {}
     };
@@ -25,7 +25,7 @@ export default class App extends React.Component {
     this.setState({
       view: {
         name,
-        id
+        id: id
       }
     });
   }

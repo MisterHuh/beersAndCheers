@@ -5,9 +5,10 @@ require_once("functions.php");
 require_once("db_connection.php");
 set_exception_handler("error_handler");
 startUp();
-$data = getBodyData();
+
+// $data = getBodyData();
 // var_dump($data);
-$id = $data["id"];
+// $id = $data["id"];
 // var_dump($id);
 
 
@@ -16,34 +17,34 @@ $id = $data["id"];
 // $obj = json_decode($json_input, true);
 // var_dump($obj);
 
-if (empty($id)) {
-  var_dump($id);
-  throw new Exception("an id must be provided");
-} else if (!is_numeric($id)) {
-  throw new Exception("id needs to be a number");
-} else {
-  $whereClause = " WHERE products.id = " . $id;
-}
-
-// if (empty($_GET["id"])) {
-//   $whereClause = "";
-//   // print("error: no id inputted \n");
-//   // print("first test");
+// if (empty($id)) {
+//   var_dump($id);
+//   throw new Exception("an id must be provided");
+// } else if (!is_numeric($id)) {
+//   throw new Exception("id needs to be a number");
 // } else {
-//   if (is_numeric($_GET["id"])) {
-//     // var_dump(($_GET["id"]));
-//     // print("numericTest = " . is_numeric($_GET["id"]) . "\n");
-//     print("getID is = " . $_GET["id"]) . "\n";
-//     // $id = intval($_GET["id"]);
-//     $whereClause = " WHERE products.id = " . $_GET["id"];
-//     // print($whereClause);
-//     // print("isNumeric test");
-//     print("second test " . "\n");
-//   } else {
-//     print("third test " . "\n");
-//     throw new Exception("error: id needs to be a number");
-//   }
-// };
+//   $whereClause = " WHERE products.id = " . $id;
+// }
+
+if (empty($_GET["id"])) {
+  $whereClause = "";
+  // print("error: no id inputted \n");
+  // print("first test");
+} else {
+  if (is_numeric($_GET["id"])) {
+    // var_dump(($_GET["id"]));
+    // print("numericTest = " . is_numeric($_GET["id"]) . "\n");
+    // print("getID is = " . $_GET["id"]) . "\n";
+    // $id = intval($_GET["id"]);
+    $whereClause = " WHERE products.id = " . $_GET["id"];
+    // print($whereClause);
+    // print("isNumeric test");
+    // print("second test " . "\n");
+  } else {
+    // print("third test " . "\n");
+    throw new Exception("error: id needs to be a number");
+  }
+};
 
 // print($whereClause);
 
