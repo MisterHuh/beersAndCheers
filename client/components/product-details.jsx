@@ -46,7 +46,7 @@ class ProductDetails extends React.Component {
 
     if (this.state.product) {
       return (
-        <div className="border border-dark d-flex flex-row">  {/* Main Container*/}
+        <div className="border border-dark d-flex flex-row">  {/* Main Container */}
 
           <div className="border border-primary">             {/* name || brewery */}
             <div>Name</div>
@@ -61,7 +61,7 @@ class ProductDetails extends React.Component {
             </div>
           </div>
 
-          <div>                                               {/* description */}
+          <div className="border border-danger">                                               {/* description */}
             <h1>Product Details</h1>
             <p>Product Description</p>
           </div>
