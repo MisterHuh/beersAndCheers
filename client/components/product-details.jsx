@@ -16,13 +16,14 @@ class ProductDetails extends React.Component {
   retrieveProduct(props) {
     // const id = parseInt(this.props.id)
     console.log('this.id = ', this.props.id);
-    console.log('this is a number = ', 12345);
     fetch(`/api/products.php?id=` + this.props.id)
       .then(res => res.json())
       .then(product => {
         console.log('this.state.product = ', product);
         this.setState({ product });
       });
+    console.log('end of retrieveProduct');
+
   }
 
   render() {
