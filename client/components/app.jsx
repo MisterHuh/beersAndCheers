@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './header';
 import Carousel from './carousel';
 import ProductList from './product-list';
-// import ProductDetails from './product-details';
+import ProductDetails from './product-details';
 // import CartSummary from './cart-summary';
 // import CheckoutForm from './checkout-form';
 
@@ -12,19 +12,20 @@ export default class App extends React.Component {
     this.state = {
       view: {
         name: 'catalog',
-        product: {}
+        id: ''
       },
       cart: {}
     };
     this.setView = this.setView.bind(this);
   }
 
-  setView(name, product) {
-    console.log('setView clicked');
+  setView(name, id) {
+    console.log('setView name= ', name);
+    console.log('setView id= ', id);
     this.setState({
       view: {
         name,
-        product
+        id: id
       }
     });
   }
@@ -39,6 +40,13 @@ export default class App extends React.Component {
           <Header setView={this.setView} />
           <Carousel />
           <ProductList setView={this.setView} />
+        </div>
+      );
+    } else if (currentView === 'details') {
+      return (
+        <div>
+          <Header setView={this.setView} />
+          <ProductDetails setView={this.setView} id={this.state.view.id}/>
         </div>
       );
     }

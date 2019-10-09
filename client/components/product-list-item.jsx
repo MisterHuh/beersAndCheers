@@ -2,16 +2,21 @@ import React from 'react';
 
 function ProductListItem(props) {
 
+  // const productListItemSize = {
+  //   width: '100vw'
+  // };
+  // style = { productListItemSize }
+
   return (
-    <div className="container d-flex row justify-content-center mr-0 border border-primary">
+    <div className="container d-flex row justify-content-center border border-primary">
       {props.product.map(item => {
         return (
           <div key={item.id}
             className="card col-3 rounded"
             onClick={() => {
-              console.log('item id = ', item.id);
+              // console.log('item id = ', item.id);
               props.setView('details', {
-                'id': item.id });
+                'id': parseInt(item.id) });
             }}>
             {/* <img src={item.abv} alt="img" className="img-fluid mt-3" /> */}
             <div className="mt-4 font-weight-bold">{item.name}</div>
