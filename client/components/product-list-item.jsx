@@ -14,7 +14,6 @@ function ProductListItem(props) {
           <div key={item.id}
             className="card col-3 rounded"
             onClick={() => {
-              console.log('item id = ', item.id);
               props.setView('details', item.id);
             }}>
             {/* <img src={item.abv} alt="img" className="img-fluid mt-3" /> */}
