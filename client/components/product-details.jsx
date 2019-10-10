@@ -83,8 +83,8 @@ class ProductDetails extends React.Component {
 
           <div className="d-flex px-o border border-secondary">
 
-            <div className="mr-4 border border-dark" style={img} >
-              <img src={product.image} alt="img" className="img-fluid mt-3" />
+            <div className="border border-dark" style={img} >
+              <img src={product.image} alt="img" className="img-fluid" />
             </div>
 
             <div className="float-right" style={shortDesc}>
@@ -94,26 +94,23 @@ class ProductDetails extends React.Component {
               <div className="my-4">ibu : {product.ibu}</div>
               <div className="my-4">type: {product.type}</div>
               <div className="my-4 text-muted">{'$' + ((product.price) / 100).toFixed(2)}</div>
-              <div className=" border border-dark px-2 py-2 w-50 text-center bg-primary"
+              <div className=" border border-dark text-center bg-primary"
                 onClick={
                   () => this.props.setView('catalog', '')}
               >Back to Catalog</div>
-              <div className=" border border-dark px-2 py-2 w-50 text-center bg-warning"
-                onClick={
-                  () => this.props.addToCart(this.state.product)}
-              >Add to Cart</div>
+              <div className=" border border-dark text-center bg-warning">Add to Cart</div>
             </div>
 
           </div>
 
-          <div className="my-4">
+          {/* <div className="my-4">
             <div className="border border-dark">{product.description}</div>
-          </div>
+          </div> */}
 
-          {/* <fieldset className="my-4">
-            <legend className="border border-dark">Product Details</legend>
+          <fieldset className="my-4 border border-dark">
+            <legend className="">Product Details</legend>
             <p>{product.description}</p>
-          </fieldset> */}
+          </fieldset>
 
         </div>
       );

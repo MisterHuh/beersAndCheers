@@ -17,6 +17,22 @@ export default class App extends React.Component {
       cart: {}
     };
     this.setView = this.setView.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+  }
+
+  addToCart(product) {
+    const req = {
+      method: 'POST',
+      header: { 'Content-Type': 'applicaiton/json' },
+      body: JSON.stringify(product)
+    };
+    fetch(`/api/cart.php`, req)
+      .then(res => res.json())
+      .then(product => {
+        console.log('addToCart Product is: ', product);
+        const cart = this.state.cart.concat(product);
+        this.setState({ cart });
+      });
   }
 
   setView(name, id) {
@@ -41,7 +57,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header setView={this.setView} />
-          <ProductDetails setView={this.setView} id={this.state.view.id}/>
+          <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart}/>
         </div>
       );
     }
