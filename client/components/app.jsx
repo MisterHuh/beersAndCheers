@@ -20,12 +20,12 @@ export default class App extends React.Component {
   }
 
   setView(name, id) {
-    console.log('setView name= ', name);
+    // console.log('setView name= ', name);
     console.log('setView id= ', id);
     this.setState({
       view: {
         name,
-        id: id
+        id
       }
     });
   }
