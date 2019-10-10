@@ -94,11 +94,11 @@ class ProductDetails extends React.Component {
               <div className="my-4">ibu : {product.ibu}</div>
               <div className="my-4">type: {product.type}</div>
               <div className="my-4 text-muted">{'$' + ((product.price) / 100).toFixed(2)}</div>
-              <div className=" border border-dark px-2 py-2 w-50 text-center bg-light"
+              <div className=" border border-dark px-2 py-2 w-50 text-center bg-primary"
                 onClick={
                   () => this.props.setView('catalog', '')}
               >Back to Catalog</div>
-              <div className=" border border-dark px-2 py-2 w-50 text-center bg-light"
+              <div className=" border border-dark px-2 py-2 w-50 text-center bg-warning"
                 onClick={
                   () => this.props.addToCart(this.state.product)}
               >Add to Cart</div>

@@ -16,7 +16,7 @@ function ProductListItem(props) {
             onClick={() => {
               props.setView('details', item.id);
             }}>
-            {/* <img src={item.abv} alt="img" className="img-fluid mt-3" /> */}
+            <img src={item.image} alt="img" className="img-fluid mt-3" />
             <div className="mt-4 font-weight-bold">{item.name}</div>
             <div className="mt-3">{item.brewery}</div>
             <div className="mt-3">{item.type}</div>
