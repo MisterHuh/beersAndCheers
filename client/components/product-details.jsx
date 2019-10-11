@@ -41,101 +41,77 @@ class ProductDetails extends React.Component {
 
     const mainContainer = {
       width: '100vw',
-      height: '80vh'
+      height: '100vh'
+    };
+
+    const subSubContainer = {
+      height: '50%',
+      width: '100%'
+    };
+
+    const imgContainer = {
+      height: '60%',
+      width: '40%',
+      display: 'inline-block'
+    };
+
+    // const imgSize = {
+    //   width: '100%',
+    //   height: '100%'
+    //   backgroundSize: 'contain',
+    //   backgroundRepeat: 'no-repeat'
+    // };
+
+    const infoContainer = {
+      width: '60%'
+    };
+
+    const headerSize = {
+      height: '30%',
+      width: '100%'
+    };
+
+    const statsSize = {
+      height: '70%'
     };
 
     if (this.state.product) {
-
-      /* scrap this design and come up with a new one */
-      // return (
-      //   <div className="border border-dark d-flex flex-column px-4 py-4" style={mainContainer}>  {/* Main Container */}
-
-      //     <div className="w-100 h-25 text-center">
-      //       <h4 className="">{product.name}</h4>
-      //       <h4 className="">-------</h4>
-      //       <h4 className="">{product.brewery}</h4>
-      //     </div>
-
-      //     <div className=" d-flex flex-row h-50"> {/* img | abv | ibu | type | price | quantity??? */}
-      //       <div className=" w-50">
-      //         <img src={product.images} alt="img" style={img}/>
-      //       </div>
-      //       <div className="w-50">
-      //         <div className="">ABV: {product.abv}</div>
-      //         <div className="">IBU: {product.ibu}</div>
-      //         <div className="">TYPE: {product.type}</div>
-      //         {/* <div className="">Quantity: 1</div> */}
-      //         <div className="">
-      //           <button className="">Back to Catalog</button>
-      //           <button className="">Add to Cart</button>
-      //         </div>
-      //       </div>
-      //     </div>
-
-      //     <div className=" h-25">
-      //       <h4 className="">Product Descriptoin</h4>
-      //       <p className="">{product.description}</p>
-      //     </div>
-
-      //   </div>
-      // );
-
       return (
-        <div className="container mb-4 border border-danger">
+        <div id="mainContainer" className="py-5 px-5 border border-dark">
 
-          {/* <div
-            onClick={() => { this.props.setView('catalog', ''); }}
-            className="my-3 w-25 text-primary border border-secondary">{`< Back to Catalog`}
-          </div> */}
+          <div id="subContainer" className="border border-success">
 
-          <div className="d-flex px-o border border-secondary">
+            <div id="subSubContainer" className="border border-danger d-flex flex-row" style={subSubContainer}>
 
-            <div className="border border-dark" style={img} >
-              <img src={product.image} alt="img" className="img-fluid" />
+              <div id="imgContainer" className="border border-warning" style={imgContainer}>
+                <img src={product.image} alt="img" className="img-fluid w-100"/>
+              </div>
+
+              <div id="infoContainer" className="border border-danger d-flex flex-column" style={infoContainer}>
+
+                <div id="titleBrewery" className="border border-secondary" style={headerSize}>
+                  <header>{product.name}</header>
+                  <header>{product.brewery}</header>
+                </div>
+
+                <div id="restInfo" className="border border-success" style={statsSize}>
+                  <div>{product.abv}</div>
+                  <div>{product.ibu}</div>
+                  <div>500ml bottle</div>
+                  <Button onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</Button>
+                </div>
+              </div>
+
             </div>
 
-            <div className="float-right" style={shortDesc}>
-              <div className="my-4 font-weight-bold h3">{product.name}</div>
-              <div className="my-4">{product.brewery}</div>
-              <div className="my-4">abv : {product.abv}</div>
-              <div className="my-4">ibu : {product.ibu}</div>
-              <div className="my-4">type: {product.type}</div>
-              <div className="my-4 text-muted">{'$' + ((product.price) / 100).toFixed(2)}</div>
-              <Button className=" border border-dark text-center bg-primary"
-                onClick={
-                  () => this.props.setView('catalog', '')}
-              >Back to Catalog</Button>
-              <div className="text-center">
-                <Button color="danger" onClick={this.toggle}>Add to Cart</Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                  <ModalHeader toggle={this.toggle}>{product.name}</ModalHeader>
-                  <ModalBody>
-                    <div>{product.brewery}</div>
-                    <div>{product.price}</div>
-                    <div>Quantity: 1</div>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="primary" onClick={() => this.props.setView('catalog', '')}>Continue Shopping</Button>{' '}
-                    <Button color="secondary" onClick={this.toggle}>Go To Cart</Button>
-                  </ModalFooter>
-                </Modal>
-              </div>
+            <div id="productDesc" className="border border-info">
+              <p>product description goes here blah blah</p>
             </div>
 
           </div>
 
-          {/* <div className="my-4">
-            <div className="border border-dark">{product.description}</div>
-          </div> */}
-
-          <fieldset className="my-4 border border-dark">
-            <legend className="">Product Details</legend>
-            <p>{product.description}</p>
-          </fieldset>
-
         </div>
       );
-
     } else {
       return (null);
     }
