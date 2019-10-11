@@ -1,13 +1,17 @@
 import React from 'react';
-import { UncontrolledCarousel } from 'reactstrap';
+import { UncontrolledCarousel, Jumbotron, Container } from 'reactstrap';
 
 function Carousel() {
-  const img1 = 'wickedLogo.png';
-  const img2 = `cart.png`;
+  const img1 = 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80';
+  const img2 = `https://images.pexels.com/photos/2855291/pexels-photo-2855291.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500`;
   const img3 = `emptycart.png`;
+
+  const wrapper = {
+    height: '50vh'
+  };
   const carouselSize = {
-    width: '100vw',
-    height: '40vh'
+    width: '100%',
+    height: '30%'
   };
 
   const items = [
@@ -34,15 +38,41 @@ function Carousel() {
     }
   ];
 
+  const jumbotronSize = {
+    height: '50vh'
+  };
+
+  const imgWrapper = {
+    height: '50vh'
+  };
+  const imgSize = {
+    height: '100%',
+    backgroundSize: 'contain'
+  };
+
   return (
-  // <UncontrolledCarousel items={items} style={carouselSize}/>
+  // <div style={wrapper}>
+  //   <UncontrolledCarousel items={items} style={carouselSize}/>
+  // </div>
+
+    <div>
+      <Jumbotron fluid style={jumbotronSize} className="border border-secondary p-0">
+        <Container fluid className="p-0">
+          <div className="border border-danger" style={imgWrapper}>
+            <img src={img2} alt="jumbo" style={imgSize} className="border border-light"/>
+          </div>
+          {/* <h1 className="display-3">Fluid jumbotron</h1>
+          <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> */}
+        </Container>
+      </Jumbotron>
+    </div>
 
   /* JUMBOTRON */
-    <div className="jumbotron mb-0">
-      <h1>Test Jumbotron</h1>
-      <p>some quote here</p>
-      <img className="img-fluid align-middle" src={img1} alt="logo" />
-    </div>
+  // <div className="jumbotron mb-2">
+  //   <h1>Test Jumbotron</h1>
+  //   <p>some quote here</p>
+  //   <img className="img-fluid align-middle" src={img1} alt="logo" />
+  // </div>
 
   /* BOOTSTRAP CAROUSEL   data-interval="100" */
   // <div id="myCarousel" className="carousel slide border border-danger" data-ride="carousel">

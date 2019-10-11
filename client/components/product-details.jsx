@@ -90,8 +90,19 @@ class ProductDetails extends React.Component {
                     <div className="my-3 border border-success">{'$' + ((product.price) / 100).toFixed(2)}</div>
                     <div className="my-3 border border-success">- 1 +</div>
                     <div className="border border-success">
-                      <Button className="my-3 border border-success"
-                        onClick={() => { this.props.setView('catalog'); }}>Add To Cart</Button>
+                      <Button className="my-3 border border-success" onClick={this.toggle}>Add To Cart</Button>
+                      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                        <ModalHeader toggle={this.toggle}>{product.name}</ModalHeader>
+                        <ModalBody>
+                          <div>{product.brewery}</div>
+                          <div>{'$' + ((product.price) / 100).toFixed(2)}</div>
+                          <div>Quantity: 1</div>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button color="primary" onClick={() => this.props.setView('catalog', '')}>Continue Shopping</Button>{' '}
+                          <Button color="secondary" onClick={this.toggle}>Go To Cart</Button>
+                        </ModalFooter>
+                      </Modal>
                     </div>
                   </div>
 
@@ -107,6 +118,7 @@ class ProductDetails extends React.Component {
 
           </div>
         </div>
+
       );
     } else {
       return null;

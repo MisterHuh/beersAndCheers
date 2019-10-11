@@ -10,7 +10,8 @@ function ProductListItem(props) {
     height: '100%'
   };
   const cardSize = {
-    height: '100%'
+    height: '100%',
+    backgroundColor: 'rgba(245, 245, 245, 0.6)'
   };
   const test = {
     // width: '100%',
@@ -28,7 +29,7 @@ function ProductListItem(props) {
       {props.product.map(item => {
         return (
           <Card key={item.id}
-            className="col-2 rounded m-2"
+            className="col-2 rounded m-3"
             style = {cardSize}
             onClick={() => {
               props.setView('details', item.id);

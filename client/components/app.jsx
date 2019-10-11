@@ -49,7 +49,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header setView={this.setView} />
-          {/* <Carousel /> */}
+          <Carousel />
           <ProductList setView={this.setView} />
         </div>
       );
