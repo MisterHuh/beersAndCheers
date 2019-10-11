@@ -27,134 +27,92 @@ class ProductDetails extends React.Component {
   }
 
   render() {
-    // const img = {
-    //   width: '10vw',
-    //   height: '30vh'
-    // };
-
     const product = this.state.product;
-    const testPic = 'beer1.png';
 
     const bodyWrapper = {
       height: '50vh'
     };
-
     const imgContainer = {
       height: '100%',
       width: '30%',
       display: 'inline-block'
     };
-
     const imgSize = {
       height: '100%',
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat'
     };
-
-    const infoContainer = {
+    const infoWrapper = {
       width: '70%'
     };
-
     const headerSize = {
       height: '30%',
       width: '100%',
       fontSize: '150%'
     };
-
     const statsSize = {
-      height: '70%'
+      height: '70%',
+      fontSize: '125%'
     };
 
     if (this.state.product) {
       return (
-        <div id="mainWrapper" className="p-5 border border-dark">
-          <div id="subWrapper" className="border border-success">
+        <div id="mainWrapper" className="p-5">
+          <div id="subWrapper" className="p-5">
 
             <div id="bodyWrapper" className="border border-danger d-flex flex-row" style={bodyWrapper}>
 
-              <div id="imgContainer" className="border border-warning text-center" style={imgContainer}>
-                <img src={product.image} alt="img" className="img-fluid border border-dark" style={imgSize}/>
-                {/* <img src={testPic} alt="img" className="img-fluid border border-dark" style={imgSize} /> */}
+              <div id="imgContainer" className="text-center" style={imgContainer}>
+                <img src={product.image} alt="img" className="img-fluid" style={imgSize}/>
               </div>
 
-              <div id="infoContainer" className="border border-danger d-flex flex-column" style={infoContainer}>
+              <div id="infoWrapper" className="border border-danger d-flex flex-column" style={infoWrapper}>
 
                 <div id="titleBrewery" className="border border-secondary text-center" style={headerSize}>
-                  <div className="border border-warning h-50">{product.name}</div>
-                  <div className="border border-warning h-50">{product.brewery}</div>
+                  <div className="h-50">{product.name}</div>
+                  <div className="h-50">{product.brewery}</div>
                 </div>
 
-                <div id="restInfo" className="border border-success" style={statsSize}>
+                <div id="infoContainer" className="border border-success d-flex flex-row text-center align-items-center" style={statsSize}>
 
-                  <div className="border border-dark">
-                    <div className="border border-success">{product.abv}</div>
-                    <div className="border border-success">{product.ibu}</div>
-                    <div className="border border-success">500ml bottle</div>
-                    <Button className="border border-success"
-                      onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</Button>
+                  <div className="border border-dark h-100 w-50">
+                    <div className="my-3 border border-success">ABV: {product.abv}</div>
+                    <div className="my-3 border border-success">IBU: {product.ibu}</div>
+                    <div className="my-3 border border-success">AVAILABILITY: {product.availability}</div>
+                    <div className="border border-success">
+                      <Button className="my-3 border border-success"
+                        onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</Button>
+                    </div>
                   </div>
 
-                  <div className="border border-dark">
-                    <div className="border border-success">{product.type}</div>
-                    <div className="border border-success">{product.price}</div>
-                    <div className="border border-success">- 1 +</div>
-                    <Button className="border border-success"
-                      onClick={() => { this.props.setView('catalog'); }}>Add To Cart</Button>
+                  <div className="my-3 border border-dark h-100 w-50">
+                    <div className="my-3 border border-success">TYPE: {product.type}</div>
+                    <div className="my-3 border border-success">{'$' + ((product.price) / 100).toFixed(2)}</div>
+                    <div className="my-3 border border-success">- 1 +</div>
+                    <div className="border border-success">
+                      <Button className="my-3 border border-success"
+                        onClick={() => { this.props.setView('catalog'); }}>Add To Cart</Button>
+                    </div>
                   </div>
-                </div>
 
-              </div>
+                </div> {/* end of infoContainer */}
 
-            </div> {/* body wrapper */}
+              </div> {/* end of infoWrapper */}
+
+            </div> {/* end of bodyWrapper */}
 
             <div id="productDesc" className="border border-info" >
               <div className="border border-warning p-2">{product.description}</div>
             </div>
 
-          </div>  {/* sub wrapper */}
-        </div> {/* main wrapper */}
+          </div>
+        </div>
       );
-
     } else {
-      return (null);
+      return null;
     }
   }
 
 }
 
 export default ProductDetails;
-
-// return (
-//   <div className="container mb-4 border border-danger">
-
-//     <div
-//             onClick={() => { this.props.setView('catalog', {}); }}
-//             className="my-3 w-25 text-primary border border-secondary">{`< Back to Catalog`}
-//           </div>
-
-//     <div className="d-flex px-o border border-secondary">
-
-//       <div className="mr-4 border border-dark" style={img} >
-//         <img src={testPic} alt="img" className="img-fluid mt-3" />
-//       </div>
-
-//       <div className="float-right" style={shortDesc}>
-//         <div className="my-4 font-weight-bold h3">{product.name}</div>
-//         <div className="my-4">{product.brewery}</div>
-//         <div className="my-4">{product.abv}</div>
-//         <div className="my-4">{product.ibu}</div>
-//         <div className="my-4">{product.type}</div>
-//         <div className="my-4 text-muted">{'$' + ((product.price) / 100).toFixed(2)}</div>
-//         <div className=" border border-dark px-2 py-2 w-50 text-center bg-light"
-//           onClick={
-//             () => this.props.addToCart(this.state.product)}
-//         >Add to Cart</div>
-//       </div>
-//     </div>
-
-//     <div className="my-4">
-//       <div className="border border-dark">{product.description}</div>
-//     </div>
-
-//   </div>
-// );
