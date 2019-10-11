@@ -1,5 +1,18 @@
 import React from 'react';
 import Carousel from './carousel';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap';
 
 function Header(props) {
 
@@ -14,6 +27,19 @@ function Header(props) {
   };
 
   return (
+
+    <div>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">Beers & Cheers</NavbarBrand>
+        <Collapse navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink>Cart</NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </div>
 
   /* Jae's code */
   // <header className="border border-danger py-0 px-0" style={headerSize}>
@@ -30,20 +56,20 @@ function Header(props) {
   // </header>
 
   /* bootstrap + Jae's code */
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="border border-dark d-inline">
-        <img className="img-fluid border border-secondary" src={imgUrl} alt="logo" style={size} />
-        <div className="d-inline">Beers & Cheers</div>
-      </div>
+  // <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  //   <div className="border border-dark d-inline">
+  //     <img className="img-fluid border border-secondary" src={imgUrl} alt="logo" style={size} />
+  //     <div className="d-inline">Beers & Cheers</div>
+  //   </div>
 
-      <div className="border border-secondary float-right">
-        <i className="fas fa-shopping-cart" onClick={() => { props.setView('cart', {}); }}><span className="mx-2"></span></i>
-      </div>
+  //   <div className="border border-secondary float-right">
+  //     <i className="fas fa-shopping-cart" onClick={() => { props.setView('cart', {}); }}><span className="mx-2"></span></i>
+  //   </div>
 
-      <div className="border border-primary float-right">
-        <i className="fas fa-beer" onClick={() => { props.setView('catalog', {}); }}><span className="mx-2"></span></i>
-      </div>
-    </nav >
+  //   <div className="border border-primary float-right">
+  //     <i className="fas fa-beer" onClick={() => { props.setView('catalog', {}); }}><span className="mx-2"></span></i>
+  //   </div>
+  // </nav >
 
   /* bootstrap */
   // <nav className="navbar navbar-expand-lg navbar-light bg-light">

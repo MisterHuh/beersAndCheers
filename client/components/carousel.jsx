@@ -1,4 +1,5 @@
 import React from 'react';
+import { UncontrolledCarousel } from 'reactstrap';
 
 function Carousel() {
   const img1 = 'wickedLogo.png';
@@ -8,47 +9,75 @@ function Carousel() {
     width: '100vw',
     height: '40vh'
   };
+
+  const items = [
+    {
+      src: img1,
+      altText: 'Slide 1',
+      caption: 'Slide 1',
+      header: 'Slide 1 Header',
+      key: '1'
+    },
+    {
+      src: img2,
+      altText: 'Slide 2',
+      caption: 'Slide 2',
+      header: 'Slide 2 Header',
+      key: '2'
+    },
+    {
+      src: img3,
+      altText: 'Slide 3',
+      caption: 'Slide 3',
+      header: 'Slide 3 Header',
+      key: '3'
+    }
+  ];
+
   return (
+  // <UncontrolledCarousel items={items} style={carouselSize}/>
 
-  // <div className="jumbotron mb-0">
-  //   <h1>Test Jumbotron</h1>
-  //   <p>some quote here</p>
-  //   <img className="img-fluid w-25 align-middle mx-5" src={imgUrl} alt="logo" />
-  // </div>                data-interval="100"
-
-    <div id="myCarousel" className="carousel slide border border-danger" data-ride="carousel">
-
-      <ol className="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-
-      <div className="carousel-inner">
-        <div className="carousel-item active">
-          <img className="d-block w-100" src={img1} style={carouselSize} alt="First slide" />
-        </div>
-
-        <div className="carousel-item">
-          <img className="d-block w-100" src={img2} style={carouselSize} alt="Second slide" />
-        </div>
-
-        <div className="carousel-item">
-          <img className="d-block w-100" src={img3} style={carouselSize} alt="Third slide" />
-        </div>
-      </div>
-
-      <a className="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="sr-only">Previous</span>
-      </a>
-
-      <a className="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="sr-only">Next</span>
-      </a>
-
+  /* JUMBOTRON */
+    <div className="jumbotron mb-0">
+      <h1>Test Jumbotron</h1>
+      <p>some quote here</p>
+      <img className="img-fluid align-middle" src={img1} alt="logo" />
     </div>
+
+  /* BOOTSTRAP CAROUSEL   data-interval="100" */
+  // <div id="myCarousel" className="carousel slide border border-danger" data-ride="carousel">
+
+  //   <ol className="carousel-indicators">
+  //     <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
+  //     <li data-target="#myCarousel" data-slide-to="1"></li>
+  //     <li data-target="#myCarousel" data-slide-to="2"></li>
+  //   </ol>
+
+  //   <div className="carousel-inner">
+  //     <div className="carousel-item active">
+  //       <img className="d-block w-100" src={img1} style={carouselSize} alt="First slide" />
+  //     </div>
+
+  //     <div className="carousel-item">
+  //       <img className="d-block w-100" src={img2} style={carouselSize} alt="Second slide" />
+  //     </div>
+
+  //     <div className="carousel-item">
+  //       <img className="d-block w-100" src={img3} style={carouselSize} alt="Third slide" />
+  //     </div>
+  //   </div>
+
+  //   <a className="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+  //     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+  //     <span className="sr-only">Previous</span>
+  //   </a>
+
+  //   <a className="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+  //     <span className="carousel-control-next-icon" aria-hidden="true"></span>
+  //     <span className="sr-only">Next</span>
+  //   </a>
+
+  // </div>
 
   );
 }

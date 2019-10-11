@@ -1,16 +1,23 @@
 import React from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      modal: false
     };
     this.retrieveProduct = this.retrieveProduct.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
 
   componentDidMount() {
     this.retrieveProduct(this.props.id);
+  }
+
+  toggle() {
+    this.setState({ modal: !this.state.modal });
   }
 
   retrieveProduct(props) {
@@ -94,11 +101,25 @@ class ProductDetails extends React.Component {
               <div className="my-4">ibu : {product.ibu}</div>
               <div className="my-4">type: {product.type}</div>
               <div className="my-4 text-muted">{'$' + ((product.price) / 100).toFixed(2)}</div>
-              <div className=" border border-dark text-center bg-primary"
+              <Button className=" border border-dark text-center bg-primary"
                 onClick={
                   () => this.props.setView('catalog', '')}
-              >Back to Catalog</div>
-              <div className=" border border-dark text-center bg-warning">Add to Cart</div>
+              >Back to Catalog</Button>
+              <div className="text-center">
+                <Button color="danger" onClick={this.toggle}>Add to Cart</Button>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                  <ModalHeader toggle={this.toggle}>{product.name}</ModalHeader>
+                  <ModalBody>
+                    <div>{product.brewery}</div>
+                    <div>{product.price}</div>
+                    <div>Quantity: 1</div>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="primary" onClick={() => this.props.setView('catalog', '')}>Continue Shopping</Button>{' '}
+                    <Button color="secondary" onClick={this.toggle}>Go To Cart</Button>
+                  </ModalFooter>
+                </Modal>
+              </div>
             </div>
 
           </div>
