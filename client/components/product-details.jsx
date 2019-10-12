@@ -6,14 +6,31 @@ class ProductDetails extends React.Component {
     super(props);
     this.state = {
       product: null,
+      quantity: 1,
       modal: false
     };
     this.retrieveProduct = this.retrieveProduct.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.incrementQuantity = this.incrementQuantity.bind(this);
+    this.decrementQuantity = this.decrementQuantity.bind(this);
   }
 
   componentDidMount() {
     this.retrieveProduct(this.props.id);
+  }
+
+  incrementQuantity() {
+    let quantity = this.state.quantity;
+    let newQuantity = ++quantity;
+    this.setState({ quantity: newQuantity });
+  }
+
+  decrementQuantity() {
+    let quantity = this.state.quantity;
+    let newQuantity = --quantity;
+    if (this.state.quantity >= 2) {
+      this.setState({ quantity: newQuantity });
+    }
   }
 
   toggle() {
@@ -54,6 +71,21 @@ class ProductDetails extends React.Component {
       height: '70%',
       fontSize: '125%'
     };
+    const buttonPosition = {
+      bottom: '50%'
+    };
+    const modalBodyWrapper = {
+      height: '50vh'
+    };
+    const modalWrapper = {
+      height: '100%'
+    };
+    const modalContainer = {
+      height: '100%'
+    };
+    const modalImgContainer = {
+      height: '100%'
+    };
 
     if (this.state.product) {
       return (
@@ -76,27 +108,40 @@ class ProductDetails extends React.Component {
                 <div id="infoContainer" className="border border-success d-flex flex-row text-center align-items-center" style={statsSize}>
 
                   <div className="border border-dark h-100 w-50">
-                    <div className="my-3 border border-success">ABV: {product.abv}</div>
-                    <div className="my-3 border border-success">IBU: {product.ibu}</div>
-                    <div className="my-3 border border-success">AVAILABILITY: {product.availability}</div>
-                    <div className="border border-success">
-                      <Button className="my-3 border border-success"
+                    <div className="border border-dark my-3">ABV: {product.abv}</div>
+                    <div className="border border-dark my-3">IBU: {product.ibu}</div>
+                    <div className="border border-dark mt-3">AVAILABILITY: {product.availability}</div>
+                    <div className="border border-dark mt-2 ">
+                      <Button className="my-3 w-50"
+                        style={buttonPosition}
                         onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</Button>
                     </div>
                   </div>
 
                   <div className="my-3 border border-dark h-100 w-50">
-                    <div className="my-3 border border-success">TYPE: {product.type}</div>
-                    <div className="my-3 border border-success">{'$' + ((product.price) / 100).toFixed(2)}</div>
-                    <div className="my-3 border border-success">- 1 +</div>
-                    <div className="border border-success">
-                      <Button className="my-3 border border-success" onClick={this.toggle}>Add To Cart</Button>
+                    <div className="border border-dark my-3">TYPE:{product.type}</div>
+                    <div className="border border-dark my-3">{'$' + ((product.price) / 100).toFixed(2)}</div>
+                    <div className="border border-dark mt-3">
+                      <Button onClick={this.decrementQuantity} className="border border-dark ">-</Button>
+                      <div className="border border-dark d-inline h-100">{this.state.quantity}</div>
+                      <Button onClick={this.incrementQuantity} className="border border-dark ">+</Button>
+                    </div>
+                    <div className="mt-2">
+                      <Button className="my-3 w-50" onClick={this.toggle}>Add To Cart</Button>
                       <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle}>{product.name}</ModalHeader>
-                        <ModalBody>
-                          <div>{product.brewery}</div>
-                          <div>{'$' + ((product.price) / 100).toFixed(2)}</div>
-                          <div>Quantity: 1</div>
+                        <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
+                        <ModalBody style={modalBodyWrapper}>
+                          <div className="border border-danger d-flex flex-row" style={modalWrapper}>
+                            <div className="border border-dark w-50 text-center" style={modalContainer}>
+                              <img src={product.image} alt="beerImg" className="border border-dark" style={modalImgContainer}/>
+                            </div>
+                            <div className="border border-dark w-50 text-center">
+                              <div className="border border-dark h-25" >{product.name}</div>
+                              <div className="border border-dark h-25">{product.brewery}</div>
+                              <div className="border border-dark h-25">{'$' + ((product.price) / 100).toFixed(2)}</div>
+                              <div className="border border-dark h-25">Quantity: 1</div>
+                            </div>
+                          </div>
                         </ModalBody>
                         <ModalFooter>
                           <Button color="primary" onClick={() => this.props.setView('catalog', '')}>Continue Shopping</Button>{' '}
