@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from './header';
+// import Header from './header';
+import { Header } from './header';
 import Carousel from './carousel';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
@@ -43,27 +44,23 @@ export default class App extends React.Component {
 
   render() {
     let currentView = this.state.view.name;
-    // let displayView = null;
+    let displayView = null;
 
     if (currentView === 'catalog') {
-      return (
-        <div>
-          <Header setView={this.setView} />
-          <Carousel />
-          <ProductList setView={this.setView} />
-        </div>
-      );
+      displayView = <ProductList setView={this.setView} />;
     } else if (currentView === 'details') {
-      return (
-        <div>
-          <Header setView={this.setView} />
-          <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart}/>
-        </div>
-      );
+      displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     }
+    return (
+      <div className="container border border-dark">
+        <Header setView={this.setView} view={this.state.view.name}/>
+        {displayView}
+      </div>
+    );
   }
 
 }
+
 // constructor(props) {
 //   super(props);
 //   this.state = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Carousel from './carousel';
+import { Carousel } from './carousel';
 import {
   Collapse,
   Navbar,
@@ -14,7 +14,9 @@ import {
   DropdownItem
 } from 'reactstrap';
 
-function Header(props) {
+export const Header = props => {
+
+  let currentView = props.view;
 
   const imgUrl = 'cheers.png';
   const size = {
@@ -26,20 +28,38 @@ function Header(props) {
     height: '10vh'
   };
 
-  return (
-
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Beers & Cheers</NavbarBrand>
-        <Collapse navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink>Cart</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
-    </div>
+  if (currentView === 'catalog') {
+    return (
+      <React.Fragment>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">Beers & Cheers</NavbarBrand>
+          <Collapse navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink>Cart</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+        <Carousel />
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">Beers & Cheers</NavbarBrand>
+          <Collapse navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink>Cart</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </React.Fragment>
+    );
+  }
 
   /* Jae's code */
   // <header className="border border-danger py-0 px-0" style={headerSize}>
@@ -107,10 +127,9 @@ function Header(props) {
   //   </div>
   // </nav>
 
-  );
-}
+};
 
-export default Header;
+// export default Header;
 
 // import React from 'react';
 

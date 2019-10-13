@@ -1,7 +1,7 @@
 import React from 'react';
 import { UncontrolledCarousel, Jumbotron, Container } from 'reactstrap';
 
-function Carousel() {
+export const Carousel = () => {
   const img1 = 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80';
   const img2 = `https://images.pexels.com/photos/2855291/pexels-photo-2855291.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500`;
   const img3 = `emptycart.png`;
@@ -110,6 +110,6 @@ function Carousel() {
   // </div>
 
   );
-}
+};
 
-export default Carousel;
+// export default Carousel;
