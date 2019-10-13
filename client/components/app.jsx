@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from './header';
+// import Header from './header';
+import { Header } from './header';
 import Carousel from './carousel';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
@@ -17,42 +18,49 @@ export default class App extends React.Component {
       cart: {}
     };
     this.setView = this.setView.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+  }
+
+  addToCart(product) {
+    const req = {
+      method: 'POST',
+      header: { 'Content-Type': 'applicaiton/json' },
+      body: JSON.stringify(product)
+    };
+    fetch(`/api/cart.php`, req)
+      .then(res => res.json())
+      .then(product => {
+        console.log('addToCart Product is: ', product);
+        const cart = this.state.cart.concat(product);
+        this.setState({ cart });
+      });
   }
 
   setView(name, id) {
-    console.log('setView name= ', name);
-    console.log('setView id= ', id);
     this.setState({
-      view: {
-        name,
-        id: id
-      }
+      view: { name, id }
     });
   }
 
   render() {
     let currentView = this.state.view.name;
-    // let displayView = null;
+    let displayView = null;
 
     if (currentView === 'catalog') {
-      return (
-        <div>
-          <Header setView={this.setView} />
-          <Carousel />
-          <ProductList setView={this.setView} />
-        </div>
-      );
+      displayView = <ProductList setView={this.setView} />;
     } else if (currentView === 'details') {
-      return (
-        <div>
-          <Header setView={this.setView} />
-          <ProductDetails setView={this.setView} id={this.state.view.id}/>
-        </div>
-      );
+      displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     }
+    return (
+      <div className="container border border-dark">
+        <Header setView={this.setView} view={this.state.view.name}/>
+        {displayView}
+      </div>
+    );
   }
 
 }
+
 // constructor(props) {
 //   super(props);
 //   this.state = {
