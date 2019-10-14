@@ -10,6 +10,7 @@ export const CartSummary = props => {
   };
 
   console.log('cartSummary component laoded');
+  console.log('cart is: ', props.cart);
 
   if (props.cart.length === 0) {
     return (
