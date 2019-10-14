@@ -94,8 +94,8 @@ class ProductDetails extends React.Component {
 
             <div id="bodyWrapper" className="border border-danger d-flex flex-row" style={bodyWrapper}>
 
-              <div id="imgContainer" className="text-center" style={imgContainer}>
-                <img src={product.image} alt="img" className="img-fluid" style={imgSize}/>
+              <div id="imgContainer" className="text-center border border-dark" style={imgContainer}>
+                <img src={product.image} alt="img" className="img-fluid border border-dark" style={imgSize}/>
               </div>
 
               <div id="infoWrapper" className="border border-danger d-flex flex-column" style={infoWrapper}>

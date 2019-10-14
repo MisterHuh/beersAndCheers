@@ -26,16 +26,18 @@ export const CartSummary = props => {
           </div>
 
           <div className="d-flex flex-row border border-primary">
-            <div id="productDetails" className="border border-danger w-50 d-flex flex-column">
+            <div id="productDetails" className="border border-danger w-50 d-flex flex-column">  {/* make sure to use the correct props for id */}
               {props.cart.map(cart => {
                 return (
-                  <CartSummaryItem setView={props.setView} key={cart.id} indivItem={cart} />
+                  <CartSummaryItem setView={props.setView} key={cart.productId} indivItem={cart} />
                 );
               })}
             </div>
             <div id="pricingDetails" className="border border-secondary w-50">
               <div className="border border-success">Price</div>
               <div className="border border-success">Shipping</div>
+              <div className="border border-success">Taxes</div>
+              <div className="border border-success">Total</div>
             </div>
           </div>
 
