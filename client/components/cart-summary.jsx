@@ -1,5 +1,6 @@
 import React from 'react';
 import { CartSummaryItem } from './cart-summary-item';
+import { UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
 
 export const CartSummary = props => {
   let imgSrc = 'emptycart.png';
@@ -7,6 +8,8 @@ export const CartSummary = props => {
   const containerSize = {
     width: '100wh'
   };
+
+  console.log('cartSummary component laoded');
 
   if (props.cart.length === 0) {
     return (
@@ -35,8 +38,16 @@ export const CartSummary = props => {
             </div>
             <div id="pricingDetails" className="border border-secondary w-50">
               <h3 className="border border-success mx-3 mt-3">Price</h3>
-              <h3 className="border border-success mx-3">Shipping</h3>
-              <h3 className="border border-success mx-3">Taxes</h3>
+              <h3 className="border border-success mx-3" id="shipping">Shipping</h3>
+              <UncontrolledPopover placement="left" target="shipping">
+                <PopoverHeader>Some Clever Title</PopoverHeader>
+                <PopoverBody>Find a shipping icon, and set it to the right of the string <strong>Shipping</strong></PopoverBody>
+              </UncontrolledPopover>
+              <h3 className="border border-success mx-3" id="taxes">Taxes</h3>
+              <UncontrolledPopover placement="left" target="taxes">
+                <PopoverHeader>Some Clever Title</PopoverHeader>
+                <PopoverBody>Find a question mark icon, and set it to the right of the string <strong>Taxes</strong></PopoverBody>
+              </UncontrolledPopover>
               <h3 className="border border-success mx-3">Total</h3>
             </div>
           </div>

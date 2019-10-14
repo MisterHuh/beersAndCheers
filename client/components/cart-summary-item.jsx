@@ -23,13 +23,13 @@ export const CartSummaryItem = props => {
   return (
     <Card className="d-flex flex-row rounded m-3">
       <div style={imgWrapper} className="border border-success text-center">
-        <CardImg src={props.indivItem.image} alt="img" className="img-fluid border border-danger" style={imgSize}/>
+        <CardImg src={props.indivItem.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
       </div>
 
       <div className="w-75  text-center">
 
         <div className="h-25 border border-dark" style={fontSize}>
-          <div className="h-50 font-weight-bold" onClick={props.setView('details', props.indivItem.productId)}>{props.indivItem.name}</div>
+          <div className="h-50 font-weight-bold">{props.indivItem.name}</div>
           <div className="h-50 font-weight-bold">{props.indivItem.brewery}</div>
         </div>
 
