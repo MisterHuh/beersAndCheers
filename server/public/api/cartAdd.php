@@ -2,7 +2,7 @@
 
 require_once('functions.php');
 
-/* INTERNAL is defined in cart. */
+/* INTERNAL is Fined in cart. */
 /* form of error chceking? */
 if (!INTERNAL) {
   print("direct access not allowed");
@@ -10,7 +10,13 @@ if (!INTERNAL) {
 }
 
 /* accessing the body data from the http html response */
-$jsonBody = getBodyData();
+// $jsonBody = getBodyData();
+
+$item = file_get_contents('php://input');
+$jsonBody = getBodyData($item);
+
+// var_dump("vardump is" + $jsonBody["id"]);
+// var_dump($jsonBody["id"]);
 
 /* error checking, to make sure that we are getting what we weant */
 /* if not, throw new Exception */
@@ -26,16 +32,20 @@ if ($jsonBody["id"]) {  /* if $jsonBody exists, carry on */
   throw new Exception("id required to add to cart");
 }
 
+// var_dump($id);
+
 // the below might be for later (quantity). will leave here for now
 if ($jsonBody['count']) {
   $count = $jsonBody['count'];
 }
 
+// var_dump($count);
+
 /* error checking for session */
 if (empty($_SESSION["cartId"])) {   /* if the "cartID" from $_SESSION is empty */
-  $cardID = false;                  /* $cardID will not exist */
+  $cartID = false;                  /* $cartID will not exist */
 } else {
-  $cardID = $_SESSION['cartId'];    /* $cardID will take the value of the $_SESSION() */
+  $cartID = $_SESSION['cartId'];    /* $cartID will take the value of the $_SESSION() */
 }
 
 /* query for grabbing `price` from `produts` for the matching $id */
@@ -58,7 +68,7 @@ if ($rowCount === 0 ) {
 
 $productData = [];
 while ($row = mysqli_fetch_assoc($result)) {
-  $pdocutData[] = $row;
+  $productData[] = $row;
   $price = $productData[0]["price"];
   // $price might befor later
   // associative array inside associative array in $price
@@ -66,7 +76,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 /* sending below query to the database */
 /* will start a mySQL transaction set of queries that can be "rolled back" or "committed" */
-$transactionQuery = `START TRANSACTION`;
+$transactionQuery = "START TRANSACTION";
 
 /* if $transactionResult is invalid, throw new Exception */
 $transactionResult = mysqli_query($conn, $transactionQuery);
@@ -77,7 +87,7 @@ if (!$transactionResult) {
 /* if $cartID from $_SESSION is false */
 /* why are we checking for this */
 
-if ($cartId === false) {
+if ($cartID === false) {
 
   /* if the $cartID is false, create a new cart, with the current time stamp */
   $insertQuery = "INSERT INTO cart
@@ -103,6 +113,7 @@ if ($cartId === false) {
   $_SESSION["cartID"] = $cartID;
 }
 
+// var_dump($count);
 
 /* if $cartId is true */
 /* make a query for the cartItems table */
@@ -110,10 +121,13 @@ $cartItemQuery = "INSERT INTO cartItems
                   SET cartItems.count = {$count},
                       cartItems.productID = {$id},
                       cartItems.price = {$price},
-                      cartItems.carTID = {$cartID}
+                      cartItems.added = NOW(),
+                      cartItems.cartID = {$cartID}
                   ON DUPLICATE KEY UPDATE cartItems.count = cartItems.count + {$count}";
 
 $cartItemResult = mysqli_query($conn, $cartItemQuery);
+
+// var_dump($cartItemResult);
 
 /* error checking for the new query */
 if (!$cartItemResult) {

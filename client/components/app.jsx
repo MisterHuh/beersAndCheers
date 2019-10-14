@@ -61,6 +61,9 @@ export default class App extends React.Component {
   }
 
   addToCart(product, quantity) {
+    console.log('addToCart Product: ', product);
+    console.log('addToCart Quantity: ', quantity);
+
     const req = {
       method: 'POST',
       header: { 'Content-Type': 'applicaiton/json' },
@@ -69,18 +72,17 @@ export default class App extends React.Component {
         count: quantity
       })
     };
+
     fetch(`/api/cart.php`, req)
       .then(res => res.json())
       .then(product => {
-        console.log('addToCart Product is: ', product);
+        console.log('addToCart after sanitizing: ', product);
         const cart = this.state.cart.concat(product);
         this.setState({ cart });
       });
   }
 
   setView(name, id) {
-    console.log('name is: ', name);
-    console.log('id is: ', id);
     this.setState({
       view: { name, id }
     });

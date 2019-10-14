@@ -13,10 +13,22 @@ class ProductDetails extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.incrementQuantity = this.incrementQuantity.bind(this);
     this.decrementQuantity = this.decrementQuantity.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
     this.retrieveProduct(this.props.id);
+  }
+
+  addToCart() {
+    console.log('addToCart from productDetails fired');
+    console.log('addToCart Product: ', this.state.product);
+    console.log('addToCart Quantity: ', this.state.quantity);
+    let addToCartProps = this.props.addToCart;
+    let product = this.state.product;
+    let quantity = this.state.quantity;
+    addToCartProps(product, quantity);
+    this.toggle();
   }
 
   incrementQuantity() {
@@ -130,9 +142,10 @@ class ProductDetails extends React.Component {
                       </ButtonGroup>
                     </div>
                     <div className="mt-2">
-                      <Button className="my-3 w-50" onClick={this.toggle}>Add To Cart</Button>
+                      <Button className="my-3 w-50" onClick={this.addToCart}>Add To Cart</Button>
                       <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(product, quantity)}>Added To Cart!</ModalHeader>
+                        <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
+                        {/* <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(product, quantity)}>Added To Cart!</ModalHeader> */}
                         <ModalBody style={modalBodyWrapper}>
                           <div className="border border-danger d-flex flex-row" style={modalWrapper}>
                             <div className="border border-dark w-50 text-center" style={modalContainer}>
