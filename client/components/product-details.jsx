@@ -145,7 +145,7 @@ class ProductDetails extends React.Component {
                         </ModalBody>
                         <ModalFooter>
                           <Button color="primary" onClick={() => this.props.setView('catalog', '')}>Continue Shopping</Button>{' '}
-                          <Button color="secondary" onClick={this.toggle}>Go To Cart</Button>
+                          <Button color="secondary" onClick={() => this.props.setView('cart', '')}>Go To Cart</Button>
                         </ModalFooter>
                       </Modal>
                     </div>
