@@ -3,7 +3,6 @@ import { Header } from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import { CartSummary } from './cart-summary';
-// import CartSummary from './cart-summary';
 // import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
@@ -17,7 +16,7 @@ export default class App extends React.Component {
       cart: [
         {
           id: 1,
-          productId: 1,
+          productId: 100,
           count: 1,
           price: 999,
           cartID: 2,
@@ -27,7 +26,7 @@ export default class App extends React.Component {
         },
         {
           id: 2,
-          productId: 2,
+          productId: 200,
           count: 2,
           price: 999,
           cartID: 3,
@@ -37,7 +36,7 @@ export default class App extends React.Component {
         },
         {
           id: 1,
-          productId: 3,
+          productId: 300,
           count: 3,
           price: 999,
           cartID: 2,
@@ -47,7 +46,7 @@ export default class App extends React.Component {
         },
         {
           id: 2,
-          productId: 4,
+          productId: 400,
           count: 4,
           price: 999,
           cartID: 3,
@@ -77,6 +76,8 @@ export default class App extends React.Component {
   }
 
   setView(name, id) {
+    console.log('name is: ', name);
+    console.log('id is: ', id);
     this.setState({
       view: { name, id }
     });
@@ -94,8 +95,8 @@ export default class App extends React.Component {
 
     if (currentView === 'catalog') {
       displayView = <ProductList setView={this.setView} />;
-    } else if (currentView === 'details') {
-      displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
+    // } else if (currentView === 'details') {
+      // displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     } else if (currentView === 'cart') {
       displayView = <CartSummary setView={this.setView} cart={this.state.cart}/>;
     }
