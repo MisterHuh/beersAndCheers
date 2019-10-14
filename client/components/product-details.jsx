@@ -21,13 +21,9 @@ class ProductDetails extends React.Component {
   }
 
   addToCart() {
-    console.log('addToCart from productDetails fired');
-    console.log('addToCart Product: ', this.state.product);
-    console.log('addToCart Quantity: ', this.state.quantity);
-    let addToCartProps = this.props.addToCart;
     let product = this.state.product;
     let quantity = this.state.quantity;
-    addToCartProps(product, quantity);
+    this.props.addToCart(product, quantity);
     this.toggle();
   }
 

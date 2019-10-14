@@ -148,5 +148,7 @@ if (mysqli_affected_rows($conn) < 1) {
   mysqli_query($conn, $commit);
 }
 
+print("all done with addCart");
+
 
 ?>

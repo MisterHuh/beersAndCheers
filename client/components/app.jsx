@@ -10,7 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'cart',
+        name: 'catalog',
         id: ''
       },
       cart: []
@@ -75,20 +75,29 @@ export default class App extends React.Component {
   addToCart(product, quantity) {
     const req = {
       method: 'POST',
-      header: { 'Content-Type': 'applicaiton/json' },
+      header: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id: parseInt(product.id),
         count: quantity
       })
     };
 
+    console.log('APP COMPONENT product is: ', product);
+    console.log('APP COMPONENT quantity is: ', quantity);
+
     fetch(`/api/cart.php`, req)
-      .then(response => response.json())
-      .then(product => {
-        console.log('addToCart after sanitizing: ', product);
-        const cart = this.state.cart.concat(product);
-        this.setState({ cart });
+      .then(response => {
+        // console.log('fetch call response is: ', response);
+        response.json();
       });
+
+    this.getCartItems();
+
+    // .then(product => {
+    //   console.log('fetch call after sanitizing: ', product);
+    //   const cart = this.state.cart.concat(product);
+    //   this.setState({ cart });
+    // });
   }
 
   setView(name, id) {
