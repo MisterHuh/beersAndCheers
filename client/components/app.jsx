@@ -11,7 +11,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'cart',
         id: ''
       },
       cart: [
@@ -21,7 +21,7 @@ export default class App extends React.Component {
           count: 2,
           price: 999,
           cartID: 2,
-          img: 'http://barleyforge.com/wp-content/uploads/2018/10/hero_the_patsy-can-393x1024.png',
+          image: 'http://barleyforge.com/wp-content/uploads/2018/10/hero_the_patsy-can-393x1024.png',
           name: 'The Patsy',
           brewery: 'Barley Forge Brewing Co.'
         },
@@ -31,7 +31,7 @@ export default class App extends React.Component {
           count: 1,
           price: 999,
           cartID: 3,
-          img: 'http://barleyforge.com/wp-content/uploads/2018/10/hero_the-orange-curtain-can-393x1024.png',
+          image: 'http://barleyforge.com/wp-content/uploads/2018/10/hero_the-orange-curtain-can-393x1024.png',
           name: 'The Orange Curtain',
           brewery: 'Barley Forge Brewing Co.'
         }
@@ -77,7 +77,7 @@ export default class App extends React.Component {
     } else if (currentView === 'details') {
       displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     } else if (currentView === 'cart') {
-      displayView = <CartSummary setView={this.setView} cart={this.cart}/>;
+      displayView = <CartSummary setView={this.setView} cart={this.state.cart}/>;
     }
     return (
       <div className="border border-dark">

@@ -1,12 +1,49 @@
 import React from 'react';
-import CartSummaryItem from './cart-summary-item';
+import { CartSummaryItem } from './cart-summary-item';
 
 export const CartSummary = props => {
-  return (
-    <React.Fragment>
-      <h1>CartSummary View</h1>
-    </React.Fragment>
-  );
+  let imgSrc = 'emptycart.png';
+
+  const containerSize = {
+    height: '100vh'
+  };
+
+  if (props.cart.length === 0) {
+    return (
+      <React.Fragment>
+        <div className="h1 text-center mb-3">Your Cart Is Empty!</div>
+        <img src={imgSrc} alt="emptyCart" className="mx-auto d-block " />
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <div className="d-flex flex-column border border-primary p-5" style={containerSize}>
+
+          <div className="d-flex flex-row border border-success">
+            <div className="border border-warning w-50 d-inline">Cart <div className="d-inline text-muted">(3 items)</div></div>
+            <div className="border border-warning w-50">Summary</div>
+          </div>
+
+          <div className="d-flex flex-row border border-primary">
+            <div id="productDetails" className="border border-danger w-50 d-flex flex-column">
+              {props.cart.map(cart => {
+                return (
+                  <CartSummaryItem setView={props.setView} key={cart.id} indivItem={cart} />
+                );
+              })}
+            </div>
+            <div id="pricingDetails" className="border border-secondary w-50">
+              <div className="border border-success">Price</div>
+              <div className="border border-success">Shipping</div>
+            </div>
+          </div>
+
+        </div> {/* mainContainer */}
+      </React.Fragment>
+    );
+  }
+
 };
 
 // function CartSummary(props) {
