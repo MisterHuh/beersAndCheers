@@ -1,9 +1,8 @@
 import React from 'react';
-// import Header from './header';
 import { Header } from './header';
-import Carousel from './carousel';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import { CartSummary } from './cart-summary';
 // import CartSummary from './cart-summary';
 // import CheckoutForm from './checkout-form';
 
@@ -12,10 +11,51 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'cart',
         id: ''
       },
-      cart: {}
+      cart: [
+        {
+          id: 1,
+          productId: 1,
+          count: 1,
+          price: 999,
+          cartID: 2,
+          image: 'http://barleyforge.com/wp-content/uploads/2018/10/hero_the_patsy-can-393x1024.png',
+          name: 'The Patsy',
+          brewery: 'Barley Forge Brewing Co.'
+        },
+        {
+          id: 2,
+          productId: 2,
+          count: 2,
+          price: 999,
+          cartID: 3,
+          image: 'https://www.ballastpoint.com/wp-content/uploads/2018/05/12_SourWench-1.png',
+          name: 'Sour Wench',
+          brewery: 'Ballast Point Brewery'
+        },
+        {
+          id: 1,
+          productId: 3,
+          count: 3,
+          price: 999,
+          cartID: 2,
+          image: 'http://leftcoastbrewing.com/wp-content/uploads/2015/07/Galaxy-Supernova-16oz-Mock-Cut-out-1.png',
+          name: 'Galaxy Supernova',
+          brewery: 'Left Coast Brewing Co.'
+        },
+        {
+          id: 2,
+          productId: 4,
+          count: 4,
+          price: 999,
+          cartID: 3,
+          image: 'http://www.tapsbrewery.com/wp-content/uploads/2019/06/American-Cream.png',
+          name: 'The American Dream',
+          brewery: 'TAPS Brewery'
+        }
+      ]
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -45,15 +85,23 @@ export default class App extends React.Component {
   render() {
     let currentView = this.state.view.name;
     let displayView = null;
+    // const sizing = {
+    //   width: '100vw',
+    //   height: '100vh',
+    //   maxWidth: '100%'
+    // };
+    // style = { sizing }
 
     if (currentView === 'catalog') {
       displayView = <ProductList setView={this.setView} />;
     } else if (currentView === 'details') {
       displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
+    } else if (currentView === 'cart') {
+      displayView = <CartSummary setView={this.setView} cart={this.state.cart}/>;
     }
     return (
-      <div className="container border border-dark">
-        <Header setView={this.setView} view={this.state.view.name}/>
+      <div className="border border-dark">
+        <Header setView={this.setView} view={this.state.view.name} />
         {displayView}
       </div>
     );

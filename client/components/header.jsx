@@ -32,7 +32,8 @@ export const Header = props => {
     return (
       <React.Fragment>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Beers & Cheers</NavbarBrand>
+          {/* <NavbarBrand href="/">Beers & Cheers</NavbarBrand> */}
+          <NavbarBrand onClick={() => props.setView('catalog', '')}>Beers & Cheers</NavbarBrand>
           <Collapse navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
@@ -48,7 +49,8 @@ export const Header = props => {
     return (
       <React.Fragment>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Beers & Cheers</NavbarBrand>
+          {/* <NavbarBrand href="/">Beers & Cheers</NavbarBrand> */}
+          <NavbarBrand onClick={() => props.setView('catalog', '')}>Beers & Cheers</NavbarBrand>
           <Collapse navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
