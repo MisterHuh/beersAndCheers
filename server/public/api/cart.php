@@ -1,44 +1,57 @@
 <?php
 
-// to check if cart add is being called from whoever defined INTERNAL constant
-// for later (sessions?)
-// define("INTERNAL", true);
+// to check if cartAdd is being called from whoever defined INTERNAL constant
+// defines a INTERNAL, set to the value true  || case sensitive too?
+define("INTERNAL", true);
 
 require_once("functions.php");
 require_once("db_connection.php");
 set_exception_handler("error_handler");
-// session_start();
-// this is for later (sessions?)
+session_start();
 startUp();
 
+/*  accessing the "REQUESTED_METHOD" key from the server, which was found using $_SERVER
+    looking for GET / POST / DELETE */
 $method = $_SERVER["REQUEST_METHOD"];
 
-if ($method === "GET") {
-  http_response_code(200);
-  require_once('cartGet.php');
-} else if ($method === "POST") {
-  http_response_code(201);
-  require_once("cartAdd.php");
-} else {
-  http_response_code(404);
-  print(json_encode([
+switch($method) {
+  case "GET":
+    http_response_code(200);
+    require_once('cartGet.php');
+    break;
+  case "POST":
+    http_response_code(201);
+    require_once("cartAdd.php");
+    break;
+  case "DELETE":
+    require_once(`cartDelete.php`);
+    break;
+  default:
+    http_response_code(404);
+    print(json_encode([
     "error" => "Not Found",
     "message" => "Cannot $method /api/cart.php"
   ]));
 }
 
-// $json_input = file_get_contents('php://input');
-// $obj = json_decode($json_input, true);
-// $productID = $obj[`id`];
-// $price = $obj[`price`];
 
-// `id` from cartItems table is not an auto incrementing id? //
 
-// $query = "INSERT INTO `cartItems`(productID, price) VALUES (123, 999)";
-// $result = mysqli_query($conn, $query);
 
-// if (!$result) {
-//   throw new Exception(mysqli_connect_error());
+
+// if ($method == "GET") {
+//   http_response_code(200);
+//   require_once('cartGet.php');
+// } else if ($method == "POST") {
+//   http_response_code(201);
+//   require_once("cartAdd.php");
+// } else if ($method == "DELETE") {
+//   require_once(`cartDelete.php`);
+// } else {
+//   http_response_code(404);
+//   print(json_encode([
+//     "error" => "Not Found",
+//     "message" => "Cannot $method /api/cart.php"
+//   ]));
 // }
 
 
