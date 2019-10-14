@@ -13,79 +13,101 @@ export default class App extends React.Component {
         name: 'catalog',
         id: ''
       },
-      cart: [
-        {
-          id: 1,
-          productId: 100,
-          count: 1,
-          price: 999,
-          cartID: 2,
-          image: 'http://barleyforge.com/wp-content/uploads/2018/10/hero_the_patsy-can-393x1024.png',
-          name: 'The Patsy',
-          brewery: 'Barley Forge Brewing Co.'
-        },
-        {
-          id: 2,
-          productId: 200,
-          count: 2,
-          price: 999,
-          cartID: 3,
-          image: 'https://www.ballastpoint.com/wp-content/uploads/2018/05/12_SourWench-1.png',
-          name: 'Sour Wench',
-          brewery: 'Ballast Point Brewery'
-        },
-        {
-          id: 1,
-          productId: 300,
-          count: 3,
-          price: 999,
-          cartID: 2,
-          image: 'http://leftcoastbrewing.com/wp-content/uploads/2015/07/Galaxy-Supernova-16oz-Mock-Cut-out-1.png',
-          name: 'Galaxy Supernova',
-          brewery: 'Left Coast Brewing Co.'
-        },
-        {
-          id: 2,
-          productId: 400,
-          count: 4,
-          price: 999,
-          cartID: 3,
-          image: 'http://www.tapsbrewery.com/wp-content/uploads/2019/06/American-Cream.png',
-          name: 'The American Dream',
-          brewery: 'TAPS Brewery'
-        }
-      ]
+      cart: []
+      // cart: [
+      //   {
+      //     id: 1,
+      //     productId: 100,
+      //     count: 1,
+      //     price: 999,
+      //     cartID: 2,
+      //     image: 'http://barleyforge.com/wp-content/uploads/2018/10/hero_the_patsy-can-393x1024.png',
+      //     name: 'The Patsy',
+      //     brewery: 'Barley Forge Brewing Co.'
+      //   },
+      //   {
+      //     id: 2,
+      //     productId: 200,
+      //     count: 2,
+      //     price: 999,
+      //     cartID: 3,
+      //     image: 'https://www.ballastpoint.com/wp-content/uploads/2018/05/12_SourWench-1.png',
+      //     name: 'Sour Wench',
+      //     brewery: 'Ballast Point Brewery'
+      //   },
+      //   {
+      //     id: 1,
+      //     productId: 300,
+      //     count: 3,
+      //     price: 999,
+      //     cartID: 2,
+      //     image: 'http://leftcoastbrewing.com/wp-content/uploads/2015/07/Galaxy-Supernova-16oz-Mock-Cut-out-1.png',
+      //     name: 'Galaxy Supernova',
+      //     brewery: 'Left Coast Brewing Co.'
+      //   },
+      //   {
+      //     id: 2,
+      //     productId: 400,
+      //     count: 4,
+      //     price: 999,
+      //     cartID: 3,
+      //     image: 'http://www.tapsbrewery.com/wp-content/uploads/2019/06/American-Cream.png',
+      //     name: 'The American Dream',
+      //     brewery: 'TAPS Brewery'
+      //   }
+      // ]
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
+  }
+
+  getCartItems() {
+    console.log('getCartItems fired');
+    fetch(`/api/cart.php`)
+      .then(response => response.json())
+      .then(cart => {
+        console.log('cart is: ', cart);
+        this.setState({ cart });
+      });
   }
 
   addToCart(product, quantity) {
-    console.log('addToCart Product: ', product);
-    console.log('addToCart Quantity: ', quantity);
-
     const req = {
       method: 'POST',
-      header: { 'Content-Type': 'applicaiton/json' },
+      header: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id: parseInt(product.id),
         count: quantity
       })
     };
 
+    console.log('APP COMPONENT product is: ', product);
+    console.log('APP COMPONENT quantity is: ', quantity);
+
     fetch(`/api/cart.php`, req)
-      .then(res => res.json())
-      .then(product => {
-        console.log('addToCart after sanitizing: ', product);
-        const cart = this.state.cart.concat(product);
-        this.setState({ cart });
+      .then(response => {
+        // console.log('fetch call response is: ', response);
+        response.json();
       });
+
+    this.getCartItems();
+
+    // .then(product => {
+    //   console.log('fetch call after sanitizing: ', product);
+    //   const cart = this.state.cart.concat(product);
+    //   this.setState({ cart });
+    // });
   }
 
   setView(name, id) {
     this.setState({
       view: { name, id }
     });
+  }
+
+  componentDidMount() {
+    this.getCartItems();
   }
 
   render() {
