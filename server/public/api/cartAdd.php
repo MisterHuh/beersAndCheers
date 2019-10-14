@@ -71,14 +71,68 @@ $transactionQuery = `START TRANSACTION`;
 /* if $transactionResult is invalid, throw new Exception */
 $transactionResult = mysqli_query($conn, $transactionQuery);
 if (!$transactionResult) {
-  throw new Exception('error with query: ' . mysqli_error($conn));
+  throw new Exception('error with transactionQuery: ' . mysqli_error($conn));
 }
 
 /* if $cartID from $_SESSION is false */
 /* why are we checking for this */
+
 if ($cartId === false) {
+
+  /* if the $cartID is false, create a new cart, with the current time stamp */
   $insertQuery = "INSERT INTO cart
-                  SET created = NOW();"
+                  SET created = NOW();";
+  $insertResult = mysqli_query($conn, $insertQuery);
+
+  /* error checking #1 for $insertResult */
+  /* checking for connection */
+  if (!$insertResult) {
+    throw new Exception("error with insertQuery: " . mysqli_error($conn));
+  }
+
+  /* error cheking #2 for $insertResult */
+  /* checking for rows affected, which should only be 1 */
+  if (mysqli_affected_rows($conn) !== 1) {
+    throw new Exception("affected rows should only be 1");
+  }
+
+  /* grabs the id generated in the last query */
+  $cartID = mysqli_insert_id($conn);
+
+  /* replacing the `falsy` $cartID to the correct one that matches everything */
+  $_SESSION["cartID"] = $cartID;
 }
+
+
+/* if $cartId is true */
+/* make a query for the cartItems table */
+$cartItemQuery = "INSERT INTO cartItems
+                  SET cartItems.count = {$count},
+                      cartItems.productID = {$id},
+                      cartItems.price = {$price},
+                      cartItems.carTID = {$cartID}
+                  ON DUPLICATE KEY UPDATE cartItems.count = cartItems.count + {$count}";
+
+$cartItemResult = mysqli_query($conn, $cartItemQuery);
+
+/* error checking for the new query */
+if (!$cartItemResult) {
+  throw new Exception("error with cartItemQuery " . mysqli_error($conn));
+}
+
+/* error checking to make sure that the query updated at least 1 row */
+if (mysqli_affected_rows($conn) < 1) {
+  /* if the test fails, send this query to "ROLLBACK" */
+  /* which will undo the first car insert to avoid partial inserts */
+  $rollback = 'ROLLBACK';
+  mysqli_query($conn, $rollack);
+  throw new Exception("normal");
+} else {
+  /* if not, your query is complete. */
+  /* finalize the transaction by sending "COMMIT" to mysql */
+  $commit = "COMMIT";
+  mysqli_query($conn, $commit);
+}
+
 
 ?>

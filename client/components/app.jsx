@@ -10,7 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'cart',
+        name: 'catalog',
         id: ''
       },
       cart: [
@@ -60,11 +60,14 @@ export default class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
   }
 
-  addToCart(product) {
+  addToCart(product, quantity) {
     const req = {
       method: 'POST',
       header: { 'Content-Type': 'applicaiton/json' },
-      body: JSON.stringify(product)
+      body: JSON.stringify({
+        id: parseInt(product.id),
+        count: quantity
+      })
     };
     fetch(`/api/cart.php`, req)
       .then(res => res.json())
@@ -95,8 +98,8 @@ export default class App extends React.Component {
 
     if (currentView === 'catalog') {
       displayView = <ProductList setView={this.setView} />;
-    // } else if (currentView === 'details') {
-      // displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
+    } else if (currentView === 'details') {
+      displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     } else if (currentView === 'cart') {
       displayView = <CartSummary setView={this.setView} cart={this.state.cart}/>;
     }

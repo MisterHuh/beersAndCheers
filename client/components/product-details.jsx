@@ -45,6 +45,7 @@ class ProductDetails extends React.Component {
 
   render() {
     const product = this.state.product;
+    let quantity = this.state.quantity;
 
     const bodyWrapper = {
       height: '50vh'
@@ -124,14 +125,14 @@ class ProductDetails extends React.Component {
                     <div className="border border-dark mt-3">
                       <ButtonGroup>
                         <Button onClick={this.decrementQuantity} className="border border-dark ">-</Button>
-                        <div className="border border-dark d-inline h-100 px-3">{this.state.quantity}</div>
+                        <div className="border border-dark d-inline h-100 px-3">{quantity}</div>
                         <Button onClick={this.incrementQuantity} className="border border-dark ">+</Button>
                       </ButtonGroup>
                     </div>
                     <div className="mt-2">
                       <Button className="my-3 w-50" onClick={this.toggle}>Add To Cart</Button>
                       <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
+                        <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(product, quantity)}>Added To Cart!</ModalHeader>
                         <ModalBody style={modalBodyWrapper}>
                           <div className="border border-danger d-flex flex-row" style={modalWrapper}>
                             <div className="border border-dark w-50 text-center" style={modalContainer}>
@@ -141,7 +142,7 @@ class ProductDetails extends React.Component {
                               <div className="border border-dark h-25" >{product.name}</div>
                               <div className="border border-dark h-25">{product.brewery}</div>
                               <div className="border border-dark h-25">{'$' + ((product.price) / 100).toFixed(2)}</div>
-                              <div className="border border-dark h-25">Quantity: 1</div>
+                              <div className="border border-dark h-25">Quantity: {quantity}</div>
                             </div>
                           </div>
                         </ModalBody>
