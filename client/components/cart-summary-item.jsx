@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, CardImg, CardTitle, Button } from 'reactstrap';
+import { Card, CardImg, Button, ButtonGroup } from 'reactstrap';
 
 export const CartSummaryItem = props => {
 
   const imgWrapper = {
-    height: '40vh',
+    height: '45vh',
     width: '20vw'
   };
   const test = {
@@ -12,7 +12,7 @@ export const CartSummaryItem = props => {
     height: '100%'
   };
   const imgSize = {
-    width: '100%',
+    width: '50%',
     height: '100%'
   };
 
@@ -21,38 +21,34 @@ export const CartSummaryItem = props => {
   };
 
   return (
-    <Card className="d-flex flex-row border border-dark rounded m-3">
-      {/* <div > */}
-
-      <div style={imgWrapper}>
-        {/* <div stye={test}> */}
-        {/* <div> */}
+    <Card className="d-flex flex-row rounded m-3">
+      <div style={imgWrapper} className="border border-success text-center">
         <CardImg src={props.indivItem.image} alt="img" className="img-fluid border border-danger" style={imgSize}/>
-        {/* </div> */}
       </div>
 
-      <div className="w-75 border border-sucess text-center">
+      <div className="w-75  text-center">
 
         <div className="h-25 border border-dark" style={fontSize}>
-          <div className="h-50 font-weight-bold border border-dark">{props.indivItem.name}</div>
-          <div className="h-50 font-weight-bold border border-dark">{props.indivItem.brewery}</div>
+          <div className="h-50 font-weight-bold" onClick={props.setView('details', props.indivItem.productId)}>{props.indivItem.name}</div>
+          <div className="h-50 font-weight-bold">{props.indivItem.brewery}</div>
         </div>
 
         <div className="h-25 border border-dark" style={fontSize}>
-          <div className="h-50 border border-dark">{'$' + ((props.indivItem.price) / 100).toFixed(2)}</div>
-          <Button className="border border-dark ">-</Button>
-          <div className="border border-dark d-inline h-100">{props.indivItem.count}</div>
-          <Button className="border border-dark ">+</Button>
+          <div className="h-50">{'$' + ((props.indivItem.price) / 100).toFixed(2)}</div>
+          <ButtonGroup>
+            <Button className="border border-dark ">-</Button>
+            <div className="border border-dark d-inline h-100 px-3">{props.indivItem.count}</div>
+            <Button className="border border-dark ">+</Button>
+          </ButtonGroup>
         </div>
 
         <div className="h-50 border border-dark">
-          <Button color="success" className="align-items-center">Update</Button>
-          <Button color="danger" onClick={() => props.setView('catalog', '')}>Remove</Button>
+          <Button color="success" className="m-5">Update</Button>
+          <Button color="danger" className="m-5" onClick={() => props.setView('catalog', '')}>Remove</Button>
         </div>
 
       </div>
 
-      {/* </div> */}
     </Card>
   );
 

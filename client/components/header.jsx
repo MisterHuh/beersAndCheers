@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel } from './carousel';
 import {
+  Badge,
   Collapse,
   Navbar,
   NavbarToggler,
@@ -38,6 +39,7 @@ export const Header = props => {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink>Cart</NavLink>
+                {/* <Badge pill>14</Badge> */}
               </NavItem>
             </Nav>
           </Collapse>

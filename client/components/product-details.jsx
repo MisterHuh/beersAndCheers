@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -119,12 +119,14 @@ class ProductDetails extends React.Component {
                   </div>
 
                   <div className="my-3 border border-dark h-100 w-50">
-                    <div className="border border-dark my-3">TYPE:{product.type}</div>
+                    <div className="border border-dark my-3">TYPE: {product.type}</div>
                     <div className="border border-dark my-3">{'$' + ((product.price) / 100).toFixed(2)}</div>
                     <div className="border border-dark mt-3">
-                      <Button onClick={this.decrementQuantity} className="border border-dark ">-</Button>
-                      <div className="border border-dark d-inline h-100">{this.state.quantity}</div>
-                      <Button onClick={this.incrementQuantity} className="border border-dark ">+</Button>
+                      <ButtonGroup>
+                        <Button onClick={this.decrementQuantity} className="border border-dark ">-</Button>
+                        <div className="border border-dark d-inline h-100 px-3">{this.state.quantity}</div>
+                        <Button onClick={this.incrementQuantity} className="border border-dark ">+</Button>
+                      </ButtonGroup>
                     </div>
                     <div className="mt-2">
                       <Button className="my-3 w-50" onClick={this.toggle}>Add To Cart</Button>
