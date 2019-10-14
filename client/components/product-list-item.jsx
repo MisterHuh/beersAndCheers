@@ -1,70 +1,46 @@
 import React from 'react';
-import { Card } from 'reactstrap';
+import { Card, CardImg, CardTitle } from 'reactstrap';
 
-// import { Card, CardImg, CardTitle, CardSubtitle, CardBody } from 'reactstrap';
-
-function ProductListItem(props) {
+export const ProductListItem = props => {
 
   const containerSize = {
-    width: '100%',
-    height: '100%'
+    width: '100vw',
+    height: '300vh'
   };
   const cardSize = {
-    height: '100%',
+    height: '35%',
     backgroundColor: 'rgba(245, 245, 245, 0.6)'
   };
-  const test = {
-    // width: '100%',
-    height: '70vh'
+  const imgWrapper = {
+    height: '80%'
   };
   const imgSize = {
     width: '100%',
     height: '100%',
     backgroundSize: 'cover'
-    // backgroundRepeat: 'no-repeat'
   };
 
   return (
-    <div className="d-flex flex-row flex-wrap justify-content-center border border-primary text-center border border-dark" style={containerSize}>
+    <div className="d-flex flex-row flex-wrap justify-content-center border border-primary text-center" style={containerSize}>
       {props.product.map(item => {
         return (
           <Card key={item.id}
-            className="col-2 rounded m-3"
+            className="col-2 rounded m-3 border border-dark"
             style = {cardSize}
             onClick={() => {
               props.setView('details', item.id);
             }}>
-            <div style={test}>
-              <img src={item.image} alt="img" className="m-1 img-fluid" style={imgSize} />
+            <div style={imgWrapper}>
+              <CardImg src={item.image} alt="img" className="border border-dark m-1 img-fluid" style={imgSize} />
             </div>
-            <div className="mx-1 mb-1 mt-2 font-weight-bold">{item.name}</div>
-            <div className="m-1">{item.brewery}</div>
-            <div className="m-1">{item.type}</div>
-            <div className="m-1 text-muted">{'$' + ((item.price) / 100).toFixed(2)}</div>
+            <CardTitle className="border border-dark mx-1 mb-1 mt-2 font-weight-bold">{item.name}</CardTitle>
+            <CardTitle className="border border-dark m-1">{item.brewery}</CardTitle>
+            <CardTitle className="border border-dark m-1">{item.type}</CardTitle>
+            <CardTitle className="border border-dark m-1 text-muted">{'$' + ((item.price) / 100).toFixed(2)}</CardTitle>
           </Card>
         );
       })
       }
     </div>
-
-  // <Card>
-  //   {props.product.map(item => {
-  //     return (
-  //       <React.Fragment key={item.id} onClick={() => props.setView('details', item.id)}>
-  //         <CardImg top width="100%" src={item.image} alt="Card image cap" />
-  //         <CardBody>
-  //           <CardTitle>{item.name}</CardTitle>
-  //           <CardSubtitle>{item.brewery}</CardSubtitle>
-  //           <CardSubtitle>{item.type}</CardSubtitle>
-  //           <CardSubtitle>{'$' + ((item.price) / 100).toFixed(2)}</CardSubtitle>
-  //         </CardBody>
-  //       </React.Fragment>
-  //     );
-  //   })}
-  // </Card>
-
   );
-
-}
-
-export default ProductListItem;
+};

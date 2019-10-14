@@ -1,7 +1,5 @@
 import React from 'react';
-// import Header from './header';
 import { Header } from './header';
-import Carousel from './carousel';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 // import CartSummary from './cart-summary';
@@ -45,6 +43,12 @@ export default class App extends React.Component {
   render() {
     let currentView = this.state.view.name;
     let displayView = null;
+    // const sizing = {
+    //   width: '100vw',
+    //   height: '100vh',
+    //   maxWidth: '100%'
+    // };
+    // style = { sizing }
 
     if (currentView === 'catalog') {
       displayView = <ProductList setView={this.setView} />;
@@ -52,7 +56,7 @@ export default class App extends React.Component {
       displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     }
     return (
-      <div className="container border border-dark">
+      <div className="border border-dark">
         <Header setView={this.setView} view={this.state.view.name}/>
         {displayView}
       </div>
