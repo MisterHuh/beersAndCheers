@@ -20,6 +20,7 @@ export default class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.getCartQuantity = this.getCartQuantity.bind(this);
+    this.deleteCartItems = this.deleteCartItems.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +43,9 @@ export default class App extends React.Component {
       .then(cart => {
         console.log('cart is: ', cart);
         this.setState({ cart }, this.getCartQuantity(cart));
+      })
+      .catch(error => {
+        console.error('delete error: ', error);
       });
   }
 
@@ -56,10 +60,30 @@ export default class App extends React.Component {
     };
 
     fetch(`/api/cart.php`, req)
-      .then(response => response.json());
+      .then(response => response.json())
+      .catch(error => {
+        console.error('delete error: ', error);
+      });
 
     /* updates the cart once the fetch is completed */
     this.getCartItems();
+  }
+
+  deleteCartItems(id) {
+    console.log('deleteCartItems fired');
+    console.log('deleteCart id is: ', id);
+    const req = {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: parseInt(id)
+      })
+    };
+    fetch(`/api/cart.php`, req)
+      .catch(error => {
+        console.error('delete error: ', error);
+      });
+    // this.getCartItems();
   }
 
   setView(name, id) {
@@ -77,7 +101,7 @@ export default class App extends React.Component {
     } else if (currentView === 'details') {
       displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     } else if (currentView === 'cart') {
-      displayView = <CartSummary setView={this.setView} cart={this.state.cart} cartQuantity={this.state.cartQuantity} />;
+      displayView = <CartSummary setView={this.setView} cart={this.state.cart} cartQuantity={this.state.cartQuantity} deleteCartItems={this.deleteCartItems}/>;
     }
     return (
       <div className="border border-dark">

@@ -48,7 +48,7 @@ export const CartSummary = props => {
             <div id="productDetails" className="border border-danger w-50 d-flex flex-column">  {/* make sure to use the correct props for id */}
               {props.cart.map(item => {
                 return (
-                  <CartSummaryItem setView={props.setView} key={item.product_Id} item={item} />
+                  <CartSummaryItem setView={props.setView} key={item.product_Id} item={item} deleteCartItems={props.deleteCartItems} />
                 );
               })}
             </div>
@@ -63,15 +63,15 @@ export const CartSummary = props => {
                 <h4 id="shipping" className="border border-success d-inline">Shipping <div className="border broder-success d-inline float-right">Free</div> </h4>
                 <UncontrolledPopover placement="left" target="shipping">
                   <PopoverHeader>Shipping Info</PopoverHeader>
-                  <PopoverBody>Find a shipping icon, and set it to the right of the string <strong>Shipping</strong></PopoverBody>
+                  <PopoverBody>Free shipping on orders of $40 or more <strong>before taxes</strong></PopoverBody>
                 </UncontrolledPopover>
               </div>
 
               <div className="border border-danger mx-3 mt-3">
                 <h4 id="taxes" className="border border-success d-inline">Taxes <div className="border broder-success d-inline float-right">${(taxes / 100).toFixed(2)}</div> </h4>
                 <UncontrolledPopover placement="left" target="taxes">
-                  <PopoverHeader>Tax Info</PopoverHeader>
-                  <PopoverBody>Find a question mark icon, and set it to the right of the string <strong>Taxes</strong></PopoverBody>
+                  {/* <PopoverHeader>Tax Info</PopoverHeader> */}
+                  <PopoverBody>The sales tax rate from the city of Irvine (<strong>7.75%</strong>) was applied for this demo application</PopoverBody>
                 </UncontrolledPopover>
               </div>
 
