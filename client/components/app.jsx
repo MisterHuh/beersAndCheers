@@ -10,24 +10,49 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'cart',
+        name: 'catalog',
         id: ''
       },
-      cart: []
+      cart: [],
+      cartQuantity: 0
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
+    this.getCartQuantity = this.getCartQuantity.bind(this);
+  }
+
+  componentDidMount() {
+    this.getCartItems();
+    // this.getCartQuantity();
+  }
+
+  getCartQuantity() {
+    console.log('getCartQuantity fired');
+    console.log('cart: ', this.state.cart);
+    console.log('cartLength: ', this.state.cart.length);
+
+    let cart = this.state.cart;
+    let cartQuantity = 0;
+
+    if (cart.length > 0) {
+      for (let index = 0; index < cart.length; index++) {
+        cartQuantity += parseInt(cart[index].count);
+        console.log('count: ', parseInt(cart[index].count));
+      }
+    }
+    this.setState({ cartQuantity });
   }
 
   getCartItems() {
-    // console.log('getCartItems fired');
+    console.log('getCartItems fired');
     fetch(`/api/cart.php`)
       .then(response => response.json())
       .then(cart => {
-        // console.log('cart is: ', cart);
+        console.log('cart is: ', cart);
         this.setState({ cart });
       });
+    this.getCartQuantity();
   }
 
   addToCart(product, quantity) {
@@ -39,9 +64,6 @@ export default class App extends React.Component {
         count: quantity
       })
     };
-
-    console.log('APP COMPONENT product is: ', product);
-    console.log('APP COMPONENT quantity is: ', quantity);
 
     fetch(`/api/cart.php`, req)
       .then(response => response.json());
@@ -56,19 +78,9 @@ export default class App extends React.Component {
     });
   }
 
-  componentDidMount() {
-    this.getCartItems();
-  }
-
   render() {
     let currentView = this.state.view.name;
     let displayView = null;
-    // const sizing = {
-    //   width: '100vw',
-    //   height: '100vh',
-    //   maxWidth: '100%'
-    // };
-    // style = { sizing }
 
     if (currentView === 'catalog') {
       displayView = <ProductList setView={this.setView} />;
@@ -79,7 +91,7 @@ export default class App extends React.Component {
     }
     return (
       <div className="border border-dark">
-        <Header setView={this.setView} view={this.state.view.name} cart={this.state.cart}/>
+        <Header setView={this.setView} view={this.state.view.name} cart={this.state.cart} cartQuantity={this.cartQuantity}/>
         {displayView}
       </div>
     );

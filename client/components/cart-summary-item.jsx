@@ -22,22 +22,23 @@ export const CartSummaryItem = props => {
 
   return (
     <Card className="d-flex flex-row rounded m-3" key={props.key}>
+
       <div style={imgWrapper} className="border border-success text-center">
-        <CardImg src={props.indivItem.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
+        <CardImg src={props.item.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
       </div>
 
       <div className="w-75  text-center">
 
         <div className="h-25 border border-dark" style={fontSize}>
-          <div className="h-50 font-weight-bold">{props.indivItem.name}</div>
-          <div className="h-50 font-weight-bold">{props.indivItem.brewery}</div>
+          <div className="h-50 font-weight-bold">{props.item.name}</div>
+          <div className="h-50 font-weight-bold">{props.item.brewery}</div>
         </div>
 
         <div className="h-25 border border-dark" style={fontSize}>
-          <div className="h-50">{'$' + ((props.indivItem.price) / 100).toFixed(2)}</div>
+          <div className="h-50">{'$' + ((props.item.price) / 100).toFixed(2)}</div>
           <ButtonGroup>
             <Button className="border border-dark ">-</Button>
-            <div className="border border-dark d-inline h-100 px-3">{props.indivItem.count}</div>
+            <div className="border border-dark d-inline h-100 px-3">{props.item.count}</div>
             <Button className="border border-dark ">+</Button>
           </ButtonGroup>
         </div>
