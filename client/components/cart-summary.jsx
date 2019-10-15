@@ -9,7 +9,7 @@ export const CartSummary = props => {
     width: '100wh'
   };
 
-  console.log('cart is: ', props.cart);
+  // console.log('cart is: ', props.cart);
 
   if (props.cart.length === 0) {
     return (
@@ -22,7 +22,7 @@ export const CartSummary = props => {
     return (
       <React.Fragment>
         <div className="d-flex flex-column border border-primary p-5" style={containerSize}>
-
+          {/*  */}
           <div className="d-flex flex-row p-1">
             <h3 className="w-50 d-inline">Cart <div className="d-inline text-muted">(3 items)</div></h3>
             <h3 className="w-50">Summary</h3>

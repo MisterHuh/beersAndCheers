@@ -24,21 +24,13 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.getCartItems();
-    // this.getCartQuantity();
   }
 
-  getCartQuantity() {
-    console.log('getCartQuantity fired');
-    console.log('cart: ', this.state.cart);
-    console.log('cartLength: ', this.state.cart.length);
-
-    let cart = this.state.cart;
+  getCartQuantity(cart) {
     let cartQuantity = 0;
-
     if (cart.length > 0) {
       for (let index = 0; index < cart.length; index++) {
         cartQuantity += parseInt(cart[index].count);
-        console.log('count: ', parseInt(cart[index].count));
       }
     }
     this.setState({ cartQuantity });
@@ -50,9 +42,8 @@ export default class App extends React.Component {
       .then(response => response.json())
       .then(cart => {
         console.log('cart is: ', cart);
-        this.setState({ cart });
+        this.setState({ cart }, this.getCartQuantity(cart));
       });
-    this.getCartQuantity();
   }
 
   addToCart(product, quantity) {
@@ -91,7 +82,7 @@ export default class App extends React.Component {
     }
     return (
       <div className="border border-dark">
-        <Header setView={this.setView} view={this.state.view.name} cart={this.state.cart} cartQuantity={this.cartQuantity}/>
+        <Header setView={this.setView} view={this.state.view.name} cart={this.state.cart} cartQuantity={this.state.cartQuantity}/>
         {displayView}
       </div>
     );
