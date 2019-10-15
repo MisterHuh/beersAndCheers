@@ -10,52 +10,10 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'cart',
         id: ''
       },
       cart: []
-      // cart: [
-      //   {
-      //     id: 1,
-      //     productId: 100,
-      //     count: 1,
-      //     price: 999,
-      //     cartID: 2,
-      //     image: 'http://barleyforge.com/wp-content/uploads/2018/10/hero_the_patsy-can-393x1024.png',
-      //     name: 'The Patsy',
-      //     brewery: 'Barley Forge Brewing Co.'
-      //   },
-      //   {
-      //     id: 2,
-      //     productId: 200,
-      //     count: 2,
-      //     price: 999,
-      //     cartID: 3,
-      //     image: 'https://www.ballastpoint.com/wp-content/uploads/2018/05/12_SourWench-1.png',
-      //     name: 'Sour Wench',
-      //     brewery: 'Ballast Point Brewery'
-      //   },
-      //   {
-      //     id: 1,
-      //     productId: 300,
-      //     count: 3,
-      //     price: 999,
-      //     cartID: 2,
-      //     image: 'http://leftcoastbrewing.com/wp-content/uploads/2015/07/Galaxy-Supernova-16oz-Mock-Cut-out-1.png',
-      //     name: 'Galaxy Supernova',
-      //     brewery: 'Left Coast Brewing Co.'
-      //   },
-      //   {
-      //     id: 2,
-      //     productId: 400,
-      //     count: 4,
-      //     price: 999,
-      //     cartID: 3,
-      //     image: 'http://www.tapsbrewery.com/wp-content/uploads/2019/06/American-Cream.png',
-      //     name: 'The American Dream',
-      //     brewery: 'TAPS Brewery'
-      //   }
-      // ]
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -63,11 +21,11 @@ export default class App extends React.Component {
   }
 
   getCartItems() {
-    console.log('getCartItems fired');
+    // console.log('getCartItems fired');
     fetch(`/api/cart.php`)
       .then(response => response.json())
       .then(cart => {
-        console.log('cart is: ', cart);
+        // console.log('cart is: ', cart);
         this.setState({ cart });
       });
   }
@@ -86,18 +44,10 @@ export default class App extends React.Component {
     console.log('APP COMPONENT quantity is: ', quantity);
 
     fetch(`/api/cart.php`, req)
-      .then(response => {
-        // console.log('fetch call response is: ', response);
-        response.json();
-      });
+      .then(response => response.json());
 
+    /* updates the cart once the fetch is completed */
     this.getCartItems();
-
-    // .then(product => {
-    //   console.log('fetch call after sanitizing: ', product);
-    //   const cart = this.state.cart.concat(product);
-    //   this.setState({ cart });
-    // });
   }
 
   setView(name, id) {
@@ -129,7 +79,7 @@ export default class App extends React.Component {
     }
     return (
       <div className="border border-dark">
-        <Header setView={this.setView} view={this.state.view.name} />
+        <Header setView={this.setView} view={this.state.view.name} cart={this.state.cart}/>
         {displayView}
       </div>
     );

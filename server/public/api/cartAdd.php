@@ -10,13 +10,9 @@ if (!INTERNAL) {
 }
 
 /* accessing the body data from the http html response */
-// $jsonBody = getBodyData();
-
 $item = file_get_contents('php://input');
 $jsonBody = getBodyData($item);
 
-// var_dump("vardump is" + $jsonBody["id"]);
-// var_dump($jsonBody["id"]);
 
 /* error checking, to make sure that we are getting what we weant */
 /* if not, throw new Exception */
@@ -32,26 +28,23 @@ if ($jsonBody["id"]) {  /* if $jsonBody exists, carry on */
   throw new Exception("id required to add to cart");
 }
 
-// var_dump($id);
-
-// the below might be for later (quantity). will leave here for now
+// this is to grab the count of each item
 if ($jsonBody['count']) {
   $count = $jsonBody['count'];
-}
+};
 
-// var_dump($count);
-
-/* error checking for session */
-if (empty($_SESSION["cartId"])) {   /* if the "cartID" from $_SESSION is empty */
-  $cartID = false;                  /* $cartID will not exist */
+if (array_key_exists("cartId", $_SESSION)) {   /* if the "cartID" from $_SESSION is empty */
+  // session_unset();
+  $cartId = $_SESSION['cartId'];    /* $cartId will take the value of the $_SESSION() */
 } else {
-  $cartID = $_SESSION['cartId'];    /* $cartID will take the value of the $_SESSION() */
-}
+  // session_unset();
+  $cartId = false;                  /* $cartId will not exist */
+};
 
 /* query for grabbing `price` from `produts` for the matching $id */
 $query = "SELECT price
 	        FROM products
-          WHERE products.id = {$id}";
+          WHERE products.id = $id";
 
 $result = mysqli_query($conn, $query);
 
@@ -84,12 +77,11 @@ if (!$transactionResult) {
   throw new Exception('error with transactionQuery: ' . mysqli_error($conn));
 }
 
-/* if $cartID from $_SESSION is false */
+/* if $cartId from $_SESSION is false */
 /* why are we checking for this */
+if ($cartId === false) {
 
-if ($cartID === false) {
-
-  /* if the $cartID is false, create a new cart, with the current time stamp */
+  /* if the $cartId is false, create a new cart, with the current time stamp */
   $insertQuery = "INSERT INTO cart
                   SET created = NOW();";
   $insertResult = mysqli_query($conn, $insertQuery);
@@ -107,27 +99,23 @@ if ($cartID === false) {
   }
 
   /* grabs the id generated in the last query */
-  $cartID = mysqli_insert_id($conn);
+  $cartId = mysqli_insert_id($conn);
 
-  /* replacing the `falsy` $cartID to the correct one that matches everything */
-  $_SESSION["cartID"] = $cartID;
+  /* replacing the `falsy` $cartId to the correct one that matches everything */
+  $_SESSION["cartId"] = $cartId;
 }
-
-// var_dump($count);
 
 /* if $cartId is true */
 /* make a query for the cartItems table */
 $cartItemQuery = "INSERT INTO cartItems
-                  SET cartItems.count = {$count},
-                      cartItems.productID = {$id},
-                      cartItems.price = {$price},
+                  SET cartItems.count = $count,
+                      cartItems.productID = $id,
+                      cartItems.price = $price,
                       cartItems.added = NOW(),
-                      cartItems.cartID = {$cartID}
-                  ON DUPLICATE KEY UPDATE cartItems.count = cartItems.count + {$count}";
+                      cartItems.cartID = $cartId
+                  ON DUPLICATE KEY UPDATE cartItems.count = cartItems.count + $count";
 
 $cartItemResult = mysqli_query($conn, $cartItemQuery);
-
-// var_dump($cartItemResult);
 
 /* error checking for the new query */
 if (!$cartItemResult) {
@@ -147,8 +135,5 @@ if (mysqli_affected_rows($conn) < 1) {
   $commit = "COMMIT";
   mysqli_query($conn, $commit);
 }
-
-print("all done with addCart");
-
 
 ?>

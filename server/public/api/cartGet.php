@@ -42,6 +42,7 @@ if (!$result) {
   throw new Exception('error with query: ' . mysqli_error($conn));
 };
 
+/* start grabbing the rows from the database using the above query */
 $output = [];
 while ($row = mysqli_fetch_assoc($result)) {
   $output[] = $row;
