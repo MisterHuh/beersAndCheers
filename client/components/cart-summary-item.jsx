@@ -4,8 +4,8 @@ import { Card, CardImg, Button, ButtonGroup } from 'reactstrap';
 export const CartSummaryItem = props => {
 
   const imgWrapper = {
-    height: '45vh',
-    width: '20vw'
+    height: '25vh',
+    width: '10vw'
   };
   const test = {
     width: '100%',
@@ -21,7 +21,7 @@ export const CartSummaryItem = props => {
   };
 
   return (
-    <Card className="d-flex flex-row rounded m-3">
+    <Card className="d-flex flex-row rounded m-3" key={props.key}>
       <div style={imgWrapper} className="border border-success text-center">
         <CardImg src={props.indivItem.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
       </div>

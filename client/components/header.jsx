@@ -18,27 +18,24 @@ import {
 export const Header = props => {
 
   let currentView = props.view;
+  let cart = props.cart;
+  let quantity;
 
-  const imgUrl = 'cheers.png';
-  const size = {
-    // width: '10vw'
-    height: '10vh'
+  cart.map => {
+    quantity += count
   };
-  const headerSize = {
-    width: '100vw',
-    height: '10vh'
-  };
+
+
 
   if (currentView === 'catalog') {
     return (
       <React.Fragment>
         <Navbar color="light" light expand="md">
-          {/* <NavbarBrand href="/">Beers & Cheers</NavbarBrand> */}
           <NavbarBrand onClick={() => props.setView('catalog', '')}>Beers & Cheers</NavbarBrand>
           <Collapse navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink>Cart</NavLink>
+                <NavLink onClick={() => props.setView('cart', '')}>Cart</NavLink>
                 {/* <Badge pill>14</Badge> */}
               </NavItem>
             </Nav>
@@ -56,7 +53,7 @@ export const Header = props => {
           <Collapse navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink>Cart</NavLink>
+                <NavLink onClick={() => props.setView('cart', '')}>Cart {quantity}</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
