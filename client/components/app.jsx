@@ -10,7 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'cart',
         id: ''
       },
       cart: [],
@@ -37,7 +37,6 @@ export default class App extends React.Component {
   }
 
   getCartItems() {
-    console.log('getCartItems fired');
     fetch(`/api/cart.php`)
       .then(response => response.json())
       .then(cart => {
@@ -78,7 +77,7 @@ export default class App extends React.Component {
     } else if (currentView === 'details') {
       displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     } else if (currentView === 'cart') {
-      displayView = <CartSummary setView={this.setView} cart={this.state.cart}/>;
+      displayView = <CartSummary setView={this.setView} cart={this.state.cart} cartQuantity={this.state.cartQuantity} />;
     }
     return (
       <div className="border border-dark">
