@@ -55,7 +55,6 @@ class CartSummaryItem extends React.Component {
 
   componentDidMount() {
     let count = parseInt(this.props.item.count);
-    console.log('componentDidMount count is: ', count);
     this.setState({ count });
   }
 

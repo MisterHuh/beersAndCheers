@@ -1,6 +1,6 @@
 import React from 'react';
 import CartSummaryItem from './cart-summary-item';
-import { UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
+import { UncontrolledPopover, PopoverHeader, PopoverBody, Button } from 'reactstrap';
 
 export const CartSummary = props => {
   const imgSrc = 'emptycart.png';
@@ -77,8 +77,17 @@ export const CartSummary = props => {
 
               <hr/>
 
-              <div className="border border-danger mx-3 mt-3">
+              <div className="border border-danger mx-3 my-3">
                 <h4 className="border border-success d-inline">Total <div className="border broder-success d-inline float-right">${(totalAmount / 100).toFixed(2)}</div> </h4>
+              </div>
+
+              <div>
+                <div className="border border-success">
+                  <Button onClick={() => props.setView('catalog', '')} className="w-100 border border-dark mb-3 bg-info">Continue Shopping</Button>
+                </div>
+                <div className="border border-success">
+                  <Button onClick={() => props.setView('checkout', '')} className="w-100 border border-danger bg-success">Checkout</Button>
+                </div>
               </div>
 
             </div>{ /* pricingDetails */}

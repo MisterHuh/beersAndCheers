@@ -3,7 +3,7 @@ import { Header } from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import { CartSummary } from './cart-summary';
-// import CheckoutForm from './checkout-form';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -120,6 +120,8 @@ export default class App extends React.Component {
       displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     } else if (currentView === 'cart') {
       displayView = <CartSummary setView={this.setView} cart={this.state.cart} cartQuantity={this.state.cartQuantity} deleteCartItems={this.deleteCartItems} updateCartItems={this.updateCartItems} retrieveCart={this.retrieveCart} />;
+    } else if (currentView === 'checkout') {
+      displayView = <CheckoutForm setView={this.setView} />;
     }
     return (
       <div className="border border-dark">
