@@ -2,11 +2,10 @@
 
 require_once('functions.php');
 
-/* INTERNAL is Fined in cart. */
-/* form of error chceking? */
+/* INTERNAL is deined in cart. */
+/* to make sure that this page is loaded from cart.php? */
 if (!INTERNAL) {
-  print("direct access not allowed");
-  exit();
+  die("direct access not allowed");
 }
 
 /* accessing the body data from the http html response */

@@ -90,7 +90,6 @@ export default class App extends React.Component {
   }
 
   setView(name, id) {
-    console.log('setview triggered');
     this.setState({
       view: { name, id }
     });

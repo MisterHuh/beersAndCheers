@@ -25,8 +25,6 @@ class ProductDetails extends React.Component {
     let quantity = this.state.quantity;
     this.props.addToCart(product.id, quantity);
     this.toggle();
-    console.log('product is: ', product.id);
-
   }
 
   incrementQuantity() {

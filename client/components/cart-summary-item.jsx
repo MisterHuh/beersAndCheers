@@ -15,11 +15,13 @@ class CartSummaryItem extends React.Component {
   removeItems() {
     this.props.deleteCartItems(this.props.item);
     this.toggle();
+    this.props.setView('cart', '');
+
   }
 
   closeModal() {
-    this.props.setView('cart', '');
     this.toggle();
+    this.props.setView('cart', '');
   }
 
   toggle() {
@@ -88,10 +90,11 @@ class CartSummaryItem extends React.Component {
                     <img src={this.props.item.image} alt="beerImg" className="border border-dark" style={modalImgContainer} />
                   </div>
                   <div className="border border-dark w-50 text-center">
-                    <div className="border border-dark h-25" >{this.props.item.name}</div>
-                    <div className="border border-dark h-25">{this.props.item.brewery}</div>
-                    <div className="border border-dark h-25">{'$' + ((this.props.item.price) / 100).toFixed(2)}</div>
-                    <div className="border border-dark h-25">Quantity: {this.props.item.count}</div>
+                    <div className="border border-dark h-25" >USE THE SAME FORMAT</div>
+                    <div className="border border-dark h-25">FROM THE SAME MODAL USED </div>
+                    <div className="border border-dark h-25">IN <strong>PRODUCT-DETAILS</strong> COMPONENT</div>
+                    <div className="border border-dark h-25">MAYBE MAKE IT SIMPLER
+                    AND REMEMBER TO KEEP THE SYTLE ATTRIBUTES THE SAME TOO</div>
                   </div>
                 </div>
               </ModalBody>
