@@ -23,7 +23,7 @@ class ProductDetails extends React.Component {
   addToCart() {
     let product = this.state.product;
     let quantity = this.state.quantity;
-    this.props.addToCart(product, quantity);
+    this.props.addToCart(product.id, quantity);
     this.toggle();
   }
 
@@ -156,7 +156,7 @@ class ProductDetails extends React.Component {
                           </div>
                         </ModalBody>
                         <ModalFooter>
-                          <Button color="primary" onClick={() => this.props.setView('catalog', '')}>Continue Shopping</Button>{' '}
+                          <Button color="primary" onClick={() => this.props.setView('catalog', '')}>Continue Shopping</Button>
                           <Button color="secondary" onClick={() => this.props.setView('cart', '')}>Go To Cart</Button>
                         </ModalFooter>
                       </Modal>

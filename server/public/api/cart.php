@@ -24,7 +24,10 @@ switch($method) {
     require_once("cartAdd.php");
     break;
   case "DELETE":
-    require_once(`cartDelete.php`);
+    require_once("cartDelete.php");
+    break;
+  case "PUT":
+    require_once("cartUpdate.php");
     break;
   default:
     http_response_code(404);

@@ -1,55 +1,147 @@
 import React from 'react';
-import { Card, CardImg, Button, ButtonGroup } from 'reactstrap';
+import { Card, CardImg, Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-export const CartSummaryItem = props => {
+class CartSummaryItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+      count: 0
+    };
+    this.toggle = this.toggle.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.removeItems = this.removeItems.bind(this);
+    this.incrementQuantity = this.incrementQuantity.bind(this);
+    this.decrementQuantity = this.decrementQuantity.bind(this);
+    this.updatecart = this.updateCart.bind(this);
+  }
 
-  const imgWrapper = {
-    height: '25vh',
-    width: '10vw'
-  };
-  const test = {
-    width: '100%',
-    height: '100%'
-  };
-  const imgSize = {
-    width: '50%',
-    height: '100%'
-  };
+  incrementQuantity() {
+    let currentCount = this.state.count;
+    let newCount = ++currentCount;
+    this.setState({ count: newCount });
+  }
 
-  const fontSize = {
-    fontSize: '150%'
-  };
+  decrementQuantity() {
+    let currentCount = this.state.count;
+    let newCount = --currentCount;
+    if (this.state.count >= 2) {
+      this.setState({ count: newCount });
+    }
+  }
 
-  return (
-    <Card className="d-flex flex-row rounded m-3" key={props.key}>
-      <div style={imgWrapper} className="border border-success text-center">
-        <CardImg src={props.indivItem.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
-      </div>
+  updateCart() {
+    let item = this.props.item;
+    let newCount = this.state.count;
+    // need to send the item (for the product_id) and this.state.count, NOT the item.count
+    this.props.updateCartItems(item, newCount);
+    this.props.retrieveCart();
+  }
 
-      <div className="w-75  text-center">
+  removeItems() {
+    this.props.deleteCartItems(this.props.item);
+    this.toggle();
+    this.props.setView('cart', '');
+  }
 
-        <div className="h-25 border border-dark" style={fontSize}>
-          <div className="h-50 font-weight-bold">{props.indivItem.name}</div>
-          <div className="h-50 font-weight-bold">{props.indivItem.brewery}</div>
+  closeModal() {
+    this.toggle();
+    this.props.setView('cart', '');
+  }
+
+  toggle() {
+    this.setState({ modal: !this.state.modal });
+  }
+
+  componentDidMount() {
+    let count = parseInt(this.props.item.count);
+    console.log('componentDidMount count is: ', count);
+    this.setState({ count });
+  }
+
+  render() {
+    const imgWrapper = {
+      height: '25vh',
+      width: '10vw'
+    };
+    const imgSize = {
+      width: '50%',
+      height: '100%'
+    };
+
+    const fontSize = {
+      fontSize: '150%'
+    };
+    const modalBodyWrapper = {
+      height: '50vh'
+    };
+    const modalWrapper = {
+      height: '100%'
+    };
+    const modalContainer = {
+      height: '100%'
+    };
+    const modalImgContainer = {
+      height: '100%'
+    };
+
+    return (
+      <Card className="d-flex flex-row rounded m-3" key={this.props.key}>
+
+        <div style={imgWrapper} className="border border-success text-center">
+          <CardImg src={this.props.item.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
         </div>
 
-        <div className="h-25 border border-dark" style={fontSize}>
-          <div className="h-50">{'$' + ((props.indivItem.price) / 100).toFixed(2)}</div>
-          <ButtonGroup>
-            <Button className="border border-dark ">-</Button>
-            <div className="border border-dark d-inline h-100 px-3">{props.indivItem.count}</div>
-            <Button className="border border-dark ">+</Button>
-          </ButtonGroup>
+        <div className="w-75  text-center">
+
+          <div className="h-25 border border-dark" style={fontSize}>
+            <div className="h-50 font-weight-bold">{this.props.item.name}</div>
+            <div className="h-50 font-weight-bold">{this.props.item.brewery}</div>
+          </div>
+
+          <div className="h-25 border border-dark" style={fontSize}>
+            <div className="h-50">{'$' + ((this.props.item.price) / 100).toFixed(2)}</div>
+            <ButtonGroup>
+              <Button onClick={this.decrementQuantity} className="border border-dark ">-</Button>
+              <div className="border border-dark d-inline h-100 px-3">{this.state.count}</div>
+              <Button onClick={this.incrementQuantity} className="border border-dark ">+</Button>
+            </ButtonGroup>
+          </div>
+
+          <div className="h-50 border border-dark">
+            <Button color="success" className="m-5" onClick={() => this.updateCart() }>Update</Button>
+            <Button color="danger" className="m-5" onClick={() => this.toggle() }>Remove</Button>
+
+            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+              <ModalHeader toggle={this.toggle}>Remove From Cart</ModalHeader>
+              <ModalBody style={modalBodyWrapper}>
+                <div className="border border-danger d-flex flex-row" style={modalWrapper}>
+                  <div className="border border-dark w-50 text-center" style={modalContainer}>
+                    <img src={this.props.item.image} alt="beerImg" className="border border-dark" style={modalImgContainer} />
+                  </div>
+                  <div className="border border-dark w-50 text-center">
+                    <div className="border border-dark h-25" >USE THE SAME FORMAT</div>
+                    <div className="border border-dark h-25">FROM THE SAME MODAL USED </div>
+                    <div className="border border-dark h-25">IN <strong>PRODUCT-DETAILS</strong> COMPONENT</div> {/* make sure to use this.state.count for qty */}
+                    <div className="border border-dark h-25">MAYBE MAKE IT SIMPLER
+                    AND REMEMBER TO KEEP THE SYTLE ATTRIBUTES THE SAME TOO</div>
+                  </div>
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="success" onClick={() => this.closeModal()}>Keep In Cart</Button>
+                <Button color="danger" onClick={() => this.removeItems()}>Remove From Cart</Button>
+              </ModalFooter>
+            </Modal>
+
+          </div>
+
         </div>
 
-        <div className="h-50 border border-dark">
-          <Button color="success" className="m-5">Update</Button>
-          <Button color="danger" className="m-5" onClick={() => props.setView('catalog', '')}>Remove</Button>
-        </div>
+      </Card>
+    );
+  }
 
-      </div>
+}
 
-    </Card>
-  );
-
-};
+export default CartSummaryItem;

@@ -13,41 +13,95 @@ export default class App extends React.Component {
         name: 'cart',
         id: ''
       },
-      cart: []
+      cart: [],
+      cartQuantity: 0
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
-    this.getCartItems = this.getCartItems.bind(this);
+    this.retrieveCart = this.retrieveCart.bind(this);
+    this.getCartQuantity = this.getCartQuantity.bind(this);
+    this.deleteCartItems = this.deleteCartItems.bind(this);
+    this.updateCartItems = this.updateCartItems.bind(this);
   }
 
-  getCartItems() {
-    // console.log('getCartItems fired');
+  componentDidMount() {
+    this.retrieveCart();
+  }
+
+  getCartQuantity(cart) {
+    let cartQuantity = 0;
+    if (cart.length > 0) {
+      for (let index = 0; index < cart.length; index++) {
+        cartQuantity += parseInt(cart[index].count);
+      }
+    }
+    this.setState({ cartQuantity });
+  }
+
+  retrieveCart() {
     fetch(`/api/cart.php`)
       .then(response => response.json())
       .then(cart => {
         // console.log('cart is: ', cart);
-        this.setState({ cart });
+        this.setState({ cart }, this.getCartQuantity(cart));
+      })
+      .catch(error => {
+        console.error('delete error: ', error);
       });
   }
 
-  addToCart(product, quantity) {
+  addToCart(productId, quantity) {
     const req = {
       method: 'POST',
-      header: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        id: parseInt(product.id),
+        id: parseInt(productId),
         count: quantity
       })
     };
 
-    console.log('APP COMPONENT product is: ', product);
-    console.log('APP COMPONENT quantity is: ', quantity);
-
     fetch(`/api/cart.php`, req)
-      .then(response => response.json());
+      .then(response => response.json())
+      .catch(error => {
+        // console.error('delete error: ', error);
+      });
 
     /* updates the cart once the fetch is completed */
-    this.getCartItems();
+    /* is this necessary?? */
+    this.retrieveCart();
+  }
+
+  deleteCartItems(product) {
+    const req = {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: parseInt(product.product_id)
+      })
+    };
+    fetch(`/api/cart.php`, req)
+      .then(response => response.json())
+      .catch(error => {
+        // console.error('delete error: ', error);
+      });
+    this.retrieveCart();
+  }
+
+  updateCartItems(product, count) {
+    const req = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: parseInt(product.product_id),
+        count: count
+      })
+    };
+    fetch(`/api/cart.php`, req)
+      .then(response => response.json())
+      .catch(error => {
+        // console.error('delete error: ', error);
+      });
+    this.retrieveCart();
   }
 
   setView(name, id) {
@@ -56,30 +110,20 @@ export default class App extends React.Component {
     });
   }
 
-  componentDidMount() {
-    this.getCartItems();
-  }
-
   render() {
     let currentView = this.state.view.name;
     let displayView = null;
-    // const sizing = {
-    //   width: '100vw',
-    //   height: '100vh',
-    //   maxWidth: '100%'
-    // };
-    // style = { sizing }
 
     if (currentView === 'catalog') {
       displayView = <ProductList setView={this.setView} />;
     } else if (currentView === 'details') {
       displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     } else if (currentView === 'cart') {
-      displayView = <CartSummary setView={this.setView} cart={this.state.cart}/>;
+      displayView = <CartSummary setView={this.setView} cart={this.state.cart} cartQuantity={this.state.cartQuantity} deleteCartItems={this.deleteCartItems} updateCartItems={this.updateCartItems} retrieveCart={this.retrieveCart} />;
     }
     return (
       <div className="border border-dark">
-        <Header setView={this.setView} view={this.state.view.name} cart={this.state.cart}/>
+        <Header setView={this.setView} view={this.state.view.name} cart={this.state.cart} cartQuantity={this.state.cartQuantity}/>
         {displayView}
       </div>
     );
@@ -98,7 +142,7 @@ export default class App extends React.Component {
 //   };
 //   this.price = 0;
 //   this.setView = this.setView.bind(this);
-//   this.getCartItems = this.getCartItems.bind(this);
+//   this.retrieveCart = this.getCartItems.bind(this);
 //   this.addToCart = this.addToCart.bind(this);
 //   this.placeOrder = this.placeOrder.bind(this);
 // }
