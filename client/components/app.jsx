@@ -66,17 +66,19 @@ export default class App extends React.Component {
       });
 
     /* updates the cart once the fetch is completed */
+    /* is this necessary?? */
     this.getCartItems();
   }
 
-  deleteCartItems(id) {
+  deleteCartItems(product) {
     console.log('deleteCartItems fired');
-    console.log('deleteCart id is: ', id);
+    console.log('deleteCart id is: ', product.product_id);
+
     const req = {
       method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
+      header: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        id: parseInt(id)
+        id: parseInt(product.product_id)
       })
     };
     fetch(`/api/cart.php`, req)

@@ -45,7 +45,7 @@ export const CartSummaryItem = props => {
 
         <div className="h-50 border border-dark">
           <Button color="success" className="m-5">Update</Button>
-          <Button color="danger" className="m-5" onClick={() => props.deleteCartItems(props.item.product_id)}>Remove</Button>
+          <Button color="danger" className="m-5" onClick={() => props.deleteCartItems(props.item)}>Remove</Button>
         </div>
 
       </div>
