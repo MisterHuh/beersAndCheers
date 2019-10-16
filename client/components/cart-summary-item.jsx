@@ -1,56 +1,114 @@
 import React from 'react';
-import { Card, CardImg, Button, ButtonGroup } from 'reactstrap';
+import { Card, CardImg, Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-export const CartSummaryItem = props => {
+class CartSummaryItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false
+    };
+    this.toggle = this.toggle.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.removeItems = this.removeItems.bind(this);
+  }
 
-  const imgWrapper = {
-    height: '25vh',
-    width: '10vw'
-  };
-  const test = {
-    width: '100%',
-    height: '100%'
-  };
-  const imgSize = {
-    width: '50%',
-    height: '100%'
-  };
+  removeItems() {
+    this.props.deleteCartItems(this.props.item);
+    this.toggle();
+  }
 
-  const fontSize = {
-    fontSize: '150%'
-  };
+  closeModal() {
+    this.props.setView('cart', '');
+    this.toggle();
+  }
 
-  return (
-    <Card className="d-flex flex-row rounded m-3" key={props.key}>
+  toggle() {
+    this.setState({ modal: !this.state.modal });
+  }
 
-      <div style={imgWrapper} className="border border-success text-center">
-        <CardImg src={props.item.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
-      </div>
+  render() {
+    const imgWrapper = {
+      height: '25vh',
+      width: '10vw'
+    };
+    const imgSize = {
+      width: '50%',
+      height: '100%'
+    };
 
-      <div className="w-75  text-center">
+    const fontSize = {
+      fontSize: '150%'
+    };
+    const modalBodyWrapper = {
+      height: '50vh'
+    };
+    const modalWrapper = {
+      height: '100%'
+    };
+    const modalContainer = {
+      height: '100%'
+    };
+    const modalImgContainer = {
+      height: '100%'
+    };
 
-        <div className="h-25 border border-dark" style={fontSize}>
-          <div className="h-50 font-weight-bold">{props.item.name}</div>
-          <div className="h-50 font-weight-bold">{props.item.brewery}</div>
+    return (
+      <Card className="d-flex flex-row rounded m-3" key={this.props.key}>
+
+        <div style={imgWrapper} className="border border-success text-center">
+          <CardImg src={this.props.item.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
         </div>
 
-        <div className="h-25 border border-dark" style={fontSize}>
-          <div className="h-50">{'$' + ((props.item.price) / 100).toFixed(2)}</div>
-          <ButtonGroup>
-            <Button className="border border-dark ">-</Button>
-            <div className="border border-dark d-inline h-100 px-3">{props.item.count}</div>
-            <Button className="border border-dark ">+</Button>
-          </ButtonGroup>
+        <div className="w-75  text-center">
+
+          <div className="h-25 border border-dark" style={fontSize}>
+            <div className="h-50 font-weight-bold">{this.props.item.name}</div>
+            <div className="h-50 font-weight-bold">{this.props.item.brewery}</div>
+          </div>
+
+          <div className="h-25 border border-dark" style={fontSize}>
+            <div className="h-50">{'$' + ((this.props.item.price) / 100).toFixed(2)}</div>
+            <ButtonGroup>
+              <Button className="border border-dark ">-</Button>
+              <div className="border border-dark d-inline h-100 px-3">{this.props.item.count}</div>
+              <Button className="border border-dark ">+</Button>
+            </ButtonGroup>
+          </div>
+
+          <div className="h-50 border border-dark">
+            <Button color="success" className="m-5">Update</Button>
+            <Button color="danger" className="m-5" onClick={() => this.toggle() }>Remove</Button>
+
+            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+              <ModalHeader toggle={this.toggle}>Remove From Cart</ModalHeader>
+              {/* <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(this.props.item, quantity)}>Added To Cart!</ModalHeader> */}
+              <ModalBody style={modalBodyWrapper}>
+                <div className="border border-danger d-flex flex-row" style={modalWrapper}>
+                  <div className="border border-dark w-50 text-center" style={modalContainer}>
+                    <img src={this.props.item.image} alt="beerImg" className="border border-dark" style={modalImgContainer} />
+                  </div>
+                  <div className="border border-dark w-50 text-center">
+                    <div className="border border-dark h-25" >{this.props.item.name}</div>
+                    <div className="border border-dark h-25">{this.props.item.brewery}</div>
+                    <div className="border border-dark h-25">{'$' + ((this.props.item.price) / 100).toFixed(2)}</div>
+                    <div className="border border-dark h-25">Quantity: {this.props.item.count}</div>
+                  </div>
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="success" onClick={() => this.closeModal()}>Keep In Cart</Button>
+                <Button color="danger" onClick={() => this.removeItems()}>Remove From Cart</Button>
+              </ModalFooter>
+            </Modal>
+
+          </div>
+
         </div>
 
-        <div className="h-50 border border-dark">
-          <Button color="success" className="m-5">Update</Button>
-          <Button color="danger" className="m-5" onClick={() => props.deleteCartItems(props.item)}>Remove</Button>
-        </div>
+      </Card>
+    );
+  }
 
-      </div>
+}
 
-    </Card>
-  );
-
-};
+export default CartSummaryItem;

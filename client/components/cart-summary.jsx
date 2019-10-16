@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartSummaryItem } from './cart-summary-item';
+import CartSummaryItem from './cart-summary-item';
 import { UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
 
 export const CartSummary = props => {

@@ -10,7 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'cart',
+        name: 'catalog',
         id: ''
       },
       cart: [],
@@ -18,13 +18,13 @@ export default class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
-    this.getCartItems = this.getCartItems.bind(this);
+    this.retrieveCart = this.retrieveCart.bind(this);
     this.getCartQuantity = this.getCartQuantity.bind(this);
     this.deleteCartItems = this.deleteCartItems.bind(this);
   }
 
   componentDidMount() {
-    this.getCartItems();
+    this.retrieveCart();
   }
 
   getCartQuantity(cart) {
@@ -37,7 +37,7 @@ export default class App extends React.Component {
     this.setState({ cartQuantity });
   }
 
-  getCartItems() {
+  retrieveCart() {
     fetch(`/api/cart.php`)
       .then(response => response.json())
       .then(cart => {
@@ -49,12 +49,12 @@ export default class App extends React.Component {
       });
   }
 
-  addToCart(product, quantity) {
+  addToCart(productId, quantity) {
     const req = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        id: parseInt(product.id),
+        id: parseInt(productId),
         count: quantity
       })
     };
@@ -62,34 +62,35 @@ export default class App extends React.Component {
     fetch(`/api/cart.php`, req)
       .then(response => response.json())
       .catch(error => {
-        console.error('delete error: ', error);
+        // console.error('delete error: ', error);
       });
 
     /* updates the cart once the fetch is completed */
     /* is this necessary?? */
-    this.getCartItems();
+    this.retrieveCart();
   }
 
-  deleteCartItems(product) {
+  deleteCartItems(productId) {
     console.log('deleteCartItems fired');
-    console.log('deleteCart id is: ', product.product_id);
+    console.log('deleteCart id is: ', productId.product_id);
 
     const req = {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        id: parseInt(product.product_id)
+        id: parseInt(productId.product_id)
       })
     };
     fetch(`/api/cart.php`, req)
       .then(response => response.json())
       .catch(error => {
-        console.error('delete error: ', error);
+        // console.error('delete error: ', error);
       });
-    // this.getCartItems();
+    this.retrieveCart();
   }
 
   setView(name, id) {
+    console.log('setview triggered');
     this.setState({
       view: { name, id }
     });
@@ -127,7 +128,7 @@ export default class App extends React.Component {
 //   };
 //   this.price = 0;
 //   this.setView = this.setView.bind(this);
-//   this.getCartItems = this.getCartItems.bind(this);
+//   this.retrieveCart = this.getCartItems.bind(this);
 //   this.addToCart = this.addToCart.bind(this);
 //   this.placeOrder = this.placeOrder.bind(this);
 // }
