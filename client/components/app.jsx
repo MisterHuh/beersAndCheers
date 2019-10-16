@@ -10,7 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'cart',
         id: ''
       },
       cart: [],
@@ -21,6 +21,7 @@ export default class App extends React.Component {
     this.retrieveCart = this.retrieveCart.bind(this);
     this.getCartQuantity = this.getCartQuantity.bind(this);
     this.deleteCartItems = this.deleteCartItems.bind(this);
+    this.updateCartItems = this.updateCartItems.bind(this);
   }
 
   componentDidMount() {
@@ -41,7 +42,7 @@ export default class App extends React.Component {
     fetch(`/api/cart.php`)
       .then(response => response.json())
       .then(cart => {
-        console.log('cart is: ', cart);
+        // console.log('cart is: ', cart);
         this.setState({ cart }, this.getCartQuantity(cart));
       })
       .catch(error => {
@@ -70,15 +71,29 @@ export default class App extends React.Component {
     this.retrieveCart();
   }
 
-  deleteCartItems(productId) {
-    console.log('deleteCartItems fired');
-    console.log('deleteCart id is: ', productId.product_id);
-
+  deleteCartItems(product) {
     const req = {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        id: parseInt(productId.product_id)
+        id: parseInt(product.product_id)
+      })
+    };
+    fetch(`/api/cart.php`, req)
+      .then(response => response.json())
+      .catch(error => {
+        // console.error('delete error: ', error);
+      });
+    this.retrieveCart();
+  }
+
+  updateCartItems(product, count) {
+    const req = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: parseInt(product.product_id),
+        count: count
       })
     };
     fetch(`/api/cart.php`, req)
@@ -104,7 +119,7 @@ export default class App extends React.Component {
     } else if (currentView === 'details') {
       displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     } else if (currentView === 'cart') {
-      displayView = <CartSummary setView={this.setView} cart={this.state.cart} cartQuantity={this.state.cartQuantity} deleteCartItems={this.deleteCartItems}/>;
+      displayView = <CartSummary setView={this.setView} cart={this.state.cart} cartQuantity={this.state.cartQuantity} deleteCartItems={this.deleteCartItems} updateCartItems={this.updateCartItems} retrieveCart={this.retrieveCart} />;
     }
     return (
       <div className="border border-dark">

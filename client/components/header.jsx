@@ -21,7 +21,7 @@ export const Header = props => {
   // let cart = props.cart;
   let cartQuantity = props.cartQuantity;
 
-  // quantity < 99 ? quantity = '99+' : false;
+  cartQuantity > 99 ? cartQuantity = '99+' : false;
 
   if (currentView === 'catalog') {
     return (

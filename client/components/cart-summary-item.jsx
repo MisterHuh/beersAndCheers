@@ -5,18 +5,43 @@ class CartSummaryItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      count: 0
     };
     this.toggle = this.toggle.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.removeItems = this.removeItems.bind(this);
+    this.incrementQuantity = this.incrementQuantity.bind(this);
+    this.decrementQuantity = this.decrementQuantity.bind(this);
+    this.updatecart = this.updateCart.bind(this);
+  }
+
+  incrementQuantity() {
+    let currentCount = this.state.count;
+    let newCount = ++currentCount;
+    this.setState({ count: newCount });
+  }
+
+  decrementQuantity() {
+    let currentCount = this.state.count;
+    let newCount = --currentCount;
+    if (this.state.count >= 2) {
+      this.setState({ count: newCount });
+    }
+  }
+
+  updateCart() {
+    let item = this.props.item;
+    let newCount = this.state.count;
+    // need to send the item (for the product_id) and this.state.count, NOT the item.count
+    this.props.updateCartItems(item, newCount);
+    this.props.retrieveCart();
   }
 
   removeItems() {
     this.props.deleteCartItems(this.props.item);
     this.toggle();
     this.props.setView('cart', '');
-
   }
 
   closeModal() {
@@ -26,6 +51,12 @@ class CartSummaryItem extends React.Component {
 
   toggle() {
     this.setState({ modal: !this.state.modal });
+  }
+
+  componentDidMount() {
+    let count = parseInt(this.props.item.count);
+    console.log('componentDidMount count is: ', count);
+    this.setState({ count });
   }
 
   render() {
@@ -71,19 +102,18 @@ class CartSummaryItem extends React.Component {
           <div className="h-25 border border-dark" style={fontSize}>
             <div className="h-50">{'$' + ((this.props.item.price) / 100).toFixed(2)}</div>
             <ButtonGroup>
-              <Button className="border border-dark ">-</Button>
-              <div className="border border-dark d-inline h-100 px-3">{this.props.item.count}</div>
-              <Button className="border border-dark ">+</Button>
+              <Button onClick={this.decrementQuantity} className="border border-dark ">-</Button>
+              <div className="border border-dark d-inline h-100 px-3">{this.state.count}</div>
+              <Button onClick={this.incrementQuantity} className="border border-dark ">+</Button>
             </ButtonGroup>
           </div>
 
           <div className="h-50 border border-dark">
-            <Button color="success" className="m-5">Update</Button>
+            <Button color="success" className="m-5" onClick={() => this.updateCart() }>Update</Button>
             <Button color="danger" className="m-5" onClick={() => this.toggle() }>Remove</Button>
 
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
               <ModalHeader toggle={this.toggle}>Remove From Cart</ModalHeader>
-              {/* <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(this.props.item, quantity)}>Added To Cart!</ModalHeader> */}
               <ModalBody style={modalBodyWrapper}>
                 <div className="border border-danger d-flex flex-row" style={modalWrapper}>
                   <div className="border border-dark w-50 text-center" style={modalContainer}>
@@ -92,7 +122,7 @@ class CartSummaryItem extends React.Component {
                   <div className="border border-dark w-50 text-center">
                     <div className="border border-dark h-25" >USE THE SAME FORMAT</div>
                     <div className="border border-dark h-25">FROM THE SAME MODAL USED </div>
-                    <div className="border border-dark h-25">IN <strong>PRODUCT-DETAILS</strong> COMPONENT</div>
+                    <div className="border border-dark h-25">IN <strong>PRODUCT-DETAILS</strong> COMPONENT</div> {/* make sure to use this.state.count for qty */}
                     <div className="border border-dark h-25">MAYBE MAKE IT SIMPLER
                     AND REMEMBER TO KEEP THE SYTLE ATTRIBUTES THE SAME TOO</div>
                   </div>

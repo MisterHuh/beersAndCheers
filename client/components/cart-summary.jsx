@@ -48,7 +48,7 @@ export const CartSummary = props => {
             <div id="productDetails" className="border border-danger w-50 d-flex flex-column">  {/* make sure to use the correct props for id */}
               {props.cart.map(item => {
                 return (
-                  <CartSummaryItem setView={props.setView} key={item.product_Id} item={item} deleteCartItems={props.deleteCartItems} />
+                  <CartSummaryItem setView={props.setView} key={item.product_Id} item={item} deleteCartItems={props.deleteCartItems} updateCartItems={props.updateCartItems} retrieveCart={props.retrieveCart} />
                 );
               })}
             </div>
