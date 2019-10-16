@@ -52,7 +52,7 @@ export default class App extends React.Component {
   addToCart(product, quantity) {
     const req = {
       method: 'POST',
-      header: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id: parseInt(product.id),
         count: quantity
@@ -76,12 +76,13 @@ export default class App extends React.Component {
 
     const req = {
       method: 'DELETE',
-      header: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id: parseInt(product.product_id)
       })
     };
     fetch(`/api/cart.php`, req)
+      .then(response => response.json())
       .catch(error => {
         console.error('delete error: ', error);
       });

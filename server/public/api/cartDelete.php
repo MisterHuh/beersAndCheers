@@ -13,12 +13,21 @@ require_once('functions.php');
 $jsonBody = getBodyData();
 $id = $jsonBody["id"];
 
-if (empty($_SESSION['cartId'])) {
-  print("exiting() because session is empty");
-  exit();
+// if (empty($_SESSION['cartId'])) {
+//   print("exiting() because session is empty");
+//   exit();
+// } else {
+//   $cartId = intval($_SESSION['cartId']);
+// }
+
+
+if (array_key_exists("cartId", $_SESSION)) {   /* if the "cartID" from $_SESSION is empty */
+  // session_unset();
+  $cartId = $_SESSION['cartId'];    /* $cartId will take the value of the $_SESSION() */
 } else {
-  $cartId = intval($_SESSION['cartId']);
-}
+  // session_unset();
+  $cartId = false;                  /* $cartId will not exist */
+};
 
 $query = "DELETE FROM cartItems WHERE productID = " . $id;
 
