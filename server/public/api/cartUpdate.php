@@ -22,7 +22,7 @@ if ($jsonBody["id"]) {          // if $jsonBody["id"] exists, proceed. Making th
 }
 
 // var_dump($jsonBody["count"]);
-// this is to grab the count of each item
+// this is to grab the count of each item from this.state.count, not from item.product_id
 if ($jsonBody["count"]) {
   $count = $jsonBody["count"];
 } else {
@@ -35,11 +35,6 @@ if (array_key_exists("cartId", $_SESSION)) {   /* if the "cartID" from $_SESSION
 } else {
   $cartId = false;                             /* $cartId will not exist */
 };
-
-
-// UPDATE `cartItems` SET `count` = '50' WHERE `cartItems`.`id` = 75;
-
-
 
 $query = "UPDATE cartItems SET count = {$count} WHERE productID = ${id}";
 
