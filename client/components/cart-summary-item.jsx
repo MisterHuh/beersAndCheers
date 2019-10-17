@@ -105,7 +105,7 @@ class CartSummaryItem extends React.Component {
             <img src={this.props.item.image} alt="img" className="img-fluid " style={imgSize} />
           </div>
 
-          <div className="d-flex flex-column justify-content-center  text-left w-75">
+          <div className="d-flex flex-column justify-content-center ml-2 text-left w-75">
 
             {/* <div className="h-25 " style={fontSize}> */}
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
@@ -127,7 +127,7 @@ class CartSummaryItem extends React.Component {
 
             {/* <div className="h-50 "> */}
             <div className="ml-4 my-2 ">
-              <Button outline color="primary" className="mr-4" onClick={() => this.updateCart()}>Update</Button>
+              <Button outline color="success" className="mr-4" onClick={() => this.updateCart()}>Update</Button>
               <Button outline color="danger" className="ml-4" onClick={() => this.toggle()}>Remove</Button>
             </div>
 

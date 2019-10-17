@@ -49,7 +49,7 @@ export default class CheckoutForm extends React.Component {
           </div> {/* billingInfo container */}
 
           <div id="pricingDetails" className="border border-secondary w-50">
-            <h3 className="border border-dark">Summary</h3>
+            <h2 className="border border-dark">Summary</h2>
 
             <div className="border border-danger mx-3 mt-3">
               <h4 className="border border-success d-inline">Price <div className="border broder-success d-inline float-right">${(price / 100).toFixed(2)}</div> </h4>
