@@ -46,7 +46,7 @@ export default class App extends React.Component {
         this.setState({ cart }, this.getCartQuantity(cart));
       })
       .catch(error => {
-        console.error('delete error: ', error);
+        // console.error('delete error: ', error);
       });
   }
 
@@ -119,9 +119,9 @@ export default class App extends React.Component {
     } else if (currentView === 'details') {
       displayView = <ProductDetails setView={this.setView} id={this.state.view.id} addToCart={this.addToCart} />;
     } else if (currentView === 'cart') {
-      displayView = <CartSummary setView={this.setView} cart={this.state.cart} cartQuantity={this.state.cartQuantity} deleteCartItems={this.deleteCartItems} updateCartItems={this.updateCartItems} retrieveCart={this.retrieveCart} />;
+      displayView = <CartSummary setView={this.setView} view={this.state.view.name} cart={this.state.cart} cartQuantity={this.state.cartQuantity} deleteCartItems={this.deleteCartItems} updateCartItems={this.updateCartItems} retrieveCart={this.retrieveCart} />;
     } else if (currentView === 'checkout') {
-      displayView = <CheckoutForm setView={this.setView} cart={this.state.cart} />;
+      displayView = <CheckoutForm setView={this.setView} view={this.state.view.name} cart={this.state.cart} />;
     }
     return (
       <div className="border border-dark">

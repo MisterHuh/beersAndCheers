@@ -1,6 +1,7 @@
 import React from 'react';
-import FormBody from './formBody';
-// import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { FormBody } from './formBody';
+import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import CartSummaryItem from './cart-summary-item';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -34,13 +35,21 @@ export default class CheckoutForm extends React.Component {
 
       <div className="d-flex flex-column border border-primary p-5" style={containerSize}>
 
-        <div className="d-flex flex-row border border-danger">
+        <h3 className="border border-dark">Checkout</h3>
+
+        <div className="d-flex flex-row">
 
           <div id="billingInfo" className="border border-danger w-50 d-flex flex-column">  {/* make sure to use the correct props for id */}
-
-          </div>
+            <h3 className="border border-dark">Shipping Info</h3>
+            <div className="mx-3">
+              <FormBody />
+            </div>
+            <h3 className="border border-dark">Payment Info</h3>
+            {/* <FormBody /> */}
+          </div> {/* billingInfo container */}
 
           <div id="pricingDetails" className="border border-secondary w-50">
+            <h3 className="border border-dark">Summary</h3>
 
             <div className="border border-danger mx-3 mt-3">
               <h4 className="border border-success d-inline">Price <div className="border broder-success d-inline float-right">${(price / 100).toFixed(2)}</div> </h4>
@@ -68,8 +77,16 @@ export default class CheckoutForm extends React.Component {
                 <Button onClick={() => this.props.setView('catalog', '')} className="w-100 border border-danger bg-success">Place Order</Button>
               </div>
             </div>
-          </div>
 
+            <div>
+              {this.props.cart.map(item => {
+                return (
+                  <CartSummaryItem setView={this.props.setView} view={this.props.view} key={item.product_Id} item={item} deleteCartItems={this.props.deleteCartItems} updateCartItems={this.props.updateCartItems} retrieveCart={this.props.retrieveCart} />
+                );
+              })}
+            </div>
+
+          </div> {/* pricingDetails table */}
         </div>
 
       </div>

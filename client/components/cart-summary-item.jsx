@@ -84,61 +84,123 @@ class CartSummaryItem extends React.Component {
       height: '100%'
     };
 
-    return (
-      <Card className="d-flex flex-row rounded m-3" key={this.props.key}>
+    let currentView = this.props.view;
+    console.log('current view is: ', currentView);
 
-        <div style={imgWrapper} className="border border-success text-center">
-          <CardImg src={this.props.item.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
-        </div>
+    if (currentView === 'cart') {
+      return (
+        <Card className="d-flex flex-row rounded m-3" key={this.props.key}>
 
-        <div className="w-75  text-center">
-
-          <div className="h-25 border border-dark" style={fontSize}>
-            <div className="h-50 font-weight-bold">{this.props.item.name}</div>
-            <div className="h-50 font-weight-bold">{this.props.item.brewery}</div>
+          <div style={imgWrapper} className="border border-success text-center">
+            <CardImg src={this.props.item.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
           </div>
 
-          <div className="h-25 border border-dark" style={fontSize}>
-            <div className="h-50">{'$' + ((this.props.item.price) / 100).toFixed(2)}</div>
-            <ButtonGroup>
-              <Button onClick={this.decrementQuantity} className="border border-dark ">-</Button>
-              <div className="border border-dark d-inline h-100 px-3">{this.state.count}</div>
-              <Button onClick={this.incrementQuantity} className="border border-dark ">+</Button>
-            </ButtonGroup>
-          </div>
+          <div className="w-75  text-center">
 
-          <div className="h-50 border border-dark">
-            <Button color="success" className="m-5" onClick={() => this.updateCart() }>Update</Button>
-            <Button color="danger" className="m-5" onClick={() => this.toggle() }>Remove</Button>
+            <div className="h-25 border border-dark" style={fontSize}>
+              <div className="h-50 font-weight-bold">{this.props.item.name}</div>
+              <div className="h-50 font-weight-bold">{this.props.item.brewery}</div>
+            </div>
 
-            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-              <ModalHeader toggle={this.toggle}>Remove From Cart</ModalHeader>
-              <ModalBody style={modalBodyWrapper}>
-                <div className="border border-danger d-flex flex-row" style={modalWrapper}>
-                  <div className="border border-dark w-50 text-center" style={modalContainer}>
-                    <img src={this.props.item.image} alt="beerImg" className="border border-dark" style={modalImgContainer} />
-                  </div>
-                  <div className="border border-dark w-50 text-center">
-                    <div className="border border-dark h-25" >USE THE SAME FORMAT</div>
-                    <div className="border border-dark h-25">FROM THE SAME MODAL USED </div>
-                    <div className="border border-dark h-25">IN <strong>PRODUCT-DETAILS</strong> COMPONENT</div> {/* make sure to use this.state.count for qty */}
-                    <div className="border border-dark h-25">MAYBE MAKE IT SIMPLER
+            <div className="h-25 border border-dark" style={fontSize}>
+              <div className="h-50">{'$' + ((this.props.item.price) / 100).toFixed(2)}</div>
+              <ButtonGroup>
+                <Button onClick={this.decrementQuantity} className="border border-dark ">-</Button>
+                <div className="border border-dark d-inline h-100 px-3">{this.state.count}</div>
+                <Button onClick={this.incrementQuantity} className="border border-dark ">+</Button>
+              </ButtonGroup>
+            </div>
+
+            <div className="h-50 border border-dark">
+              <Button color="success" className="m-5" onClick={() => this.updateCart()}>Update</Button>
+              <Button color="danger" className="m-5" onClick={() => this.toggle()}>Remove</Button>
+
+              <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                <ModalHeader toggle={this.toggle}>Remove From Cart</ModalHeader>
+                <ModalBody style={modalBodyWrapper}>
+                  <div className="border border-danger d-flex flex-row" style={modalWrapper}>
+                    <div className="border border-dark w-50 text-center" style={modalContainer}>
+                      <img src={this.props.item.image} alt="beerImg" className="border border-dark" style={modalImgContainer} />
+                    </div>
+                    <div className="border border-dark w-50 text-center">
+                      <div className="border border-dark h-25" >USE THE SAME FORMAT</div>
+                      <div className="border border-dark h-25">FROM THE SAME MODAL USED </div>
+                      <div className="border border-dark h-25">IN <strong>PRODUCT-DETAILS</strong> COMPONENT</div> {/* make sure to use this.state.count for qty */}
+                      <div className="border border-dark h-25">MAYBE MAKE IT SIMPLER
                     AND REMEMBER TO KEEP THE SYTLE ATTRIBUTES THE SAME TOO</div>
+                    </div>
                   </div>
-                </div>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="success" onClick={() => this.closeModal()}>Keep In Cart</Button>
-                <Button color="danger" onClick={() => this.removeItems()}>Remove From Cart</Button>
-              </ModalFooter>
-            </Modal>
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="success" onClick={() => this.closeModal()}>Keep In Cart</Button>
+                  <Button color="danger" onClick={() => this.removeItems()}>Remove From Cart</Button>
+                </ModalFooter>
+              </Modal>
+
+            </div>
 
           </div>
 
-        </div>
+        </Card>
+      );
+    } else {
+      return (
+        <Card className="d-flex flex-row rounded m-3" key={this.props.key}>
 
-      </Card>
-    );
+          <div style={imgWrapper} className="border border-success text-center">
+            <CardImg src={this.props.item.image} alt="img" className="img-fluid border border-danger" style={imgSize} />
+          </div>
+
+          <div className="w-75  text-center">
+
+            <div className="h-25 border border-dark" style={fontSize}>
+              <div className="h-50 font-weight-bold">{this.props.item.name}</div>
+              <div className="h-50 font-weight-bold">{this.props.item.brewery}</div>
+            </div>
+
+            <div className="h-25 border border-dark" style={fontSize}>
+              <div className="h-50">{'$' + ((this.props.item.price) / 100).toFixed(2)}</div>
+              <ButtonGroup>
+                <Button onClick={this.decrementQuantity} className="border border-dark ">-</Button>
+                <div className="border border-dark d-inline h-100 px-3">{this.state.count}</div>
+                <Button onClick={this.incrementQuantity} className="border border-dark ">+</Button>
+              </ButtonGroup>
+            </div>
+
+            <div className="h-50 border border-dark">
+              <Button color="success" className="m-5" onClick={() => this.updateCart()}>Update</Button>
+              <Button color="danger" className="m-5" onClick={() => this.toggle()}>Remove</Button>
+
+              <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                <ModalHeader toggle={this.toggle}>Remove From Cart</ModalHeader>
+                <ModalBody style={modalBodyWrapper}>
+                  <div className="border border-danger d-flex flex-row" style={modalWrapper}>
+                    <div className="border border-dark w-50 text-center" style={modalContainer}>
+                      <img src={this.props.item.image} alt="beerImg" className="border border-dark" style={modalImgContainer} />
+                    </div>
+                    <div className="border border-dark w-50 text-center">
+                      <div className="border border-dark h-25" >USE THE SAME FORMAT</div>
+                      <div className="border border-dark h-25">FROM THE SAME MODAL USED </div>
+                      <div className="border border-dark h-25">IN <strong>PRODUCT-DETAILS</strong> COMPONENT</div> {/* make sure to use this.state.count for qty */}
+                      <div className="border border-dark h-25">MAYBE MAKE IT SIMPLER
+                    AND REMEMBER TO KEEP THE SYTLE ATTRIBUTES THE SAME TOO</div>
+                    </div>
+                  </div>
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="success" onClick={() => this.closeModal()}>Keep In Cart</Button>
+                  <Button color="danger" onClick={() => this.removeItems()}>Remove From Cart</Button>
+                </ModalFooter>
+              </Modal>
+
+            </div>
+
+          </div>
+
+        </Card>
+      );
+    }
+
   }
 
 }
