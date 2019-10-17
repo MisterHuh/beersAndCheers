@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class CartSummaryItem extends React.Component {
   constructor(props) {
@@ -106,7 +106,7 @@ class CartSummaryItem extends React.Component {
             <img src={this.props.item.image} alt="img" className="img-fluid " style={imgSize} />
           </div>
 
-          <div className="d-flex flex-column justify-content-center ml-2 text-left w-75">
+          <div className=" d-flex flex-column justify-content-center align-items-flex-end pt-5 ml-2 text-left w-75">
 
             {/* <div className="h-25 " style={fontSize}> */}
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
@@ -114,15 +114,17 @@ class CartSummaryItem extends React.Component {
             {/* </div> */}
 
             {/* <div className="h-25 " style={fontSize}> */}
-            <div className=" ml-4 my-2">{'$' + ((this.props.item.price) / 100).toFixed(2)}</div>
-            <div className=" ml-4 my-2">
-              {/* <ButtonGroup> */}
-              {/* <Button onClick={this.decrementQuantity} className=" ">-</Button> */}
-              <i onClick={this.decrementQuantity} className="fas fa-minus-square"></i>
-              <div className=" d-inline px-2">{this.state.count}</div>
-              {/* <Button onClick={this.incrementQuantity} className=" ">+</Button> */}
-              <i onClick={this.incrementQuantity} className="fas fa-plus-square"></i>
-              {/* </ButtonGroup> */}
+            <div className=" mx-3 my-2">
+              <div className="d-inline ml-2">{'$' + ((this.props.item.price) / 100).toFixed(2)}</div>
+              <div className="d-inline mr-2 float-right">
+                {/* <ButtonGroup> */}
+                {/* <Button onClick={this.decrementQuantity} className=" ">-</Button> */}
+                <i onClick={this.decrementQuantity} className="fas fa-minus-square"></i>
+                <div className=" d-inline px-2"><strong>{this.state.count}</strong></div>
+                {/* <Button onClick={this.incrementQuantity} className=" ">+</Button> */}
+                <i onClick={this.incrementQuantity} className="fas fa-plus-square"></i>
+                {/* </ButtonGroup> */}
+              </div>
             </div>
             {/* </div> */}
 
@@ -180,7 +182,7 @@ class CartSummaryItem extends React.Component {
 
             {/* <div className="h-25 " style={fontSize}> */}
             <div className="ml-4 my-2 d-inline">{'$' + ((this.props.item.price) / 100).toFixed(2)}
-              <div className="d-inline float-right px-2">Quantity: {this.state.count}</div>
+              <div className="d-inline float-right px-2 mr-3">Quantity: <strong>{this.state.count}</strong></div>
             </div>
             {/* <div className="border border-danger ml-4 my-2 d-inline"> */}
             {/* </div> */}
