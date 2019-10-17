@@ -108,6 +108,7 @@ if ($cartId === false) {
 /* make a query for the cartItems table */
 $cartItemQuery = "INSERT INTO cartItems
                   SET cartItems.count = $count,
+                      -- cartItems.brewery = $brewery,
                       cartItems.productID = $id,
                       cartItems.price = $price,
                       cartItems.added = NOW(),

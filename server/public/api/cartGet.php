@@ -29,7 +29,7 @@ if (empty($_SESSION['cartId'])) {
     * productName
     * productImage
 */
-$query = "SELECT c.cartID AS cart_id, p.id AS product_id, p.name, c.count, c.price, p.image
+$query = "SELECT c.cartID AS cart_id, p.id AS product_id, p.name, c.count, c.price, p.image, p.brewery
 	          FROM cartItems AS c
             INNER JOIN products AS p
             ON c.productID = p.id
