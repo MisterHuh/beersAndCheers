@@ -3,14 +3,14 @@ import { Header } from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import { CartSummary } from './cart-summary';
-import CheckoutForm from './checkout-form';
+import Checkout from './checkout';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: {
-        name: 'cart',
+        name: 'checkout',
         id: ''
       },
       cart: [],
@@ -121,7 +121,7 @@ export default class App extends React.Component {
     } else if (currentView === 'cart') {
       displayView = <CartSummary setView={this.setView} view={this.state.view.name} cart={this.state.cart} cartQuantity={this.state.cartQuantity} deleteCartItems={this.deleteCartItems} updateCartItems={this.updateCartItems} retrieveCart={this.retrieveCart} />;
     } else if (currentView === 'checkout') {
-      displayView = <CheckoutForm setView={this.setView} view={this.state.view.name} cart={this.state.cart} />;
+      displayView = <Checkout setView={this.setView} view={this.state.view.name} cart={this.state.cart} />;
     }
     return (
       <div className="border border-dark">

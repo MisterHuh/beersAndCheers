@@ -26,7 +26,7 @@ export const Header = props => {
   if (currentView === 'catalog') {
     return (
       <React.Fragment>
-        <Navbar color="light" light expand="md">
+        <Navbar color="light" light expand="md" className="sticky-top">
           <NavbarBrand onClick={() => props.setView('catalog', '')}>Beers & Cheers</NavbarBrand>
           <Collapse navbar>
             <Nav className="ml-auto" navbar>
