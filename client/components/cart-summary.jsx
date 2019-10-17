@@ -37,14 +37,14 @@ export const CartSummary = props => {
   } else {
     return (
       <React.Fragment> {/* is this React.Fragment necessary? */}
-        <div className="d-flex flex-column border border-primary p-5" style={containerSize}>
+        <div className="d-flex flex-column border border-primary px-5" style={containerSize}>
 
-          <h3 className="border border-dark">Cart Summary</h3>
+          <h1 className="border-bottom my-4 text-center">Cart Summary</h1>
 
-          <div className="d-flex flex-row">
+          <div className="d-flex flex-row mt-2">
 
-            <div id="productDetails" className="border border-danger w-50 d-flex flex-column">  {/* make sure to use the correct props for id */}
-              <h3 className="w-50 d-inline border border-dark">Cart <div className="d-inline text-muted">({cartQuantity} {itemsVerbiage})</div></h3>
+            <div id="productDetails" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
+              <h3 className="d-inline border-bottom">Cart <div className="d-inline text-muted">({cartQuantity} {itemsVerbiage})</div></h3>
 
               {props.cart.map(item => {
                 return (
@@ -53,9 +53,9 @@ export const CartSummary = props => {
               })}
             </div>
 
-            <div id="pricingDetails" className="border border-secondary w-50">
+            <div id="pricingDetails" className="w-50 ml-4">
 
-              <h3 className="border border-dark">Summary</h3>
+              <h3 className="border-bottom">Summary</h3>
 
               <div className="border border-danger mx-3 mt-3">
                 <h4 className="border border-success d-inline">Price <div className="border broder-success d-inline float-right">${(price / 100).toFixed(2)}</div> </h4>
