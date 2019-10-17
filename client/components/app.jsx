@@ -10,7 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'cart',
+        name: 'checkout',
         id: ''
       },
       cart: [],
@@ -121,7 +121,7 @@ export default class App extends React.Component {
     } else if (currentView === 'cart') {
       displayView = <CartSummary setView={this.setView} cart={this.state.cart} cartQuantity={this.state.cartQuantity} deleteCartItems={this.deleteCartItems} updateCartItems={this.updateCartItems} retrieveCart={this.retrieveCart} />;
     } else if (currentView === 'checkout') {
-      displayView = <CheckoutForm setView={this.setView} />;
+      displayView = <CheckoutForm setView={this.setView} cart={this.state.cart} />;
     }
     return (
       <div className="border border-dark">

@@ -1,4 +1,6 @@
 import React from 'react';
+import FormBody from './formBody';
+// import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -9,8 +11,69 @@ export default class CheckoutForm extends React.Component {
   }
 
   render() {
+
+    const containerSize = {
+      width: '100wh'
+    };
+
+    let cart = this.props.cart;
+    let price = 0;
+    let taxRate = 0.075;
+    let taxes = 0;
+    let totalAmount = 0;
+
+    if (cart.length > 0) {
+      for (let index = 0; index < cart.length; index++) {
+        price += (cart[index].count * cart[index].price);
+      }
+      taxes = price * taxRate;
+      totalAmount = price + taxes;
+    }
+
     return (
-      <div>CHECKOUTFORM page</div>
+
+      <div className="d-flex flex-column border border-primary p-5" style={containerSize}>
+
+        <div className="d-flex flex-row border border-danger">
+
+          <div id="billingInfo" className="border border-danger w-50 d-flex flex-column">  {/* make sure to use the correct props for id */}
+
+          </div>
+
+          <div id="pricingDetails" className="border border-secondary w-50">
+
+            <div className="border border-danger mx-3 mt-3">
+              <h4 className="border border-success d-inline">Price <div className="border broder-success d-inline float-right">${(price / 100).toFixed(2)}</div> </h4>
+            </div>
+
+            <div className="border border-danger mx-3 mt-3">
+              <h4 id="shipping" className="border border-success d-inline">Shipping <div className="border broder-success d-inline float-right">Free</div> </h4>
+            </div>
+
+            <div className="border border-danger mx-3 mt-3">
+              <h4 id="taxes" className="border border-success d-inline">Taxes <div className="border broder-success d-inline float-right">${(taxes / 100).toFixed(2)}</div> </h4>
+            </div>
+
+            <hr />
+
+            <div className="border border-danger mx-3 my-3">
+              <h4 className="border border-success d-inline">Total <div className="border broder-success d-inline float-right">${(totalAmount / 100).toFixed(2)}</div> </h4>
+            </div>
+
+            <div>
+              <div className="border border-success">
+                <Button onClick={() => this.props.setView('cart', '')} className="w-100 border border-dark mb-3 bg-info">Go Back To Cart</Button>
+              </div>
+              <div className="border border-success">
+                <Button onClick={() => this.props.setView('catalog', '')} className="w-100 border border-danger bg-success">Place Order</Button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
     );
   }
 }
