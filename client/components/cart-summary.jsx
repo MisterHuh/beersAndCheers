@@ -37,7 +37,7 @@ export const CartSummary = props => {
   } else {
     return (
       <React.Fragment> {/* is this React.Fragment necessary? */}
-        <div className="d-flex flex-column border border-primary px-5" style={containerSize}>
+        <div className="d-flex flex-column px-5" style={containerSize}>
 
           <h1 className="border-bottom my-3 text-center pb-2">Cart Summary</h1>
 
