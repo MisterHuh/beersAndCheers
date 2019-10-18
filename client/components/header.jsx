@@ -1,5 +1,4 @@
 import React from 'react';
-import { Carousel } from './carousel';
 import {
   Badge,
   Collapse,
@@ -23,18 +22,20 @@ export const Header = props => {
 
   let carouselDisplay;
   // currentView === 'catalog' ? carouselDisplay = <Carousel /> : false;
+  // uncomment the above line to include carousel
 
   return (
     <React.Fragment>
       <Navbar color="light" light expand="md" className="sticky-top">
         <NavbarBrand onClick={() => props.setView('catalog', '')}>Beers & Cheers</NavbarBrand>
-        <Collapse navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink onClick={() => props.setView('cart', '')}>Cart <Badge pill>{cartQuantity}</Badge></NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
+        <Nav className="ml-auto" navbar>
+          <NavItem>
+            <NavLink onClick={() => props.setView('about', '')}>About</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink onClick={() => props.setView('cart', '')}>Cart <Badge pill>{cartQuantity}</Badge></NavLink>
+          </NavItem>
+        </Nav>
       </Navbar>
       {carouselDisplay}
     </React.Fragment>

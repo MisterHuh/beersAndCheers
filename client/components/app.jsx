@@ -5,13 +5,14 @@ import ProductDetails from './product-details';
 import { CartSummary } from './cart-summary';
 import Checkout from './checkout';
 import { Confirmation } from './confirmation';
+import { About } from './about';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: {
-        name: 'checkout',
+        name: 'about',
         id: ''
       },
       cart: [],
@@ -180,6 +181,8 @@ export default class App extends React.Component {
     } else if (currentView === 'confirmation') {
       // displayView = <Confirmation productReceipt={this.state.productReceipt} shippingReceipt={this.state.shippingReceipt} billingReceipt={this.state.billingReceipt} orderReceipt={this.state.orderReceipt}/>;
       displayView = <Confirmation productReceipt={this.state.productReceipt} receipt={this.state.receipt} />;
+    } else if (currentView === 'about') {
+      displayView = <About />;
     }
     return (
       <div className="border border-dark" >
