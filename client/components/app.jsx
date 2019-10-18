@@ -11,11 +11,12 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'cart',
+        name: 'catalog',
         id: ''
       },
       cart: [],
-      cartQuantity: 0
+      cartQuantity: 0,
+      receipt: []
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -107,7 +108,10 @@ export default class App extends React.Component {
   }
 
   placeOrder(product) {
+    // console.log('placeOrder param product is ', product);
     console.log('cartId is ', product[0].cart_id);
+
+    this.setState({ receipt: product });
 
     const req = {
       method: 'DELETE',
@@ -143,7 +147,7 @@ export default class App extends React.Component {
     } else if (currentView === 'checkout') {
       displayView = <Checkout setView={this.setView} view={this.state.view.name} cart={this.state.cart} placeOrder={this.placeOrder}/>;
     } else if (currentView === 'confirmation') {
-      displayView = <Confirmation />;
+      displayView = <Confirmation receipt={this.state.receipt} />;
     }
     return (
       <div className="border border-dark">

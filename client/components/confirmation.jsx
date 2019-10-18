@@ -1,7 +1,9 @@
 import React from 'react';
 
-export const Confirmation = () => {
+export const Confirmation = props => {
+  let receipt = props.receipt;
+
   return (
-    <h1>CONFImation Page</h1>
+    <h1>{receipt}</h1>
   );
 };

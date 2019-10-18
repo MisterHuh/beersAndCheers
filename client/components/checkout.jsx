@@ -27,6 +27,7 @@ export default class Checkout extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   placeOrder() {
@@ -51,7 +52,41 @@ export default class Checkout extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  //   this.setState({
+  //     firstName: '',
+  //     lastName: '',
+  //     eMail: '',
+  //     phoneNumber: '',
+  //     streetAddress: '',
+  //     city: '',
+  //     state: '',
+  //     zipCode: '',
+  //     creditCardNumber: '',
+  //     fullName: '',
+  //     monthYear: '',
+  //     cvc: ''
+  //   });
+  // }
+
   render() {
+    let cart = this.props.cart;
+    let price = 0;
+    let count = 0;
+    let taxRate = 0.075;
+    let taxes = 0;
+    let totalAmount = 0;
+
+    if (cart.length > 0) {
+      for (let index = 0; index < cart.length; index++) {
+        price += (cart[index].count * cart[index].price);
+        count += parseInt(cart[index].count);
+      }
+      taxes = price * taxRate;
+      totalAmount = price + taxes;
+    }
+
     const containerSize = {
       width: '100wh'
     };
@@ -71,7 +106,7 @@ export default class Checkout extends React.Component {
     console.log('cart is: ', this.props.cart);
 
     return (
-      <div className="d-flex flex-column border border-primary px-5" style={containerSize}>
+      <div className="d-flex flex-column px-5" style={containerSize}>
         <h1 className="border-bottom my-3 text-center pb-2">Checkout</h1>
         <div className="d-flex flex-row mt-2">
           <div id="personalInfo" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
@@ -203,13 +238,13 @@ export default class Checkout extends React.Component {
 
                       <div className="mt-3 ">
                         <h6 className="border-top pt-3">Order Summary</h6>
-                        <div>Total Amount: $123.22</div>
-                        <div>Total Items: 12</div>
+                        <div>Total Amount: <strong>${(totalAmount / 100).toFixed(2)}</strong></div>
+                        <div>Total Items: <strong>{count}</strong></div>
 
                       </div>{/* end of total amount & count */}
 
                       <div className="mt-3 ">
-                        <h6 className="border-top pt-3">DISCLAIMER</h6>
+                        <h6 className="border-top pt-3">Disclaimer</h6>
                         <Label check>
                           <Input type="checkbox" />{' '}
                           I agree that this was not a real purchase
