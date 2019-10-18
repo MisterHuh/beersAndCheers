@@ -126,7 +126,8 @@ export default class Checkout extends React.Component {
             <PriceCalculation
               setView={this.props.setView}
               view={this.props.view}
-              cart={this.props.cart} />
+              cart={this.props.cart}
+              placeOrder={this.props.placeOrder} />
             <div className="">
               {this.props.cart.map(item => {
                 return (
