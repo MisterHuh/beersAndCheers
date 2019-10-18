@@ -2,7 +2,7 @@ import React from 'react';
 // import { ShippingForm, BillingForm } from './forms';
 import { PriceCalculation } from './priceCalculation';
 import CartSummaryItem from './cart-summary-item';
-import { Button, Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Col, Row, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default class Checkout extends React.Component {
   constructor(props) {
@@ -19,10 +19,27 @@ export default class Checkout extends React.Component {
       creditCardNumber: '',
       fullName: '',
       monthYear: '',
-      cvc: ''
+      cvc: '',
+      modal: false
     };
 
+    this.toggle = this.toggle.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.handleInput = this.handleInput.bind(this);
+  }
+
+  placeOrder() {
+    this.props.placeOrder();
+    this.toggle();
+  }
+
+  toggle() {
+    this.setState({ modal: !this.state.modal });
+  }
+
+  closeModal() {
+    this.toggle();
+    this.props.setView('checkout', '');
   }
 
   handleInput(e) {
@@ -33,6 +50,18 @@ export default class Checkout extends React.Component {
   render() {
     const containerSize = {
       width: '100wh'
+    };
+    const modalBodyWrapper = {
+      height: '50vh'
+    };
+    const modalWrapper = {
+      height: '100%'
+    };
+    const modalContainer = {
+      height: '100%'
+    };
+    const modalImgContainer = {
+      height: '100%'
     };
 
     return (
@@ -134,7 +163,31 @@ export default class Checkout extends React.Component {
                 <Button outline color="primary" onClick={() => this.props.setView('cart', '')} className="w-50">Go Back To Cart</Button>
               </div>
               <div className="mx-3 mt-3 mb-5">
-                <Button outline color="secondary" onClick={() => this.props.setView('orderPlaced', '')} className="w-50">Place Order</Button>
+                <Button outline color="secondary" onClick={this.toggle} className="w-50">Place Order</Button>
+
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                  <ModalHeader toggle={this.toggle}>Order Confirmation</ModalHeader>
+                  {/* <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(product, quantity)}>Added To Cart!</ModalHeader> */}
+                  <ModalBody style={modalBodyWrapper}>
+                    <div className="border border-danger d-flex flex-row" style={modalWrapper}>
+                      TEST
+                      {/* <div className="border border-dark w-50 text-center" style={modalContainer}>
+                        <img src={product.image} alt="beerImg" className="border border-dark" style={modalImgContainer} />
+                      </div>
+                      <div className="border border-dark w-50 text-center">
+                        <div className="border border-dark h-25" >{product.name}</div>
+                        <div className="border border-dark h-25">{product.brewery}</div>
+                        <div className="border border-dark h-25">{'$' + ((product.price) / 100).toFixed(2)}</div>
+                        <div className="border border-dark h-25">Quantity: {quantity}</div>
+                      </div> */}
+                    </div>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="primary" onClick={() => this.closeModal() }>Return To Checkout</Button>
+                    <Button color="secondary" onClick={() => this.props.setView('confirmation', '')}>Place Order!</Button>
+                  </ModalFooter>
+                </Modal>
+
               </div>
             </div>
 

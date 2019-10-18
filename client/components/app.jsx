@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import { CartSummary } from './cart-summary';
 import Checkout from './checkout';
+import { Confirmation } from './confirmation';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -140,6 +141,8 @@ export default class App extends React.Component {
       displayView = <CartSummary setView={this.setView} view={this.state.view.name} cart={this.state.cart} cartQuantity={this.state.cartQuantity} deleteCartItems={this.deleteCartItems} updateCartItems={this.updateCartItems} retrieveCart={this.retrieveCart} />;
     } else if (currentView === 'checkout') {
       displayView = <Checkout setView={this.setView} view={this.state.view.name} cart={this.state.cart} placeOrder={this.placeOrder}/>;
+    } else if (currentView === 'confirmation') {
+      displayView = <Confirmation />;
     }
     return (
       <div className="border border-dark">
