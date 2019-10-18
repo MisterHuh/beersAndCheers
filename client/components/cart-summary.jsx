@@ -18,7 +18,7 @@ export const CartSummary = props => {
     return (
       <React.Fragment>
         <div className="h1 text-center mb-3">Your Cart Is Empty!</div>
-        <img src={imgSrc} alt="emptyCart" className="mx-auto d-block " />
+        <img src={imgSrc} alt="emptyCart" className="mx-auto d-block" onClick={() => props.setView('catalog', '')} />
       </React.Fragment>
     );
   } else {
