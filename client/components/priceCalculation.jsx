@@ -17,23 +17,23 @@ export const PriceCalculation = props => {
     totalAmount = price + taxes;
   }
 
-  let view = props.view;
-  let topButtonMessage;
-  let bottomButtonMessage;
-  let topView;
-  let bottomView;
+  // let view = props.view;
+  // let topButtonMessage;
+  // let bottomButtonMessage;
+  // let topView;
+  // let bottomView;
 
-  if (view === 'cart') {
-    topButtonMessage = 'Continue Shopping';
-    bottomButtonMessage = 'Checkout';
-    topView = 'catalog';
-    bottomView = 'checkout';
-  } else if (view === 'checkout') {
-    topButtonMessage = 'Go Back To Cart';
-    bottomButtonMessage = 'Place Order';
-    topView = 'cart';
-    bottomView = 'orderPlaced';
-  }
+  // if (view === 'cart') {
+  //   topButtonMessage = 'Continue Shopping';
+  //   bottomButtonMessage = 'Checkout';
+  //   topView = 'catalog';
+  //   bottomView = 'checkout';
+  // } else if (view === 'checkout') {
+  //   topButtonMessage = 'Go Back To Cart';
+  //   bottomButtonMessage = 'Place Order';
+  //   topView = 'cart';
+  //   bottomView = 'orderPlaced';
+  // }
 
   return (
     <div id="pricingDetails" className="ml-4">

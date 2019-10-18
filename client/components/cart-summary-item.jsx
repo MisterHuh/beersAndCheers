@@ -82,6 +82,18 @@ class CartSummaryItem extends React.Component {
     const modalImgContainer = {
       height: '100%'
     };
+    const modalCardSize = {
+      height: '20vh',
+      width: '15vw',
+      fontSize: '75%'
+    };
+    const modalImgWrapper = {
+      width: '5vh'
+    };
+    const modalImgSize = {
+      width: '100%',
+      height: '100%'
+    };
 
     let currentView = this.props.view;
     // console.log('LOADING COUNTER');
@@ -152,6 +164,21 @@ class CartSummaryItem extends React.Component {
         </div>
         // </div>
       );
+    } else if (this.props.modalStatus) {
+      return (
+        <div className="border border-danger d-flex flex-row border-top flex-wrap w-50" key={this.props.key} style={modalCardSize} > {/* mx-3 p-5 */}
+          <div className=" text-center" style={modalImgWrapper}>
+            <img src={this.props.item.image} alt="img" className="img-fluid " style={modalImgSize} />
+          </div>
+          <div className="d-flex flex-column justify-content-center ml-2 text-left w-75">
+            <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
+            <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
+            <div className="ml-4 my-2 d-inline">{'$' + ((this.props.item.price) / 100).toFixed(2)}
+              <div className="d-inline float-right px-2 mr-3">Quantity: <strong>{this.state.count}</strong></div>
+            </div>
+          </div>
+        </div>
+      );
     } else if (currentView === 'checkout') {
       return (
 
@@ -166,7 +193,7 @@ class CartSummaryItem extends React.Component {
 
             {/* <div className="h-25 " style={fontSize}> */}
             {/* <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div> */}
-            <div className=" font-weight-bold ml-4 my-2">Ya FUcking Did It Harry</div>
+            <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
             {/* </div> */}
 

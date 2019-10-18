@@ -8,19 +8,19 @@ export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
+      firstName: 'Jae',
+      lastName: 'Huh',
       eMail: '',
       phoneNumber: '',
-      streetAddress: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      creditCardNumber: '',
-      fullName: '',
-      monthYear: '',
-      cvc: '',
-      modal: false
+      streetAddress: '1234 Street',
+      city: 'La Habra',
+      state: 'CA',
+      zipCode: '92698',
+      creditCardNumber: '1234567890123456',
+      fullName: 'Jaehyuk Huh',
+      monthYear: '08/12',
+      cvc: '123',
+      modal: true
     };
 
     this.toggle = this.toggle.bind(this);
@@ -38,8 +38,8 @@ export default class Checkout extends React.Component {
   }
 
   closeModal() {
-    this.toggle();
     this.props.setView('checkout', '');
+    this.toggle();
   }
 
   handleInput(e) {
@@ -120,8 +120,11 @@ export default class Checkout extends React.Component {
                     </FormGroup>
                   </Col>
                 </Row>
-              </Form>            </div>
+              </Form>
+            </div>
+
             <h2 className="border-bottom pb-2">Payment Info</h2>
+
             <div className="mt-2 mx-3 mb-4">
               <Form>
                 <FormGroup>
@@ -149,14 +152,14 @@ export default class Checkout extends React.Component {
                 </Row>
               </Form>
             </div>
+
           </div> {/* END billingInfo container */}
 
           <div id="pricing" className="w-50 d-flex flex-column ml-4">
             <PriceCalculation
               setView={this.props.setView}
               view={this.props.view}
-              cart={this.props.cart}
-              placeOrder={this.props.placeOrder} />
+              cart={this.props.cart} />
 
             <div className="text-center pt-1">
               <div className="m-3">
@@ -169,8 +172,60 @@ export default class Checkout extends React.Component {
                   <ModalHeader toggle={this.toggle}>Order Confirmation</ModalHeader>
                   {/* <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(product, quantity)}>Added To Cart!</ModalHeader> */}
                   <ModalBody style={modalBodyWrapper}>
-                    <div className="border border-danger d-flex flex-row" style={modalWrapper}>
-                      TEST
+                    <div className=" d-flex flex-column p-3 text-center" style={modalWrapper}>
+
+                      {/* <div className=" -secondary "> */}
+                      {/* <h5>Please Review Your Order</h5> */}
+
+                      <div className=" d-flex flex-row">
+                        <div className=" w-50">
+                          <h6 className="border-bottom pb-2 mr-2">Shipping Info</h6>
+                          <div>{this.state.firstName} {this.state.lastName}</div>
+                          <div>{this.state.streetAddress}</div>
+                          <div>{this.state.city}, {this.state.state}, {this.state.zipCode}</div>
+
+                        </div>
+                        <div className=" w-50">
+                          <h6 className="border-bottom pb-2 ml-2">Billing Info</h6>
+                          <div>{this.state.fullName}</div>
+                          <div>{this.state.creditCardNumber}</div>
+                          <div>EXP: {this.state.monthYear} <span className="px-2"></span> CVC: {this.state.cvc}</div>
+                        </div>
+
+                        {/* </div> */}
+                      </div> {/* end of billing & shipping */}
+
+                      <div className="mt-3 ">
+                        <h6 className="border-bottom pb-2">Order Summary</h6>
+                        <div>Total Amount: $123.22</div>
+                        <div>Total Items: 12</div>
+
+                      </div>{/* end of total amount & count */}
+
+                      <div className="mt-3 ">
+                        <h6 className="border-bottom pb-2">DISCLAIMER</h6>
+                        <Label check>
+                          <Input type="checkbox" />{' '}
+                          I agree that this was not a real purchase
+                        </Label>
+                      </div>
+
+                      {/* <div>
+                        {this.props.cart.map(item => {
+                          return (
+                            <CartSummaryItem
+                              modalStatus={this.state.modal}
+                              setView={this.props.setView}
+                              view={this.props.view}
+                              key={item.product_Id}
+                              item={item}
+                              deleteCartItems={this.props.deleteCartItems}
+                              updateCartItems={this.props.updateCartItems}
+                              retrieveCart={this.props.retrieveCart} />
+                          );
+                        })}
+                      </div> */}
+
                       {/* <div className="border border-dark w-50 text-center" style={modalContainer}>
                         <img src={product.image} alt="beerImg" className="border border-dark" style={modalImgContainer} />
                       </div>
