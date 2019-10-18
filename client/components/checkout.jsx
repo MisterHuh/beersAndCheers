@@ -24,18 +24,18 @@ export default class Checkout extends React.Component {
       //   monthYear: '',
       //   cvc: ''
       // },
-      firstName: '',
-      lastName: '',
+      firstName: 'Jae',
+      lastName: 'Huh',
       eMail: '',
       phoneNumber: '',
-      streetAddress: ' ',
-      city: '',
-      state: '',
-      zipCode: '',
-      creditCardNumber: '',
-      fullName: '',
-      monthYear: '',
-      cvc: '',
+      streetAddress: '1234 Johnson Street',
+      city: 'La Habra',
+      state: 'CA',
+      zipCode: '92683',
+      creditCardNumber: '1234567890123456',
+      fullName: 'Jaehyuk Huh',
+      monthYear: '08/12',
+      cvc: '142',
       modal: false
     };
 
@@ -47,10 +47,27 @@ export default class Checkout extends React.Component {
   }
 
   placeOrder() {
+
+    let cart = this.props.cart;
+    let price = 0;
+    let count = 0;
+    let taxRate = 0.075;
+    let taxes = 0;
+    let totalAmount = 0;
+
+    if (cart.length > 0) {
+      for (let index = 0; index < cart.length; index++) {
+        price += (cart[index].count * cart[index].price);
+        count += parseInt(cart[index].count);
+      }
+      taxes = price * taxRate;
+      totalAmount = price + taxes;
+    }
+
     let productReceipt = this.props.cart;
 
     let shippingReceipt = {
-      firstname: this.state.firstName,
+      firstName: this.state.firstName,
       lastName: this.state.lastName,
       eMail: this.state.eMail,
       phoneNumber: this.state.phoneNumber,
@@ -67,9 +84,23 @@ export default class Checkout extends React.Component {
       cvc: this.state.cvc
     };
 
-    console.log('placeOrder cartID is: ', this.props.cart[0].cart_id);
+    let orderReceipt = {
+      totalAmount,
+      count
+    };
+
+    const receipt = [
+      shippingReceipt,
+      billingReceipt,
+      orderReceipt
+    ];
+
+    console.log('CHECKOUT receipt is: ', receipt);
+
+    // console.log('placeOrder cartID is: ', this.props.cart[0].cart_id);
     this.props.setView('confirmation', '');
-    this.props.placeOrder(productReceipt, shippingReceipt, billingReceipt);
+    // this.props.placeOrder(productReceipt, shippingReceipt, billingReceipt, orderReceipt);
+    this.props.placeOrder(productReceipt, receipt);
     this.toggle();
   }
 
@@ -106,6 +137,7 @@ export default class Checkout extends React.Component {
   // }
 
   render() {
+
     let cart = this.props.cart;
     let price = 0;
     let count = 0;

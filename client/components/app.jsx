@@ -11,14 +11,18 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'confirmation',
+        name: 'checkout',
         id: ''
       },
       cart: [],
       cartQuantity: 0,
+      // productReceipt: [],
+      // shippingReceipt: {},
+      // billingReceipt: {},
+      // orderReceipt: {}
+
       productReceipt: [],
-      shippingReceipt: {},
-      billingReceipt: {}
+      receipt: []
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -110,11 +114,13 @@ export default class App extends React.Component {
   }
 
   /* this one is correct */
-  placeOrder(productReceipt, shippingReceipt, billingReceipt) {
+  placeOrder(productReceipt, receipt) {
     // console.log('placeOrder param product is ', product);
-    console.log('cartId is ', productReceipt[0].cart_id);
+    // console.log('cartId is ', productReceipt[0].cart_id);
+    // console.log('orderReceipt is: ', orderReceipt);
+    console.log('APP receipt is: ', receipt);
 
-    this.setState({ productReceipt, shippingReceipt, billingReceipt });
+    this.setState({ productReceipt, receipt });
 
     const req = {
       method: 'DELETE',
@@ -172,7 +178,8 @@ export default class App extends React.Component {
     } else if (currentView === 'checkout') {
       displayView = <Checkout setView={this.setView} view={this.state.view.name} cart={this.state.cart} placeOrder={this.placeOrder}/>;
     } else if (currentView === 'confirmation') {
-      displayView = <Confirmation productReceipt={this.state.productReceipt} shippingReceipt={this.state.shippingReceipt} billingReceipt={this.state.billingReceipt}/>;
+      // displayView = <Confirmation productReceipt={this.state.productReceipt} shippingReceipt={this.state.shippingReceipt} billingReceipt={this.state.billingReceipt} orderReceipt={this.state.orderReceipt}/>;
+      displayView = <Confirmation productReceipt={this.state.productReceipt} receipt={this.state.receipt} />;
     }
     return (
       <div className="border border-dark" >

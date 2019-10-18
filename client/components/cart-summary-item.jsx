@@ -96,6 +96,10 @@ class CartSummaryItem extends React.Component {
     };
 
     let currentView = this.props.view;
+
+    // let borderConditional;
+    // currentView === 'confirmation' ? borderConditional = 'border-bottom' : borderConditional = 'border-top';
+
     // console.log('LOADING COUNTER');
 
     if (currentView === 'cart') {
@@ -180,11 +184,12 @@ class CartSummaryItem extends React.Component {
           </div>
         </div>
       );
-    } else if (currentView === 'checkout') {
+    // } else if (currentView === 'checkout' || currentView === 'confirmation') {
+    } else {
       return (
 
         // <div className="border border-dark m-auto" >
-        <div className="d-flex flex-row m-auto border-top p-4 " key={this.props.key} style={cardSize} > {/* mx-3 p-5 */}
+        <div className="d-flex flex-row border-top m-auto p-4 " key={this.props.key} style={cardSize} > {/* mx-3 p-5 */}
 
           <div className=" text-center" style={imgWrapper}>
             <img src={this.props.item.image} alt="img" className="img-fluid " style={imgSize} />
