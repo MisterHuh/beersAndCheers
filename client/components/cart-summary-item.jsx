@@ -70,14 +70,6 @@ class CartSummaryItem extends React.Component {
       width: '100%',
       height: '100%'
     };
-
-    // const countSize = {
-    //   width: '5vw'
-    // };
-
-    const fontSize = {
-      fontSize: '150%'
-    };
     const modalBodyWrapper = {
       height: '50vh'
     };
@@ -92,8 +84,6 @@ class CartSummaryItem extends React.Component {
     };
 
     let currentView = this.props.view;
-    // console.log('current view is: ', currentView);
-    // console.log('item is: ', this.props.item);
     // console.log('LOADING COUNTER');
 
     if (currentView === 'cart') {

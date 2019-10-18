@@ -1,7 +1,6 @@
 import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 import { PriceCalculation } from './priceCalculation';
-import { UncontrolledPopover, PopoverHeader, PopoverBody, Button } from 'reactstrap';
 
 export const CartSummary = props => {
   const imgSrc = 'emptycart.png';
@@ -10,23 +9,9 @@ export const CartSummary = props => {
     width: '100wh'
   };
 
-  let cart = props.cart;
   let cartQuantity = props.cartQuantity;
   let itemsVerbiage;
   cartQuantity === 1 ? itemsVerbiage = 'item' : itemsVerbiage = 'items';
-
-  // let price = 0;
-  // let taxRate = 0.075;
-  // let taxes = 0;
-  // let totalAmount = 0;
-
-  // if (cart.length > 0) {
-  //   for (let index = 0; index < cart.length; index++) {
-  //     price += (cart[index].count * cart[index].price);
-  //   }
-  //   taxes = price * taxRate;
-  //   totalAmount = price + taxes;
-  // }
 
   if (props.cart.length === 0) {
     return (
@@ -38,24 +23,29 @@ export const CartSummary = props => {
   } else {
     return (
       <div className="d-flex flex-column px-5" style={containerSize}>
-
         <h1 className="border-bottom my-3 text-center pb-2">Cart Summary</h1>
-
         <div className="d-flex flex-row mt-2">
-
-          <div id="productDetails" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
-            <h2 className="d-inline border-bottom pb-2">Cart<div className="d-inline text-muted">({cartQuantity} {itemsVerbiage})</div>
+          <div id="cartDetails" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
+            <h2 className="d-inline border-bottom pb-2">Cart <div className="d-inline text-muted">({cartQuantity} {itemsVerbiage})</div>
             </h2>
-
             {props.cart.map(item => {
               return (
-                <CartSummaryItem setView={props.setView} view={props.view} key={item.product_Id} item={item} deleteCartItems={props.deleteCartItems} updateCartItems={props.updateCartItems} retrieveCart={props.retrieveCart} />
+                <CartSummaryItem
+                  setView={props.setView}
+                  view={props.view}
+                  key={item.product_Id}
+                  item={item}
+                  deleteCartItems={props.deleteCartItems}
+                  updateCartItems={props.updateCartItems}
+                  retrieveCart={props.retrieveCart} />
               );
             })}
           </div>
-
-          <div id="calculations" className="w-50 d-flex flex-column ml-4">
-            <PriceCalculation setView={props.setView} view={props.view} cart={props.cart}/>
+          <div id="pricing" className="w-50 d-flex flex-column ml-4">
+            <PriceCalculation
+              setView={props.setView}
+              view={props.view}
+              cart={props.cart}/>
           </div>
 
           {/*
@@ -89,7 +79,6 @@ export const CartSummary = props => {
           </div> */}
 
         </div>
-
       </div>
     );
   }
