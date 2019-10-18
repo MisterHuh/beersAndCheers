@@ -26,7 +26,7 @@ export const CartSummary = props => {
         <h1 className="border-bottom my-3 text-center pb-2">Cart Summary</h1>
         <div className="d-flex flex-row mt-2">
           <div id="cartDetails" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
-            <h2 className="d-inline border-bottom pb-2">Cart<div className="d-inline text-muted">({cartQuantity} {itemsVerbiage})</div>
+            <h2 className="d-inline border-bottom pb-2">Cart <div className="d-inline text-muted">({cartQuantity} {itemsVerbiage})</div>
             </h2>
             {props.cart.map(item => {
               return (

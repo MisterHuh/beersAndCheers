@@ -30,7 +30,7 @@ export const PriceCalculation = props => {
     bottomView = 'checkout';
   } else if (view === 'checkout') {
     topButtonMessage = 'Go Back To Cart';
-    bottomButtonMessage = 'Placeorder';
+    bottomButtonMessage = 'Place Order';
     topView = 'cart';
     bottomView = 'orderPlaced';
   }
