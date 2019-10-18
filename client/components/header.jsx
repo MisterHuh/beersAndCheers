@@ -18,7 +18,6 @@ import {
 export const Header = props => {
 
   let currentView = props.view;
-  // let cart = props.cart;
   let cartQuantity = props.cartQuantity;
 
   cartQuantity > 99 ? cartQuantity = '99+' : false;
