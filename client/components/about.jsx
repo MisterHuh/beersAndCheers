@@ -10,9 +10,11 @@ export const About = () => {
     <div className="d-flex flex-column px-5" style={containerSize}>
       <h1 className="border-bottom my-3 text-center pb-2">About Beers & Cheers</h1>
 
-      <p>1 blurb about Beers&Cheers</p>
-      <p>1 blurb about Beers&Cheers</p>
-      <p>1 blurb about Beers&Cheers</p>
+      <p>Beers & Cheers is a full stack shopping cart app to view products, add to cart, and purchase craft beers from local breweries</p>
+      <p>Talk about how the front end was built</p>
+      <p>Talk about how the back end was built</p>
+      <p>small chart here or on the right side that shows the breakdown of hours?</p>
+      <p>Feel free to stop by my portfolio site (hyperlink here) or find this project on my github (hyperlink).</p>
 
       <h1 className="border-bottom my-3 text-center pb-2">About Me</h1>
 
