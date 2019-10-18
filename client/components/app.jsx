@@ -11,7 +11,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'checkout',
+        name: 'cart',
         id: ''
       },
       cart: [],
@@ -107,12 +107,13 @@ export default class App extends React.Component {
   }
 
   placeOrder(product) {
-    console.log('cartId is ', product.cart_id);
+    console.log('cartId is ', product[0].cart_id);
+
     const req = {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        cartId: parseInt(product.cart_id)
+        cartId: parseInt(product[0].cart_id)
       })
     };
     fetch(`/api/cart.php`, req)

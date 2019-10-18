@@ -20,16 +20,20 @@ export default class Checkout extends React.Component {
       fullName: 'Jaehyuk Huh',
       monthYear: '08/12',
       cvc: '123',
-      modal: true
+      modal: false
     };
 
     this.toggle = this.toggle.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   placeOrder() {
-    this.props.placeOrder();
+    let cart = this.props.cart;
+    console.log('placeOrder cartID is: ', this.props.cart[0].cart_id);
+    this.props.setView('catalog', '');
+    this.props.placeOrder(cart);
     this.toggle();
   }
 
@@ -64,6 +68,8 @@ export default class Checkout extends React.Component {
       height: '100%'
     };
 
+    console.log('cart is: ', this.props.cart);
+
     return (
       <div className="d-flex flex-column border border-primary px-5" style={containerSize}>
         <h1 className="border-bottom my-3 text-center pb-2">Checkout</h1>
@@ -76,46 +82,46 @@ export default class Checkout extends React.Component {
                 <Row form>
                   <Col md={6}>
                     <FormGroup>
-                      <Label>First Name</Label>
+                      {/* <Label>First Name</Label> */}
                       <Input onClick={this.handleInput} name="firstName" placeholder="First Name" />
                     </FormGroup>
                   </Col>
                   <Col md={6}>
                     <FormGroup>
-                      <Label>Last Name</Label>
+                      {/* <Label>Last Name</Label> */}
                       <Input onClick={this.handleInput} name="lastName" placeholder="Last Name" />
                     </FormGroup>
                   </Col>
                 </Row>
                 <FormGroup>
-                  <Label>E-mail</Label>
+                  {/* <Label>E-mail</Label> */}
                   <Input onClick={this.handleInput} name="eMail" placeholder="E-mail" />
                 </FormGroup>
                 <FormGroup>
-                  <Label>Phone Number</Label>
+                  {/* <Label>Phone Number</Label> */}
                   <Input onClick={this.handleInput} name="phoneNumber" placeholder="Phone Number" />
                 </FormGroup>
                 <FormGroup>
-                  <Label >Street Address</Label>
+                  {/* <Label>Street Address</Label> */}
                   <Input onClick={this.handleInput} name="streetAddress" placeholder="Street Address" />
                 </FormGroup>
 
                 <Row form>
                   <Col md={6}>
                     <FormGroup>
-                      <Label >City</Label>
+                      {/* <Label>City</Label> */}
                       <Input onClick={this.handleInput} name="city" placeholder="City" />
                     </FormGroup>
                   </Col>
                   <Col md={4}>
                     <FormGroup>
-                      <Label >State</Label>
+                      {/* <Label>State</Label> */}
                       <Input onClick={this.handleInput} name="state" id="exampleState" placeholder="State" />
                     </FormGroup>
                   </Col>
                   <Col md={2}>
                     <FormGroup>
-                      <Label >Zip</Label>
+                      {/* <Label>Zip</Label> */}
                       <Input onClick={this.handleInput} name="zipCode" id="exampleZip" placeholder="Zipcode" />
                     </FormGroup>
                   </Col>
@@ -128,24 +134,24 @@ export default class Checkout extends React.Component {
             <div className="mt-2 mx-3 mb-4">
               <Form>
                 <FormGroup>
-                  <Label >Credit Card Number</Label>
+                  {/* <Label>Credit Card Number</Label> */}
                   <Input onClick={this.handleInput} name="creditCardNumber" placeholder="Card Number" />
                 </FormGroup>
                 <FormGroup>
-                  <Label >Full Name</Label>
+                  {/* <Label>Full Name</Label> */}
                   <Input onClick={this.handleInput} name="fullName" placeholder="Full Name" />
                 </FormGroup>
 
                 <Row form>
                   <Col md={6}>
                     <FormGroup>
-                      <Label>MM/YY</Label>
+                      {/* <Label>MM/YY</Label> */}
                       <Input onClick={this.handleInput} name="monthYear" placeholder="MM/YY" />
                     </FormGroup>
                   </Col>
                   <Col md={6}>
                     <FormGroup>
-                      <Label>CVC</Label>
+                      {/* <Label>CVC</Label> */}
                       <Input onClick={this.handleInput} name="cvc" placeholder="CVC" />
                     </FormGroup>
                   </Col>
@@ -172,21 +178,21 @@ export default class Checkout extends React.Component {
                   <ModalHeader toggle={this.toggle}>Order Confirmation</ModalHeader>
                   {/* <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(product, quantity)}>Added To Cart!</ModalHeader> */}
                   <ModalBody style={modalBodyWrapper}>
-                    <div className=" d-flex flex-column p-3 text-center" style={modalWrapper}>
+                    <div className=" d-flex flex-column px-3 text-center" style={modalWrapper}>
 
                       {/* <div className=" -secondary "> */}
                       {/* <h5>Please Review Your Order</h5> */}
 
-                      <div className=" d-flex flex-row">
-                        <div className=" w-50">
-                          <h6 className="border-bottom pb-2 mr-2">Shipping Info</h6>
+                      <div className="d-flex flex-row">
+                        <div className="w-50">
+                          <h6 className="">Shipping Info</h6>
                           <div>{this.state.firstName} {this.state.lastName}</div>
                           <div>{this.state.streetAddress}</div>
                           <div>{this.state.city}, {this.state.state}, {this.state.zipCode}</div>
 
                         </div>
                         <div className=" w-50">
-                          <h6 className="border-bottom pb-2 ml-2">Billing Info</h6>
+                          <h6 className="">Billing Info</h6>
                           <div>{this.state.fullName}</div>
                           <div>{this.state.creditCardNumber}</div>
                           <div>EXP: {this.state.monthYear} <span className="px-2"></span> CVC: {this.state.cvc}</div>
@@ -196,14 +202,14 @@ export default class Checkout extends React.Component {
                       </div> {/* end of billing & shipping */}
 
                       <div className="mt-3 ">
-                        <h6 className="border-bottom pb-2">Order Summary</h6>
+                        <h6 className="border-top pt-3">Order Summary</h6>
                         <div>Total Amount: $123.22</div>
                         <div>Total Items: 12</div>
 
                       </div>{/* end of total amount & count */}
 
                       <div className="mt-3 ">
-                        <h6 className="border-bottom pb-2">DISCLAIMER</h6>
+                        <h6 className="border-top pt-3">DISCLAIMER</h6>
                         <Label check>
                           <Input type="checkbox" />{' '}
                           I agree that this was not a real purchase
@@ -238,8 +244,8 @@ export default class Checkout extends React.Component {
                     </div>
                   </ModalBody>
                   <ModalFooter>
-                    <Button color="primary" onClick={() => this.closeModal() }>Return To Checkout</Button>
-                    <Button color="secondary" onClick={() => this.props.setView('confirmation', '')}>Place Order!</Button>
+                    <Button color="primary" onClick={() => this.closeModal()}>Return To Checkout</Button>
+                    <Button color="secondary" onClick={() => this.placeOrder()}>Place Order!</Button>
                   </ModalFooter>
                 </Modal>
 

@@ -19,12 +19,12 @@ if ($jsonBody["id"]) {          // if $jsonBody["id"] exists, proceed. Making th
   }
   $query = "DELETE FROM cartItems WHERE productID = " . $id;
 } else if ($jsonBody["cartId"]) {
-  $cartId = $jsonBody["cartId"];        // set the value of $jsonBody["id"] to $id
-  if (intval($id) < 1) {        // convert $id to a number. if $id is LESS THAN 1
-    throw new Exception("id must be greater than 0");   // we got something back, but it's not what we want.
+  $cartId = $jsonBody["cartId"];
+  if (intval($cartId) < 1) {
+    throw new Exception("id must be greater than 0");
   }
-  if (getType($cartId) !== "integer") {   // if $cartId is not an integer, we got something back but it's not what we want.
-    throw new Exception("id must be a number");   // form of error checking to see what the problem could be
+  if (getType($cartId) !== "integer") {
+    throw new Exception("id must be a number");
   }
   $query = "DELETE FROM cartItems WHERE cartID = " . $cartId;
 }else {

@@ -102,7 +102,7 @@ class CartSummaryItem extends React.Component {
       return (
 
         // <div className="border border-dark m-auto" >
-        <div className="d-flex flex-row m-auto border-bottom p-4" key={this.props.key} style={cardSize} > {/* mx-3 p-5 */}
+        <div className="d-flex flex-row mx-auto my-4 border-bottom px-4 pb-2" key={this.props.key} style={cardSize} > {/* mx-3 p-5 */}
 
           <div className=" text-center" style={imgWrapper}>
             <img src={this.props.item.image} alt="img" className="img-fluid " style={imgSize} />
@@ -165,6 +165,7 @@ class CartSummaryItem extends React.Component {
         // </div>
       );
     } else if (this.props.modalStatus) {
+      { /* will NOT be using this one */ }
       return (
         <div className="border border-danger d-flex flex-row border-top flex-wrap w-50" key={this.props.key} style={modalCardSize} > {/* mx-3 p-5 */}
           <div className=" text-center" style={modalImgWrapper}>
@@ -183,7 +184,7 @@ class CartSummaryItem extends React.Component {
       return (
 
         // <div className="border border-dark m-auto" >
-        <div className="d-flex flex-row m-auto border-top p-4" key={this.props.key} style={cardSize} > {/* mx-3 p-5 */}
+        <div className="d-flex flex-row m-auto border-top p-4 " key={this.props.key} style={cardSize} > {/* mx-3 p-5 */}
 
           <div className=" text-center" style={imgWrapper}>
             <img src={this.props.item.image} alt="img" className="img-fluid " style={imgSize} />
