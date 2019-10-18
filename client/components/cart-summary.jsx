@@ -1,6 +1,7 @@
 import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 import { PriceCalculation } from './priceCalculation';
+import { Button } from 'reactstrap';
 
 export const CartSummary = props => {
   const imgSrc = 'emptycart.png';
@@ -46,6 +47,16 @@ export const CartSummary = props => {
               setView={props.setView}
               view={props.view}
               cart={props.cart}/>
+
+            <div className="text-center pt-1">
+              <div className="m-3">
+                <Button outline color="primary" onClick={() => props.setView('catalog', '')} className="w-50">Continue Shopping</Button>
+              </div>
+              <div className="mx-3 mt-3 mb-5">
+                <Button outline color="secondary" onClick={() => props.setView('checkout', '')} className="w-50">Checkout</Button>
+              </div>
+            </div>
+
           </div>
 
           {/*

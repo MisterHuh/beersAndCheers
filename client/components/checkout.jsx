@@ -2,7 +2,7 @@ import React from 'react';
 // import { ShippingForm, BillingForm } from './forms';
 import { PriceCalculation } from './priceCalculation';
 import CartSummaryItem from './cart-summary-item';
-import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default class Checkout extends React.Component {
   constructor(props) {
@@ -128,6 +128,16 @@ export default class Checkout extends React.Component {
               view={this.props.view}
               cart={this.props.cart}
               placeOrder={this.props.placeOrder} />
+
+            <div className="text-center pt-1">
+              <div className="m-3">
+                <Button outline color="primary" onClick={() => this.props.setView('cart', '')} className="w-50">Go Back To Cart</Button>
+              </div>
+              <div className="mx-3 mt-3 mb-5">
+                <Button outline color="secondary" onClick={() => this.props.setView('orderPlaced', '')} className="w-50">Place Order</Button>
+              </div>
+            </div>
+
             <div className="">
               {this.props.cart.map(item => {
                 return (
@@ -145,6 +155,7 @@ export default class Checkout extends React.Component {
           </div>
         </div>  {/* FORM on left    calc & Cartsummary right */}
       </div>
+
     );
   }
 }
