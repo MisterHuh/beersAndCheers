@@ -11,12 +11,14 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'confirmation',
         id: ''
       },
       cart: [],
       cartQuantity: 0,
-      receipt: []
+      productReceipt: [],
+      shippingReceipt: {},
+      billingReceipt: {}
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -107,17 +109,18 @@ export default class App extends React.Component {
     this.retrieveCart();
   }
 
-  placeOrder(product) {
+  /* this one is correct */
+  placeOrder(productReceipt, shippingReceipt, billingReceipt) {
     // console.log('placeOrder param product is ', product);
-    console.log('cartId is ', product[0].cart_id);
+    console.log('cartId is ', productReceipt[0].cart_id);
 
-    this.setState({ receipt: product });
+    this.setState({ productReceipt, shippingReceipt, billingReceipt });
 
     const req = {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        cartId: parseInt(product[0].cart_id)
+        cartId: parseInt(productReceipt[0].cart_id)
       })
     };
     fetch(`/api/cart.php`, req)
@@ -127,6 +130,25 @@ export default class App extends React.Component {
       });
     this.retrieveCart();
   }
+
+  // placeOrder(productReceipt) {
+  //   // console.log('placeOrder param product is ', product);
+  //   console.log('cartId is ', productReceipt[0].cart_id);
+  //   // this.setState({ productReceipt, infoReceipt });
+  //   const req = {
+  //     method: 'DELETE',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //       cartId: parseInt(productReceipt[0].cart_id)
+  //     })
+  //   };
+  //   fetch(`/api/cart.php`, req)
+  //     .then(response => response.json())
+  //     .catch(error => {
+  //       // console.error('placeOrder error: ', error);
+  //     });
+  //   this.retrieveCart();
+  // }
 
   setView(name, id) {
     this.setState({
@@ -138,6 +160,9 @@ export default class App extends React.Component {
     let currentView = this.state.view.name;
     let displayView = null;
 
+    let beer1 = 'beerCurser1.cur';
+    let beer2 = 'beerCurser2.cur';
+
     if (currentView === 'catalog') {
       displayView = <ProductList setView={this.setView} />;
     } else if (currentView === 'details') {
@@ -147,10 +172,10 @@ export default class App extends React.Component {
     } else if (currentView === 'checkout') {
       displayView = <Checkout setView={this.setView} view={this.state.view.name} cart={this.state.cart} placeOrder={this.placeOrder}/>;
     } else if (currentView === 'confirmation') {
-      displayView = <Confirmation receipt={this.state.receipt} />;
+      displayView = <Confirmation productReceipt={this.state.productReceipt} shippingReceipt={this.state.shippingReceipt} billingReceipt={this.state.billingReceipt}/>;
     }
     return (
-      <div className="border border-dark">
+      <div className="border border-dark" >
         <Header setView={this.setView} view={this.state.view.name} cart={this.state.cart} cartQuantity={this.state.cartQuantity}/>
         {displayView}
       </div>

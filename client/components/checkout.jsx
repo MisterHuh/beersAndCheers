@@ -8,18 +8,34 @@ export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: 'Jae',
-      lastName: 'Huh',
+      // shippingInfo: {
+      //   firstName: '',
+      //   lastName: '',
+      //   eMail: '',
+      //   phoneNumber: '',
+      //   streetAddress: ' ',
+      //   city: '',
+      //   state: '',
+      //   zipCode: ''
+      // },
+      // billingInfo: {
+      //   creditCardNumber: '',
+      //   fullName: '',
+      //   monthYear: '',
+      //   cvc: ''
+      // },
+      firstName: '',
+      lastName: '',
       eMail: '',
       phoneNumber: '',
-      streetAddress: '1234 Street',
-      city: 'La Habra',
-      state: 'CA',
-      zipCode: '92698',
-      creditCardNumber: '1234567890123456',
-      fullName: 'Jaehyuk Huh',
-      monthYear: '08/12',
-      cvc: '123',
+      streetAddress: ' ',
+      city: '',
+      state: '',
+      zipCode: '',
+      creditCardNumber: '',
+      fullName: '',
+      monthYear: '',
+      cvc: '',
       modal: false
     };
 
@@ -31,10 +47,29 @@ export default class Checkout extends React.Component {
   }
 
   placeOrder() {
-    let cart = this.props.cart;
+    let productReceipt = this.props.cart;
+
+    let shippingReceipt = {
+      firstname: this.state.firstName,
+      lastName: this.state.lastName,
+      eMail: this.state.eMail,
+      phoneNumber: this.state.phoneNumber,
+      streetAddress: this.state.streetAddress,
+      city: this.state.city,
+      state: this.state.state,
+      zipCode: this.state.zipCode
+    };
+
+    let billingReceipt = {
+      creditCardNumber: this.state.creditCardNumber,
+      fullName: this.state.fullName,
+      monthYear: this.state.monthYear,
+      cvc: this.state.cvc
+    };
+
     console.log('placeOrder cartID is: ', this.props.cart[0].cart_id);
-    this.props.setView('catalog', '');
-    this.props.placeOrder(cart);
+    this.props.setView('confirmation', '');
+    this.props.placeOrder(productReceipt, shippingReceipt, billingReceipt);
     this.toggle();
   }
 
