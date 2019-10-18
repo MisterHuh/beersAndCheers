@@ -55,14 +55,14 @@ export const PriceCalculation = props => {
       <div className="m-3">
         <h3 className=" d-inline">Total <div className=" d-inline float-right">${(totalAmount / 100).toFixed(2)}</div> </h3>
       </div>
-      <div className="text-center pt-1">
+      {/* <div className="text-center pt-1">
         <div className="m-3">
           <Button outline color="primary" onClick={() => props.setView(topView, '')} className="w-50">{topButtonMessage}</Button>
         </div>
         <div className="mx-3 mt-3 mb-5">
           <Button outline color="secondary" onClick={() => props.setView(bottomView, '')} className="w-50">{bottomButtonMessage}</Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
