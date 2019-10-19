@@ -8,22 +8,6 @@ export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // shippingInfo: {
-      //   firstName: '',
-      //   lastName: '',
-      //   eMail: '',
-      //   phoneNumber: '',
-      //   streetAddress: ' ',
-      //   city: '',
-      //   state: '',
-      //   zipCode: ''
-      // },
-      // billingInfo: {
-      //   creditCardNumber: '',
-      //   fullName: '',
-      //   monthYear: '',
-      //   cvc: ''
-      // },
       firstName: 'Jae',
       lastName: 'Huh',
       eMail: '',
@@ -43,7 +27,6 @@ export default class Checkout extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   placeOrder() {
@@ -117,24 +100,6 @@ export default class Checkout extends React.Component {
     console.log('event is: ', e);
     this.setState({ [e.target.name]: e.target.value });
   }
-
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   this.setState({
-  //     firstName: '',
-  //     lastName: '',
-  //     eMail: '',
-  //     phoneNumber: '',
-  //     streetAddress: '',
-  //     city: '',
-  //     state: '',
-  //     zipCode: '',
-  //     creditCardNumber: '',
-  //     fullName: '',
-  //     monthYear: '',
-  //     cvc: ''
-  //   });
-  // }
 
   render() {
 

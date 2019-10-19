@@ -1,4 +1,5 @@
 import React from 'react';
+import { Carousel } from './carousel';
 import {
   Badge,
   Collapse,
@@ -21,7 +22,7 @@ export const Header = props => {
   cartQuantity > 99 ? cartQuantity = '99+' : false;
 
   let carouselDisplay;
-  // currentView === 'catalog' ? carouselDisplay = <Carousel /> : false;
+  currentView === 'catalog' ? carouselDisplay = <Carousel /> : false;
   // uncomment the above line to include carousel
 
   return (
