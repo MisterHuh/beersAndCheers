@@ -56,39 +56,7 @@ export const CartSummary = props => {
                 <Button outline color="secondary" onClick={() => props.setView('checkout', '')} className="w-50">Checkout</Button>
               </div>
             </div>
-
           </div>
-
-          {/*
-          <div id="pricingDetails" className="w-50 ml-4">
-            <h2 className="border-bottom pb-2">Summary</h2>
-            <div className="m-3">
-              <h3 className=" d-inline">Price <div className=" d-inline float-right">${(price / 100).toFixed(2)}</div> </h3>
-            </div>
-            <div className="m-3">
-              <h3 id="shipping" className=" d-inline">Shipping <div className=" d-inline float-right">Free</div> </h3>
-              <UncontrolledPopover placement="left" target="shipping">
-                <PopoverHeader>Shipping Info</PopoverHeader>
-                <PopoverBody>Free shipping on orders of $40 or more <strong>before taxes</strong></PopoverBody>
-              </UncontrolledPopover>
-            </div>
-            <div className="m-3">
-              <h3 id="taxes" className=" d-inline">Taxes <div className=" d-inline float-right">${(taxes / 100).toFixed(2)}</div> </h3>
-            </div>
-            <hr />
-            <div className="m-3">
-              <h3 className=" d-inline">Total <div className=" d-inline float-right">${(totalAmount / 100).toFixed(2)}</div> </h3>
-            </div>
-            <div className="text-center pt-1">
-              <div className="m-3">
-                <Button outline color="primary" onClick={() => this.props.setView('cart', '')} className="w-50">Back To Cart</Button>
-              </div>
-              <div className="mx-3 mt-3 mb-5">
-                <Button outline color="secondary" onClick={() => this.props.setView('catalog', '')} className="w-50">Place Order</Button>
-              </div>
-            </div>
-          </div> */}
-
         </div>
       </div>
     );

@@ -12,16 +12,11 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'about',
+        name: 'checkout',
         id: ''
       },
       cart: [],
       cartQuantity: 0,
-      // productReceipt: [],
-      // shippingReceipt: {},
-      // billingReceipt: {},
-      // orderReceipt: {}
-
       productReceipt: [],
       receipt: []
     };
@@ -114,13 +109,7 @@ export default class App extends React.Component {
     this.retrieveCart();
   }
 
-  /* this one is correct */
   placeOrder(productReceipt, receipt) {
-    // console.log('placeOrder param product is ', product);
-    // console.log('cartId is ', productReceipt[0].cart_id);
-    // console.log('orderReceipt is: ', orderReceipt);
-    console.log('APP receipt is: ', receipt);
-
     this.setState({ productReceipt, receipt });
 
     const req = {
@@ -137,25 +126,6 @@ export default class App extends React.Component {
       });
     this.retrieveCart();
   }
-
-  // placeOrder(productReceipt) {
-  //   // console.log('placeOrder param product is ', product);
-  //   console.log('cartId is ', productReceipt[0].cart_id);
-  //   // this.setState({ productReceipt, infoReceipt });
-  //   const req = {
-  //     method: 'DELETE',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //       cartId: parseInt(productReceipt[0].cart_id)
-  //     })
-  //   };
-  //   fetch(`/api/cart.php`, req)
-  //     .then(response => response.json())
-  //     .catch(error => {
-  //       // console.error('placeOrder error: ', error);
-  //     });
-  //   this.retrieveCart();
-  // }
 
   setView(name, id) {
     this.setState({
@@ -179,7 +149,6 @@ export default class App extends React.Component {
     } else if (currentView === 'checkout') {
       displayView = <Checkout setView={this.setView} view={this.state.view.name} cart={this.state.cart} placeOrder={this.placeOrder}/>;
     } else if (currentView === 'confirmation') {
-      // displayView = <Confirmation productReceipt={this.state.productReceipt} shippingReceipt={this.state.shippingReceipt} billingReceipt={this.state.billingReceipt} orderReceipt={this.state.orderReceipt}/>;
       displayView = <Confirmation productReceipt={this.state.productReceipt} receipt={this.state.receipt} />;
     } else if (currentView === 'about') {
       displayView = <About />;
@@ -193,89 +162,3 @@ export default class App extends React.Component {
   }
 
 }
-
-// constructor(props) {
-//   super(props);
-//   this.state = {
-//     view: {
-//       name: 'catalog',
-//       params: {}
-//     },
-//     cart: []
-//   };
-//   this.price = 0;
-//   this.setView = this.setView.bind(this);
-//   this.retrieveCart = this.getCartItems.bind(this);
-//   this.addToCart = this.addToCart.bind(this);
-//   this.placeOrder = this.placeOrder.bind(this);
-// }
-
-// setView(name, params) {
-//   this.setState({
-//     view: {
-//       name: name,
-//       params: params
-//     }
-//   });
-// }
-
-// getCartItems() {
-//   fetch(`/api/cart.php`)
-//     .then(res => res.json())
-//     .then(cart => this.setState({ cart }));
-// }
-
-// addToCart(product) {
-//   const req = {
-//     method: 'POST',
-//     header: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(product)
-//   };
-//   fetch(`/api/cart.php`, req)
-//     .then(res => res.json())
-//     .then(cart => {
-//       const newCart = this.state.cart.concat(cart);
-//       this.setState({ cart: newCart });
-//     });
-// }
-
-// placeOrder(incomingOrder) {
-//   const req = {
-//     method: 'POST',
-//     header: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(incomingOrder)
-//   };
-
-//   fetch(`/api/orders.php`, req)
-//     .then(res => res.json())
-//     .then(() => {
-//       this.setState({ cart: [] });
-//       this.setState({ view: { name: 'catalog', params: {} } });
-//     });
-// }
-
-// componentDidMount() {
-//   this.getCartItems();
-// }
-
-// render() {
-//   let currentView = this.state.view.name;
-//   let displayView = null;
-
-//   if (currentView === 'catalog') {
-//     displayView = <ProductList setView={this.setView} />;
-//   } else if (currentView === 'details') {
-//     displayView = <ProductDetails view={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />;
-//   } else if (currentView === 'cart') {
-//     displayView = <CartSummary cart={this.state.cart} setView={this.setView} />;
-//   } else if (currentView === 'checkout') {
-//     displayView = <CheckoutForm setView={this.setView} placeOrder={this.placeOrder} cart={this.state.cart} />;
-//   }
-//   return (
-//     <div className="container border border-dark">
-//       <Header cartItemCount={this.state.cart.length} setView={this.setView} />
-//       {displayView}
-//     </div>
-//   );
-
-// }
