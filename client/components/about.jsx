@@ -10,11 +10,16 @@ export const About = () => {
     <div className="d-flex flex-column px-5" style={containerSize}>
       <h1 className="border-bottom my-3 text-center pb-2">About Beers & Cheers</h1>
 
-      <p>Beers & Cheers is a full stack shopping cart app to view products, add to cart, and purchase craft beers from local breweries</p>
-      <p>Talk about how the front end was built</p>
-      <p>Talk about how the back end was built</p>
-      <p>small chart here or on the right side that shows the breakdown of hours?</p>
+      {/* <p>Beers & Cheers is a full stack shopping cart app to view products, add to cart, and purchase craft beers from local breweries</p> */}
+      <p>
+      Beers & Cheers is a full stack shopping cart app, that allows users to browse the finest craft beers from local breweries, add them to cart, and place an order.
+      </p>
+
+      <p><strong>Please note that this is simply a demo site and not a real e-commerce store.</strong></p>
+
       <p>Feel free to stop by my portfolio site (hyperlink here) or find this project on my github (hyperlink).</p>
+
+      <p>Enjoy!</p>
 
       <h1 className="border-bottom my-3 text-center pb-2">About Me</h1>
 

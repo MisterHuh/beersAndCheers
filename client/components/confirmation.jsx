@@ -38,7 +38,7 @@ export const Confirmation = props => {
 
   return (
     <div className="d-flex flex-column px-5" style={containerSize}>
-      <h1 className="border-bottom my-3 text-center pb-2">Order Confirmation</h1>
+      <h1 className="border-bottom my-3 text-center pb-2">Order Confirmation #qwe123</h1>
 
       <div id="productSummary" className="d-flex flex-row mt-2 border border-danger">
         <div id="cartDetails" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
@@ -82,11 +82,11 @@ export const Confirmation = props => {
             </div>
 
             <div className="m-3">
-              <h5 id="shipping">{billing.creditCardNumber}  </h5>
+              <h5 id="shipping">cc ending with 2000</h5>
             </div>
 
             <div className="m-3">
-              <h5 id="taxes">exp: {billing.monthYear}, cvc: {billing.cvc} </h5>
+              <h5 id="taxes">exp: <strong>{billing.monthYear}</strong> cvc: <strong>{billing.cvc}</strong> </h5>
             </div>
           </div>
 
