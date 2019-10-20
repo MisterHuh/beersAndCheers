@@ -73,11 +73,11 @@ export const Carousel = () => {
   // </div>
 
     <div>
-      <Jumbotron fluid className="border border-secondary p-0 mb-1">
+      <Jumbotron fluid className=" p-0 mb-1">
         {/* <Container fluid className="p-0">
           <div className="border border-danger" style={imgWrapper}> */}
-        <Container fluid className="p-0 border border-danger position-relative" style={imgWrapper}>
-          <img src={open} alt="jumbo" style={imgSize} className="border border-light"/>
+        <Container fluid className="p-0 position-relative" style={imgWrapper}>
+          <img src={open} alt="jumbo" style={imgSize} className=""/>
           <h1 className="position-absolute " style={gitIn}>Welcome Back</h1>
           {/* <h1 className="display-3">Fluid jumbotron</h1>
           <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> */}
