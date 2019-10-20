@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter, UncontrolledPopover, PopoverBody } from 'reactstrap';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -103,8 +103,13 @@ class ProductDetails extends React.Component {
       top: '34%'
     };
 
+    const cursor = {
+      cursor: 'pointer'
+    };
+
     if (this.state.product) {
       return (
+
         <div id="mainWrapper" className="p-5">
           {/* <div id="subWrapper" className="p-5"> */}
 
@@ -117,16 +122,38 @@ class ProductDetails extends React.Component {
             <div id="infoWrapper" className=" d-flex flex-column" style={infoWrapper}>
 
               <div id="titleBrewery" className="text-center border-bottom rounded" style={headerSize}>
-                <div className="h-50">{product.name}</div>
+                <div className="h-50 pt-2">{product.name}</div>
                 <div className="h-50">{product.brewery}</div>
               </div>
 
               <div id="infoContainer" className="d-flex flex-row text-center align-items-center" style={statsSize}>
 
                 <div className=" h-100 w-50 border-right rounded">
-                  <div className=" my-3">ABV: {product.abv}%</div>
-                  <div className=" my-3">IBU: {product.ibu}</div>
-                  <div className=" mt-3">AVAILABILITY: {product.availability}</div>
+
+                  {/* <div className="my-3 border border-dark">
+                    <div className="d-inline border border-danger">ABV </div>
+                    <div className="d-inline float-right  border border-success">{product.abv}%</div>
+                  </div> */}
+
+                  {/* <div className=" my-3">ABV <div className="d-inline ml-3">{product.abv}%</div></div> */}
+                  <div className=" my-3">{product.abv}%
+                    <div className="d-inline ml-2">ABV</div>
+                    <i id="abvInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
+                    <UncontrolledPopover placement="right" target="abvInfo">
+                      <PopoverBody>Alcohol By Volume</PopoverBody>
+                    </UncontrolledPopover>
+                  </div>
+
+                  <div className=" my-3">{product.ibu}
+                    <div className="d-inline ml-2">IBU</div>
+                    <i id="ibuInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
+                    <UncontrolledPopover placement="right" target="ibuInfo">
+                      <PopoverBody>International Bitterness Units</PopoverBody>
+                    </UncontrolledPopover>
+                  </div>
+                  <div className=" mt-3">Available<div className="d-inline ml-1">{product.availability}</div></div>
+                  {/* <div className=" mt-3">{product.availability} <div className="d-inline ml-3">Availbility</div></div> */}
+
                   <div className=" mt-2 ">
                     <Button
                       className="my-3 w-50 bg-primary text-white font-weight-bold"
@@ -137,14 +164,14 @@ class ProductDetails extends React.Component {
                 </div>
 
                 <div className=" h-100 w-50 ">
-                  <div className=" my-3">TYPE: {product.type}</div>
-                  <div className=" my-3">{'$' + ((product.price) / 100).toFixed(2)}</div>
+                  <div className=" my-3">{product.type}</div>
+                  <div className=" my-3">$ <div className="d-inline">{((product.price) / 100).toFixed(2)}</div></div>
                   <div className=" mt-3">
                     {/* <ButtonGroup> */}
-                    <i onClick={this.decrementQuantity} className="fas fa-minus-square"></i>
+                    <i onClick={this.decrementQuantity} className="fas fa-minus-square" style={cursor}></i>
                     {/* <Button onClick={this.decrementQuantity} className="" >-</Button> */}
                     <div className="d-inline px-3">{quantity}</div>
-                    <i onClick={this.incrementQuantity} className="fas fa-plus-square"></i>
+                    <i onClick={this.incrementQuantity} className="fas fa-plus-square" style={cursor}></i>
                     {/* <Button onClick={this.incrementQuantity} className="" >+</Button> */}
                     {/* </ButtonGroup> */}
                   </div>
@@ -155,26 +182,34 @@ class ProductDetails extends React.Component {
                       {/* <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(product, quantity)}>Added To Cart!</ModalHeader> */}
                       <ModalBody style={modalBodyWrapper}>
                         <div className=" d-flex flex-row" style={modalWrapper}>
+
                           <div className="w-50 text-center border-right rounded" style={modalContainer}>
                             <img src={product.image} alt="beerImg" className="" style={modalImgContainer}/>
                           </div>
+
                           <div className="w-50 text-center ">
-                            <div className="border-bottom rounded h-25" >
+
+                            <div className="border-bottom rounded h-25 p-0" >
                               <div style={testSize}>{product.name}</div>
                             </div>
+
                             <div className="border-bottom rounded h-25" >
                               <div style={testSize}>{product.brewery}</div>
                             </div>
+
                             <div className="border-bottom rounded h-25" >
-                              <div style={testSize}>{'$' + ((product.price) / 100).toFixed(2)}</div>
+                              <div style={testSize}>{'$ ' + ((product.price) / 100).toFixed(2)}</div>
                             </div>
+
                             <div className="h-25" >
                               <div style={testSize}>Quantity: <strong>{quantity}</strong></div>
                             </div>
+
                             {/* <div className="border border-dark h-25" style={testSize} >{product.brewery}</div>
                             <div className="border border-dark h-25" style={testSize} >{'$' + ((product.price) / 100).toFixed(2)}</div>
                             <div className="border border-dark h-25" style={testSize} >Quantity: {quantity}</div> */}
                           </div>
+
                         </div>
                       </ModalBody>
                       <ModalFooter>
