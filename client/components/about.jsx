@@ -7,7 +7,12 @@ export const About = () => {
   };
 
   return (
-    <div className="d-flex flex-column px-5" style={containerSize}>
+    <div className="d-flex flex-column px-5 border border-primary pb-5" style={containerSize}>
+
+      {/* <h1 className="border-bottom my-3 text-center pb-2">About</h1>
+      <h3 className="border-bottom my-3 text-center pb-2">Beers & Cheers</h3>
+      <h3 className="border-bottom my-3 text-center pb-2">Me</h3> */}
+
       <h1 className="border-bottom my-3 text-center pb-2">About Beers & Cheers</h1>
 
       <p>

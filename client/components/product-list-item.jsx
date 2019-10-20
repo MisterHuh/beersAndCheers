@@ -3,10 +3,10 @@ import { Card, CardImg, CardTitle } from 'reactstrap';
 
 export const ProductListItem = props => {
 
-  const containerSize = {
-    width: '100vw',
-    height: '300vh'
-  };
+  // const containerSize = {
+  //   width: '100vw'
+  //   height: '300vh'
+  // };
   const cardSize = {
     height: '35%',
     backgroundColor: 'rgba(245, 245, 245, 0.6)'
@@ -21,7 +21,7 @@ export const ProductListItem = props => {
   };
 
   return (
-    <div className="d-flex flex-row flex-wrap justify-content-center border border-primary text-center" style={containerSize}>
+    <div className="d-flex flex-row flex-wrap justify-content-center border border-primary text-center pb-5">
       {props.product.map(item => {
         return (
           <Card key={item.id}

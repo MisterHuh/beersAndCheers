@@ -21,8 +21,8 @@ export const Header = props => {
   let cartQuantity = props.cartQuantity;
   cartQuantity > 99 ? cartQuantity = '99+' : false;
 
-  let carouselDisplay;
-  currentView === 'catalog' ? carouselDisplay = <Carousel /> : false;
+  // let carouselDisplay;
+  // currentView === 'catalog' ? carouselDisplay = <Carousel /> : false;
   // uncomment the above line to include carousel
 
   return (
@@ -38,7 +38,7 @@ export const Header = props => {
           </NavItem>
         </Nav>
       </Navbar>
-      {carouselDisplay}
+      {/* {carouselDisplay} */}
     </React.Fragment>
   );
 
