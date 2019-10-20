@@ -21,21 +21,24 @@ export const PriceCalculation = props => {
     <div id="pricingDetails" className="ml-4">
       <h2 className="border-bottom pb-2">Summary</h2>
       <div className="m-3">
-        <h4 className=" d-inline">Price <div className=" d-inline float-right">${(price / 100).toFixed(2)}</div> </h4>
+        <h4 className=" d-inline">Subtotal <div className=" d-inline float-right">$ {(price / 100).toFixed(2)}</div> </h4>
       </div>
       <div className="m-3">
-        <h4 id="shipping" className=" d-inline">Shipping <div className=" d-inline float-right">Free</div> </h4>
-        <UncontrolledPopover placement="left" target="shipping">
-          <PopoverHeader>Shipping Info</PopoverHeader>
-          <PopoverBody>Free shipping on orders of $40 or more <strong>before taxes</strong></PopoverBody>
-        </UncontrolledPopover>
+        <h4 className=" d-inline" >Shipping
+          <i id="shipping" className="ml-2 d-inline fas fa-question-circle" ></i>
+          <div className=" d-inline float-right">Free</div>
+          <UncontrolledPopover placement="left" target="shipping">
+            {/* <PopoverHeader>Shipping Info</PopoverHeader> */}
+            <PopoverBody>Free shipping on orders of <strong>$40</strong> or more <strong>before taxes</strong></PopoverBody>
+          </UncontrolledPopover>
+        </h4>
       </div>
       <div className="m-3">
-        <h4 id="taxes" className=" d-inline">Taxes <div className=" d-inline float-right">${(taxes / 100).toFixed(2)}</div> </h4>
+        <h4 id="taxes" className=" d-inline">Taxes <div className=" d-inline float-right">$ {(taxes / 100).toFixed(2)}</div> </h4>
       </div>
       <hr />
       <div className="m-3">
-        <h3 className=" d-inline">Total <div className=" d-inline float-right">${(totalAmount / 100).toFixed(2)}</div> </h3>
+        <h3 className=" d-inline">Total <div className=" d-inline float-right">$ {(totalAmount / 100).toFixed(2)}</div> </h3>
       </div>
       {/* <div className="text-center pt-1">
         <div className="m-3">

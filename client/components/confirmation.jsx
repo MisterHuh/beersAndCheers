@@ -25,6 +25,10 @@ export const Confirmation = props => {
     width: '100wh'
   };
 
+  const fontSize = {
+    fontSize: '60%'
+  };
+
   let itemsVerbiage;
   order.count === 1 ? itemsVerbiage = 'item' : itemsVerbiage = 'items';
 
@@ -34,7 +38,7 @@ export const Confirmation = props => {
 
       <div id="productSummary" className="d-flex flex-row mt-2">
         <div id="cartDetails" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
-          <h2 className="d-inline border-bottom pb-2">Purchase Summary <div className="d-inline text-muted">({order.count} {itemsVerbiage})</div>
+          <h2 className="d-inline border-bottom pb-2">Purchase Summary <div className="d-inline text-muted ml-1" style={fontSize}>({order.count} {itemsVerbiage})</div>
           </h2>
           {product.map(item => {
             return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter, Tooltip } from 'reactstrap';
+import { Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter, UncontrolledPopover, PopoverBody } from 'reactstrap';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -105,6 +105,7 @@ class ProductDetails extends React.Component {
 
     if (this.state.product) {
       return (
+
         <div id="mainWrapper" className="p-5">
           {/* <div id="subWrapper" className="p-5"> */}
 
@@ -123,7 +124,7 @@ class ProductDetails extends React.Component {
 
               <div id="infoContainer" className="d-flex flex-row text-center align-items-center" style={statsSize}>
 
-                <div className=" h-100 w-50 border-right rounded border border-primary">
+                <div className=" h-100 w-50 border-right rounded">
 
                   {/* <div className="my-3 border border-dark">
                     <div className="d-inline border border-danger">ABV </div>
@@ -131,9 +132,21 @@ class ProductDetails extends React.Component {
                   </div> */}
 
                   {/* <div className=" my-3">ABV <div className="d-inline ml-3">{product.abv}%</div></div> */}
-                  <div className=" my-3">{product.abv}% <div data-toggle="tooltip" data-placement="right" className="d-inline ml-1">ABV</div></div>
+                  <div className=" my-3">{product.abv}%
+                    <div className="d-inline ml-2">ABV</div>
+                    <i id="abvInfo" className="ml-2 d-inline fas fa-question-circle"></i>
+                    <UncontrolledPopover placement="right" target="abvInfo">
+                      <PopoverBody>Alcohol By Volume</PopoverBody>
+                    </UncontrolledPopover>
+                  </div>
 
-                  <div className=" my-3">{product.ibu} <div className="d-inline ml-1">IBU</div></div>
+                  <div className=" my-3">{product.ibu}
+                    <div className="d-inline ml-2">IBU</div>
+                    <i id="ibuInfo" className="ml-2 d-inline fas fa-question-circle"></i>
+                    <UncontrolledPopover placement="right" target="ibuInfo">
+                      <PopoverBody>International Bitterness Units</PopoverBody>
+                    </UncontrolledPopover>
+                  </div>
                   <div className=" mt-3">Available<div className="d-inline ml-1">{product.availability}</div></div>
                   {/* <div className=" mt-3">{product.availability} <div className="d-inline ml-3">Availbility</div></div> */}
 
@@ -176,7 +189,7 @@ class ProductDetails extends React.Component {
                               <div style={testSize}>{product.brewery}</div>
                             </div>
                             <div className="border-bottom rounded h-25" >
-                              <div style={testSize}>{'$' + ((product.price) / 100).toFixed(2)}</div>
+                              <div style={testSize}>{'$ ' + ((product.price) / 100).toFixed(2)}</div>
                             </div>
                             <div className="h-25" >
                               <div style={testSize}>Quantity: <strong>{quantity}</strong></div>
