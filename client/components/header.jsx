@@ -34,9 +34,14 @@ export const Header = props => {
     height: '100%'
   };
 
+  const navBarColor = {
+    // backgroundColor: '#EDEDED' {/*  grey */}
+    backgroundColor: '#F4F4F4'
+  };
+
   return (
     <React.Fragment>
-      <Navbar color="light" light expand="md" className="sticky-top ">
+      <Navbar light expand="md" className="sticky-top" style={navBarColor}>
         <NavbarBrand onClick={() => props.setView('catalog', '')} className="border-dark p-0" style={imgWrapper}>
           <img src={logo} className=" border-danger mr-2" style={imgContainer}/>
           Beers & Cheers

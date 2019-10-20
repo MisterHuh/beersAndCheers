@@ -12,7 +12,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'checkout',
         id: ''
       },
       cart: [],
@@ -140,6 +140,12 @@ export default class App extends React.Component {
     let beer1 = 'beerCurser1.cur';
     let beer2 = 'beerCurser2.cur';
 
+    const bodyBackground = {
+      // opacity: '0.9',
+      // backgroundColor: '#F4F4F4'
+      // backgroundColor: 'blue'
+    };
+
     if (currentView === 'catalog') {
       displayView = <ProductList setView={this.setView} />;
     } else if (currentView === 'details') {
@@ -154,7 +160,7 @@ export default class App extends React.Component {
       displayView = <About />;
     }
     return (
-      <div className="border border-dark" >
+      <div >
         <Header setView={this.setView} view={this.state.view.name} cart={this.state.cart} cartQuantity={this.state.cartQuantity}/>
         {displayView}
       </div>
