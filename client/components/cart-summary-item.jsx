@@ -59,6 +59,7 @@ class CartSummaryItem extends React.Component {
   }
 
   render() {
+
     const cardSize = {
       height: '40vh',
       width: '30vw'
@@ -94,11 +95,7 @@ class CartSummaryItem extends React.Component {
       width: '100%',
       height: '100%'
     };
-
     let currentView = this.props.view;
-
-    // let borderConditional;
-    // currentView === 'confirmation' ? borderConditional = 'border-bottom' : borderConditional = 'border-top';
 
     // console.log('LOADING COUNTER');
 
@@ -136,8 +133,8 @@ class CartSummaryItem extends React.Component {
 
             {/* <div className="h-50 "> */}
             <div className="ml-4 my-2 ">
-              <Button outline color="success" className="mr-4" onClick={() => this.updateCart()}>Update</Button>
-              <Button outline color="danger" className="ml-4" onClick={() => this.toggle()}>Remove</Button>
+              <Button outline color="success" className="mr-3 bg-success text-white font-weight-bold" onClick={() => this.updateCart()}>Update</Button>
+              <Button outline color="danger" className="ml-3 bg-danger text-white font-weight-bold" onClick={() => this.toggle()}>Remove</Button>
             </div>
 
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -157,8 +154,8 @@ class CartSummaryItem extends React.Component {
                 </div>
               </ModalBody>
               <ModalFooter>
-                <Button color="primary" onClick={() => this.closeModal()}>Keep In Cart</Button>
-                <Button color="danger" onClick={() => this.removeItems()}>Remove From Cart</Button>
+                <Button color="primary" className="bg-primary text-white font-weight-bold" onClick={() => this.closeModal()}>Keep In Cart</Button>
+                <Button color="danger" className="bg-danger text-white font-weight-bold" onClick={() => this.removeItems()}>Remove From Cart</Button>
               </ModalFooter>
             </Modal>
             {/* </div> */}
@@ -168,28 +165,11 @@ class CartSummaryItem extends React.Component {
         </div>
         // </div>
       );
-    } else if (this.props.modalStatus) {
-      { /* will NOT be using this one */ }
-      return (
-        <div className="border border-danger d-flex flex-row border-top flex-wrap w-50" key={this.props.key} style={modalCardSize} > {/* mx-3 p-5 */}
-          <div className=" text-center" style={modalImgWrapper}>
-            <img src={this.props.item.image} alt="img" className="img-fluid " style={modalImgSize} />
-          </div>
-          <div className="d-flex flex-column justify-content-center ml-2 text-left w-75">
-            <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
-            <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
-            <div className="ml-4 my-2 d-inline">{'$' + ((this.props.item.price) / 100).toFixed(2)}
-              <div className="d-inline float-right px-2 mr-3">Quantity: <strong>{this.state.count}</strong></div>
-            </div>
-          </div>
-        </div>
-      );
-    // } else if (currentView === 'checkout' || currentView === 'confirmation') {
     } else {
       return (
 
         // <div className="border border-dark m-auto" >
-        <div className="d-flex flex-row border-top m-auto p-4 " key={this.props.key} style={cardSize} > {/* mx-3 p-5 */}
+        <div className="d-flex flex-row m-auto p-4 border-bottom" key={this.props.key} style={cardSize}> {/* mx-3 p-5 */}
 
           <div className=" text-center" style={imgWrapper}>
             <img src={this.props.item.image} alt="img" className="img-fluid " style={imgSize} />

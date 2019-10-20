@@ -32,9 +32,9 @@ export const Confirmation = props => {
     <div className="d-flex flex-column px-5 pb-5" style={containerSize}>
       <h1 className="border-bottom my-3 text-center pb-2">Order Confirmation #qwe123</h1>
 
-      <div id="productSummary" className="d-flex flex-row mt-2 border border-danger">
+      <div id="productSummary" className="d-flex flex-row mt-2">
         <div id="cartDetails" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
-          <h2 className="d-inline border-bottom pb-2">Product Summary <div className="d-inline text-muted">({order.count} {itemsVerbiage})</div>
+          <h2 className="d-inline border-bottom pb-2">Purchase Summary <div className="d-inline text-muted">({order.count} {itemsVerbiage})</div>
           </h2>
           {product.map(item => {
             return (
@@ -48,7 +48,7 @@ export const Confirmation = props => {
           })}
         </div>
 
-        <div id="orderSummary" className="w-50 d-flex flex-column ml-4 border border-primary">
+        <div id="orderSummary" className="w-50 d-flex flex-column ml-4 ">
 
           <div id="shipping" className="ml-4">
             <h2 className="border-bottom pb-2">Shipping To:</h2>

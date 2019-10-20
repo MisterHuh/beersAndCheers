@@ -95,85 +95,107 @@ class ProductDetails extends React.Component {
     const modalImgContainer = {
       height: '100%'
     };
+    // const buttonSize = {
+    //   height: '5vh'
+    // };
+    const testSize = {
+      position: 'relative',
+      top: '34%'
+    };
 
     if (this.state.product) {
       return (
         <div id="mainWrapper" className="p-5">
-          <div id="subWrapper" className="p-5">
+          {/* <div id="subWrapper" className="p-5"> */}
 
-            <div id="bodyWrapper" className="border border-danger d-flex flex-row" style={bodyWrapper}>
+          <div id="bodyWrapper" className=" d-flex flex-row border rounded" style={bodyWrapper}>
 
-              <div id="imgContainer" className="text-center border border-dark" style={imgContainer}>
-                <img src={product.image} alt="img" className="img-fluid border border-dark" style={imgSize}/>
-              </div>
-
-              <div id="infoWrapper" className="border border-danger d-flex flex-column" style={infoWrapper}>
-
-                <div id="titleBrewery" className="border border-secondary text-center" style={headerSize}>
-                  <div className="h-50">{product.name}</div>
-                  <div className="h-50">{product.brewery}</div>
-                </div>
-
-                <div id="infoContainer" className="border border-success d-flex flex-row text-center align-items-center" style={statsSize}>
-
-                  <div className="border border-dark h-100 w-50">
-                    <div className="border border-dark my-3">ABV: {product.abv}</div>
-                    <div className="border border-dark my-3">IBU: {product.ibu}</div>
-                    <div className="border border-dark mt-3">AVAILABILITY: {product.availability}</div>
-                    <div className="border border-dark mt-2 ">
-                      <Button className="my-3 w-50"
-                        style={buttonPosition}
-                        onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</Button>
-                    </div>
-                  </div>
-
-                  <div className="my-3 border border-dark h-100 w-50">
-                    <div className="border border-dark my-3">TYPE: {product.type}</div>
-                    <div className="border border-dark my-3">{'$' + ((product.price) / 100).toFixed(2)}</div>
-                    <div className="border border-dark mt-3">
-                      <ButtonGroup>
-                        <Button onClick={this.decrementQuantity} className="border border-dark ">-</Button>
-                        <div className="border border-dark d-inline h-100 px-3">{quantity}</div>
-                        <Button onClick={this.incrementQuantity} className="border border-dark ">+</Button>
-                      </ButtonGroup>
-                    </div>
-                    <div className="mt-2">
-                      <Button className="my-3 w-50" onClick={this.addToCart}>Add To Cart</Button>
-                      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
-                        {/* <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(product, quantity)}>Added To Cart!</ModalHeader> */}
-                        <ModalBody style={modalBodyWrapper}>
-                          <div className="border border-danger d-flex flex-row" style={modalWrapper}>
-                            <div className="border border-dark w-50 text-center" style={modalContainer}>
-                              <img src={product.image} alt="beerImg" className="border border-dark" style={modalImgContainer}/>
-                            </div>
-                            <div className="border border-dark w-50 text-center">
-                              <div className="border border-dark h-25" >{product.name}</div>
-                              <div className="border border-dark h-25">{product.brewery}</div>
-                              <div className="border border-dark h-25">{'$' + ((product.price) / 100).toFixed(2)}</div>
-                              <div className="border border-dark h-25">Quantity: {quantity}</div>
-                            </div>
-                          </div>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button color="primary" onClick={() => this.props.setView('catalog', '')}>Continue Shopping</Button>
-                          <Button color="secondary" onClick={() => this.props.setView('cart', '')}>Go To Cart</Button>
-                        </ModalFooter>
-                      </Modal>
-                    </div>
-                  </div>
-
-                </div> {/* end of infoContainer */}
-
-              </div> {/* end of infoWrapper */}
-
-            </div> {/* end of bodyWrapper */}
-
-            <div id="productDesc" className="border border-info" >
-              <div className="border border-warning p-2">{product.description}</div>
+            <div id="imgContainer" className="text-center pb-2 border-right rounded" style={imgContainer}>
+              <img src={product.image} alt="img" className="img-fluid" style={imgSize}/>
             </div>
 
+            <div id="infoWrapper" className=" d-flex flex-column" style={infoWrapper}>
+
+              <div id="titleBrewery" className="text-center border-bottom rounded" style={headerSize}>
+                <div className="h-50">{product.name}</div>
+                <div className="h-50">{product.brewery}</div>
+              </div>
+
+              <div id="infoContainer" className="d-flex flex-row text-center align-items-center" style={statsSize}>
+
+                <div className=" h-100 w-50 border-right rounded">
+                  <div className=" my-3">ABV: {product.abv}%</div>
+                  <div className=" my-3">IBU: {product.ibu}</div>
+                  <div className=" mt-3">AVAILABILITY: {product.availability}</div>
+                  <div className=" mt-2 ">
+                    <Button
+                      className="my-3 w-50 bg-primary text-white font-weight-bold"
+                      outline color="primary"
+                      style={buttonPosition}
+                      onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</Button>
+                  </div>
+                </div>
+
+                <div className=" h-100 w-50 ">
+                  <div className=" my-3">TYPE: {product.type}</div>
+                  <div className=" my-3">{'$' + ((product.price) / 100).toFixed(2)}</div>
+                  <div className=" mt-3">
+                    {/* <ButtonGroup> */}
+                    <i onClick={this.decrementQuantity} className="fas fa-minus-square"></i>
+                    {/* <Button onClick={this.decrementQuantity} className="" >-</Button> */}
+                    <div className="d-inline px-3">{quantity}</div>
+                    <i onClick={this.incrementQuantity} className="fas fa-plus-square"></i>
+                    {/* <Button onClick={this.incrementQuantity} className="" >+</Button> */}
+                    {/* </ButtonGroup> */}
+                  </div>
+                  <div className="mt-2 ">
+                    <Button outline color="success" className="my-3 w-50 bg-success text-white font-weight-bold" onClick={this.addToCart}>Add To Cart</Button>
+                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                      <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
+                      {/* <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(product, quantity)}>Added To Cart!</ModalHeader> */}
+                      <ModalBody style={modalBodyWrapper}>
+                        <div className=" d-flex flex-row" style={modalWrapper}>
+                          <div className="w-50 text-center border-right rounded" style={modalContainer}>
+                            <img src={product.image} alt="beerImg" className="" style={modalImgContainer}/>
+                          </div>
+                          <div className="w-50 text-center ">
+                            <div className="border-bottom rounded h-25" >
+                              <div style={testSize}>{product.name}</div>
+                            </div>
+                            <div className="border-bottom rounded h-25" >
+                              <div style={testSize}>{product.brewery}</div>
+                            </div>
+                            <div className="border-bottom rounded h-25" >
+                              <div style={testSize}>{'$' + ((product.price) / 100).toFixed(2)}</div>
+                            </div>
+                            <div className="h-25" >
+                              <div style={testSize}>Quantity: <strong>{quantity}</strong></div>
+                            </div>
+                            {/* <div className="border border-dark h-25" style={testSize} >{product.brewery}</div>
+                            <div className="border border-dark h-25" style={testSize} >{'$' + ((product.price) / 100).toFixed(2)}</div>
+                            <div className="border border-dark h-25" style={testSize} >Quantity: {quantity}</div> */}
+                          </div>
+                        </div>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button color="primary" className="bg-primary text-white font-weight-bold" onClick={() => this.props.setView('catalog', '')}>Continue Shopping</Button>
+                        <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.props.setView('cart', '')}>Go To Cart</Button>
+                      </ModalFooter>
+                    </Modal>
+                  </div>
+                </div>
+
+              </div> {/* end of infoContainer */}
+
+            </div> {/* end of infoWrapper */}
+
+          </div> {/* end of bodyWrapper */}
+
+          <div id="productDesc" className="border-right border-bottom border-left rounded" >
+            <div className="py-3 px-4">{product.description}</div>
           </div>
+
+          {/* </div> */}
         </div>
 
       );

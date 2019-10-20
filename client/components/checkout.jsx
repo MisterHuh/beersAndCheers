@@ -234,12 +234,12 @@ export default class Checkout extends React.Component {
               view={this.props.view}
               cart={this.props.cart} />
 
-            <div className="text-center pt-1">
+            <div className="text-center pt-1 border-bottom rounded py-4">
               <div className="m-3">
-                <Button outline color="primary" onClick={() => this.props.setView('cart', '')} className="w-50">Go Back To Cart</Button>
+                <Button outline color="primary" onClick={() => this.props.setView('cart', '')} className="w-50 bg-primary text-white font-weight-bold">Go Back To Cart</Button>
               </div>
               <div className="mx-3 mt-3 mb-5">
-                <Button outline color="secondary" onClick={this.toggle} className="w-50">Place Order</Button>
+                <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
 
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Order Confirmation</ModalHeader>
@@ -311,8 +311,8 @@ export default class Checkout extends React.Component {
                     </div>
                   </ModalBody>
                   <ModalFooter>
-                    <Button color="primary" onClick={() => this.closeModal()}>Return To Checkout</Button>
-                    <Button color="secondary" onClick={() => this.placeOrder()}>Place Order!</Button>
+                    <Button color="primary" className="bg-primary text-white font-weight-bold" onClick={() => this.closeModal()}>Return To Checkout</Button>
+                    <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.placeOrder()}>Place Order</Button>
                   </ModalFooter>
                 </Modal>
 

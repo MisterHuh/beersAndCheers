@@ -48,12 +48,12 @@ export const CartSummary = props => {
               view={props.view}
               cart={props.cart}/>
 
-            <div className="text-center pt-1">
+            <div className="text-center pt-4">
               <div className="m-3">
-                <Button outline color="primary" onClick={() => props.setView('catalog', '')} className="w-50">Continue Shopping</Button>
+                <Button outline color="primary" onClick={() => props.setView('catalog', '')} className="w-50 bg-primary text-white font-weight-bold">Continue Shopping</Button>
               </div>
               <div className="mx-3 mt-3 mb-5">
-                <Button outline color="secondary" onClick={() => props.setView('checkout', '')} className="w-50">Checkout</Button>
+                <Button outline color="success" onClick={() => props.setView('checkout', '')} className="w-50 bg-success text-white font-weight-bold">Checkout</Button>
               </div>
             </div>
           </div>
