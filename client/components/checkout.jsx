@@ -138,7 +138,7 @@ export default class Checkout extends React.Component {
     console.log('cart is: ', this.props.cart);
 
     return (
-      <div className="d-flex flex-column px-5" style={containerSize}>
+      <div className="d-flex flex-column px-5 pb-5" style={containerSize}>
         <h1 className="border-bottom my-3 text-center pb-2">Checkout</h1>
         <div className="d-flex flex-row mt-2">
           <div id="personalInfo" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}

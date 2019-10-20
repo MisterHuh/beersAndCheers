@@ -29,7 +29,7 @@ export const Confirmation = props => {
   order.count === 1 ? itemsVerbiage = 'item' : itemsVerbiage = 'items';
 
   return (
-    <div className="d-flex flex-column px-5" style={containerSize}>
+    <div className="d-flex flex-column px-5 pb-5" style={containerSize}>
       <h1 className="border-bottom my-3 text-center pb-2">Order Confirmation #qwe123</h1>
 
       <div id="productSummary" className="d-flex flex-row mt-2 border border-danger">
