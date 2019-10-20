@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter, Tooltip } from 'reactstrap';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -117,16 +117,26 @@ class ProductDetails extends React.Component {
             <div id="infoWrapper" className=" d-flex flex-column" style={infoWrapper}>
 
               <div id="titleBrewery" className="text-center border-bottom rounded" style={headerSize}>
-                <div className="h-50">{product.name}</div>
+                <div className="h-50 pt-2">{product.name}</div>
                 <div className="h-50">{product.brewery}</div>
               </div>
 
               <div id="infoContainer" className="d-flex flex-row text-center align-items-center" style={statsSize}>
 
-                <div className=" h-100 w-50 border-right rounded">
-                  <div className=" my-3">ABV: {product.abv}%</div>
-                  <div className=" my-3">IBU: {product.ibu}</div>
-                  <div className=" mt-3">AVAILABILITY: {product.availability}</div>
+                <div className=" h-100 w-50 border-right rounded border border-primary">
+
+                  {/* <div className="my-3 border border-dark">
+                    <div className="d-inline border border-danger">ABV </div>
+                    <div className="d-inline float-right  border border-success">{product.abv}%</div>
+                  </div> */}
+
+                  {/* <div className=" my-3">ABV <div className="d-inline ml-3">{product.abv}%</div></div> */}
+                  <div className=" my-3">{product.abv}% <div data-toggle="tooltip" data-placement="right" className="d-inline ml-1">ABV</div></div>
+
+                  <div className=" my-3">{product.ibu} <div className="d-inline ml-1">IBU</div></div>
+                  <div className=" mt-3">Available<div className="d-inline ml-1">{product.availability}</div></div>
+                  {/* <div className=" mt-3">{product.availability} <div className="d-inline ml-3">Availbility</div></div> */}
+
                   <div className=" mt-2 ">
                     <Button
                       className="my-3 w-50 bg-primary text-white font-weight-bold"
@@ -137,8 +147,8 @@ class ProductDetails extends React.Component {
                 </div>
 
                 <div className=" h-100 w-50 ">
-                  <div className=" my-3">TYPE: {product.type}</div>
-                  <div className=" my-3">{'$' + ((product.price) / 100).toFixed(2)}</div>
+                  <div className=" my-3">{product.type}</div>
+                  <div className=" my-3">$ <div className="d-inline">{((product.price) / 100).toFixed(2)}</div></div>
                   <div className=" mt-3">
                     {/* <ButtonGroup> */}
                     <i onClick={this.decrementQuantity} className="fas fa-minus-square"></i>
