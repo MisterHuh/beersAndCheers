@@ -27,7 +27,8 @@ export const Header = props => {
   // uncomment the above line to include carousel
 
   const imgWrapper = {
-    height: '8vh'
+    height: '8vh',
+    cursor: 'pointer'
   };
 
   const imgContainer = {
@@ -39,6 +40,10 @@ export const Header = props => {
     backgroundColor: '#F4F4F4'
   };
 
+  const cursor = {
+    cursor: 'pointer'
+  };
+
   return (
     <React.Fragment>
       <Navbar light expand="md" className="sticky-top" style={navBarColor}>
@@ -48,10 +53,10 @@ export const Header = props => {
         </NavbarBrand>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink onClick={() => props.setView('about', '')}>About</NavLink>
+            <NavLink onClick={() => props.setView('about', '')} style={cursor}>About</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink onClick={() => props.setView('cart', '')}>Cart <Badge pill>{cartQuantity}</Badge></NavLink>
+            <NavLink onClick={() => props.setView('cart', '')} style={cursor}>Cart <Badge pill>{cartQuantity}</Badge></NavLink>
           </NavItem>
         </Nav>
       </Navbar>

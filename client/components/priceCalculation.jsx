@@ -9,6 +9,10 @@ export const PriceCalculation = props => {
   let taxes = 0;
   let totalAmount = 0;
 
+  const cursor = {
+    cursor: 'pointer'
+  };
+
   if (cart.length > 0) {
     for (let index = 0; index < cart.length; index++) {
       price += (cart[index].count * cart[index].price);
@@ -25,7 +29,7 @@ export const PriceCalculation = props => {
       </div>
       <div className="m-3">
         <h4 className=" d-inline" >Shipping
-          <i id="shipping" className="ml-2 d-inline fas fa-question-circle" ></i>
+          <i id="shipping" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
           <div className=" d-inline float-right">Free</div>
           <UncontrolledPopover placement="left" target="shipping">
             {/* <PopoverHeader>Shipping Info</PopoverHeader> */}

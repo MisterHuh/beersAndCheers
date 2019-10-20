@@ -97,6 +97,11 @@ class CartSummaryItem extends React.Component {
     };
     let currentView = this.props.view;
 
+    const cursor = {
+      cursor: 'pointer'
+      // textDecoration: 'underline'
+    };
+
     // console.log('LOADING COUNTER');
 
     if (currentView === 'cart') {
@@ -111,7 +116,7 @@ class CartSummaryItem extends React.Component {
           <div className=" d-flex flex-column justify-content-center align-items-flex-end pt-5 ml-2 text-left w-75">
 
             {/* <div className="h-25 " style={fontSize}> */}
-            <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
+            <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2 underline-on-hover" style={cursor}>{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
             {/* </div> */}
 
@@ -121,10 +126,10 @@ class CartSummaryItem extends React.Component {
               <div className="d-inline mr-2 float-right">
                 {/* <ButtonGroup> */}
                 {/* <Button onClick={this.decrementQuantity} className=" ">-</Button> */}
-                <i onClick={this.decrementQuantity} className="fas fa-minus-square"></i>
+                <i onClick={this.decrementQuantity} className="fas fa-minus-square" style={cursor}></i>
                 <div className=" d-inline px-2"><strong>{this.state.count}</strong></div>
                 {/* <Button onClick={this.incrementQuantity} className=" ">+</Button> */}
-                <i onClick={this.incrementQuantity} className="fas fa-plus-square"></i>
+                <i onClick={this.incrementQuantity} className="fas fa-plus-square" style={cursor}></i>
                 {/* </ButtonGroup> */}
               </div>
             </div>
@@ -178,7 +183,7 @@ class CartSummaryItem extends React.Component {
 
             {/* <div className="h-25 " style={fontSize}> */}
             {/* <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div> */}
-            <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
+            <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2 underline-on-hover" style={cursor}>{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
             {/* </div> */}
 
