@@ -101,7 +101,6 @@ class CartSummaryItem extends React.Component {
 
     if (currentView === 'cart') {
       return (
-
         // <div className="border border-dark m-auto" >
         <div className="d-flex flex-row mx-auto my-4 border-bottom px-4 pb-2" key={this.props.key} style={cardSize} > {/* mx-3 p-5 */}
 
@@ -112,7 +111,7 @@ class CartSummaryItem extends React.Component {
           <div className=" d-flex flex-column justify-content-center align-items-flex-end pt-5 ml-2 text-left w-75">
 
             {/* <div className="h-25 " style={fontSize}> */}
-            <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
+            <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
             {/* </div> */}
 
@@ -179,7 +178,7 @@ class CartSummaryItem extends React.Component {
 
             {/* <div className="h-25 " style={fontSize}> */}
             {/* <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div> */}
-            <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
+            <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
             {/* </div> */}
 
