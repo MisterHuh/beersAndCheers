@@ -52,12 +52,19 @@ export const Carousel = () => {
   const imgSize = {
     width: '100%',
     height: '100%',
+    opacity: '0.9',
     // display: 'block',
     // backgroundSize: 'cover',
     // backgroundPosition: '50% 50%',
-    // position: 'relative',
+    position: 'relative',
     backgroundRepeat: 'no-repeat',
     objectFit: 'cover'
+  };
+
+  const gitIn = {
+    top: '15%',
+    right: '10%',
+    textShadow: '1px 1px grey'
   };
 
   return (
@@ -67,10 +74,11 @@ export const Carousel = () => {
 
     <div>
       <Jumbotron fluid className="border border-secondary p-0 mb-1">
-        <Container fluid className="p-0">
-          <div className="border border-danger" style={imgWrapper}>
-            <img src={open} alt="jumbo" style={imgSize} className="border border-light"/>
-          </div>
+        {/* <Container fluid className="p-0">
+          <div className="border border-danger" style={imgWrapper}> */}
+        <Container fluid className="p-0 border border-danger position-relative" style={imgWrapper}>
+          <img src={open} alt="jumbo" style={imgSize} className="border border-light"/>
+          <h1 className="position-absolute " style={gitIn}>Welcome Back</h1>
           {/* <h1 className="display-3">Fluid jumbotron</h1>
           <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> */}
         </Container>
