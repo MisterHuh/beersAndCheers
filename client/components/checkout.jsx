@@ -8,18 +8,6 @@ export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // firstName: 'Jae',
-      // lastName: 'Huh',
-      // eMail: '',
-      // phoneNumber: '',
-      // streetAddress: '1234 Johnson Street',
-      // city: 'La Habra',
-      // state: 'CA',
-      // zipCode: '92683',
-      // creditCardNumber: '1234567890123456',
-      // fullName: 'Jaehyuk Huh',
-      // monthYear: '08/12',
-      // cvc: '142',
       firstName: '',
       lastName: '',
       eMail: '',
@@ -35,6 +23,7 @@ export default class Checkout extends React.Component {
       modal: false
     };
 
+    // const minLetterRegex =
     this.toggle = this.toggle.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleInput = this.handleInput.bind(this);

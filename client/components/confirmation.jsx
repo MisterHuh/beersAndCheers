@@ -32,9 +32,11 @@ export const Confirmation = props => {
   let itemsVerbiage;
   order.count === 1 ? itemsVerbiage = 'item' : itemsVerbiage = 'items';
 
+  let orderNumber = billing.fullName[0] + billing.cvc[0] + billing.creditCardNumber[0] + billing.monthYear[0] + shipping.city[0] + shipping.lastName[0];
+
   return (
     <div className="d-flex flex-column px-5 pb-5" style={containerSize}>
-      <h1 className="border-bottom my-3 text-center pb-2">Order Confirmation #qwe123</h1>
+      <h1 className="border-bottom my-3 text-center pb-2">Order Confirmation #{orderNumber}</h1>
 
       <div id="productSummary" className="d-flex flex-row mt-2">
         <div id="cartDetails" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
