@@ -2,7 +2,7 @@ import React from 'react';
 // import { ShippingForm, BillingForm } from './forms';
 import { PriceCalculation } from './priceCalculation';
 import CartSummaryItem from './cart-summary-item';
-import { Button, Col, Row, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Col, Row, Form, FormGroup, FormFeedBack, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default class Checkout extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class Checkout extends React.Component {
       modal: false
     };
 
-    // const minLetterRegex =
+    const minLetterRegex = /[A-Za-z]/;
     this.toggle = this.toggle.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -147,6 +147,9 @@ export default class Checkout extends React.Component {
 
     console.log('cart is: ', this.props.cart);
 
+    let firstNameBorder;
+    this.state.firstName.match(minLetterRegex) ? firstNameBorder = valid : firstNameBorder = false;
+
     return (
       <div className="d-flex flex-column px-5 pb-5" style={containerSize}>
         <h1 className="border-bottom my-3 text-center pb-2">Checkout</h1>
@@ -161,6 +164,7 @@ export default class Checkout extends React.Component {
                     <FormGroup>
                       {/* <Label>First Name</Label> */}
                       <Input onChange={this.handleInput} name="firstName" placeholder="First Name" />
+                      <FormFeedBack {firstnameBorder}> test </FormFeedBack>
                     </FormGroup>
                   </Col>
                   <Col md={6}>
