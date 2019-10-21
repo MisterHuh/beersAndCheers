@@ -109,15 +109,6 @@ export default class Checkout extends React.Component {
   }
 
   handleInput(e) {
-    // let name = e.target.name;
-    // let value = e.target.value;
-    // this.setState({ [name]: value },
-    //   () => {
-    //     console.log('result: ', this.state.name);
-    //   });
-
-    // this.setState({ [e.target.name]: e.target.value });
-
     const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
 
     const { name, value } = e.target;
@@ -246,8 +237,13 @@ export default class Checkout extends React.Component {
                 <Row form>
                   <Col md={6}>
                     <FormGroup>
-                      {/* <Label>First Name</Label> */}
-                      <Input onChange={this.handleInput} name="firstName" placeholder="First Name" type="text" />
+                      <Input
+                        className={formErrors.firstName.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="firstName"
+                        placeholder="First Name"
+                        type="text"
+                      />
                       {formErrors.firstName.length > 0 && (
                         <small className="text-danger">{formErrors.firstName}</small>
                       )}
@@ -255,8 +251,13 @@ export default class Checkout extends React.Component {
                   </Col>
                   <Col md={6}>
                     <FormGroup>
-                      {/* <Label>Last Name</Label> */}
-                      <Input onChange={this.handleInput} name="lastName" placeholder="Last Name" type="text"/>
+                      <Input
+                        className={formErrors.lastName.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="lastName"
+                        placeholder="Last Name"
+                        type="text"
+                      />
                       {formErrors.lastName.length > 0 && (
                         <small className="text-danger">{formErrors.lastName}</small>
                       )}
@@ -264,22 +265,35 @@ export default class Checkout extends React.Component {
                   </Col>
                 </Row>
                 <FormGroup>
-                  {/* <Label>E-mail</Label> */}
-                  <Input onChange={this.handleInput} name="eMail" placeholder="E-mail" />
+                  <Input
+                    className={formErrors.eMail.length > 0 ? 'border border-danger' : null}
+                    onChange={this.handleInput}
+                    name="eMail"
+                    placeholder="E-mail"
+                  />
                   {formErrors.eMail.length > 0 && (
                     <small className="text-danger">{formErrors.eMail}</small>
                   )}
                 </FormGroup>
                 <FormGroup>
-                  {/* <Label>Phone Number</Label> */}
-                  <Input onChange={this.handleInput} name="phoneNumber" placeholder="Phone Number" />
+                  <Input
+                    className={formErrors.phoneNumber.length > 0 ? 'border border-danger' : null}
+                    onChange={this.handleInput}
+                    name="phoneNumber"
+                    placeholder="Phone Number"
+                  />
                   {formErrors.phoneNumber.length > 0 && (
                     <small className="text-danger">{formErrors.phoneNumber}</small>
                   )}
                 </FormGroup>
                 <FormGroup>
                   {/* <Label>Street Address</Label> */}
-                  <Input onChange={this.handleInput} name="streetAddress" placeholder="Street Address" />
+                  <Input
+                    className={formErrors.streetAddress.length > 0 ? 'border border-danger' : null}
+                    onChange={this.handleInput}
+                    name="streetAddress"
+                    placeholder="Street Address"
+                  />
                   {formErrors.streetAddress.length > 0 && (
                     <small className="text-danger">{formErrors.streetAddress}</small>
                   )}
@@ -288,8 +302,13 @@ export default class Checkout extends React.Component {
                 <Row form>
                   <Col md={6}>
                     <FormGroup>
-                      {/* <Label>City</Label> */}
-                      <Input onChange={this.handleInput} name="city" placeholder="City" type="text"/>
+                      <Input
+                        className={formErrors.city.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="city"
+                        placeholder="City"
+                        type="text"
+                      />
                       {formErrors.city.length > 0 && (
                         <small className="text-danger">{formErrors.city}</small>
                       )}
@@ -297,8 +316,13 @@ export default class Checkout extends React.Component {
                   </Col>
                   <Col md={2}>
                     <FormGroup>
-                      {/* <Label>State</Label> */}
-                      <Input onChange={this.handleInput} name="state" placeholder="State" type="text"/>
+                      <Input
+                        className={formErrors.state.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="state"
+                        placeholder="State"
+                        type="text"
+                      />
                       {formErrors.state.length > 0 && (
                         <small className="text-danger">{formErrors.state}</small>
                       )}
@@ -307,7 +331,12 @@ export default class Checkout extends React.Component {
                   <Col md={4}>
                     <FormGroup>
                       {/* <Label>Zip</Label> */}
-                      <Input onChange={this.handleInput} name="zipCode" placeholder="Zipcode" />
+                      <Input
+                        className={formErrors.zipCode.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="zipCode"
+                        placeholder="Zipcode"
+                      />
                       {formErrors.zipCode.length > 0 && (
                         <small className="text-danger">{formErrors.zipCode}</small>
                       )}
@@ -322,15 +351,24 @@ export default class Checkout extends React.Component {
             <div className="mt-2 mx-3 mb-4">
               <Form>
                 <FormGroup>
-                  {/* <Label>Credit Card Number</Label> */}
-                  <Input onChange={this.handleInput} name="creditCardNumber" placeholder="Card Number" />
+                  <Input
+                    className={formErrors.creditCardNumber.length > 0 ? 'border border-danger' : null}
+                    onChange={this.handleInput}
+                    name="creditCardNumber"
+                    placeholder="Card Number"
+                  />
                   {formErrors.creditCardNumber.length > 0 && (
                     <small className="text-danger">{formErrors.creditCardNumber}</small>
                   )}
                 </FormGroup>
                 <FormGroup>
-                  {/* <Label>Full Name</Label> */}
-                  <Input onChange={this.handleInput} name="fullName" placeholder="Full Name" type="text"/>
+                  <Input
+                    className={formErrors.fullName.length > 0 ? 'border border-danger' : null}
+                    onChange={this.handleInput}
+                    name="fullName"
+                    placeholder="Full Name"
+                    type="text"
+                  />
                   {formErrors.fullName.length > 0 && (
                     <small className="text-danger">{formErrors.fullName}</small>
                   )}
@@ -339,8 +377,12 @@ export default class Checkout extends React.Component {
                 <Row form>
                   <Col md={6}>
                     <FormGroup>
-                      {/* <Label>MM/YY</Label> */}
-                      <Input onChange={this.handleInput} name="monthYear" placeholder="MM/YY" />
+                      <Input
+                        className={formErrors.monthYear.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="monthYear"
+                        placeholder="MM/YY"
+                      />
                       {formErrors.monthYear.length > 0 && (
                         <small className="text-danger">{formErrors.monthYear}</small>
                       )}
@@ -348,8 +390,12 @@ export default class Checkout extends React.Component {
                   </Col>
                   <Col md={6}>
                     <FormGroup>
-                      {/* <Label>CVC</Label> */}
-                      <Input onChange={this.handleInput} name="cvc" placeholder="CVC" />
+                      <Input
+                        className={formErrors.cvc.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="cvc"
+                        placeholder="CVC"
+                      />
                       {formErrors.cvc.length > 0 && (
                         <small className="text-danger">{formErrors.cvc}</small>
                       )}
