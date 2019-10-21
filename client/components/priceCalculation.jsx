@@ -4,10 +4,11 @@ import { UncontrolledPopover, PopoverHeader, PopoverBody, Button } from 'reactst
 export const PriceCalculation = props => {
 
   let cart = props.cart;
-  let price = 0;
+  let subTotal = 0;
   let taxRate = 0.075;
   let taxes = 0;
   let totalAmount = 0;
+  let shipping;
 
   const cursor = {
     cursor: 'pointer'
@@ -15,30 +16,50 @@ export const PriceCalculation = props => {
 
   if (cart.length > 0) {
     for (let index = 0; index < cart.length; index++) {
-      price += (cart[index].count * cart[index].price);
+      subTotal += (cart[index].count * cart[index].price);
     }
-    taxes = price * taxRate;
-    totalAmount = price + taxes;
+    taxes = subTotal * taxRate;
+
+    console.log('subtotal is: ', subTotal);
+
+    subTotal >= 4000 ? shipping = 'Free' : shipping = '$ 15.00';
+
+    let shippingType = typeof (shipping);
+    console.log('shippingType is: ', shippingType);
+    shippingType === 'string' ? totalAmount = subTotal + taxes : totalAmount = subTotal + taxes + 1500;
+
   }
 
   return (
     <div id="pricingDetails" className="ml-4">
       <h2 className="border-bottom pb-2">Summary</h2>
+
       <div className="m-3">
-        <h4 className=" d-inline">Subtotal <div className=" d-inline float-right">$ {(price / 100).toFixed(2)}</div> </h4>
+        <h4 className=" d-inline">Subtotal
+          <div className=" d-inline float-right">$ {(subTotal / 100).toFixed(2)}</div>
+        </h4>
       </div>
+
       <div className="m-3">
         <h4 className=" d-inline" >Shipping
           <i id="shipping" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
-          <div className=" d-inline float-right">Free</div>
-          <UncontrolledPopover placement="left" target="shipping">
+          <div className=" d-inline float-right">{shipping}</div>
+          <UncontrolledPopover placement="right" target="shipping">
             {/* <PopoverHeader>Shipping Info</PopoverHeader> */}
             <PopoverBody>Free shipping on orders of <strong>$40</strong> or more <strong>before taxes</strong></PopoverBody>
           </UncontrolledPopover>
         </h4>
       </div>
+
       <div className="m-3">
-        <h4 id="taxes" className=" d-inline">Taxes <div className=" d-inline float-right">$ {(taxes / 100).toFixed(2)}</div> </h4>
+        <h4 id="taxes" className=" d-inline">Taxes
+          <i id="taxes" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
+          <div className=" d-inline float-right">$ {(taxes / 100).toFixed(2)}</div>
+          <UncontrolledPopover placement="right" target="taxes">
+            {/* <PopoverHeader>Shipping Info</PopoverHeader> */}
+            <PopoverBody>Tax rate of <strong>7.5%</strong></PopoverBody>
+          </UncontrolledPopover>
+        </h4>
       </div>
       <hr />
       <div className="m-3">
