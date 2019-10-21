@@ -8,18 +8,30 @@ export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: 'Jae',
-      lastName: 'Huh',
+      // firstName: 'Jae',
+      // lastName: 'Huh',
+      // eMail: '',
+      // phoneNumber: '',
+      // streetAddress: '1234 Johnson Street',
+      // city: 'La Habra',
+      // state: 'CA',
+      // zipCode: '92683',
+      // creditCardNumber: '1234567890123456',
+      // fullName: 'Jaehyuk Huh',
+      // monthYear: '08/12',
+      // cvc: '142',
+      firstName: '',
+      lastName: '',
       eMail: '',
       phoneNumber: '',
-      streetAddress: '1234 Johnson Street',
-      city: 'La Habra',
-      state: 'CA',
-      zipCode: '92683',
-      creditCardNumber: '1234567890123456',
-      fullName: 'Jaehyuk Huh',
-      monthYear: '08/12',
-      cvc: '142',
+      streetAddress: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      creditCardNumber: '',
+      fullName: '',
+      monthYear: '',
+      cvc: '',
       modal: false
     };
 
@@ -80,9 +92,7 @@ export default class Checkout extends React.Component {
 
     console.log('CHECKOUT receipt is: ', receipt);
 
-    // console.log('placeOrder cartID is: ', this.props.cart[0].cart_id);
     this.props.setView('confirmation', '');
-    // this.props.placeOrder(productReceipt, shippingReceipt, billingReceipt, orderReceipt);
     this.props.placeOrder(productReceipt, receipt);
     this.toggle();
   }
@@ -98,6 +108,17 @@ export default class Checkout extends React.Component {
 
   handleInput(e) {
     console.log('event is: ', e);
+    console.log('event.target is: ', e.target);
+    console.log('event.target.name is: ', e.target.name);
+    console.log('event.target.name is: ', e.target.value);
+
+    // let name = e.target.name;
+    // let value = e.target.value;
+    // this.setState({ [name]: value },
+    //   () => {
+    //     console.log('result: ', this.state.name);
+    //   });
+
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -150,46 +171,46 @@ export default class Checkout extends React.Component {
                   <Col md={6}>
                     <FormGroup>
                       {/* <Label>First Name</Label> */}
-                      <Input onClick={this.handleInput} name="firstName" placeholder="First Name" />
+                      <Input onChange={this.handleInput} name="firstName" placeholder="First Name" />
                     </FormGroup>
                   </Col>
                   <Col md={6}>
                     <FormGroup>
                       {/* <Label>Last Name</Label> */}
-                      <Input onClick={this.handleInput} name="lastName" placeholder="Last Name" />
+                      <Input onChange={this.handleInput} name="lastName" placeholder="Last Name" />
                     </FormGroup>
                   </Col>
                 </Row>
                 <FormGroup>
                   {/* <Label>E-mail</Label> */}
-                  <Input onClick={this.handleInput} name="eMail" placeholder="E-mail" />
+                  <Input onChange={this.handleInput} name="eMail" placeholder="E-mail" />
                 </FormGroup>
                 <FormGroup>
                   {/* <Label>Phone Number</Label> */}
-                  <Input onClick={this.handleInput} name="phoneNumber" placeholder="Phone Number" />
+                  <Input onChange={this.handleInput} name="phoneNumber" placeholder="Phone Number" />
                 </FormGroup>
                 <FormGroup>
                   {/* <Label>Street Address</Label> */}
-                  <Input onClick={this.handleInput} name="streetAddress" placeholder="Street Address" />
+                  <Input onChange={this.handleInput} name="streetAddress" placeholder="Street Address" />
                 </FormGroup>
 
                 <Row form>
                   <Col md={6}>
                     <FormGroup>
                       {/* <Label>City</Label> */}
-                      <Input onClick={this.handleInput} name="city" placeholder="City" />
+                      <Input onChange={this.handleInput} name="city" placeholder="City" />
                     </FormGroup>
                   </Col>
                   <Col md={4}>
                     <FormGroup>
                       {/* <Label>State</Label> */}
-                      <Input onClick={this.handleInput} name="state" id="exampleState" placeholder="State" />
+                      <Input onChange={this.handleInput} name="state" id="exampleState" placeholder="State" />
                     </FormGroup>
                   </Col>
                   <Col md={2}>
                     <FormGroup>
                       {/* <Label>Zip</Label> */}
-                      <Input onClick={this.handleInput} name="zipCode" id="exampleZip" placeholder="Zipcode" />
+                      <Input onChange={this.handleInput} name="zipCode" id="exampleZip" placeholder="Zipcode" />
                     </FormGroup>
                   </Col>
                 </Row>
@@ -202,24 +223,24 @@ export default class Checkout extends React.Component {
               <Form>
                 <FormGroup>
                   {/* <Label>Credit Card Number</Label> */}
-                  <Input onClick={this.handleInput} name="creditCardNumber" placeholder="Card Number" />
+                  <Input onChange={this.handleInput} name="creditCardNumber" placeholder="Card Number" />
                 </FormGroup>
                 <FormGroup>
                   {/* <Label>Full Name</Label> */}
-                  <Input onClick={this.handleInput} name="fullName" placeholder="Full Name" />
+                  <Input onChange={this.handleInput} name="fullName" placeholder="Full Name" />
                 </FormGroup>
 
                 <Row form>
                   <Col md={6}>
                     <FormGroup>
                       {/* <Label>MM/YY</Label> */}
-                      <Input onClick={this.handleInput} name="monthYear" placeholder="MM/YY" />
+                      <Input onChange={this.handleInput} name="monthYear" placeholder="MM/YY" />
                     </FormGroup>
                   </Col>
                   <Col md={6}>
                     <FormGroup>
                       {/* <Label>CVC</Label> */}
-                      <Input onClick={this.handleInput} name="cvc" placeholder="CVC" />
+                      <Input onChange={this.handleInput} name="cvc" placeholder="CVC" />
                     </FormGroup>
                   </Col>
                 </Row>
