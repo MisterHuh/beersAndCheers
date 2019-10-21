@@ -140,7 +140,7 @@ class ProductDetails extends React.Component {
                     <div className="d-inline ml-2">ABV</div>
                     <i id="abvInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
                     <UncontrolledPopover placement="right" target="abvInfo">
-                      <PopoverBody>Alcohol By Volume</PopoverBody>
+                      <PopoverBody><strong>Alcohol By Volume</strong>, given as a percentage, measures how much alcohol is in the drink</PopoverBody>
                     </UncontrolledPopover>
                   </div>
 
@@ -148,7 +148,7 @@ class ProductDetails extends React.Component {
                     <div className="d-inline ml-2">IBU</div>
                     <i id="ibuInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
                     <UncontrolledPopover placement="right" target="ibuInfo">
-                      <PopoverBody>International Bitterness Units</PopoverBody>
+                      <PopoverBody><strong>International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds</PopoverBody>
                     </UncontrolledPopover>
                   </div>
                   <div className=" mt-3">Available<div className="d-inline ml-1">{product.availability}</div></div>
