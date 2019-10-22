@@ -5,21 +5,9 @@ export const Confirmation = props => {
   let product = props.productReceipt;
   let receipt = props.receipt;
 
-  console.log('product is: ', product);
-  console.log('receipt is: ', receipt);
-
   let shipping = receipt[0];
   let billing = receipt[1];
   let order = receipt[2];
-
-  console.log('shipping is: ', shipping);
-  console.log('shipping name is ', shipping.firstName);
-
-  console.log('billing is: ', billing);
-  console.log('billing number is: ', billing.creditCardNumber);
-
-  console.log('order is: ', order);
-  console.log('order count is: ', order.count);
 
   const containerSize = {
     width: '100wh'

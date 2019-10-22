@@ -2,7 +2,7 @@ import React from 'react';
 // import { ShippingForm, BillingForm } from './forms';
 import { PriceCalculation } from './priceCalculation';
 import CartSummaryItem from './cart-summary-item';
-import { Button, Col, Row, Form, FormGroup, FormFeedBack, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Col, Row, Form, FormGroup, FormFeedback, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default class Checkout extends React.Component {
   constructor(props) {
@@ -109,6 +109,7 @@ export default class Checkout extends React.Component {
   }
 
   handleInput(e) {
+    e.preventDefault();
     const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
 
     const { name, value } = e.target;
@@ -223,6 +224,23 @@ export default class Checkout extends React.Component {
 
     const { formErrors } = this.state;
 
+    const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
+    let buttonDisplay;
+    this.state.firstName.length >= 1 &&
+    this.state.lastName.length >= 1 &&
+    emailRegex.test(this.state.eMail) &&
+    this.state.phoneNumber.length === 10 &&
+    this.state.streetAddress.length >= 1 &&
+    this.state.city.length >= 1 &&
+    this.state.state.length === 2 &&
+    this.state.zipCode.length === 5 &&
+    this.state.creditCardNumber.length === 16 &&
+    this.state.fullName.length >= 1 &&
+    this.state.monthYear.length === 5 &&
+    this.state.cvc.length === 3
+      ? buttonDisplay = <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
+      : buttonDisplay = <Button outline color="warning" className="w-50 bg-warning text-white font-weight-bold">Fill In Form</Button>;
+
     console.log('cart is: ', this.props.cart);
 
     return (
@@ -239,10 +257,10 @@ export default class Checkout extends React.Component {
                     <FormGroup>
                       <Input
                         className={formErrors.firstName.length > 0 ? 'border border-danger' : null}
+                        // className={formErrors.firstName.length > 0 ? 'has-danger' : null}
                         onChange={this.handleInput}
                         name="firstName"
                         placeholder="First Name"
-                        type="text"
                       />
                       {formErrors.firstName.length > 0 && (
                         <small className="text-danger">{formErrors.firstName}</small>
@@ -256,7 +274,6 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="lastName"
                         placeholder="Last Name"
-                        type="text"
                       />
                       {formErrors.lastName.length > 0 && (
                         <small className="text-danger">{formErrors.lastName}</small>
@@ -277,6 +294,7 @@ export default class Checkout extends React.Component {
                 </FormGroup>
                 <FormGroup>
                   <Input
+                    maxLength="10"
                     className={formErrors.phoneNumber.length > 0 ? 'border border-danger' : null}
                     onChange={this.handleInput}
                     name="phoneNumber"
@@ -287,7 +305,6 @@ export default class Checkout extends React.Component {
                   )}
                 </FormGroup>
                 <FormGroup>
-                  {/* <Label>Street Address</Label> */}
                   <Input
                     className={formErrors.streetAddress.length > 0 ? 'border border-danger' : null}
                     onChange={this.handleInput}
@@ -307,7 +324,6 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="city"
                         placeholder="City"
-                        type="text"
                       />
                       {formErrors.city.length > 0 && (
                         <small className="text-danger">{formErrors.city}</small>
@@ -317,11 +333,11 @@ export default class Checkout extends React.Component {
                   <Col md={2}>
                     <FormGroup>
                       <Input
+                        maxLength="2"
                         className={formErrors.state.length > 0 ? 'border border-danger' : null}
                         onChange={this.handleInput}
                         name="state"
                         placeholder="State"
-                        type="text"
                       />
                       {formErrors.state.length > 0 && (
                         <small className="text-danger">{formErrors.state}</small>
@@ -330,8 +346,8 @@ export default class Checkout extends React.Component {
                   </Col>
                   <Col md={4}>
                     <FormGroup>
-                      {/* <Label>Zip</Label> */}
                       <Input
+                        maxLength="5"
                         className={formErrors.zipCode.length > 0 ? 'border border-danger' : null}
                         onChange={this.handleInput}
                         name="zipCode"
@@ -352,6 +368,7 @@ export default class Checkout extends React.Component {
               <Form>
                 <FormGroup>
                   <Input
+                    maxLength="16"
                     className={formErrors.creditCardNumber.length > 0 ? 'border border-danger' : null}
                     onChange={this.handleInput}
                     name="creditCardNumber"
@@ -367,7 +384,6 @@ export default class Checkout extends React.Component {
                     onChange={this.handleInput}
                     name="fullName"
                     placeholder="Full Name"
-                    type="text"
                   />
                   {formErrors.fullName.length > 0 && (
                     <small className="text-danger">{formErrors.fullName}</small>
@@ -391,6 +407,7 @@ export default class Checkout extends React.Component {
                   <Col md={6}>
                     <FormGroup>
                       <Input
+                        maxLength="4"
                         className={formErrors.cvc.length > 0 ? 'border border-danger' : null}
                         onChange={this.handleInput}
                         name="cvc"
@@ -418,10 +435,9 @@ export default class Checkout extends React.Component {
                 <Button outline color="primary" onClick={() => this.props.setView('cart', '')} className="w-50 bg-primary text-white font-weight-bold">Go Back To Cart</Button>
               </div>
               <div className="mx-3 mt-3 mb-5">
-                <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
-
+                {buttonDisplay}
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                  <ModalHeader toggle={this.toggle}>Order Confirmation</ModalHeader>
+                  <ModalHeader toggle={this.toggle}>Order Summary</ModalHeader>
                   <ModalBody style={modalBodyWrapper}>
                     <div className=" d-flex flex-column px-3 text-center" style={modalWrapper}>
 
