@@ -36,7 +36,7 @@ export const PriceCalculation = props => {
 
       <div className="m-3">
         <h4 className=" d-inline">Subtotal
-          <div className=" d-inline float-right">$ {(subTotal / 100).toFixed(2)}</div>
+          <div className=" d-inline float-right">$ {(subTotal / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div>
         </h4>
       </div>
 
@@ -54,7 +54,7 @@ export const PriceCalculation = props => {
       <div className="m-3">
         <h4 id="taxes" className=" d-inline">Taxes
           <i id="taxes" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
-          <div className=" d-inline float-right">$ {(taxes / 100).toFixed(2)}</div>
+          <div className=" d-inline float-right">$ {(taxes / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div>
           <UncontrolledPopover placement="right" target="taxes">
             {/* <PopoverHeader>Shipping Info</PopoverHeader> */}
             <PopoverBody>Tax rate of <strong>7.5%</strong></PopoverBody>
@@ -63,7 +63,7 @@ export const PriceCalculation = props => {
       </div>
       <hr />
       <div className="m-3">
-        <h3 className=" d-inline">Total <div className=" d-inline float-right">$ {(totalAmount / 100).toFixed(2)}</div> </h3>
+        <h3 className=" d-inline">Total <div className=" d-inline float-right">$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div> </h3>
       </div>
       {/* <div className="text-center pt-1">
         <div className="m-3">

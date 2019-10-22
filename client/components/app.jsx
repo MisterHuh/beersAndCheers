@@ -12,7 +12,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'checkout',
+        name: 'catalog',
         id: ''
       },
       cart: [],
@@ -47,7 +47,6 @@ export default class App extends React.Component {
     fetch(`/api/cart.php`)
       .then(response => response.json())
       .then(cart => {
-        console.log('cart is: ', cart);
         this.setState({ cart }, this.getCartQuantity(cart));
       })
       .catch(error => {

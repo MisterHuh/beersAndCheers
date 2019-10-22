@@ -99,14 +99,12 @@ class CartSummaryItem extends React.Component {
 
     const cursor = {
       cursor: 'pointer'
-      // textDecoration: 'underline'
     };
 
     // console.log('LOADING COUNTER');
 
     if (currentView === 'cart') {
       return (
-        // <div className="border border-dark m-auto" >
         <div className="d-flex flex-row mx-auto my-4 border-bottom px-4 pb-2" key={this.props.key} style={cardSize} > {/* mx-3 p-5 */}
 
           <div className=" text-center" style={imgWrapper}>
@@ -115,32 +113,24 @@ class CartSummaryItem extends React.Component {
 
           <div className=" d-flex flex-column justify-content-center align-items-flex-end pt-5 ml-2 text-left w-75">
 
-            {/* <div className="h-25 " style={fontSize}> */}
             <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2 underline-on-hover" style={cursor}>{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
-            {/* </div> */}
 
-            {/* <div className="h-25 " style={fontSize}> */}
             <div className=" mx-3 my-2">
               <div className="d-inline ml-2">{'$ ' + ((this.props.item.price) / 100).toFixed(2)}</div>
               <div className="d-inline mr-2 float-right">
-                {/* <ButtonGroup> */}
-                {/* <Button onClick={this.decrementQuantity} className=" ">-</Button> */}
                 <i onClick={this.decrementQuantity} className="fas fa-minus-square" style={cursor}></i>
                 <div className=" d-inline px-2"><strong>{this.state.count}</strong></div>
-                {/* <Button onClick={this.incrementQuantity} className=" ">+</Button> */}
                 <i onClick={this.incrementQuantity} className="fas fa-plus-square" style={cursor}></i>
-                {/* </ButtonGroup> */}
               </div>
             </div>
-            {/* </div> */}
 
-            {/* <div className="h-50 "> */}
             <div className="ml-4 my-2 ">
               <Button outline color="success" className="mr-3 bg-success text-white font-weight-bold" onClick={() => this.updateCart()}>Update</Button>
               <Button outline color="danger" className="ml-3 bg-danger text-white font-weight-bold" onClick={() => this.toggle()}>Remove</Button>
             </div>
 
+            {/* Remove Modal */}
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
               <ModalHeader toggle={this.toggle}>Remove From Cart</ModalHeader>
               <ModalBody style={modalBodyWrapper}>
@@ -162,17 +152,14 @@ class CartSummaryItem extends React.Component {
                 <Button color="danger" className="bg-danger text-white font-weight-bold" onClick={() => this.removeItems()}>Remove From Cart</Button>
               </ModalFooter>
             </Modal>
-            {/* </div> */}
 
           </div>
 
         </div>
-        // </div>
       );
     } else {
       return (
 
-        // <div className="border border-dark m-auto" >
         <div className="d-flex flex-row m-auto p-4 border-bottom" key={this.props.key} style={cardSize}> {/* mx-3 p-5 */}
 
           <div className=" text-center" style={imgWrapper}>
@@ -181,26 +168,16 @@ class CartSummaryItem extends React.Component {
 
           <div className="d-flex flex-column justify-content-center ml-2 text-left w-75">
 
-            {/* <div className="h-25 " style={fontSize}> */}
-            {/* <div className=" font-weight-bold ml-4 my-2">{this.props.item.name}</div> */}
             <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2 underline-on-hover" style={cursor}>{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
-            {/* </div> */}
 
-            {/* <div className="h-25 " style={fontSize}> */}
             <div className="ml-4 my-2 d-inline">{'$ ' + ((this.props.item.price) / 100).toFixed(2)}
               <div className="d-inline float-right px-2 mr-3">Quantity: <strong>{this.state.count}</strong></div>
             </div>
-            {/* <div className="border border-danger ml-4 my-2 d-inline"> */}
-            {/* </div> */}
-            {/* </div> */}
-
-            {/* </div> */}
 
           </div>
 
         </div>
-        // </div>
       );
     }
 
