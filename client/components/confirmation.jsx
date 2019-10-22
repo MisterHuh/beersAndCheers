@@ -5,21 +5,9 @@ export const Confirmation = props => {
   let product = props.productReceipt;
   let receipt = props.receipt;
 
-  console.log('product is: ', product);
-  console.log('receipt is: ', receipt);
-
   let shipping = receipt[0];
   let billing = receipt[1];
   let order = receipt[2];
-
-  console.log('shipping is: ', shipping);
-  console.log('shipping name is ', shipping.firstName);
-
-  console.log('billing is: ', billing);
-  console.log('billing number is: ', billing.creditCardNumber);
-
-  console.log('order is: ', order);
-  console.log('order count is: ', order.count);
 
   const containerSize = {
     width: '100wh'
@@ -32,7 +20,14 @@ export const Confirmation = props => {
   let itemsVerbiage;
   order.count === 1 ? itemsVerbiage = 'item' : itemsVerbiage = 'items';
 
-  let orderNumber = billing.fullName[0] + billing.cvc[0] + billing.creditCardNumber[0] + billing.monthYear[0] + shipping.city[0] + shipping.lastName[0];
+  console.log('billing is: ', billing);
+  console.log('billing.fullName[0] is: ', billing.fullName[0]);
+
+  console.log('shipping[0] is: ', shipping.city[0]);
+  console.log('shipping[0] is: ', shipping.lastName[0]);
+  // console.log('order[0] is: ', order[0]);
+
+  let orderNumber = billing.fullName[0] + billing.cvv[0] + billing.creditCardNumber[0] + billing.monthYear[0] + shipping.city[0] + shipping.lastName[0];
 
   return (
     <div className="d-flex flex-column px-5 pb-5" style={containerSize}>

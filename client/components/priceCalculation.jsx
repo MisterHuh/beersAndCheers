@@ -20,12 +20,12 @@ export const PriceCalculation = props => {
     }
     taxes = subTotal * taxRate;
 
-    console.log('subtotal is: ', subTotal);
+    // console.log('subtotal is: ', subTotal);
 
     subTotal >= 4000 ? shipping = 'Free' : shipping = '$ 15.00';
 
     let shippingType = typeof (shipping);
-    console.log('shippingType is: ', shippingType);
+    // console.log('shippingType is: ', shippingType);
     shippingType === 'string' ? totalAmount = subTotal + taxes : totalAmount = subTotal + taxes + 1500;
 
   }

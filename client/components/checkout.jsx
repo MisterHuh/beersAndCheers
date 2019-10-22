@@ -2,7 +2,7 @@ import React from 'react';
 // import { ShippingForm, BillingForm } from './forms';
 import { PriceCalculation } from './priceCalculation';
 import CartSummaryItem from './cart-summary-item';
-import { Button, Col, Row, Form, FormGroup, FormFeedBack, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Col, Row, Form, FormGroup, FormFeedback, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default class Checkout extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export default class Checkout extends React.Component {
       creditCardNumber: '',
       fullName: '',
       monthYear: '',
-      cvc: '',
+      cvv: '',
       formErrors: {
         firstName: '',
         lastName: '',
@@ -32,15 +32,17 @@ export default class Checkout extends React.Component {
         creditCardNumber: '',
         fullName: '',
         monthYear: '',
-        cvc: ''
+        cvv: ''
       },
-      modal: false
+      modal: false,
+      orderConfirmation: false
     };
 
     this.toggle = this.toggle.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.orderConfirmation = this.orderConfirmation.bind(this);
   }
 
   placeOrder() {
@@ -78,7 +80,7 @@ export default class Checkout extends React.Component {
       creditCardNumber: this.state.creditCardNumber,
       fullName: this.state.fullName,
       monthYear: this.state.monthYear,
-      cvc: this.state.cvc
+      cvv: this.state.cvv
     };
 
     let orderReceipt = {
@@ -103,12 +105,17 @@ export default class Checkout extends React.Component {
     this.setState({ modal: !this.state.modal });
   }
 
+  orderConfirmation() {
+    this.setState({ orderConfirmation: !this.state.orderConfirmation });
+  }
+
   closeModal() {
     this.props.setView('checkout', '');
     this.toggle();
   }
 
   handleInput(e) {
+    e.preventDefault();
     const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
 
     const { name, value } = e.target;
@@ -177,13 +184,13 @@ export default class Checkout extends React.Component {
 
       case 'monthYear':
         formErrors.monthYear = value.length !== 5
-          ? 'invalid mm / yy'
+          ? 'invalid mm/yy'
           : '';
         break;
 
-      case 'cvc':
-        formErrors.cvc = value.length !== 3 && value.length !== 4
-          ? 'invalid cvc'
+      case 'cvv':
+        formErrors.cvv = value.length !== 3 && value.length !== 4
+          ? 'invalid cvv'
           : '';
         break;
 
@@ -193,8 +200,11 @@ export default class Checkout extends React.Component {
     this.setState({ formErrors, [name]: value }, console.log(this.state));
   }
 
-  render() {
+  componentDidMount() {
+    this.setState({ orderConfirmation: false });
+  }
 
+  render() {
     let cart = this.props.cart;
     let price = 0;
     let count = 0;
@@ -223,6 +233,34 @@ export default class Checkout extends React.Component {
 
     const { formErrors } = this.state;
 
+    const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
+    let buttonDisplay;
+    this.state.firstName.length >= 1 &&
+    this.state.lastName.length >= 1 &&
+    emailRegex.test(this.state.eMail) &&
+    this.state.phoneNumber.length === 10 &&
+    this.state.streetAddress.length >= 1 &&
+    this.state.city.length >= 1 &&
+    this.state.state.length === 2 &&
+    this.state.zipCode.length === 5 &&
+    this.state.creditCardNumber.length === 16 &&
+    this.state.fullName.length >= 1 &&
+    this.state.monthYear.length === 5 &&
+    this.state.cvv.length >= 3
+      ? buttonDisplay = <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
+      : buttonDisplay = <Button outline color="secondary" className="w-50 bg-secondary text-white font-weight-bold">Fill In Form</Button>;
+
+    let modalButtonDisplay;
+    this.state.orderConfirmation
+      ? modalButtonDisplay = <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.placeOrder()}>Place Order</Button>
+      : modalButtonDisplay = <Button color="secondary" className="bg-secondary text-white font-weight-bold">Check the Box!</Button>;
+
+    // if (this.state.monthYear.length === 2) {
+    //   let currentMonthYear = this.state.montheYear;
+    //   let newMonthYear = currentMonthYear += '/';
+    //   this.setState({ monthYear: newMonthYear });
+    // }
+
     console.log('cart is: ', this.props.cart);
 
     return (
@@ -239,10 +277,10 @@ export default class Checkout extends React.Component {
                     <FormGroup>
                       <Input
                         className={formErrors.firstName.length > 0 ? 'border border-danger' : null}
+                        // className={formErrors.firstName.length > 0 ? 'has-danger' : null}
                         onChange={this.handleInput}
                         name="firstName"
                         placeholder="First Name"
-                        type="text"
                       />
                       {formErrors.firstName.length > 0 && (
                         <small className="text-danger">{formErrors.firstName}</small>
@@ -256,7 +294,6 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="lastName"
                         placeholder="Last Name"
-                        type="text"
                       />
                       {formErrors.lastName.length > 0 && (
                         <small className="text-danger">{formErrors.lastName}</small>
@@ -277,6 +314,7 @@ export default class Checkout extends React.Component {
                 </FormGroup>
                 <FormGroup>
                   <Input
+                    maxLength="10"
                     className={formErrors.phoneNumber.length > 0 ? 'border border-danger' : null}
                     onChange={this.handleInput}
                     name="phoneNumber"
@@ -287,7 +325,6 @@ export default class Checkout extends React.Component {
                   )}
                 </FormGroup>
                 <FormGroup>
-                  {/* <Label>Street Address</Label> */}
                   <Input
                     className={formErrors.streetAddress.length > 0 ? 'border border-danger' : null}
                     onChange={this.handleInput}
@@ -307,7 +344,6 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="city"
                         placeholder="City"
-                        type="text"
                       />
                       {formErrors.city.length > 0 && (
                         <small className="text-danger">{formErrors.city}</small>
@@ -317,11 +353,11 @@ export default class Checkout extends React.Component {
                   <Col md={2}>
                     <FormGroup>
                       <Input
+                        maxLength="2"
                         className={formErrors.state.length > 0 ? 'border border-danger' : null}
                         onChange={this.handleInput}
                         name="state"
                         placeholder="State"
-                        type="text"
                       />
                       {formErrors.state.length > 0 && (
                         <small className="text-danger">{formErrors.state}</small>
@@ -330,8 +366,8 @@ export default class Checkout extends React.Component {
                   </Col>
                   <Col md={4}>
                     <FormGroup>
-                      {/* <Label>Zip</Label> */}
                       <Input
+                        maxLength="5"
                         className={formErrors.zipCode.length > 0 ? 'border border-danger' : null}
                         onChange={this.handleInput}
                         name="zipCode"
@@ -352,6 +388,7 @@ export default class Checkout extends React.Component {
               <Form>
                 <FormGroup>
                   <Input
+                    maxLength="16"
                     className={formErrors.creditCardNumber.length > 0 ? 'border border-danger' : null}
                     onChange={this.handleInput}
                     name="creditCardNumber"
@@ -367,7 +404,6 @@ export default class Checkout extends React.Component {
                     onChange={this.handleInput}
                     name="fullName"
                     placeholder="Full Name"
-                    type="text"
                   />
                   {formErrors.fullName.length > 0 && (
                     <small className="text-danger">{formErrors.fullName}</small>
@@ -378,6 +414,7 @@ export default class Checkout extends React.Component {
                   <Col md={6}>
                     <FormGroup>
                       <Input
+                        maxLength="5"
                         className={formErrors.monthYear.length > 0 ? 'border border-danger' : null}
                         onChange={this.handleInput}
                         name="monthYear"
@@ -391,13 +428,14 @@ export default class Checkout extends React.Component {
                   <Col md={6}>
                     <FormGroup>
                       <Input
-                        className={formErrors.cvc.length > 0 ? 'border border-danger' : null}
+                        maxLength="4"
+                        className={formErrors.cvv.length > 0 ? 'border border-danger' : null}
                         onChange={this.handleInput}
-                        name="cvc"
-                        placeholder="CVC"
+                        name="cvv"
+                        placeholder="cvv"
                       />
-                      {formErrors.cvc.length > 0 && (
-                        <small className="text-danger">{formErrors.cvc}</small>
+                      {formErrors.cvv.length > 0 && (
+                        <small className="text-danger">{formErrors.cvv}</small>
                       )}
                     </FormGroup>
                   </Col>
@@ -418,10 +456,9 @@ export default class Checkout extends React.Component {
                 <Button outline color="primary" onClick={() => this.props.setView('cart', '')} className="w-50 bg-primary text-white font-weight-bold">Go Back To Cart</Button>
               </div>
               <div className="mx-3 mt-3 mb-5">
-                <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
-
+                {buttonDisplay}
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                  <ModalHeader toggle={this.toggle}>Order Confirmation</ModalHeader>
+                  <ModalHeader toggle={this.toggle}>Order Summary</ModalHeader>
                   <ModalBody style={modalBodyWrapper}>
                     <div className=" d-flex flex-column px-3 text-center" style={modalWrapper}>
 
@@ -437,10 +474,9 @@ export default class Checkout extends React.Component {
                           <h6 className="">Billing Info</h6>
                           <div>{this.state.fullName}</div>
                           <div>{this.state.creditCardNumber}</div>
-                          <div>EXP: {this.state.monthYear} <span className="px-2"></span> CVC: {this.state.cvc}</div>
+                          <div>EXP: {this.state.monthYear} <span className="px-2"></span> cvv: {this.state.cvv}</div>
                         </div>
 
-                        {/* </div> */}
                       </div> {/* end of billing & shipping */}
 
                       <div className="mt-3 ">
@@ -453,7 +489,7 @@ export default class Checkout extends React.Component {
                       <div className="mt-3 ">
                         <h6 className="border-top pt-3">Disclaimer</h6>
                         <Label check>
-                          <Input type="checkbox" />{' '}
+                          <Input type="checkbox" onClick={this.orderConfirmation}/>
                           I agree that this was not a real purchase
                         </Label>
                       </div>
@@ -462,7 +498,8 @@ export default class Checkout extends React.Component {
                   </ModalBody>
                   <ModalFooter>
                     <Button color="primary" className="bg-primary text-white font-weight-bold" onClick={() => this.closeModal()}>Return To Checkout</Button>
-                    <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.placeOrder()}>Place Order</Button>
+                    {modalButtonDisplay}
+                    {/* <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.placeOrder()}>Place Order</Button> */}
                   </ModalFooter>
                 </Modal>
 
