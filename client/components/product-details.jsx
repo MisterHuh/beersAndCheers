@@ -107,6 +107,15 @@ class ProductDetails extends React.Component {
       cursor: 'pointer'
     };
 
+    let availabilityVerbiage;
+    if (!this.state.product) {
+      return null;
+    } else {
+      this.state.product.availability === 'Year Round'
+        ? availabilityVerbiage = 'Available'
+        : availabilityVerbiage = null;
+    }
+
     const abvIcon = './abv.png';
     const ibuIcon = './ibu.png';
 
@@ -156,7 +165,7 @@ class ProductDetails extends React.Component {
                       <PopoverBody><strong>International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds</PopoverBody>
                     </UncontrolledPopover>
                   </div>
-                  <div className=" mt-3">Available<div className="d-inline ml-1">{product.availability}</div></div>
+                  <div className=" mt-3">{availabilityVerbiage}<div className="d-inline ml-1">{product.availability}</div></div>
                   {/* <div className=" mt-3">{product.availability} <div className="d-inline ml-3">Availbility</div></div> */}
 
                   <div className=" mt-2 ">

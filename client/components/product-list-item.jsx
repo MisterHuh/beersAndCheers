@@ -36,6 +36,7 @@ export const ProductListItem = props => {
   return (
     <div className="d-flex flex-row flex-wrap justify-content-center text-center pb-5">
       {props.product.map(item => {
+        console.log('image is: ', item.image);
         return (
           <Card key={item.id}
             className="col-2 rounded m-3"
