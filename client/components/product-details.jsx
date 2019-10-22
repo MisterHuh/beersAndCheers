@@ -59,7 +59,7 @@ class ProductDetails extends React.Component {
       height: '50vh'
     };
     const imgContainer = {
-      height: '100%',
+      height: '75%',
       width: '30%',
       display: 'inline-block'
     };
@@ -93,7 +93,7 @@ class ProductDetails extends React.Component {
       height: '100%'
     };
     const modalImgContainer = {
-      height: '100%'
+      height: '80%'
     };
     // const buttonSize = {
     //   height: '5vh'
@@ -125,9 +125,9 @@ class ProductDetails extends React.Component {
         <div id="mainWrapper" className="p-5">
           {/* <div id="subWrapper" className="p-5"> */}
 
-          <div id="bodyWrapper" className=" d-flex flex-row border rounded" style={bodyWrapper}>
+          <div id="bodyWrapper" className=" d-flex flex-row border rounded k" style={bodyWrapper}>
 
-            <div id="imgContainer" className="text-center pb-2 border-right rounded" style={imgContainer}>
+            <div id="imgContainer" className="text-center pb-2 border-right m-auto rounded" style={imgContainer}>
               <img src={product.image} alt="img" className="img-fluid" style={imgSize}/>
             </div>
 
@@ -198,7 +198,7 @@ class ProductDetails extends React.Component {
                         <div className=" d-flex flex-row" style={modalWrapper}>
 
                           <div className="w-50 text-center border-right rounded" style={modalContainer}>
-                            <img src={product.image} alt="beerImg" className="" style={modalImgContainer}/>
+                            <img src={product.image} alt="beerImg" className="my-5" style={modalImgContainer}/>
                           </div>
 
                           <div className="w-50 text-center ">
@@ -241,7 +241,7 @@ class ProductDetails extends React.Component {
           </div> {/* end of bodyWrapper */}
 
           <div id="productDesc" className="border-right border-bottom border-left rounded" >
-            <div className="py-3 px-4">{product.description}</div>
+            <div className="py-3 px-5">{product.description}</div>
           </div>
 
           {/* </div> */}

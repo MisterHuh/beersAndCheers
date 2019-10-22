@@ -76,11 +76,11 @@ export const Confirmation = props => {
             </div>
 
             <div className="m-3">
-              <h5 id="shipping"><u>cc ending in</u> {creditCardDisplay}</h5>
+              <h5 id="shipping">cc ending in <strong>{creditCardDisplay}</strong></h5>
             </div>
 
             <div className="m-3">
-              <h5 id="taxes"><u>exp</u> : <strong>{billing.monthYear}</strong> <u>cvv</u> : <strong>{billing.cvv}</strong> </h5>
+              <h5 id="taxes">exp : <strong>{billing.monthYear}</strong> cvv : <strong>{billing.cvv}</strong> </h5>
             </div>
           </div>
 

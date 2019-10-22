@@ -7,7 +7,7 @@ export const ProductListItem = props => {
   const test2 = './test2.png';
 
   const cardSize = {
-    height: '40vh',
+    height: '36vh',
     backgroundColor: 'rgba(245, 245, 245, 0.6)'
   };
   const imgWrapper = {
@@ -36,7 +36,6 @@ export const ProductListItem = props => {
   return (
     <div className="d-flex flex-row flex-wrap justify-content-center text-center pb-5">
       {props.product.map(item => {
-        console.log('image is: ', item.image);
         return (
           <Card key={item.id}
             className="col-2 rounded m-3"
@@ -44,14 +43,14 @@ export const ProductListItem = props => {
             onClick={() => {
               props.setView('details', item.id);
             }}>
-            <div style={imgWrapper}>
+            <div style={imgWrapper} className="mt-2">
               <CardImg src={item.image} alt={item.image} className="m-1 img-fluid" style={imgSize} />
               {/* <CardImg src={test2} alt="img" className="m-1 img-fluid" style={imgSize} /> */}
             </div>
-            <CardTitle className="mx-1 mb-1 mt-2 font-weight-bold">{item.name}</CardTitle>
+            <CardTitle className="mx-1 mb-1 mt-3 font-weight-bold">{item.name}</CardTitle>
             <CardTitle className="m-1">{item.brewery}</CardTitle>
-            <CardTitle className="m-1">{item.type}</CardTitle>
-            <CardTitle className="m-1 text-muted">{'$' + ((item.price) / 100).toFixed(2)}</CardTitle>
+            {/* <CardTitle className="m-1">{item.type}</CardTitle> */}
+            <CardTitle className="mx-1 mt-1 mb-2 text-muted">{'$' + ((item.price) / 100).toFixed(2)}</CardTitle>
           </Card>
         );
       })
