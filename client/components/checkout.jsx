@@ -19,7 +19,7 @@ export default class Checkout extends React.Component {
       creditCardNumber: '',
       fullName: '',
       monthYear: '',
-      cvc: '',
+      cvv: '',
       formErrors: {
         firstName: '',
         lastName: '',
@@ -32,7 +32,7 @@ export default class Checkout extends React.Component {
         creditCardNumber: '',
         fullName: '',
         monthYear: '',
-        cvc: ''
+        cvv: ''
       },
       modal: false
     };
@@ -78,7 +78,7 @@ export default class Checkout extends React.Component {
       creditCardNumber: this.state.creditCardNumber,
       fullName: this.state.fullName,
       monthYear: this.state.monthYear,
-      cvc: this.state.cvc
+      cvv: this.state.cvv
     };
 
     let orderReceipt = {
@@ -178,13 +178,13 @@ export default class Checkout extends React.Component {
 
       case 'monthYear':
         formErrors.monthYear = value.length !== 5
-          ? 'invalid mm / yy'
+          ? 'invalid mm/yy'
           : '';
         break;
 
-      case 'cvc':
-        formErrors.cvc = value.length !== 3 && value.length !== 4
-          ? 'invalid cvc'
+      case 'cvv':
+        formErrors.cvv = value.length !== 3 && value.length !== 4
+          ? 'invalid cvv'
           : '';
         break;
 
@@ -237,9 +237,15 @@ export default class Checkout extends React.Component {
     this.state.creditCardNumber.length === 16 &&
     this.state.fullName.length >= 1 &&
     this.state.monthYear.length === 5 &&
-    this.state.cvc.length === 3
+    this.state.cvv.length === 3
       ? buttonDisplay = <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
       : buttonDisplay = <Button outline color="warning" className="w-50 bg-warning text-white font-weight-bold">Fill In Form</Button>;
+
+    // if (this.state.monthYear.length === 2) {
+    //   let currentMonthYear = this.state.montheYear;
+    //   let newMonthYear = currentMonthYear += '/';
+    //   this.setState({ monthYear: newMonthYear });
+    // }
 
     console.log('cart is: ', this.props.cart);
 
@@ -408,13 +414,13 @@ export default class Checkout extends React.Component {
                     <FormGroup>
                       <Input
                         maxLength="4"
-                        className={formErrors.cvc.length > 0 ? 'border border-danger' : null}
+                        className={formErrors.cvv.length > 0 ? 'border border-danger' : null}
                         onChange={this.handleInput}
-                        name="cvc"
-                        placeholder="CVC"
+                        name="cvv"
+                        placeholder="cvv"
                       />
-                      {formErrors.cvc.length > 0 && (
-                        <small className="text-danger">{formErrors.cvc}</small>
+                      {formErrors.cvv.length > 0 && (
+                        <small className="text-danger">{formErrors.cvv}</small>
                       )}
                     </FormGroup>
                   </Col>
@@ -453,7 +459,7 @@ export default class Checkout extends React.Component {
                           <h6 className="">Billing Info</h6>
                           <div>{this.state.fullName}</div>
                           <div>{this.state.creditCardNumber}</div>
-                          <div>EXP: {this.state.monthYear} <span className="px-2"></span> CVC: {this.state.cvc}</div>
+                          <div>EXP: {this.state.monthYear} <span className="px-2"></span> cvv: {this.state.cvv}</div>
                         </div>
 
                         {/* </div> */}
