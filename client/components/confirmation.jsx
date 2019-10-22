@@ -69,7 +69,7 @@ export const Confirmation = props => {
           </div>
 
           <div id="billing" className="ml-4 mt-2">
-            <h2 className="border-bottom pb-2">Billed To:</h2>
+            <h2 className="border-bottom pb-2">Billing To:</h2>
 
             <div className="m-3">
               <h5>{billing.fullName}  </h5>

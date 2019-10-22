@@ -481,7 +481,7 @@ export default class Checkout extends React.Component {
 
                       <div className="mt-3 ">
                         <h6 className="border-top pt-3">Order Summary</h6>
-                        <div>Total Amount: <strong>$ {(totalAmount / 100).toFixed(2)}</strong></div>
+                        <div>Total Amount: <strong>$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</strong></div>
                         <div>Total Items: <strong>{count}</strong></div>
 
                       </div>{/* end of total amount & count */}
