@@ -110,6 +110,7 @@ export default class Checkout extends React.Component {
   }
 
   closeModal() {
+    console.log('return to checkout clicked');
     this.props.setView('checkout', '');
     this.toggle();
   }
@@ -468,30 +469,38 @@ export default class Checkout extends React.Component {
                           <div>{this.state.firstName} {this.state.lastName}</div>
                           <div>{this.state.streetAddress}</div>
                           <div>{this.state.city}, {this.state.state}, {this.state.zipCode}</div>
-
                         </div>
+
                         <div className=" w-50">
+                          {/* <div className="m-auto"> */}
                           <h6 className="">Billing Info</h6>
                           <div>{this.state.fullName}</div>
                           <div>{this.state.creditCardNumber}</div>
                           <div>EXP: {this.state.monthYear} <span className="px-2"></span> cvv: {this.state.cvv}</div>
+                          {/* </div> */}
                         </div>
 
                       </div> {/* end of billing & shipping */}
 
-                      <div className="mt-3 ">
-                        <h6 className="border-top pt-3">Order Summary</h6>
-                        <div>Total Amount: <strong>$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</strong></div>
-                        <div>Total Items: <strong>{count}</strong></div>
+                      <div className="h-100">
+                        <div className="m-auto h-50">
+                          <div className="mt-5">
+                            <h6 className="border-top pt-5">Order Summary</h6>
+                            <div>Total Amount: <strong>$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</strong></div>
+                            <div>Total Items: <strong>{count}</strong></div>
+                          </div>
 
-                      </div>{/* end of total amount & count */}
+                        </div>{/* end of total amount & count */}
 
-                      <div className="mt-3 ">
-                        <h6 className="border-top pt-3">Disclaimer</h6>
-                        <Label check>
-                          <Input type="checkbox" onClick={this.orderConfirmation}/>
+                        <div className="m-auto h-50">
+                          <div className="mt-5" >
+                            <h6 className="border-top pt-3">Disclaimer</h6>
+                            <Label check>
+                              <Input type="checkbox" onClick={this.orderConfirmation}/>
                           I agree that this was not a real purchase
-                        </Label>
+                            </Label>
+                          </div>
+                        </div>
                       </div>
 
                     </div>

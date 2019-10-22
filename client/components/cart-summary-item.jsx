@@ -61,7 +61,7 @@ class CartSummaryItem extends React.Component {
   render() {
 
     const cardSize = {
-      height: '40vh',
+      height: '28vh',
       width: '30vw'
     };
     const imgWrapper = {
