@@ -107,6 +107,9 @@ class ProductDetails extends React.Component {
       cursor: 'pointer'
     };
 
+    const abvIcon = './abv.png';
+    const ibuIcon = './ibu.png';
+
     if (this.state.product) {
       return (
 
@@ -139,6 +142,7 @@ class ProductDetails extends React.Component {
                   <div className=" my-3">{product.abv}%
                     <div className="d-inline ml-2">ABV</div>
                     <i id="abvInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
+                    {/* <img id="abvInfo" src={abvIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img> */}
                     <UncontrolledPopover placement="right" target="abvInfo">
                       <PopoverBody><strong>Alcohol By Volume</strong>, given as a percentage, measures how much alcohol is in the drink</PopoverBody>
                     </UncontrolledPopover>
@@ -147,6 +151,7 @@ class ProductDetails extends React.Component {
                   <div className=" my-3">{product.ibu}
                     <div className="d-inline ml-2">IBU</div>
                     <i id="ibuInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
+                    {/* <img id="abvInfo" src={ibuIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img> */}
                     <UncontrolledPopover placement="right" target="ibuInfo">
                       <PopoverBody><strong>International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds</PopoverBody>
                     </UncontrolledPopover>
