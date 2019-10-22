@@ -102,6 +102,7 @@ export default class Checkout extends React.Component {
   }
 
   toggle() {
+    console.log('toggle activated');
     this.setState({ modal: !this.state.modal });
   }
 
@@ -235,21 +236,21 @@ export default class Checkout extends React.Component {
     const { formErrors } = this.state;
 
     const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
-    let buttonDisplay;
-    this.state.firstName.length >= 1 &&
-    this.state.lastName.length >= 1 &&
-    emailRegex.test(this.state.eMail) &&
-    this.state.phoneNumber.length === 10 &&
-    this.state.streetAddress.length >= 1 &&
-    this.state.city.length >= 1 &&
-    this.state.state.length === 2 &&
-    this.state.zipCode.length === 5 &&
-    this.state.creditCardNumber.length === 16 &&
-    this.state.fullName.length >= 1 &&
-    this.state.monthYear.length === 5 &&
-    this.state.cvv.length >= 3
-      ? buttonDisplay = <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
-      : buttonDisplay = <Button outline color="secondary" className="w-50 bg-secondary text-white font-weight-bold">Fill In Form</Button>;
+    // let buttonDisplay;
+    // this.state.firstName.length >= 1 &&
+    // this.state.lastName.length >= 1 &&
+    // emailRegex.test(this.state.eMail) &&
+    // this.state.phoneNumber.length === 10 &&
+    // this.state.streetAddress.length >= 1 &&
+    // this.state.city.length >= 1 &&
+    // this.state.state.length === 2 &&
+    // this.state.zipCode.length === 5 &&
+    // this.state.creditCardNumber.length === 16 &&
+    // this.state.fullName.length >= 1 &&
+    // this.state.monthYear.length === 5 &&
+    // this.state.cvv.length >= 3
+    //   ? buttonDisplay = <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
+    //   : buttonDisplay = <Button outline color="secondary" className="w-50 bg-secondary text-white font-weight-bold">Fill In Form</Button>;
 
     let modalButtonDisplay;
     this.state.orderConfirmation
@@ -457,7 +458,9 @@ export default class Checkout extends React.Component {
                 <Button outline color="primary" onClick={() => this.props.setView('cart', '')} className="w-50 bg-primary text-white font-weight-bold">Go Back To Cart</Button>
               </div>
               <div className="mx-3 mt-3 mb-5">
-                {buttonDisplay}
+                {/* {buttonDisplay} */}
+                <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
+
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Order Summary</ModalHeader>
                   <ModalBody style={modalBodyWrapper}>
