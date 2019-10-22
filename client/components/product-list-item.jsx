@@ -7,7 +7,7 @@ export const ProductListItem = props => {
   const test2 = './test2.png';
 
   const cardSize = {
-    height: '60vh',
+    height: '40vh',
     backgroundColor: 'rgba(245, 245, 245, 0.6)'
   };
   const imgWrapper = {
@@ -44,7 +44,7 @@ export const ProductListItem = props => {
               props.setView('details', item.id);
             }}>
             <div style={imgWrapper}>
-              <CardImg src={item.image} alt="img" className="m-1 img-fluid" style={imgSize} />
+              <CardImg src={item.image} alt={item.image} className="m-1 img-fluid" style={imgSize} />
               {/* <CardImg src={test2} alt="img" className="m-1 img-fluid" style={imgSize} /> */}
             </div>
             <CardTitle className="mx-1 mb-1 mt-2 font-weight-bold">{item.name}</CardTitle>
