@@ -20,7 +20,14 @@ export const Confirmation = props => {
   let itemsVerbiage;
   order.count === 1 ? itemsVerbiage = 'item' : itemsVerbiage = 'items';
 
-  let orderNumber = billing.fullName[0] + billing.cvc[0] + billing.creditCardNumber[0] + billing.monthYear[0] + shipping.city[0] + shipping.lastName[0];
+  console.log('billing is: ', billing);
+  console.log('billing.fullName[0] is: ', billing.fullName[0]);
+
+  console.log('shipping[0] is: ', shipping.city[0]);
+  console.log('shipping[0] is: ', shipping.lastName[0]);
+  // console.log('order[0] is: ', order[0]);
+
+  let orderNumber = billing.fullName[0] + billing.cvv[0] + billing.creditCardNumber[0] + billing.monthYear[0] + shipping.city[0] + shipping.lastName[0];
 
   return (
     <div className="d-flex flex-column px-5 pb-5" style={containerSize}>

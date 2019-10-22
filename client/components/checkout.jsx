@@ -246,7 +246,7 @@ export default class Checkout extends React.Component {
     this.state.creditCardNumber.length === 16 &&
     this.state.fullName.length >= 1 &&
     this.state.monthYear.length === 5 &&
-    this.state.cvv.length === 3
+    this.state.cvv.length >= 3
       ? buttonDisplay = <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
       : buttonDisplay = <Button outline color="secondary" className="w-50 bg-secondary text-white font-weight-bold">Fill In Form</Button>;
 
