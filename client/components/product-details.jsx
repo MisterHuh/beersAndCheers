@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter, UncontrolledPopover, PopoverBody } from 'reactstrap';
+import { Button, Tooltip, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -7,17 +7,29 @@ class ProductDetails extends React.Component {
     this.state = {
       product: null,
       quantity: 1,
-      modal: false
+      modal: false,
+      abvToolTipOpen: false,
+      ibuToolTipOpen: false
     };
     this.retrieveProduct = this.retrieveProduct.bind(this);
     this.toggle = this.toggle.bind(this);
     this.incrementQuantity = this.incrementQuantity.bind(this);
     this.decrementQuantity = this.decrementQuantity.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.abvToggle = this.abvToggle.bind(this);
+    this.ibuToggle = this.ibuToggle.bind(this);
   }
 
   componentDidMount() {
     this.retrieveProduct(this.props.id);
+  }
+
+  abvToggle() {
+    this.setState({ abvToolTipOpen: !this.state.abvToolTipOpen });
+  }
+
+  ibuToggle() {
+    this.setState({ ibuToolTipOpen: !this.state.ibuToolTipOpen });
   }
 
   addToCart() {
@@ -95,16 +107,14 @@ class ProductDetails extends React.Component {
     const modalImgContainer = {
       height: '80%'
     };
-    // const buttonSize = {
-    //   height: '5vh'
-    // };
     const testSize = {
       position: 'relative',
       top: '34%'
     };
 
     const cursor = {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      width: '5%'
     };
 
     let availabilityVerbiage;
@@ -150,20 +160,26 @@ class ProductDetails extends React.Component {
                   {/* <div className=" my-3">ABV <div className="d-inline ml-3">{product.abv}%</div></div> */}
                   <div className=" my-3">{product.abv}%
                     <div className="d-inline ml-2">ABV</div>
-                    <i id="abvInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
-                    {/* <img id="abvInfo" src={abvIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img> */}
-                    <UncontrolledPopover placement="right" target="abvInfo">
-                      <PopoverBody><strong>Alcohol By Volume</strong>, given as a percentage, measures how much alcohol is in the drink</PopoverBody>
-                    </UncontrolledPopover>
+                    {/* <i id="abvInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i> */}
+                    <img id="abvInfo" src={abvIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img>
+                    <Tooltip placement="right" isOpen={this.state.abvToolTipOpen} target="abvInfo" toggle={this.abvToggle}>
+                      <strong>Alcohol By Volume</strong> measures how much alcohol is in the drink
+                    </Tooltip>
+                    {/* <UncontrolledPopover placement="right" target="abvInfo">
+                      <PopoverBody><strong>Alcohol By Volume</strong> measures how much alcohol is in the drink</PopoverBody>
+                    </UncontrolledPopover> */}
                   </div>
 
                   <div className=" my-3">{product.ibu}
                     <div className="d-inline ml-2">IBU</div>
-                    <i id="ibuInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i>
-                    {/* <img id="abvInfo" src={ibuIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img> */}
-                    <UncontrolledPopover placement="right" target="ibuInfo">
+                    <img id="ibuInfo" src={ibuIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img>
+                    {/* <i id="ibuInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i> */}
+                    <Tooltip placement="right" isOpen={this.state.ibuToolTipOpen} target="ibuInfo" toggle={this.ibuToggle}>
+                      <strong> International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds
+                    </Tooltip>
+                    {/* <UncontrolledPopover placement="right" target="ibuInfo">
                       <PopoverBody><strong>International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds</PopoverBody>
-                    </UncontrolledPopover>
+                    </UncontrolledPopover> */}
                   </div>
                   <div className=" mt-3">{availabilityVerbiage}<div className="d-inline ml-1">{product.availability}</div></div>
                   {/* <div className=" mt-3">{product.availability} <div className="d-inline ml-3">Availbility</div></div> */}

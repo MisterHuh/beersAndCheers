@@ -1,7 +1,8 @@
 import React from 'react';
 import CartSummaryItem from './cart-summary-item';
-import { PriceCalculation } from './priceCalculation';
+import PriceSummary from './priceSummary';
 import { Button } from 'reactstrap';
+// import TooltipComp from './tooltip';
 
 export const CartSummary = props => {
   const imgSrc = 'emptycart.png';
@@ -47,7 +48,7 @@ export const CartSummary = props => {
             })}
           </div>
           <div id="pricing" className="w-50 d-flex flex-column ml-4">
-            <PriceCalculation
+            <PriceSummary
               setView={props.setView}
               view={props.view}
               cart={props.cart}/>
