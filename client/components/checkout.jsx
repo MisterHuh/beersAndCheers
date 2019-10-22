@@ -34,13 +34,15 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: false
+      modal: false,
+      orderConfirmation: false
     };
 
     this.toggle = this.toggle.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.orderConfirmation = this.orderConfirmation.bind(this);
   }
 
   placeOrder() {
@@ -101,6 +103,10 @@ export default class Checkout extends React.Component {
 
   toggle() {
     this.setState({ modal: !this.state.modal });
+  }
+
+  orderConfirmation() {
+    this.setState({ orderConfirmation: !this.state.orderConfirmation });
   }
 
   closeModal() {
@@ -194,8 +200,11 @@ export default class Checkout extends React.Component {
     this.setState({ formErrors, [name]: value }, console.log(this.state));
   }
 
-  render() {
+  componentDidMount() {
+    this.setState({ orderConfirmation: false });
+  }
 
+  render() {
     let cart = this.props.cart;
     let price = 0;
     let count = 0;
@@ -239,7 +248,12 @@ export default class Checkout extends React.Component {
     this.state.monthYear.length === 5 &&
     this.state.cvv.length === 3
       ? buttonDisplay = <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
-      : buttonDisplay = <Button outline color="warning" className="w-50 bg-warning text-white font-weight-bold">Fill In Form</Button>;
+      : buttonDisplay = <Button outline color="secondary" className="w-50 bg-secondary text-white font-weight-bold">Fill In Form</Button>;
+
+    let modalButtonDisplay;
+    this.state.orderConfirmation
+      ? modalButtonDisplay = <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.placeOrder()}>Place Order</Button>
+      : modalButtonDisplay = <Button color="secondary" className="bg-secondary text-white font-weight-bold">Check the Box!</Button>;
 
     // if (this.state.monthYear.length === 2) {
     //   let currentMonthYear = this.state.montheYear;
@@ -400,6 +414,7 @@ export default class Checkout extends React.Component {
                   <Col md={6}>
                     <FormGroup>
                       <Input
+                        maxLength="5"
                         className={formErrors.monthYear.length > 0 ? 'border border-danger' : null}
                         onChange={this.handleInput}
                         name="monthYear"
@@ -462,7 +477,6 @@ export default class Checkout extends React.Component {
                           <div>EXP: {this.state.monthYear} <span className="px-2"></span> cvv: {this.state.cvv}</div>
                         </div>
 
-                        {/* </div> */}
                       </div> {/* end of billing & shipping */}
 
                       <div className="mt-3 ">
@@ -475,7 +489,7 @@ export default class Checkout extends React.Component {
                       <div className="mt-3 ">
                         <h6 className="border-top pt-3">Disclaimer</h6>
                         <Label check>
-                          <Input type="checkbox" />{' '}
+                          <Input type="checkbox" onClick={this.orderConfirmation}/>
                           I agree that this was not a real purchase
                         </Label>
                       </div>
@@ -484,7 +498,8 @@ export default class Checkout extends React.Component {
                   </ModalBody>
                   <ModalFooter>
                     <Button color="primary" className="bg-primary text-white font-weight-bold" onClick={() => this.closeModal()}>Return To Checkout</Button>
-                    <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.placeOrder()}>Place Order</Button>
+                    {modalButtonDisplay}
+                    {/* <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.placeOrder()}>Place Order</Button> */}
                   </ModalFooter>
                 </Modal>
 
