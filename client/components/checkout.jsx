@@ -34,7 +34,7 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: false,
+      modal: true,
       orderConfirmation: false
     };
 
@@ -107,11 +107,17 @@ export default class Checkout extends React.Component {
   }
 
   orderConfirmation() {
-    this.setState({ orderConfirmation: !this.state.orderConfirmation });
+    if (!this.state.orderConfirmation) {
+      this.setState({ orderConfirmation: !this.state.orderConfirmation });
+
+    }
+
+    // !this.state.orderConfirmation
+    //   ? this.setState({ orderConfirmation: !this.state.orderConfirmation })
+    //   : false;
   }
 
   closeModal() {
-    console.log('return to checkout clicked');
     this.props.setView('checkout', '');
     this.toggle();
   }
@@ -464,9 +470,9 @@ export default class Checkout extends React.Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Order Summary</ModalHeader>
                   <ModalBody style={modalBodyWrapper}>
-                    <div className=" d-flex flex-column px-3 text-center" style={modalWrapper}>
+                    <div className=" d-flex flex-column px-4 py-2 text-center" style={modalWrapper}>
 
-                      <div className="d-flex flex-row">
+                      <div className="d-flex flex-row ">
                         <div className="w-50">
                           <h6 className="">Shipping Info</h6>
                           <div>{this.state.firstName} {this.state.lastName}</div>
@@ -485,24 +491,24 @@ export default class Checkout extends React.Component {
 
                       </div> {/* end of billing & shipping */}
 
-                      <div className="h-100">
-                        <div className="m-auto h-50">
-                          <div className="mt-5">
-                            <h6 className="border-top pt-5">Order Summary</h6>
-                            <div>Total Amount: <strong>$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</strong></div>
-                            <div>Total Items: <strong>{count}</strong></div>
-                          </div>
+                      <div className="">
+                        <div className="mt-4">
+                          {/* <div className=""> */}
+                          <h6 className="border-top pt-2">Order Summary</h6>
+                          <div>Total Amount: <strong>$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</strong></div>
+                          <div>Total Items: <strong>{count}</strong></div>
+                          {/* </div> */}
 
                         </div>{/* end of total amount & count */}
 
-                        <div className="m-auto h-50">
-                          <div className="mt-5" >
-                            <h6 className="border-top pt-3">Disclaimer</h6>
-                            <Label check>
-                              <Input type="checkbox" onClick={this.orderConfirmation}/>
+                        <div className="mt-4">
+                          {/* <div className=" mt-2" > */}
+                          <h6 className="border-top pt-2">Disclaimer</h6>
+                          <Label check>
+                            <Input id="disclaimer" type="checkbox" onClick={this.orderConfirmation}/>
                           I agree that this was not a real purchase
-                            </Label>
-                          </div>
+                          </Label>
+                          {/* </div> */}
                         </div>
                       </div>
 
