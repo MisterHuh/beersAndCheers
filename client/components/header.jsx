@@ -1,19 +1,5 @@
 import React from 'react';
-import { Carousel } from './carousel';
-import {
-  Badge,
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'reactstrap';
+import { Badge, Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 export const Header = props => {
 
@@ -21,10 +7,6 @@ export const Header = props => {
   let currentView = props.view;
   let cartQuantity = props.cartQuantity;
   cartQuantity > 99 ? cartQuantity = '99+' : false;
-
-  // let carouselDisplay;
-  // currentView === 'catalog' ? carouselDisplay = <Carousel /> : false;
-  // uncomment the above line to include carousel
 
   const imgWrapper = {
     height: '8vh',
@@ -36,7 +18,6 @@ export const Header = props => {
   };
 
   const navBarColor = {
-    // backgroundColor: '#EDEDED' {/*  grey */}
     backgroundColor: '#F4F4F4'
   };
 
@@ -48,8 +29,8 @@ export const Header = props => {
     <React.Fragment>
       <Navbar light expand="md" className="sticky-top" style={navBarColor}>
         <NavbarBrand onClick={() => props.setView('catalog', '')} className="border-dark p-0" style={imgWrapper}>
-          <img src={logo} className=" border-danger mr-2" style={imgContainer}/>
-          Beers & Cheers
+          <img src={logo} className="mr-2 mb-2 d-inline" style={imgContainer}/>
+          <div className="d-inline">Beers & Cheers</div>
         </NavbarBrand>
         <Nav className="ml-auto" navbar>
           <NavItem>
@@ -60,7 +41,6 @@ export const Header = props => {
           </NavItem>
         </Nav>
       </Navbar>
-      {/* {carouselDisplay} */}
     </React.Fragment>
   );
 

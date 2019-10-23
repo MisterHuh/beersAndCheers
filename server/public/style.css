@@ -10,17 +10,17 @@ body {
   font-family: 'Cinzel:700', cursive;
 } */
 
-/* @import url('https://fonts.googleapis.com/css?family=Oldenburg&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oldenburg&display=swap');
 
 body {
   font-family: 'Oldenburg', cursive;
-} */
+}
 
-@import url('https://fonts.googleapis.com/css?family=El+Messiri&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=El+Messiri&display=swap');
 
 body {
   font-family: 'El+Messiri', cursive;
-}
+} */
 
 .form-control:focus {
   border-color: rgb(226, 226, 226);

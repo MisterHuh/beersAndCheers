@@ -463,7 +463,7 @@ export default class Checkout extends React.Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Order Summary</ModalHeader>
                   <ModalBody style={modalBodyWrapper}>
-                    <div className=" d-flex flex-column px-4 py-2 text-center" style={modalWrapper}>
+                    <div className=" d-flex flex-column px-4 text-center" style={modalWrapper}>
 
                       <div className="d-flex flex-row ">
                         <div className="w-50">
