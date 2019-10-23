@@ -2,7 +2,6 @@ import React from 'react';
 import PriceSummary from './priceSummary';
 import CartSummaryItem from './cart-summary-item';
 import { Button, Col, Row, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-// import TooltipComp from './tooltip';
 
 export default class Checkout extends React.Component {
   constructor(props) {

@@ -133,7 +133,6 @@ class ProductDetails extends React.Component {
       return (
 
         <div id="mainWrapper" className="p-5">
-          {/* <div id="subWrapper" className="p-5"> */}
 
           <div id="bodyWrapper" className=" d-flex flex-row border rounded k" style={bodyWrapper}>
 
@@ -152,37 +151,24 @@ class ProductDetails extends React.Component {
 
                 <div className=" h-100 w-50 border-right rounded">
 
-                  {/* <div className="my-3 border border-dark">
-                    <div className="d-inline border border-danger">ABV </div>
-                    <div className="d-inline float-right  border border-success">{product.abv}%</div>
-                  </div> */}
-
-                  {/* <div className=" my-3">ABV <div className="d-inline ml-3">{product.abv}%</div></div> */}
                   <div className=" my-3">{product.abv}%
                     <div className="d-inline ml-2">ABV</div>
                     {/* <i id="abvInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i> */}
                     <img id="abvInfo" src={abvIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img>
-                    <Tooltip placement="right" isOpen={this.state.abvToolTipOpen} target="abvInfo" toggle={this.abvToggle}>
+                    <Tooltip placement="right" isOpen={this.state.abvToolTipOpen} target="abvInfo" className="bg-primary" toggle={this.abvToggle}>
                       <strong>Alcohol By Volume</strong> measures how much alcohol is in the drink
                     </Tooltip>
-                    {/* <UncontrolledPopover placement="right" target="abvInfo">
-                      <PopoverBody><strong>Alcohol By Volume</strong> measures how much alcohol is in the drink</PopoverBody>
-                    </UncontrolledPopover> */}
                   </div>
 
                   <div className=" my-3">{product.ibu}
                     <div className="d-inline ml-2">IBU</div>
                     <img id="ibuInfo" src={ibuIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img>
                     {/* <i id="ibuInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i> */}
-                    <Tooltip placement="right" isOpen={this.state.ibuToolTipOpen} target="ibuInfo" toggle={this.ibuToggle}>
+                    <Tooltip placement="right" isOpen={this.state.ibuToolTipOpen} target="ibuInfo" className="bg-success" toggle={this.ibuToggle}>
                       <strong> International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds
                     </Tooltip>
-                    {/* <UncontrolledPopover placement="right" target="ibuInfo">
-                      <PopoverBody><strong>International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds</PopoverBody>
-                    </UncontrolledPopover> */}
                   </div>
                   <div className=" mt-3">{availabilityVerbiage}<div className="d-inline ml-1">{product.availability}</div></div>
-                  {/* <div className=" mt-3">{product.availability} <div className="d-inline ml-3">Availbility</div></div> */}
 
                   <div className=" mt-2 ">
                     <Button
@@ -197,19 +183,14 @@ class ProductDetails extends React.Component {
                   <div className=" my-3">{product.type}</div>
                   <div className=" my-3">$ <div className="d-inline">{((product.price) / 100).toFixed(2)}</div></div>
                   <div className=" mt-3">
-                    {/* <ButtonGroup> */}
                     <i onClick={this.decrementQuantity} className="fas fa-minus-square" style={cursor}></i>
-                    {/* <Button onClick={this.decrementQuantity} className="" >-</Button> */}
                     <div className="d-inline px-3">{quantity}</div>
                     <i onClick={this.incrementQuantity} className="fas fa-plus-square" style={cursor}></i>
-                    {/* <Button onClick={this.incrementQuantity} className="" >+</Button> */}
-                    {/* </ButtonGroup> */}
                   </div>
                   <div className="mt-2 ">
                     <Button outline color="success" className="my-3 w-50 bg-success text-white font-weight-bold" onClick={this.addToCart}>Add To Cart</Button>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
-                      {/* <ModalHeader toggle={this.toggle} onClick={this.props.addToCart(product, quantity)}>Added To Cart!</ModalHeader> */}
                       <ModalBody style={modalBodyWrapper}>
                         <div className=" d-flex flex-row" style={modalWrapper}>
 
@@ -234,10 +215,6 @@ class ProductDetails extends React.Component {
                             <div className="h-25" >
                               <div style={testSize}>Quantity: <strong>{quantity}</strong></div>
                             </div>
-
-                            {/* <div className="border border-dark h-25" style={testSize} >{product.brewery}</div>
-                            <div className="border border-dark h-25" style={testSize} >{'$' + ((product.price) / 100).toFixed(2)}</div>
-                            <div className="border border-dark h-25" style={testSize} >Quantity: {quantity}</div> */}
                           </div>
 
                         </div>
@@ -260,7 +237,6 @@ class ProductDetails extends React.Component {
             <div className="py-3 px-5">{product.description}</div>
           </div>
 
-          {/* </div> */}
         </div>
 
       );

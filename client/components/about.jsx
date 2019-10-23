@@ -6,24 +6,45 @@ export const About = () => {
     width: '100wh'
   };
 
+  // const sidePic = 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80';
+  // const sidePic = './aboutMe.png';
+  const sidePic = 'https://cdn.dribbble.com/users/951901/screenshots/3794209/oktoberfest_notext.gif';
+  const imgWrapper = {
+    width: '100%',
+    height: '50%'
+  };
+  const imgSize = {
+    width: '100%'
+    // height: '80%'
+  };
+
   return (
     <div className="d-flex flex-column px-5 pb-5" style={containerSize}>
 
       <h1 className="border-bottom my-3 text-center pb-2">Beers & Cheers</h1>
 
-      <p>
-      Beers & Cheers is a full stack shopping cart app, that allows users to browse the finest craft beers from local breweries, add them to cart, and place an order.
-      </p>
+      <div className=" d-flex flex-row" style={imgWrapper}>
+        <div className="w-75 ">
+          <p>
+            Beers & Cheers is a full stack shopping cart app, that allows users to browse the finest craft beers, add them to cart, and place an order.
+          </p>
 
-      <p>
-        <strong>Please note that this is simply a demo site and not a real e-commerce store.</strong>
-      </p>
+          <p>
+            <strong>Please note that this is simply a demo site and not a real e-commerce store.</strong>
+          </p>
 
-      <p>
-        Feel free to stop by my portfolio site (hyperlink here) or find this project on my github (hyperlink).
-      </p>
+          <p>
+            Feel free to stop by my portfolio site (hyperlink here) or find this project on my github (hyperlink).
+          </p>
 
-      <p>Enjoy!</p>
+          <p>Enjoy!</p>
+        </div>
+
+        <div className="m-auto w-25">
+          <img src={sidePic} alt="sidePic" className="d-block m-auto" style={imgSize} />
+        </div>
+
+      </div>
 
       <h1 className="border-bottom my-3 text-center pb-2">Me</h1>
 

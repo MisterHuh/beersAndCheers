@@ -2,7 +2,6 @@ import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 import PriceSummary from './priceSummary';
 import { Button } from 'reactstrap';
-// import TooltipComp from './tooltip';
 
 export const CartSummary = props => {
   const imgSrc = 'emptycart.png';
