@@ -27,6 +27,8 @@ export const About = () => {
         <div className="w-75 ">
           <p>
             Beers & Cheers is a full stack shopping cart app, that allows users to browse the finest craft beers, add them to cart, and place an order.
+            Over 100+ hours were spent on this application, and my goal is to continue updating it with new features and designs.
+            <p>If you have any questions, or want to send suggestions about the app, don't hesitate to contact me! </p>
           </p>
 
           <p>
