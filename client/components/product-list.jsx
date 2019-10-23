@@ -1,7 +1,6 @@
 import React from 'react';
-import { Carousel } from './carousel';
+import { Jumbotron } from './jumbotron';
 import { ProductListItem } from './product-list-item';
-// import { CardGroup } from 'reactstrap';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -28,7 +27,7 @@ class ProductList extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Carousel />
+        <Jumbotron />
         <ProductListItem product={this.state.products} setView={this.props.setView}/>
       </React.Fragment>
     );
