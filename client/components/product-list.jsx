@@ -12,11 +12,13 @@ class ProductList extends React.Component {
     };
     this.getProducts = this.getProducts.bind(this);
     this.toggle = this.toggle.bind(this);
-    this.showModalOnce = this.showModalOnce.bind(this);
   }
 
   toggle() {
     this.setState({ welcomeModal: !this.state.welcomeModal });
+
+    /* upon clicking either YES or NO, set ageVerified to TRUE */
+    localStorage.ageVerified(true);
   }
 
   getProducts() {
@@ -27,11 +29,19 @@ class ProductList extends React.Component {
       });
   }
 
-  showModalOnce() {
-  }
-
   componentDidMount() {
     this.getProducts();
+
+    // if (localStorage.ageVerified) {
+    //   this.setState({ welcomeModal: false });
+    // } else {
+    //   this.setState({ welcomeModal: true });
+    // }
+
+    // if ageVerified is false, that means the user hasn't clicked the disclaimer.
+    // if it is false, welcomeModal should be true, to display the modal to verify age
+    // if it is true, go to "catalog"
+    // localStorage.ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: false });
   }
 
   render() {
@@ -55,27 +65,16 @@ class ProductList extends React.Component {
     };
 
     const top = {
-      // position: 'absolute',
-      // top: '50%',
-      // // left: '50%',
-      // transform: 'translateY(- 50%)'
       lineHeight: '280%'
     };
 
     const top2 = {
-      // position: 'absolute',
-      // top: '50%',
-      // // left: '0',
-      // // right: '0',
-      // left: '50%',
-      // transform: 'translateY(- 50%) translateX(- 50%)',
       lineHeight: '225%',
       fontSize: '200%'
     };
     return (
       <React.Fragment>
-        {/* { openingModal } */}
-        <Modal isOpen={this.state.welcomeModal} toggle={this.toggle} className="" style={modalSize}>
+        <Modal isOpen={this.state.welcomeModal} backdrop="static" keyboard={false} toggle={this.toggle} className="" style={modalSize}>
           <ModalHeader>Age Verification</ModalHeader>
           <ModalBody >
             <div className="d-flex flex-column align-items-center p-relative">
@@ -90,9 +89,9 @@ class ProductList extends React.Component {
               </div>
 
               <div className="d-flex flex-row">
-                <div onClick={() => this.toggle()}className="" style={lastRow}>Yes</div>
+                <div onClick={() => this.toggle()}className="text-primary" style={lastRow}>Yes</div>
                 <div className="border-top border-bottom mx-4" style={top2}>or</div>
-                <div onClick={() => this.toggle()}className="" style={lastRow}>No</div>
+                <div onClick={() => this.toggle()}className="text-danger" style={lastRow}>No</div>
               </div>
 
             </div>
