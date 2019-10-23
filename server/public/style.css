@@ -1,13 +1,26 @@
-/*
-#root {
-  height: 100vh;
-  width: 100vh;
+/* @import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
+
+body {
+  font-family: 'Cinzel', cursive;
 } */
-/*
-.logo {
-  max-width: 100%;
-  max-height: 100%;
+
+/* @import url('https://fonts.googleapis.com/css?family=Cinzel:700&display=swap');
+
+body {
+  font-family: 'Cinzel:700', cursive;
 } */
+
+/* @import url('https://fonts.googleapis.com/css?family=Oldenburg&display=swap');
+
+body {
+  font-family: 'Oldenburg', cursive;
+} */
+
+@import url('https://fonts.googleapis.com/css?family=El+Messiri&display=swap');
+
+body {
+  font-family: 'El+Messiri', cursive;
+}
 
 .form-control:focus {
   border-color: rgb(226, 226, 226);

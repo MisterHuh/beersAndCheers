@@ -111,7 +111,7 @@ class CartSummaryItem extends React.Component {
             <img src={this.props.item.image} alt="img" className="img-fluid " style={imgSize} />
           </div>
 
-          <div className=" d-flex flex-column justify-content-center align-items-flex-end pt-5 ml-2 text-left w-75">
+          <div className=" d-flex flex-column justify-content-center align-items-flex-end pt-2 ml-2 text-left w-75">
 
             <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2 underline-on-hover" style={cursor}>{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
