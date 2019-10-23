@@ -9,16 +9,10 @@ class ProductList extends React.Component {
     this.state = {
       products: [],
       welcomeModal: true
+      // ageVerified: false
     };
     this.getProducts = this.getProducts.bind(this);
     this.toggle = this.toggle.bind(this);
-  }
-
-  toggle() {
-    this.setState({ welcomeModal: !this.state.welcomeModal });
-
-    /* upon clicking either YES or NO, set ageVerified to TRUE */
-    localStorage.ageVerified(true);
   }
 
   getProducts() {
@@ -27,6 +21,13 @@ class ProductList extends React.Component {
       .then(products => {
         this.setState({ products });
       });
+  }
+
+  toggle() {
+    this.setState({ welcomeModal: !this.state.welcomeModal });
+
+    /* upon clicking either YES or NO, set ageVerified to TRUE */
+    localStorage.setItem('ageVerified', 'true');
   }
 
   componentDidMount() {
@@ -41,7 +42,14 @@ class ProductList extends React.Component {
     // if ageVerified is false, that means the user hasn't clicked the disclaimer.
     // if it is false, welcomeModal should be true, to display the modal to verify age
     // if it is true, go to "catalog"
-    // localStorage.ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: false });
+    let ageVerified = localStorage.getItem('ageVerified');
+    console.log('ageVerified is: ', ageVerified);
+    console.log('typeof ageVerified is', typeof ageVerified);
+    // ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: true });
+    // localStorage.ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: true });
+
+    // localStorage.ageVerified === 'true' ? this.setState({ ageVerified: false }) : this.setState({ ageVerified: true });
+    // this.state.ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: false });
   }
 
   render() {
@@ -61,7 +69,8 @@ class ProductList extends React.Component {
     };
 
     const lastRow = {
-      fontSize: '350%'
+      fontSize: '350%',
+      cursor: 'pointer'
     };
 
     const top = {
