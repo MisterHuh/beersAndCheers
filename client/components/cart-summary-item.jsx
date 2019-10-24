@@ -158,6 +158,7 @@ class CartSummaryItem extends React.Component {
         </div>
       );
     } else {
+ { /* checkout & confirmation */ }
       return (
 
         <div className="d-flex flex-row m-auto p-4 border-bottom" key={this.props.key} style={cardSize}> {/* mx-3 p-5 */}

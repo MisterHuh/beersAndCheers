@@ -56,7 +56,8 @@ class ProductList extends React.Component {
 
     const modalSize = {
       width: '100vw',
-      height: '100vh'
+      height: '100vh',
+      overflowY: 'hidden'
       // backgroundColor: 'black'
     };
 

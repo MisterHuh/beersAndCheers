@@ -109,7 +109,9 @@ class ProductDetails extends React.Component {
     };
     const testSize = {
       position: 'relative',
-      top: '34%'
+      // top: '34%' // this is for thinkpad sizing
+      top: '40%' // this is for monitor sizing
+
     };
 
     const cursor = {
