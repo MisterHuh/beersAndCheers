@@ -8,7 +8,7 @@ class ProductList extends React.Component {
     super(props);
     this.state = {
       products: [],
-      welcomeModal: true
+      welcomeModal: false
       // ageVerified: false
     };
     this.getProducts = this.getProducts.bind(this);
@@ -45,7 +45,8 @@ class ProductList extends React.Component {
     let ageVerified = localStorage.getItem('ageVerified');
     console.log('ageVerified is: ', ageVerified);
     console.log('typeof ageVerified is', typeof ageVerified);
-    // ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: true });
+
+    ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: true });
     // localStorage.ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: true });
 
     // localStorage.ageVerified === 'true' ? this.setState({ ageVerified: false }) : this.setState({ ageVerified: true });

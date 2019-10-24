@@ -81,7 +81,8 @@ class ProductDetails extends React.Component {
       backgroundRepeat: 'no-repeat'
     };
     const infoWrapper = {
-      width: '70%'
+      width: '70%',
+      alignContent: 'center'
     };
     const headerSize = {
       height: '30%',
@@ -116,7 +117,17 @@ class ProductDetails extends React.Component {
 
     const cursor = {
       cursor: 'pointer',
-      width: '5%'
+      // width: '5%' // this is for thinkpad sizing
+      width: '3%', // this is for monitor sizing
+      // bottom: '20%'
+      verticalAlign: 'top'
+    };
+    const cursor1 = {
+      cursor: 'pointer',
+      // width: '5%' // this is for thinkpad sizing
+      width: '3%' // this is for monitor sizing
+      // bottom: '20%'
+      // verticalAlign: 'top'
     };
 
     let availabilityVerbiage;
@@ -136,33 +147,33 @@ class ProductDetails extends React.Component {
 
         <div id="mainWrapper" className="p-5">
 
-          <div id="bodyWrapper" className=" d-flex flex-row border rounded k" style={bodyWrapper}>
+          <div id="bodyWrapper" className=" d-flex flex-row border rounded" style={bodyWrapper}>
 
-            <div id="imgContainer" className="text-center pb-2 border-right m-auto rounded" style={imgContainer}>
+            <div id="imgContainer" className="text-center pb-2 m-auto rounded" style={imgContainer}>
               <img src={product.image} alt="img" className="img-fluid" style={imgSize}/>
             </div>
 
             <div id="infoWrapper" className=" d-flex flex-column" style={infoWrapper}>
 
-              <div id="titleBrewery" className="text-center border-bottom rounded" style={headerSize}>
-                <div className="h-50 pt-2">{product.name}</div>
-                <div className="h-50">{product.brewery}</div>
+              <div id="titleBrewery" className="text-center border-bottom border-left rounded border border-danger" style={headerSize}>
+                <div className="h-50 pt-2 border border-dark">{product.name}</div>
+                <div className="h-50 border border-dark">{product.brewery}</div>
               </div>
 
               <div id="infoContainer" className="d-flex flex-row text-center align-items-center" style={statsSize}>
 
-                <div className=" h-100 w-50 border-right rounded">
+                <div className=" h-100 w-50 border-right rounded border border-danger">
 
-                  <div className=" my-3">{product.abv}%
-                    <div className="d-inline ml-2">ABV</div>
+                  <div className=" my-3 border border-dark">{product.abv}%
+                    <div className="d-inline ml-2 ">ABV</div>
+                    <img id="abvInfo" src={abvIcon} className="ml-2 d-inline fas fa-question-circle " style={cursor}></img>
                     {/* <i id="abvInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i> */}
-                    <img id="abvInfo" src={abvIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img>
                     <Tooltip placement="right" isOpen={this.state.abvToolTipOpen} target="abvInfo" className="bg-primary" toggle={this.abvToggle}>
                       <strong>Alcohol By Volume</strong> measures how much alcohol is in the drink
                     </Tooltip>
                   </div>
 
-                  <div className=" my-3">{product.ibu}
+                  <div className=" my-3 border border-dark">{product.ibu}
                     <div className="d-inline ml-2">IBU</div>
                     <img id="ibuInfo" src={ibuIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img>
                     {/* <i id="ibuInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i> */}
@@ -170,9 +181,9 @@ class ProductDetails extends React.Component {
                       <strong> International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds
                     </Tooltip>
                   </div>
-                  <div className=" mt-3">{availabilityVerbiage}<div className="d-inline ml-1">{product.availability}</div></div>
+                  <div className=" mt-3 border border-dark">{availabilityVerbiage}<div className="d-inline ml-1">{product.availability}</div></div>
 
-                  <div className=" mt-2 ">
+                  <div className=" mt-2 border border-dark">
                     <Button
                       className="my-3 w-50 bg-primary text-white font-weight-bold"
                       outline color="primary"
@@ -181,15 +192,15 @@ class ProductDetails extends React.Component {
                   </div>
                 </div>
 
-                <div className=" h-100 w-50 ">
-                  <div className=" my-3">{product.type}</div>
-                  <div className=" my-3">$ <div className="d-inline">{((product.price) / 100).toFixed(2)}</div></div>
-                  <div className=" mt-3">
-                    <i onClick={this.decrementQuantity} className="fas fa-minus-square" style={cursor}></i>
-                    <div className="d-inline px-3">{quantity}</div>
-                    <i onClick={this.incrementQuantity} className="fas fa-plus-square" style={cursor}></i>
+                <div className=" h-100 w-50 border border-danger">
+                  <div className="border border-dark my-3">{product.type}</div>
+                  <div className="border border-dark my-3">$ <div className="d-inline">{((product.price) / 100).toFixed(2)}</div></div>
+                  <div className="border border-dark mt-3">
+                    <i onClick={this.decrementQuantity} className="fas fa-minus-square border border-danger" style={cursor1}></i>
+                    <div className="d-inline px-3 border border-dark">{quantity}</div>
+                    <i onClick={this.incrementQuantity} className="fas fa-plus-square border border-danger" style={cursor1}></i>
                   </div>
-                  <div className="mt-2 ">
+                  <div className="mt-2 border border-dark">
                     <Button outline color="success" className="my-3 w-50 bg-success text-white font-weight-bold" onClick={this.addToCart}>Add To Cart</Button>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>

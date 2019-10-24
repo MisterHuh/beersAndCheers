@@ -17,7 +17,7 @@ export const Jumbotron = () => {
   const beerClink = 'https://static.westernunion-microsites.com/blog/uploads/2017/09/shutterstock_491351821_1.jpg';
 
   const imgWrapper = {
-    height: '60vh'
+    height: '50vh'
   };
   const imgSize = {
     width: '100%',
