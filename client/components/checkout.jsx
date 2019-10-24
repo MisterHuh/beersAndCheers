@@ -477,7 +477,7 @@ export default class Checkout extends React.Component {
                           <h6 className="">Billing Info</h6>
                           <div>{this.state.fullName}</div>
                           <div>{this.state.creditCardNumber}</div>
-                          <div>EXP: {this.state.monthYear} <span className="px-2"></span> cvv: {this.state.cvv}</div>
+                          <div>EXP: {this.state.monthYear} <span className="px-1"></span> cvv: {this.state.cvv}</div>
                         </div>
 
                       </div> {/* end of billing & shipping */}
