@@ -8,7 +8,7 @@ class ProductList extends React.Component {
     super(props);
     this.state = {
       products: [],
-      welcomeModal: false
+      welcomeModal: !localStorage.ageVerified
       // ageVerified: false
     };
     this.getProducts = this.getProducts.bind(this);
@@ -42,11 +42,7 @@ class ProductList extends React.Component {
     // if ageVerified is false, that means the user hasn't clicked the disclaimer.
     // if it is false, welcomeModal should be true, to display the modal to verify age
     // if it is true, go to "catalog"
-    let ageVerified = localStorage.getItem('ageVerified');
-    console.log('ageVerified is: ', ageVerified);
-    console.log('typeof ageVerified is', typeof ageVerified);
 
-    ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: true });
     // localStorage.ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: true });
 
     // localStorage.ageVerified === 'true' ? this.setState({ ageVerified: false }) : this.setState({ ageVerified: true });
@@ -57,8 +53,8 @@ class ProductList extends React.Component {
 
     const modalSize = {
       width: '100vw',
-      height: '100vh',
-      overflowY: 'hidden'
+      height: '100vh'
+      // overflowY: '/'
       // backgroundColor: 'black'
     };
 
@@ -83,9 +79,10 @@ class ProductList extends React.Component {
       lineHeight: '225%',
       fontSize: '200%'
     };
+    debugger;
     return (
       <React.Fragment>
-        <Modal isOpen={this.state.welcomeModal} backdrop="static" keyboard={false} toggle={this.toggle} className="" style={modalSize}>
+        <Modal isOpen={this.state.welcomeModal} backdrop="static" keyboard={false} className="" style={modalSize}>
           <ModalHeader>Age Verification</ModalHeader>
           <ModalBody >
             <div className="d-flex flex-column align-items-center p-relative">

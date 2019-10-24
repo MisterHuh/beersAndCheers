@@ -81,8 +81,7 @@ class ProductDetails extends React.Component {
       backgroundRepeat: 'no-repeat'
     };
     const infoWrapper = {
-      width: '70%',
-      alignContent: 'center'
+      width: '70%'
     };
     const headerSize = {
       height: '30%',
