@@ -2,28 +2,14 @@ import React from 'react';
 
 export const About = () => {
 
-  const containerSize = {
-    width: '100wh'
-  };
-
-  // const sidePic = 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80';
-  // const sidePic = './aboutMe.png';
-  const sidePic = 'https://cdn.dribbble.com/users/951901/screenshots/3794209/oktoberfest_notext.gif';
-  const imgWrapper = {
-    width: '100%',
-    height: '50%'
-  };
-  const imgSize = {
-    width: '100%'
-    // height: '80%'
-  };
+  const beerMe = './aboutMe.gif';
 
   return (
-    <div className="d-flex flex-column px-5 pb-5" style={containerSize}>
+    <div className="d-flex flex-column px-5 pb-5">
 
       <h1 className="border-bottom my-3 text-center pb-2">Beers & Cheers</h1>
 
-      <div className=" d-flex flex-row" style={imgWrapper}>
+      <div className=" d-flex flex-row">
         <div className="w-75 mr-3">
           <p>
             Beers & Cheers is a full stack shopping cart app, that allows users to browse the finest craft beers, add them to cart, and place an order.
@@ -43,7 +29,7 @@ export const About = () => {
         </div>
 
         <div className="m-auto w-25">
-          <img src={sidePic} alt="sidePic" className="d-block m-auto" style={imgSize} />
+          <img src={beerMe} alt="beerMe" className="aboutImgSize d-block m-auto"/>
         </div>
 
       </div>
