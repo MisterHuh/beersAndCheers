@@ -9,7 +9,6 @@ class ProductList extends React.Component {
     this.state = {
       products: [],
       welcomeModal: !localStorage.ageVerified
-      // ageVerified: false
     };
     this.getProducts = this.getProducts.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -32,69 +31,30 @@ class ProductList extends React.Component {
 
   componentDidMount() {
     this.getProducts();
-
-    // if (localStorage.ageVerified) {
-    //   this.setState({ welcomeModal: false });
-    // } else {
-    //   this.setState({ welcomeModal: true });
-    // }
-
-    // if ageVerified is false, that means the user hasn't clicked the disclaimer.
-    // if it is false, welcomeModal should be true, to display the modal to verify age
-    // if it is true, go to "catalog"
-
-    // localStorage.ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: true });
-
-    // localStorage.ageVerified === 'true' ? this.setState({ ageVerified: false }) : this.setState({ ageVerified: true });
-    // this.state.ageVerified ? this.setState({ welcomeModal: false }) : this.setState({ welcomeModal: false });
   }
 
   render() {
-    const secondRow = {
-      fontSize: '400%'
-    };
-
-    const thirdRow = {
-      fontSize: '200%'
-    };
-
-    const lastRow = {
-      fontSize: '350%',
-      cursor: 'pointer'
-    };
-
-    const top = {
-      lineHeight: '280%'
-    };
-
-    const top2 = {
-      lineHeight: '225%',
-      fontSize: '200%'
+    const modalSize = {
+      height: '14vh',
+      fontSize: '100%'
     };
     return (
       <React.Fragment>
         <Modal isOpen={this.state.welcomeModal} backdrop="static" keyboard={false} className="">
-          <ModalHeader>Age Verification</ModalHeader>
-          <ModalBody>
-            <div className="d-flex flex-column align-items-center p-relative">
+          <div className="rounded text-center">
+            <div className="mt-3" style={{ fontSize: '125%' }}>Age Verification</div>
 
-              <div className="border-bottom pb-3">You must be at least 21 to enter</div>
-
-              <div className="" style={secondRow}>Are you</div>
-
+            <div className="d-flex flex-column align-items-center " style={modalSize}>
+              <div className="mt-2">You must be at least 21 to enter</div>
+              <div className=" my-3">Are you over 21?</div>
               <div className="d-flex flex-row">
-                <div className="border-top border-bottom" style={top}>over</div>
-                <div className="ml-4" style={thirdRow}>Twenty One?</div>
+                <Button onClick={() => this.toggle()}className="bg-warning">Yes</Button>
+                <div className="px-5">or</div>
+                <Button onClick={() => this.toggle()}className="bg-danger" >No</Button>
               </div>
-
-              <div className="d-flex flex-row">
-                <div onClick={() => this.toggle()}className="text-primary" style={lastRow}>Yes</div>
-                <div className="border-top border-bottom mx-4" style={top2}>or</div>
-                <div onClick={() => this.toggle()}className="text-danger" style={lastRow}>No</div>
-              </div>
-
             </div>
-          </ModalBody>
+
+          </div>
         </Modal>
 
         <Jumbotron />
