@@ -3,41 +3,26 @@ import { Badge, Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 export const Header = props => {
 
-  const logo = './cheers.png';
-  let currentView = props.view;
+  const logo = './images/general/logo.png';
+
   let cartQuantity = props.cartQuantity;
-  cartQuantity > 99 ? cartQuantity = '99+' : false;
-
-  const imgWrapper = {
-    height: '4vh',
-    cursor: 'pointer'
-  };
-
-  const imgContainer = {
-    height: '100%'
-  };
-
-  const navBarColor = {
-    backgroundColor: '#F4F4F4'
-  };
-
-  const cursor = {
-    cursor: 'pointer'
-  };
+  if (cartQuantity > 99) {
+    cartQuantity = '99+';
+  }
 
   return (
     <React.Fragment>
-      <Navbar light expand="md" className="sticky-top" style={navBarColor}>
-        <NavbarBrand onClick={() => props.setView('catalog', '')} className="border-dark p-0" style={imgWrapper}>
-          <img src={logo} className="mr-2 mb-2 d-inline" style={imgContainer}/>
+      <Navbar expand="md" className="sticky-top rounded border-bottom">
+        <NavbarBrand onClick={() => props.setView('catalog', '')} className="navbarBrand p-0" >
+          <img src={logo} className="logo mr-2 mb-2 d-inline"/>
           <div className="d-inline">Beers & Cheers</div>
         </NavbarBrand>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink onClick={() => props.setView('about', '')} style={cursor}>About</NavLink>
+            <NavLink onClick={() => props.setView('about', '')} >About</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink onClick={() => props.setView('cart', '')} style={cursor}>Cart <Badge pill>{cartQuantity}</Badge></NavLink>
+            <NavLink onClick={() => props.setView('cart', '')} >Cart <Badge pill>{cartQuantity}</Badge></NavLink>
           </NavItem>
         </Nav>
       </Navbar>

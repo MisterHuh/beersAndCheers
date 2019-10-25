@@ -1,17 +1,14 @@
 /* @import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
-
 body {
   font-family: 'Cinzel', cursive;
 } */
 
 /* @import url('https://fonts.googleapis.com/css?family=Cinzel:700&display=swap');
-
 body {
   font-family: 'Cinzel:700', cursive;
 } */
 
 /* @import url('https://fonts.googleapis.com/css?family=Oldenburg&display=swap');
-
 body {
   overflow-y:scroll;
   font-family: 'Oldenburg', cursive;
@@ -23,11 +20,25 @@ body {
   font-family: 'El+Messiri', cursive;
 }
 
-.aboutImgSize {
-  /* background-image: url("./aboutMe.gif"); */
+.aboutImg {
+  /* background-image: url("./images/general/aboutMe.gif"); */
   width: 100%
 }
 
+.sticky-top {
+  background-color: #F9F9F9;
+}
+
+.navbarBrand {
+  /* background-image: url("./images/general/logo.png"); */
+  height: 4vh;
+}
+
+.logo {
+  height: 100%
+}
+
+.jumbotronImgContainer
 .form-control:focus {
   border-color: rgb(226, 226, 226);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(155, 153, 153, 0.6);
