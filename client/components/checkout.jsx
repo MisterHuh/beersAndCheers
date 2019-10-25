@@ -15,7 +15,7 @@ export default class Checkout extends React.Component {
       city: 'Brea',
       state: 'CA',
       zipCode: '92821',
-      creditCardNumber: '',
+      creditCardNumber: '1111473629195837',
       fullName: 'Jaehyuk Huh',
       monthYear: '09/23',
       cvv: '4523',
@@ -45,7 +45,7 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: false,
+      modal: true,
       orderConfirmation: false
     };
 
@@ -238,7 +238,7 @@ export default class Checkout extends React.Component {
       width: '100wh'
     };
     const modalBodyWrapper = {
-      height: '50vh'
+      height: '40vh'
     };
     const modalWrapper = {
       height: '100%'
@@ -246,10 +246,6 @@ export default class Checkout extends React.Component {
 
     const ccLogoSize = {
       fontSize: '250%'
-      // color: '#007bc1'  // amex
-      // color: '#f68121' // discover
-      // color: '#0a3a82' // mastercard
-      // color: '#0157a2' // visa
     };
 
     const { formErrors } = this.state;
@@ -286,11 +282,6 @@ export default class Checkout extends React.Component {
     //   let newMonthYear = currentMonthYear += '/';
     //   this.setState({ monthYear: newMonthYear });
     // }
-
-    // color: '#007bc1'  // amex
-    // color: '#f68121' // discover
-    // color: '#0a3a82' // mastercard
-    // color: '#0157a2' // visa
 
     let amexColor, disColor, mcColor, visaColor;
     if (this.state.creditCardNumber.length === 16) {
@@ -557,39 +548,39 @@ export default class Checkout extends React.Component {
 
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Order Summary</ModalHeader>
-                  <ModalBody style={modalBodyWrapper}>
+                  <ModalBody className="py-4 px-0" style={modalBodyWrapper}>
                     <div className=" d-flex flex-column px-2 text-center" style={modalWrapper}>
 
                       <div className="d-flex flex-row ">
-                        <div className="w-50">
-                          <h3 className="">Shipping Info</h3>
-                          <div><strong>{this.state.firstName} {this.state.lastName}</strong></div>
-                          <div>{this.state.streetAddress}</div>
+                        <div className="border-right w-50">
+                          <h4 className="mb-3 ">Shipping Info</h4>
+                          <div className="mb-2"><strong>{this.state.firstName} {this.state.lastName}</strong></div>
+                          <div className="mb-2">{this.state.streetAddress}</div>
                           <div>{this.state.city}, {this.state.state}, {this.state.zipCode}</div>
                         </div>
 
                         <div className=" w-50">
-                          <h3 className="">Billing Info</h3>
-                          <div><strong>{this.state.fullName}</strong></div>
-                          <div>cc ending in <strong>{ccLastFourDigits}</strong></div>
-                          <div>exp: <strong>{this.state.monthYear}</strong> <span className="px-1"></span> cvv: <strong>{this.state.cvv}</strong></div>
+                          <h4 className="mb-3 ">Billing Info</h4>
+                          <div className="mb-2"><strong>{this.state.fullName}</strong></div>
+                          <div className="mb-2">cc ending in <strong>{ccLastFourDigits}</strong></div>
+                          <div className="mb-2">exp: <strong>{this.state.monthYear}</strong> <span className="px-1"></span> cvv: <strong>{this.state.cvv}</strong></div>
                         </div>
 
                       </div> {/* end of billing & shipping */}
 
                       <div className="">
-                        <div className="mt-4">
-                          <h6 className="border-top pt-2">Order Summary</h6>
+                        <div className="border-top mt-4">
+                          <h4 className="pt-3">Order Summary</h4>
                           <div>Total Amount: <strong>$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</strong></div>
                           <div>Total Items: <strong>{count}</strong></div>
 
                         </div>{/* end of total amount & count */}
 
-                        <div className="mt-4">
-                          <h6 className="border-top pt-2">Disclaimer</h6>
+                        <div className="border-top mt-4">
+                          <h4 className="pt-2">Disclaimer</h4>
                           <Label check>
                             <Input id="disclaimer" type="checkbox" onClick={this.orderConfirmation}/>
-                          I agree that this was not a real purchase
+                            I agree that this was not a <strong>real</strong> purchase
                           </Label>
                         </div>
                       </div>
