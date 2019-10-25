@@ -50,14 +50,6 @@ class ProductList extends React.Component {
   }
 
   render() {
-
-    const modalSize = {
-      width: '100vw',
-      height: '100vh'
-      // overflowY: '/'
-      // backgroundColor: 'black'
-    };
-
     const secondRow = {
       fontSize: '400%'
     };
@@ -81,9 +73,9 @@ class ProductList extends React.Component {
     };
     return (
       <React.Fragment>
-        <Modal isOpen={this.state.welcomeModal} backdrop="static" keyboard={false} className="" style={modalSize}>
+        <Modal isOpen={this.state.welcomeModal} backdrop="static" keyboard={false} className="">
           <ModalHeader>Age Verification</ModalHeader>
-          <ModalBody >
+          <ModalBody>
             <div className="d-flex flex-column align-items-center p-relative">
 
               <div className="border-bottom pb-3">You must be at least 21 to enter</div>
