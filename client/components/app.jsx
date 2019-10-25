@@ -47,7 +47,7 @@ export default class App extends React.Component {
     fetch(`/api/cart.php`)
       .then(response => response.json())
       .then(cart => {
-        this.setState({ cart }, this.getCartQuantity(cart));
+        this.setState({ cart }, () => this.getCartQuantity(cart));
       })
       .catch(error => {
         // console.error('delete error: ', error);

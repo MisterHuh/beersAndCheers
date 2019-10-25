@@ -24,11 +24,11 @@ export const About = () => {
       <h1 className="border-bottom my-3 text-center pb-2">Beers & Cheers</h1>
 
       <div className=" d-flex flex-row" style={imgWrapper}>
-        <div className="w-75 ">
+        <div className="w-75 mr-3">
           <p>
             Beers & Cheers is a full stack shopping cart app, that allows users to browse the finest craft beers, add them to cart, and place an order.
             Over 100+ hours were spent on this application, and my goal is to continue updating it with new features and designs.
-            <p>If you have any questions, or want to send suggestions about the app, don't hesitate to contact me! </p>
+            <p>If you have any questions about the app or want to grab a beer, don't hesitate to contact me! </p>
           </p>
 
           <p>

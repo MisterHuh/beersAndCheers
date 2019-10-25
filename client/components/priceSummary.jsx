@@ -26,7 +26,8 @@ export default class PriceSummary extends React.Component {
   render() {
 
     const cursor = {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      verticalAlign: 'top'
     };
 
     let cart = this.props.cart;
