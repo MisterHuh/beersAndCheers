@@ -15,7 +15,7 @@ export default class Checkout extends React.Component {
       city: 'Brea',
       state: 'CA',
       zipCode: '92821',
-      creditCardNumber: '8400325874562902',
+      creditCardNumber: '',
       fullName: 'Jaehyuk Huh',
       monthYear: '09/23',
       cvv: '4523',
@@ -245,7 +245,11 @@ export default class Checkout extends React.Component {
     };
 
     const ccLogoSize = {
-      fontSize: '24px'
+      fontSize: '250%'
+      // color: '#007bc1'  // amex
+      // color: '#f68121' // discover
+      // color: '#0a3a82' // mastercard
+      // color: '#0157a2' // visa
     };
 
     const { formErrors } = this.state;
@@ -276,11 +280,38 @@ export default class Checkout extends React.Component {
     this.state.creditCardNumber.length === 16
       ? ccLastFourDigits = this.state.creditCardNumber[12] + this.state.creditCardNumber[13] + this.state.creditCardNumber[14] + this.state.creditCardNumber[14]
       : false;
+
     // if (this.state.monthYear.length === 2) {
     //   let currentMonthYear = this.state.montheYear;
     //   let newMonthYear = currentMonthYear += '/';
     //   this.setState({ monthYear: newMonthYear });
     // }
+
+    // color: '#007bc1'  // amex
+    // color: '#f68121' // discover
+    // color: '#0a3a82' // mastercard
+    // color: '#0157a2' // visa
+
+    let amexColor, disColor, mcColor, visaColor;
+    if (this.state.creditCardNumber.length === 16) {
+      if (this.state.creditCardNumber[15] >= 8) {
+        amexColor = {
+          color: '#007bc1'
+        };
+      } else if (this.state.creditCardNumber[15] >= 6) {
+        disColor = {
+          color: '#f68121'
+        };
+      } else if (this.state.creditCardNumber[15] >= 3) {
+        mcColor = {
+          color: '#0a3a82'
+        };
+      } else {
+        visaColor = {
+          color: '#0157a2'
+        };
+      }
+    }
 
     console.log('cart is: ', this.props.cart);
 
@@ -453,11 +484,25 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <div className="d-inline d-flex flex-row border border-dark">
-                    <i className="fa fa-cc-amex" style={ccLogoSize}></i>
-                    <i className="fa fa-cc-discover" style={ccLogoSize}></i>
-                    <i className="fa fa-cc-mastercard" style={ccLogoSize}></i>
-                    <i className="fa fa-cc-visa" style={ccLogoSize}></i>
+                  <div className="d-flex flex-row ml-3">
+
+                    {/* <div className="mx-3" style={this.state.creditCardNumber >= 8 ? "color" }> */}
+                    <div className="mx-3" style={amexColor}>
+                      <i className="fab fa-cc-amex" style={ccLogoSize}></i>
+                    </div>
+
+                    <div className="mx-3" style={disColor} >
+                      <i className="fab fa-cc-discover" style={ccLogoSize}></i>
+                    </div>
+
+                    <div className="mx-3" style={mcColor} >
+                      <i className="fab fa-cc-mastercard" style={ccLogoSize}></i>
+                    </div>
+
+                    <div className="mx-3" style={visaColor} >
+                      <i className="fab fa-cc-visa" style={ccLogoSize}></i>
+                    </div>
+
                   </div>
                 </Row>
 
