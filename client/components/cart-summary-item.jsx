@@ -78,7 +78,7 @@ class CartSummaryItem extends React.Component {
       height: '100%'
     };
     const modalBodyWrapper = {
-      height: '30vh'
+      height: '50vh'
     };
     const modalWrapper = {
       height: '100%'
@@ -125,14 +125,14 @@ class CartSummaryItem extends React.Component {
             <img src={this.props.item.image} alt="img" className="img-fluid " style={imgSize} />
           </div>
 
-          <div className=" d-flex flex-column justify-content-center align-items-flex-end pt-2 ml-2 text-left w-75">
+          <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left w-75">
 
             <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2 underline-on-hover" style={cursor}>{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
 
             <div className=" mx-3 my-2">
-              <div className="d-inline ml-2">{'$ ' + ((this.props.item.price) / 100).toFixed(2)}</div>
-              <div className="d-inline mr-2 float-right">
+              <div className="d-inline mr-5">{'$ ' + ((this.props.item.price) / 100).toFixed(2)}</div>
+              <div className="d-inline ml-5">
                 <i onClick={this.decrementQuantity} className="fas fa-minus-square" style={cursor}></i>
                 <div className=" d-inline px-2"><strong>{this.state.count}</strong></div>
                 <i onClick={this.incrementQuantity} className="fas fa-plus-square" style={cursor}></i>

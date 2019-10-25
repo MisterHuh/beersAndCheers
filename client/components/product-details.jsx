@@ -124,16 +124,6 @@ class ProductDetails extends React.Component {
       cursor: 'pointer',
       // width: '5%' // this is for thinkpad sizing
       width: '3%' // this is for monitor sizing
-      // bottom: '20%'
-      // verticalAlign: 'top'
-    };
-
-    const alignText = {
-      // position: 'relative'
-      // top: '24%',
-      // verticalAlign: 'bottom'
-      bottom: '0%'
-
     };
 
     let availabilityVerbiage;
@@ -164,7 +154,7 @@ class ProductDetails extends React.Component {
               <div id="titleBrewery" className="rounded text-center border-bottom" style={headerSize}>
 
                 <div className="h-50 pt-4">
-                  <div className="pt-3" style={alignText}>{product.name}</div>
+                  <div className="pt-3">{product.name}</div>
                 </div>
 
                 <div className="h-50 ">

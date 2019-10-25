@@ -7,18 +7,30 @@ export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      eMail: '',
-      phoneNumber: '',
-      streetAddress: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      creditCardNumber: '',
-      fullName: '',
-      monthYear: '',
-      cvv: '',
+      firstName: 'Jae',
+      lastName: 'Huh',
+      eMail: 'jaehuh86@yahoo.com',
+      phoneNumber: '5628339674',
+      streetAddress: '1234 Johnson Ave',
+      city: 'Brea',
+      state: 'CA',
+      zipCode: '92821',
+      creditCardNumber: '8400325874562902',
+      fullName: 'Jaehyuk Huh',
+      monthYear: '09/23',
+      cvv: '4523',
+      // firstName: '',
+      // lastName: '',
+      // eMail: '',
+      // phoneNumber: '',
+      // streetAddress: '',
+      // city: '',
+      // state: '',
+      // zipCode: '',
+      // creditCardNumber: '',
+      // fullName: '',
+      // monthYear: '',
+      // cvv: '',
       formErrors: {
         firstName: '',
         lastName: '',
@@ -232,6 +244,10 @@ export default class Checkout extends React.Component {
       height: '100%'
     };
 
+    const ccLogoSize = {
+      fontSize: '24px'
+    };
+
     const { formErrors } = this.state;
 
     const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
@@ -256,6 +272,10 @@ export default class Checkout extends React.Component {
       ? modalButtonDisplay = <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.placeOrder()}>Place Order</Button>
       : modalButtonDisplay = <Button color="secondary" className="bg-secondary text-white font-weight-bold">Check the Box!</Button>;
 
+    let ccLastFourDigits;
+    this.state.creditCardNumber.length === 16
+      ? ccLastFourDigits = this.state.creditCardNumber[12] + this.state.creditCardNumber[13] + this.state.creditCardNumber[14] + this.state.creditCardNumber[14]
+      : false;
     // if (this.state.monthYear.length === 2) {
     //   let currentMonthYear = this.state.montheYear;
     //   let newMonthYear = currentMonthYear += '/';
@@ -274,7 +294,7 @@ export default class Checkout extends React.Component {
               <Form>
 
                 <Row form>
-                  <Col md={6}>
+                  <Col md={5}>
                     <FormGroup>
                       <Input
                         className={formErrors.firstName.length > 0 ? 'border border-danger' : null}
@@ -288,7 +308,8 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <Col md={6}>
+
+                  <Col md={5}>
                     <FormGroup>
                       <Input
                         className={formErrors.lastName.length > 0 ? 'border border-danger' : null}
@@ -302,43 +323,53 @@ export default class Checkout extends React.Component {
                     </FormGroup>
                   </Col>
                 </Row>
-                <FormGroup>
-                  <Input
-                    className={formErrors.eMail.length > 0 ? 'border border-danger' : null}
-                    onChange={this.handleInput}
-                    name="eMail"
-                    placeholder="E-mail"
-                  />
-                  {formErrors.eMail.length > 0 && (
-                    <small className="text-danger">{formErrors.eMail}</small>
-                  )}
-                </FormGroup>
-                <FormGroup>
-                  <Input
-                    maxLength="10"
-                    className={formErrors.phoneNumber.length > 0 ? 'border border-danger' : null}
-                    onChange={this.handleInput}
-                    name="phoneNumber"
-                    placeholder="Phone Number"
-                  />
-                  {formErrors.phoneNumber.length > 0 && (
-                    <small className="text-danger">{formErrors.phoneNumber}</small>
-                  )}
-                </FormGroup>
-                <FormGroup>
-                  <Input
-                    className={formErrors.streetAddress.length > 0 ? 'border border-danger' : null}
-                    onChange={this.handleInput}
-                    name="streetAddress"
-                    placeholder="Street Address"
-                  />
-                  {formErrors.streetAddress.length > 0 && (
-                    <small className="text-danger">{formErrors.streetAddress}</small>
-                  )}
-                </FormGroup>
 
                 <Row form>
-                  <Col md={6}>
+                  <Col md={5}>
+                    <FormGroup>
+                      <Input
+                        className={formErrors.eMail.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="eMail"
+                        placeholder="E-mail"
+                      />
+                      {formErrors.eMail.length > 0 && (
+                        <small className="text-danger">{formErrors.eMail}</small>
+                      )}
+                    </FormGroup>
+                  </Col>
+
+                  <Col md={5}>
+                    <FormGroup>
+                      <Input
+                        maxLength="10"
+                        className={formErrors.phoneNumber.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="phoneNumber"
+                        placeholder="Phone Number"
+                      />
+                      {formErrors.phoneNumber.length > 0 && (
+                        <small className="text-danger">{formErrors.phoneNumber}</small>
+                      )}
+                    </FormGroup>
+                  </Col>
+                </Row>
+
+                <Row form>
+                  <Col md={5}>
+                    <FormGroup>
+                      <Input
+                        className={formErrors.streetAddress.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="streetAddress"
+                        placeholder="Street Address"
+                      />
+                      {formErrors.streetAddress.length > 0 && (
+                        <small className="text-danger">{formErrors.streetAddress}</small>
+                      )}
+                    </FormGroup>
+                  </Col>
+                  <Col md={5}>
                     <FormGroup>
                       <Input
                         className={formErrors.city.length > 0 ? 'border border-danger' : null}
@@ -351,6 +382,9 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
+                </Row>
+
+                <Row form>
                   <Col md={2}>
                     <FormGroup>
                       <Input
@@ -387,32 +421,48 @@ export default class Checkout extends React.Component {
 
             <div className="mt-2 mx-3 mb-4">
               <Form>
-                <FormGroup>
-                  <Input
-                    maxLength="16"
-                    className={formErrors.creditCardNumber.length > 0 ? 'border border-danger' : null}
-                    onChange={this.handleInput}
-                    name="creditCardNumber"
-                    placeholder="Card Number"
-                  />
-                  {formErrors.creditCardNumber.length > 0 && (
-                    <small className="text-danger">{formErrors.creditCardNumber}</small>
-                  )}
-                </FormGroup>
-                <FormGroup>
-                  <Input
-                    className={formErrors.fullName.length > 0 ? 'border border-danger' : null}
-                    onChange={this.handleInput}
-                    name="fullName"
-                    placeholder="Full Name"
-                  />
-                  {formErrors.fullName.length > 0 && (
-                    <small className="text-danger">{formErrors.fullName}</small>
-                  )}
-                </FormGroup>
 
                 <Row form>
                   <Col md={6}>
+                    <FormGroup>
+                      <Input
+                        className={formErrors.fullName.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="fullName"
+                        placeholder="Full Name"
+                      />
+                      {formErrors.fullName.length > 0 && (
+                        <small className="text-danger">{formErrors.fullName}</small>
+                      )}
+                    </FormGroup>
+                  </Col>
+                </Row>
+
+                <Row form>
+                  <Col md={6}>
+                    <FormGroup>
+                      <Input
+                        maxLength="16"
+                        className={formErrors.creditCardNumber.length > 0 ? 'border border-danger' : null}
+                        onChange={this.handleInput}
+                        name="creditCardNumber"
+                        placeholder="Card Number"
+                      />
+                      {formErrors.creditCardNumber.length > 0 && (
+                        <small className="text-danger">{formErrors.creditCardNumber}</small>
+                      )}
+                    </FormGroup>
+                  </Col>
+                  <div className="d-inline d-flex flex-row border border-dark">
+                    <i className="fa fa-cc-amex" style={ccLogoSize}></i>
+                    <i className="fa fa-cc-discover" style={ccLogoSize}></i>
+                    <i className="fa fa-cc-mastercard" style={ccLogoSize}></i>
+                    <i className="fa fa-cc-visa" style={ccLogoSize}></i>
+                  </div>
+                </Row>
+
+                <Row form>
+                  <Col md={2}>
                     <FormGroup>
                       <Input
                         maxLength="5"
@@ -426,14 +476,14 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <Col md={6}>
+                  <Col md={2}>
                     <FormGroup>
                       <Input
                         maxLength="4"
                         className={formErrors.cvv.length > 0 ? 'border border-danger' : null}
                         onChange={this.handleInput}
                         name="cvv"
-                        placeholder="cvv"
+                        placeholder="CVV"
                       />
                       {formErrors.cvv.length > 0 && (
                         <small className="text-danger">{formErrors.cvv}</small>
@@ -463,21 +513,21 @@ export default class Checkout extends React.Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Order Summary</ModalHeader>
                   <ModalBody style={modalBodyWrapper}>
-                    <div className=" d-flex flex-column px-4 text-center" style={modalWrapper}>
+                    <div className=" d-flex flex-column px-2 text-center" style={modalWrapper}>
 
                       <div className="d-flex flex-row ">
                         <div className="w-50">
-                          <h6 className="">Shipping Info</h6>
-                          <div>{this.state.firstName} {this.state.lastName}</div>
+                          <h3 className="">Shipping Info</h3>
+                          <div><strong>{this.state.firstName} {this.state.lastName}</strong></div>
                           <div>{this.state.streetAddress}</div>
                           <div>{this.state.city}, {this.state.state}, {this.state.zipCode}</div>
                         </div>
 
                         <div className=" w-50">
-                          <h6 className="">Billing Info</h6>
-                          <div>{this.state.fullName}</div>
-                          <div>{this.state.creditCardNumber}</div>
-                          <div>EXP: {this.state.monthYear} <span className="px-1"></span> cvv: {this.state.cvv}</div>
+                          <h3 className="">Billing Info</h3>
+                          <div><strong>{this.state.fullName}</strong></div>
+                          <div>cc ending in <strong>{ccLastFourDigits}</strong></div>
+                          <div>exp: <strong>{this.state.monthYear}</strong> <span className="px-1"></span> cvv: <strong>{this.state.cvv}</strong></div>
                         </div>
 
                       </div> {/* end of billing & shipping */}

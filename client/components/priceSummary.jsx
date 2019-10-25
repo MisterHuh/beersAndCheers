@@ -26,16 +26,8 @@ export default class PriceSummary extends React.Component {
   render() {
 
     const cursor = {
-      cursor: 'pointer'
-    };
-
-    const boxShadow = {
-      // boxShadow: '2px 2px 2px 1px #F7F7F7'
-      // h-offset
-      // v-offset
-      // blur (higher = more blurred)
-      // spread radius (positive value increase sthe size & negative does opposite)
-      // color
+      cursor: 'pointer',
+      verticalAlign: 'top'
     };
 
     let cart = this.props.cart;
@@ -87,7 +79,7 @@ export default class PriceSummary extends React.Component {
           </h4>
         </div>
         <hr />
-        <div className="m-3" style={boxShadow}>
+        <div className="m-3">
           <h3 className=" d-inline">Total <div className=" d-inline float-right">$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div> </h3>
         </div>
       </div>
