@@ -87,7 +87,7 @@ class CartSummaryItem extends React.Component {
       height: '100%'
     };
     const modalImgContainer = {
-      height: '100%'
+      height: '80%'
     };
     const modalCardSize = {
       height: '20vh',
@@ -150,7 +150,7 @@ class CartSummaryItem extends React.Component {
               <ModalBody style={modalBodyWrapper}>
                 <div className=" d-flex flex-row" style={modalWrapper}>
                   <div className=" w-50 text-center border-right" style={modalContainer}>
-                    <img src={this.props.item.image} alt="beerImg" className="" style={modalImgContainer} />
+                    <img src={this.props.item.image} alt="beerImg" className="my-5" style={modalImgContainer} />
                   </div>
                   <div className="w-50 text-center">
 

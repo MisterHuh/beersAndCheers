@@ -4,7 +4,8 @@ import PriceSummary from './priceSummary';
 import { Button } from 'reactstrap';
 
 export const CartSummary = props => {
-  const imgSrc = 'emptycart.png';
+  // const imgSrc = 'emptycart.png';
+  const imgSrc = 'https://pngimage.net/wp-content/uploads/2018/05/alcohol-abuse-png-3.png';
 
   const containerSize = {
     width: '100wh'
@@ -14,16 +15,21 @@ export const CartSummary = props => {
     fontSize: '60%'
   };
 
+  const cursor = {
+    cursor: 'pointer'
+  };
+
   let cartQuantity = props.cartQuantity;
   let itemsVerbiage;
   cartQuantity === 1 ? itemsVerbiage = 'item' : itemsVerbiage = 'items';
 
   if (props.cart.length === 0) {
     return (
-      <React.Fragment>
-        <div className="h1 text-center mb-3">Your Cart Is Empty!</div>
-        <img src={imgSrc} alt="emptyCart" className="mx-auto d-block" onClick={() => props.setView('catalog', '')} />
-      </React.Fragment>
+      <div className="text-center" style={cursor} onClick={() => props.setView('catalog', '')}>
+        <div className="h1 mt-5 mb-3">Your Cart Is Empty!</div>
+        <img src={imgSrc} alt="emptyCart" className="mx-auto d-block mb-5" onClick={() => props.setView('catalog', '')} />
+        <small>Please drink responsibly</small>
+      </div>
     );
   } else {
     return (

@@ -105,7 +105,7 @@ class ProductDetails extends React.Component {
       height: '100%'
     };
     const modalImgContainer = {
-      height: '80%'
+      height: '70%'
     };
     const testSize = {
       position: 'relative',

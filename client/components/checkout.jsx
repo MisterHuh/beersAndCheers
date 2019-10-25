@@ -45,7 +45,7 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: true,
+      modal: false,
       orderConfirmation: false
     };
 
@@ -421,7 +421,7 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <Col md={4}>
+                  <Col md={2}>
                     <FormGroup>
                       <Input
                         maxLength="5"
