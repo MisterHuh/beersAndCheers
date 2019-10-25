@@ -9,7 +9,7 @@ export const Header = props => {
   cartQuantity > 99 ? cartQuantity = '99+' : false;
 
   const imgWrapper = {
-    height: '8vh',
+    height: '4vh',
     cursor: 'pointer'
   };
 

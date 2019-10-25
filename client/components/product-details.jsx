@@ -116,7 +116,7 @@ class ProductDetails extends React.Component {
     const cursor = {
       cursor: 'pointer',
       // width: '5%' // this is for thinkpad sizing
-      width: '3%', // this is for monitor sizing
+      width: '4%', // this is for monitor sizing
       // bottom: '20%'
       verticalAlign: 'top'
     };
