@@ -128,6 +128,14 @@ class ProductDetails extends React.Component {
       // verticalAlign: 'top'
     };
 
+    const alignText = {
+      // position: 'relative'
+      // top: '24%',
+      // verticalAlign: 'bottom'
+      bottom: '0%'
+
+    };
+
     let availabilityVerbiage;
     if (!this.state.product) {
       return null;
@@ -145,24 +153,30 @@ class ProductDetails extends React.Component {
 
         <div id="mainWrapper" className="p-5">
 
-          <div id="bodyWrapper" className=" d-flex flex-row border rounded" style={bodyWrapper}>
+          <div id="bodyWrapper" className="d-flex flex-row border rounded" style={bodyWrapper}>
 
-            <div id="imgContainer" className="text-center pb-2 m-auto rounded" style={imgContainer}>
+            <div id="imgContainer" className="text-center pb-2 m-auto" style={imgContainer}>
               <img src={product.image} alt="img" className="img-fluid" style={imgSize}/>
             </div>
 
-            <div id="infoWrapper" className=" d-flex flex-column" style={infoWrapper}>
+            <div id="infoWrapper" className="round d-flex flex-column border-left" style={infoWrapper}>
 
-              <div id="titleBrewery" className="text-center border-bottom border-left rounded border border-danger" style={headerSize}>
-                <div className="h-50 pt-2 border border-dark">{product.name}</div>
-                <div className="h-50 border border-dark">{product.brewery}</div>
+              <div id="titleBrewery" className="rounded text-center border-bottom" style={headerSize}>
+
+                <div className="h-50 pt-4">
+                  <div className="pt-3" style={alignText}>{product.name}</div>
+                </div>
+
+                <div className="h-50 ">
+                  <div className="">{product.brewery}</div>
+                </div>
               </div>
 
-              <div id="infoContainer" className="d-flex flex-row text-center align-items-center" style={statsSize}>
+              <div id="infoContainer" className="d-flex flex-row text-center" style={statsSize}>
 
-                <div className=" h-100 w-50 border-right rounded border border-danger">
+                <div className="rounded border-right d-flex flex-column justify-content-space-evenly align-items-center h-100 w-50 p-3">
 
-                  <div className=" my-3 border border-dark">{product.abv}%
+                  <div className=" w-100 m-auto">{product.abv}%
                     <div className="d-inline ml-2 ">ABV</div>
                     <img id="abvInfo" src={abvIcon} className="ml-2 d-inline fas fa-question-circle " style={cursor}></img>
                     {/* <i id="abvInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i> */}
@@ -171,7 +185,7 @@ class ProductDetails extends React.Component {
                     </Tooltip>
                   </div>
 
-                  <div className=" my-3 border border-dark">{product.ibu}
+                  <div className="  w-100 m-auto">{product.ibu}
                     <div className="d-inline ml-2">IBU</div>
                     <img id="ibuInfo" src={ibuIcon} className="ml-2 d-inline fas fa-question-circle" style={cursor}></img>
                     {/* <i id="ibuInfo" className="ml-2 d-inline fas fa-question-circle" style={cursor}></i> */}
@@ -179,27 +193,30 @@ class ProductDetails extends React.Component {
                       <strong> International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds
                     </Tooltip>
                   </div>
-                  <div className=" mt-3 border border-dark">{availabilityVerbiage}<div className="d-inline ml-1">{product.availability}</div></div>
+                  <div className=" w-100 m-auto">{availabilityVerbiage}<div className="d-inline ml-1">{product.availability}</div></div>
 
-                  <div className=" mt-2 border border-dark">
+                  <div className=" w-100 m-auto">
                     <Button
-                      className="my-3 w-50 bg-primary text-white font-weight-bold"
+                      className="w-50 bg-primary text-white font-weight-bold"
                       outline color="primary"
                       style={buttonPosition}
                       onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</Button>
                   </div>
                 </div>
 
-                <div className=" h-100 w-50 border border-danger">
-                  <div className="border border-dark my-3">{product.type}</div>
-                  <div className="border border-dark my-3">$ <div className="d-inline">{((product.price) / 100).toFixed(2)}</div></div>
-                  <div className="border border-dark mt-3">
-                    <i onClick={this.decrementQuantity} className="fas fa-minus-square border border-danger" style={cursor1}></i>
-                    <div className="d-inline px-3 border border-dark">{quantity}</div>
-                    <i onClick={this.incrementQuantity} className="fas fa-plus-square border border-danger" style={cursor1}></i>
+                <div className="rounded d-flex flex-column justify-content-space-evenly align-items-center h-100 w-50 p-3">
+                  <div className=" w-100 m-auto">{product.type}</div>
+                  <div className=" w-100 m-auto">$ <div className="d-inline">{((product.price) / 100).toFixed(2)}</div></div>
+                  <div className=" w-100 m-auto">
+                    <i onClick={this.decrementQuantity} className="fas fa-minus-square" style={cursor1}></i>
+                    <div className="d-inline px-3 ">{quantity}</div>
+                    <i onClick={this.incrementQuantity} className="fas fa-plus-square" style={cursor1}></i>
                   </div>
-                  <div className="mt-2 border border-dark">
-                    <Button outline color="success" className="my-3 w-50 bg-success text-white font-weight-bold" onClick={this.addToCart}>Add To Cart</Button>
+                  <div className="w-100 m-auto">
+                    <Button
+                      outline color="success"
+                      className="w-50 bg-success text-white font-weight-bold"
+                      onClick={this.addToCart}>Add To Cart</Button>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
                       <ModalBody style={modalBodyWrapper}>
