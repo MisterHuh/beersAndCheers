@@ -79,7 +79,6 @@ class ProductList extends React.Component {
       lineHeight: '225%',
       fontSize: '200%'
     };
-    debugger;
     return (
       <React.Fragment>
         <Modal isOpen={this.state.welcomeModal} backdrop="static" keyboard={false} className="" style={modalSize}>

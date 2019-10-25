@@ -29,6 +29,15 @@ export default class PriceSummary extends React.Component {
       cursor: 'pointer'
     };
 
+    const boxShadow = {
+      // boxShadow: '2px 2px 2px 1px #F7F7F7'
+      // h-offset
+      // v-offset
+      // blur (higher = more blurred)
+      // spread radius (positive value increase sthe size & negative does opposite)
+      // color
+    };
+
     let cart = this.props.cart;
     let subTotal = 0;
     let taxRate = 0.075;
@@ -78,7 +87,7 @@ export default class PriceSummary extends React.Component {
           </h4>
         </div>
         <hr />
-        <div className="m-3">
+        <div className="m-3" style={boxShadow}>
           <h3 className=" d-inline">Total <div className=" d-inline float-right">$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div> </h3>
         </div>
       </div>
