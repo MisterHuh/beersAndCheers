@@ -17,7 +17,7 @@ body {
 @import url('https://fonts.googleapis.com/css?family=El+Messiri&display=swap');
 
 body {
-  font-family: 'El+Messiri', cursive;
+  font-family: 'El+Messiri', sans-serif;
 }
 
 .welcomeHodalHeader {
