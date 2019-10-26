@@ -24,8 +24,6 @@ class ProductList extends React.Component {
 
   toggle() {
     this.setState({ welcomeModal: !this.state.welcomeModal });
-
-    /* upon clicking either YES or NO, set ageVerified to TRUE */
     localStorage.setItem('ageVerified', 'true');
   }
 
@@ -34,17 +32,12 @@ class ProductList extends React.Component {
   }
 
   render() {
-    const modalSize = {
-      height: '14vh',
-      fontSize: '100%'
-    };
     return (
       <React.Fragment>
         <Modal isOpen={this.state.welcomeModal} backdrop="static" keyboard={false} className="">
           <div className="rounded text-center">
-            <div className="mt-3" style={{ fontSize: '125%' }}>Age Verification</div>
-
-            <div className="d-flex flex-column align-items-center " style={modalSize}>
+            <div className="mt-3">Age Verification</div>
+            <div className="welcomeModal d-flex flex-column align-items-center">
               <div className="mt-2">You must be at least 21 to enter</div>
               <div className=" my-3">Are you over 21?</div>
               <div className="d-flex flex-row">
@@ -53,16 +46,13 @@ class ProductList extends React.Component {
                 <Button onClick={() => this.toggle()}className="bg-danger" >No</Button>
               </div>
             </div>
-
           </div>
         </Modal>
-
         <Jumbotron />
         <ProductListItem product={this.state.products} setView={this.props.setView}/>
       </React.Fragment>
     );
   }
-
 }
 
 export default ProductList;

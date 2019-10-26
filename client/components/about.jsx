@@ -2,7 +2,7 @@ import React from 'react';
 
 export const About = () => {
 
-  const beerMe = './aboutMe.gif';
+  const beerMe = './images/general/aboutMe.gif';
 
   return (
     <div className="d-flex flex-column px-5 pb-5">
@@ -29,7 +29,7 @@ export const About = () => {
         </div>
 
         <div className="m-auto w-25">
-          <img src={beerMe} alt="beerMe" className="aboutImgSize d-block m-auto"/>
+          <img src={beerMe} alt="beerMe" className="aboutImg d-block m-auto"/>
         </div>
 
       </div>

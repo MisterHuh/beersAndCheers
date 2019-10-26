@@ -1,17 +1,14 @@
 /* @import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
-
 body {
   font-family: 'Cinzel', cursive;
 } */
 
 /* @import url('https://fonts.googleapis.com/css?family=Cinzel:700&display=swap');
-
 body {
   font-family: 'Cinzel:700', cursive;
 } */
 
 /* @import url('https://fonts.googleapis.com/css?family=Oldenburg&display=swap');
-
 body {
   overflow-y:scroll;
   font-family: 'Oldenburg', cursive;
@@ -23,10 +20,112 @@ body {
   font-family: 'El+Messiri', cursive;
 }
 
-.aboutImgSize {
-  /* background-image: url("./aboutMe.gif"); */
+.welcomeHodalHeader {
+  font-size: 125%;
+}
+.welcomeModal {
+  height: 14vh;
+  font-size: 100%;
+}
+.aboutImg {
+  /* background-image: url("./images/general/aboutMe.gif"); */
   width: 100%
 }
+.sticky-top {
+  background-color: #F9F9F9;
+}
+.navbarBrand {
+  /* background-image: url("./images/general/logo.png"); */
+  height: 4vh;
+}
+.logo {
+  height: 100%
+}
+.jumbotronImgContainer {
+  height: 55vh;
+}
+.jumbotronImg {
+  /* background-image: url("./images/general/jumbotron.jpg"); */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-Repeat: no-repeat;
+  object-fit: cover
+}
+.jumbotronText {
+  top: 15%;
+  right: 10%;
+  color: black;
+  text-shadow: 1px 1px white
+}
+.productListItemCardSize {
+  height: 36vh;
+  background-color: rgba(245, 245, 245, 0.6)
+}
+.productListItemImgContainer {
+  height: 100%;
+}
+.productListItemImg {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+}
+.productDetailsWrapper {
+  height: 50vh;
+}
+.productDetailsImgContainer {
+  height: 75%;
+  width: 30%;
+  display: inline-block
+}
+.productDetailsImg {
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat
+}
+.productDetailsInfoWrapper {
+  width: 70%
+}
+.productDetailsHeaderSize {
+  height: 30%;
+  width: 100%;
+  font-size: 150%
+}
+.productDetailsStatsSize {
+  height: 70%;
+  font-size: 125%;
+}
+.productDetailsTooltip {
+  width: 3.5%;
+  vertical-align: top;
+  /* background-image: url("./images/general/abv.png"); */
+  /* background-image: url("./images/general/ibu.png"); */
+}.productDetailsModalBody {
+  height: 50vh;
+}
+.productDetailsModalImgWrapper {
+  height: 100%;
+}
+.productDetailsModalImgContainer {
+  height: 100%;
+}
+.productDetailsModalImg {
+  height: 70%;
+}
+.productDetailsText {
+  position: relative;
+  top: 40%;
+  /* top: 34% THIS IS FOR THINKPAD */
+}
+.cartSummaryCartQtyText {
+  font-size: 60%
+};
+
+
+
+
+
+
 
 .form-control:focus {
   border-color: rgb(226, 226, 226);
