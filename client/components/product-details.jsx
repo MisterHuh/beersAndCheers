@@ -86,7 +86,7 @@ export default class ProductDetails extends React.Component {
 
           <div id="mainWrapper" className="productDetailsWrapper d-flex flex-row border rounded">
 
-            <div id="imgContainer" className="productDetailsImgContainer text-center pb-2 m-auto">
+            <div id="imgContainer" className="productDetailsImgContainer text-center mx-auto h-100">
               <img src={product.image} alt="img" className="productDetailsImg img-fluid"/>
             </div>
 
