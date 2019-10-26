@@ -134,7 +134,21 @@ body {
   width: 100%;
   height: 100%;
 }
-
+.csiRemoveModal {
+  height: 50vh;
+}
+.csiModalImg {
+  height: 70%;
+}
+.csiRemoveMOdalText {
+  position: relative;
+  top: 30%;
+  /* top: 34% THIS IS FOR THINKPAD  */
+}
+.csiOtherViewBody {
+  /* height: 33vh;
+  width: 30vw; */
+}
 
 
 
