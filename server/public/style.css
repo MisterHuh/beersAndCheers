@@ -117,6 +117,9 @@ body {
   top: 40%;
   /* top: 34% THIS IS FOR THINKPAD */
 }
+.cartSummaryCartQtyText {
+  font-size: 60%
+};
 
 
 

@@ -4,28 +4,19 @@ import PriceSummary from './priceSummary';
 import { Button } from 'reactstrap';
 
 export const CartSummary = props => {
-  // const imgSrc = 'emptycart.png';
-  const imgSrc = 'https://pngimage.net/wp-content/uploads/2018/05/alcohol-abuse-png-3.png';
-
-  const containerSize = {
-    width: '100wh'
-  };
-
-  const fontSize = {
-    fontSize: '60%'
-  };
-
-  const cursor = {
-    cursor: 'pointer'
-  };
+  const imgSrc = './images/general/emptyCart.png';
 
   let cartQuantity = props.cartQuantity;
   let itemsVerbiage;
-  cartQuantity === 1 ? itemsVerbiage = 'item' : itemsVerbiage = 'items';
+  if (cartQuantity === 1) {
+    itemsVerbiage = 'item';
+  } else {
+    itemsVerbiage = 'items';
+  }
 
   if (props.cart.length === 0) {
     return (
-      <div className="text-center" style={cursor} onClick={() => props.setView('catalog', '')}>
+      <div className="text-center" onClick={() => props.setView('catalog', '')}>
         <div className="h1 mt-5 mb-3">Your Cart Is Empty!</div>
         <img src={imgSrc} alt="emptyCart" className="mx-auto d-block mb-5" onClick={() => props.setView('catalog', '')} />
         <small>Please drink responsibly</small>
@@ -33,11 +24,12 @@ export const CartSummary = props => {
     );
   } else {
     return (
-      <div className="d-flex flex-column px-5" style={containerSize}>
+      <div className="d-flex flex-column px-5">
         <h1 className="border-bottom my-3 text-center pb-2">Cart Summary</h1>
         <div className="d-flex flex-row mt-2">
-          <div id="cartDetails" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
-            <h2 className="d-inline border-bottom pb-2">Cart <div className="d-inline text-muted ml-1" style={fontSize}>({cartQuantity} {itemsVerbiage})</div>
+          <div id="cartDetails" className="w-50 d-flex flex-column mr-4">
+            <h2 className="d-inline border-bottom pb-2">
+              Cart <div className="cartSummaryCartQtyText d-inline text-muted ml-1">({cartQuantity} {itemsVerbiage})</div>
             </h2>
             {props.cart.map(item => {
               return (
