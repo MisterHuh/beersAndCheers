@@ -108,18 +108,18 @@ class CartSummaryItem extends React.Component {
                   <div className="w-50 text-center">
 
                     <div className="border-bottom rounded h-25 p-0">
-                      <div className="csiRemoveMOdalText h-25">{item.name}</div>
+                      <div className="productDetailsModalText h-25">{item.name}</div>
                     </div>
                     <div className="border-bottom rounded h-25 p-0">
-                      <div className="csiRemoveMOdalText h-25">{item.brewery} </div>
+                      <div className="productDetailsModalText h-25">{item.brewery} </div>
                     </div>
                     <div className="border-bottom rounded h-25 p-0">
-                      <div className="csiRemoveMOdalText h-25">
+                      <div className="productDetailsModalText h-25">
                         {'$ ' + ((item.price) / 100).toFixed(2)}
                       </div>
                     </div>
                     <div className="rounded h-25 p-0">
-                      <div className="csiRemoveMOdalText h-25">Quantity: <strong>{this.state.count}</strong></div>
+                      <div className="productDetailsModalText h-25">Quantity: <strong>{this.state.count}</strong></div>
                     </div>
                   </div>
                 </div>

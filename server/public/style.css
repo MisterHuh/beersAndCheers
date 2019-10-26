@@ -18,6 +18,7 @@ body {
 
 body {
   font-family: 'El+Messiri', sans-serif;
+  overflow-y:scroll;
 }
 
 .welcomeHodalHeader {
@@ -100,7 +101,8 @@ body {
   vertical-align: top;
   /* background-image: url("./images/general/abv.png"); */
   /* background-image: url("./images/general/ibu.png"); */
-}.productDetailsModalBody {
+}
+.productDetailsModalBody {
   height: 50vh;
 }
 .productDetailsModalImgWrapper {
@@ -115,7 +117,6 @@ body {
 .productDetailsText {
   position: relative;
   top: 40%;
-  /* top: 34% THIS IS FOR THINKPAD */
 }
 .emptyCartImg {
   /* background-image: url("./images/general/emptyCart.png") */
@@ -125,6 +126,10 @@ body {
 };
 .csiCartViewBody {
   height: 31vh;
+  width: 30vw;
+}
+.csiOtherViewBody {
+  height: 33vh;
   width: 30vw;
 }
 .csiImgContainer {
@@ -143,16 +148,12 @@ body {
 .csiRemoveMOdalText {
   position: relative;
   top: 30%;
-  /* top: 34% THIS IS FOR THINKPAD  */
 }
-.csiOtherViewBody {
-  height: 33vh;
-  width: 30vw;
-}
+
 .priceSummaryTooltip {
   vertical-align: top;
 }
-.ccLogoContainer {
+.ccLogoWrapper {
   font-size:250%;
 }
 .checkoutConfirmationModal {
@@ -166,3 +167,40 @@ body {
   border-color: rgb(226, 226, 226);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(155, 153, 153, 0.6);
 }
+
+ /* ----------- Thinkpad x250 ----------- */
+@media only screen
+  and (max-width: 1366px)
+  and (orientation: landscape) {
+    .welcomeModal {
+      height: 20vh;
+      font-size: 100%;
+    }
+    .productListItemCardSize {
+      height: 41vh;
+    }
+    .productDetailsModalText {  /* productDetails, cart-summary-item */
+      position: relative;
+      top: 34%;
+    }
+    .productDetailsTooltip {
+      width: 5.5%;
+      vertical-align: top;
+    }
+    .drinkResponsible {
+      font-size: 75%;
+      margin-bottom: 3%;
+    }
+    .csiCartViewBody {
+      height: 30vh;
+    }
+    .csiOtherViewBody {
+      height: 45%
+    }
+    .checkoutConfirmationModal {
+      height: 60vh;
+    }
+    .ccLogoWrapper {
+      font-size: 200%;
+    }
+  }

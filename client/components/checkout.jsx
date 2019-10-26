@@ -287,6 +287,7 @@ export default class Checkout extends React.Component {
       <div className="d-flex flex-column px-5 pb-5">
         <h1 className="border-bottom my-3 text-center pb-2">Checkout</h1>
         <div className="d-flex flex-row mt-2">
+
           <div id="personalInfo" className="w-50 d-flex flex-column mr-4">
             <h2 className="border-bottom pb-2 ">Shipping Info</h2>
             <div className="mt-2 mx-3 mb-4">
@@ -452,9 +453,9 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <div className="ccLogoContainer d-flex flex-row ml-3">
+                  <div className="ccLogoWrapper d-flex flex-row ml-3">
 
-                    <div className=" mx-3" style={amexColor}>
+                    <div className="mx-3" style={amexColor}>
                       <i className="fab fa-cc-amex"></i>
                     </div>
 

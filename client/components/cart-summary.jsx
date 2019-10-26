@@ -19,7 +19,7 @@ export const CartSummary = props => {
       <div className="text-center" onClick={() => props.setView('catalog', '')}>
         <div className="h1 mt-5 mb-3">Your Cart Is Empty!</div>
         <img onClick={() => props.setView('catalog', '')} src={imgSrc} alt="emptyCart" className="mx-auto d-block mb-5"/>
-        <small>Please drink responsibly</small>
+        <div className="drinkResponsible">Please drink responsibly</div>
       </div>
     );
   } else {
