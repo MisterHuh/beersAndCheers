@@ -120,7 +120,7 @@ body {
 .emptyCartImg {
   /* background-image: url("./images/general/emptyCart.png") */
 }
-.cartSummaryCartQtyText {
+.cartQtyText {
   font-size: 60%
 };
 .csiCartViewBody {
@@ -158,11 +158,9 @@ body {
 .checkoutConfirmationModal {
   height: 40vh;
 }
-
-
-
-
-
+.confirmationFontSize {
+  font-size: 60%;
+}
 
 .form-control:focus {
   border-color: rgb(226, 226, 226);

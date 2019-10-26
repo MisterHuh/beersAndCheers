@@ -9,27 +9,25 @@ export const Confirmation = props => {
   let billing = receipt[1];
   let order = receipt[2];
 
-  const containerSize = {
-    width: '100wh'
-  };
-
-  const fontSize = {
-    fontSize: '60%'
-  };
-
   let itemsVerbiage;
-  order.count === 1 ? itemsVerbiage = 'item' : itemsVerbiage = 'items';
+  if (order.count === 1) {
+    itemsVerbiage = 'item';
+  } else {
+    itemsVerbiage = 'items';
+  }
 
   let orderNumber = billing.fullName[0] + billing.cvv[0] + billing.creditCardNumber[0] + billing.monthYear[0] + shipping.city[0] + shipping.lastName[0];
   let creditCardDisplay = billing.creditCardNumber[12] + billing.creditCardNumber[13] + billing.creditCardNumber[14] + billing.creditCardNumber[15];
 
   return (
-    <div className="d-flex flex-column px-5 pb-5" style={containerSize}>
+    <div className="d-flex flex-column px-5 pb-5">
       <h1 className="border-bottom my-3 text-center pb-2">Order Confirmation #{orderNumber}</h1>
 
       <div id="productSummary" className="d-flex flex-row mt-2">
-        <div id="cartDetails" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
-          <h2 className="d-inline border-bottom pb-2">Purchase Summary <div className="d-inline text-muted ml-1" style={fontSize}>({order.count} {itemsVerbiage})</div>
+        <div id="cartDetails" className="w-50 d-flex flex-column mr-4">
+          <h2 className="d-inline border-bottom pb-2">
+            Purchase Summary
+            <div className="cartQtyText d-inline text-muted ml-1">({order.count} {itemsVerbiage})</div>
           </h2>
           {product.map(item => {
             return (

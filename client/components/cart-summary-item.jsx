@@ -148,10 +148,11 @@ class CartSummaryItem extends React.Component {
             <div
               onClick={() => this.props.setView('details', item.product_id)}
               className=" font-weight-bold ml-4 my-2 underline-on-hover"
-            >{item.name}</div>
+            >{item.name}
+            </div>
             <div className=" font-weight-bold ml-4 my-2">{item.brewery}</div>
             <div className="ml-4 my-2 d-inline">{'$ ' + ((item.price) / 100).toFixed(2)}
-              <div className="d-inline float-right px-2 mr-3">Quantity: <strong>{this.state.count}</strong></div>
+              <div className="d-inline float-right pr-5 mr-5">Quantity: <strong>{this.state.count}</strong></div>
             </div>
           </div>
         </div>
