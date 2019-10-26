@@ -146,8 +146,17 @@ body {
   /* top: 34% THIS IS FOR THINKPAD  */
 }
 .csiOtherViewBody {
-  /* height: 33vh;
-  width: 30vw; */
+  height: 33vh;
+  width: 30vw;
+}
+.priceSummaryTooltip {
+  vertical-align: top;
+}
+.ccLogoContainer {
+  font-size:250%;
+}
+.checkoutConfirmationModal {
+  height: 40vh;
 }
 
 

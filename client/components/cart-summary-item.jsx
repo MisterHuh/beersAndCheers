@@ -59,12 +59,6 @@ class CartSummaryItem extends React.Component {
 
   render() {
 
-    // this is for checkout and confirmatoin
-    const cardSize2 = {
-      height: '33vh',
-      width: '30vw'
-    };
-
     let currentView = this.props.view;
     let item = this.props.item;
 
@@ -146,7 +140,7 @@ class CartSummaryItem extends React.Component {
       );
     } else {
       return (
-        <div className="csiOtherViewBody d-flex flex-row m-auto p-4 border-bottom" key={this.props.key} style={cardSize2}>
+        <div className="csiOtherViewBody d-flex flex-row m-auto p-4 border-bottom" key={this.props.key}>
           <div className="csiImgContainer text-center">
             <img src={item.image} alt="img" className="csiImg img-fluid " />
           </div>
