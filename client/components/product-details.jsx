@@ -157,19 +157,19 @@ export default class ProductDetails extends React.Component {
                           <div className="w-50 text-center">
 
                             <div className="border-bottom rounded h-25 p-0">
-                              <div className="productDetailsText">{product.name}</div>
+                              <div className="productDetailsModalText">{product.name}</div>
                             </div>
 
                             <div className="border-bottom rounded h-25">
-                              <div className="productDetailsText">{product.brewery}</div>
+                              <div className="productDetailsModalText">{product.brewery}</div>
                             </div>
 
                             <div className="border-bottom rounded h-25">
-                              <div className="productDetailsText">{'$ ' + ((product.price) / 100).toFixed(2)}</div>
+                              <div className="productDetailsModalText">{'$ ' + ((product.price) / 100).toFixed(2)}</div>
                             </div>
 
                             <div className="h-25">
-                              <div className="productDetailsText">Quantity: <strong>{quantity}</strong></div>
+                              <div className="productDetailsModalText">Quantity: <strong>{quantity}</strong></div>
                             </div>
                           </div>
 

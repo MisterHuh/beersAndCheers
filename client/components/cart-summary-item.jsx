@@ -59,12 +59,6 @@ class CartSummaryItem extends React.Component {
 
   render() {
 
-    // this is for checkout and confirmatoin
-    const cardSize2 = {
-      height: '33vh',
-      width: '30vw'
-    };
-
     let currentView = this.props.view;
     let item = this.props.item;
 
@@ -114,18 +108,18 @@ class CartSummaryItem extends React.Component {
                   <div className="w-50 text-center">
 
                     <div className="border-bottom rounded h-25 p-0">
-                      <div className="csiRemoveMOdalText h-25">{item.name}</div>
+                      <div className="productDetailsModalText h-25">{item.name}</div>
                     </div>
                     <div className="border-bottom rounded h-25 p-0">
-                      <div className="csiRemoveMOdalText h-25">{item.brewery} </div>
+                      <div className="productDetailsModalText h-25">{item.brewery} </div>
                     </div>
                     <div className="border-bottom rounded h-25 p-0">
-                      <div className="csiRemoveMOdalText h-25">
+                      <div className="productDetailsModalText h-25">
                         {'$ ' + ((item.price) / 100).toFixed(2)}
                       </div>
                     </div>
                     <div className="rounded h-25 p-0">
-                      <div className="csiRemoveMOdalText h-25">Quantity: <strong>{this.state.count}</strong></div>
+                      <div className="productDetailsModalText h-25">Quantity: <strong>{this.state.count}</strong></div>
                     </div>
                   </div>
                 </div>
@@ -146,7 +140,7 @@ class CartSummaryItem extends React.Component {
       );
     } else {
       return (
-        <div className="csiOtherViewBody d-flex flex-row m-auto p-4 border-bottom" key={this.props.key} style={cardSize2}>
+        <div className="csiOtherViewBody d-flex flex-row m-auto p-4 border-bottom" key={this.props.key}>
           <div className="csiImgContainer text-center">
             <img src={item.image} alt="img" className="csiImg img-fluid " />
           </div>
@@ -154,10 +148,11 @@ class CartSummaryItem extends React.Component {
             <div
               onClick={() => this.props.setView('details', item.product_id)}
               className=" font-weight-bold ml-4 my-2 underline-on-hover"
-            >{item.name}</div>
+            >{item.name}
+            </div>
             <div className=" font-weight-bold ml-4 my-2">{item.brewery}</div>
             <div className="ml-4 my-2 d-inline">{'$ ' + ((item.price) / 100).toFixed(2)}
-              <div className="d-inline float-right px-2 mr-3">Quantity: <strong>{this.state.count}</strong></div>
+              <div className="d-inline float-right pr-5 mr-5">Quantity: <strong>{this.state.count}</strong></div>
             </div>
           </div>
         </div>

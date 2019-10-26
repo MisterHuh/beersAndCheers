@@ -105,8 +105,6 @@ export default class Checkout extends React.Component {
       orderReceipt
     ];
 
-    console.log('CHECKOUT receipt is: ', receipt);
-
     this.props.setView('confirmation', '');
     this.props.placeOrder(productReceipt, receipt);
     this.toggle();
@@ -218,6 +216,7 @@ export default class Checkout extends React.Component {
   }
 
   render() {
+
     let cart = this.props.cart;
     let price = 0;
     let count = 0;
@@ -233,20 +232,6 @@ export default class Checkout extends React.Component {
       taxes = price * taxRate;
       totalAmount = price + taxes;
     }
-
-    const containerSize = {
-      width: '100wh'
-    };
-    const modalBodyWrapper = {
-      height: '40vh'
-    };
-    const modalWrapper = {
-      height: '100%'
-    };
-
-    const ccLogoSize = {
-      fontSize: '250%'
-    };
 
     const { formErrors } = this.state;
 
@@ -277,12 +262,6 @@ export default class Checkout extends React.Component {
       ? ccLastFourDigits = this.state.creditCardNumber[12] + this.state.creditCardNumber[13] + this.state.creditCardNumber[14] + this.state.creditCardNumber[14]
       : false;
 
-    // if (this.state.monthYear.length === 2) {
-    //   let currentMonthYear = this.state.montheYear;
-    //   let newMonthYear = currentMonthYear += '/';
-    //   this.setState({ monthYear: newMonthYear });
-    // }
-
     let amexColor, disColor, mcColor, visaColor;
     if (this.state.creditCardNumber.length === 16) {
       if (this.state.creditCardNumber[15] >= 8) {
@@ -304,13 +283,12 @@ export default class Checkout extends React.Component {
       }
     }
 
-    console.log('cart is: ', this.props.cart);
-
     return (
-      <div className="d-flex flex-column px-5 pb-5" style={containerSize}>
+      <div className="d-flex flex-column px-5 pb-5">
         <h1 className="border-bottom my-3 text-center pb-2">Checkout</h1>
         <div className="d-flex flex-row mt-2">
-          <div id="personalInfo" className="w-50 d-flex flex-column mr-4">  {/* make sure to use the correct props for id */}
+
+          <div id="personalInfo" className="w-50 d-flex flex-column mr-4">
             <h2 className="border-bottom pb-2 ">Shipping Info</h2>
             <div className="mt-2 mx-3 mb-4">
               <Form>
@@ -320,7 +298,6 @@ export default class Checkout extends React.Component {
                     <FormGroup>
                       <Input
                         className={formErrors.firstName.length > 0 ? 'border border-danger' : null}
-                        // className={formErrors.firstName.length > 0 ? 'has-danger' : null}
                         onChange={this.handleInput}
                         name="firstName"
                         placeholder="First Name"
@@ -436,6 +413,7 @@ export default class Checkout extends React.Component {
                     </FormGroup>
                   </Col>
                 </Row>
+
               </Form>
             </div>
 
@@ -475,23 +453,22 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <div className="d-flex flex-row ml-3">
+                  <div className="ccLogoWrapper d-flex flex-row ml-3">
 
-                    {/* <div className="mx-3" style={this.state.creditCardNumber >= 8 ? "color" }> */}
                     <div className="mx-3" style={amexColor}>
-                      <i className="fab fa-cc-amex" style={ccLogoSize}></i>
+                      <i className="fab fa-cc-amex"></i>
                     </div>
 
                     <div className="mx-3" style={disColor} >
-                      <i className="fab fa-cc-discover" style={ccLogoSize}></i>
+                      <i className="fab fa-cc-discover"></i>
                     </div>
 
                     <div className="mx-3" style={mcColor} >
-                      <i className="fab fa-cc-mastercard" style={ccLogoSize}></i>
+                      <i className="fab fa-cc-mastercard"></i>
                     </div>
 
                     <div className="mx-3" style={visaColor} >
-                      <i className="fab fa-cc-visa" style={ccLogoSize}></i>
+                      <i className="fab fa-cc-visa"></i>
                     </div>
 
                   </div>
@@ -527,6 +504,7 @@ export default class Checkout extends React.Component {
                     </FormGroup>
                   </Col>
                 </Row>
+
               </Form>
             </div>
 
@@ -540,16 +518,18 @@ export default class Checkout extends React.Component {
 
             <div className="text-center pt-1 border-bottom rounded py-4">
               <div className="m-3">
-                <Button outline color="primary" onClick={() => this.props.setView('cart', '')} className="w-50 bg-primary text-white font-weight-bold">Go Back To Cart</Button>
+                <Button
+                  onClick={() => this.props.setView('cart', '')}
+                  outline color="primary"
+                  className="w-50 bg-primary text-white font-weight-bold">Go Back To Cart</Button>
               </div>
               <div className="mx-3 mt-3 mb-5">
                 {buttonDisplay}
-                {/* <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button> */}
 
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Order Summary</ModalHeader>
-                  <ModalBody className="py-4 px-0" style={modalBodyWrapper}>
-                    <div className=" d-flex flex-column px-2 text-center" style={modalWrapper}>
+                  <ModalBody className="checkoutConfirmationModal py-4 px-0">
+                    <div className=" d-flex flex-column px-2 text-center">
 
                       <div className="d-flex flex-row ">
                         <div className="border-right w-50">
@@ -563,7 +543,11 @@ export default class Checkout extends React.Component {
                           <h4 className="mb-3 ">Billing Info</h4>
                           <div className="mb-2"><strong>{this.state.fullName}</strong></div>
                           <div className="mb-2">cc ending in <strong>{ccLastFourDigits}</strong></div>
-                          <div className="mb-2">exp: <strong>{this.state.monthYear}</strong> <span className="px-1"></span> cvv: <strong>{this.state.cvv}</strong></div>
+                          <div className="mb-2">
+                            exp: <strong>{this.state.monthYear}</strong>
+                            <span className="px-1"></span>
+                            cvv: <strong>{this.state.cvv}</strong>
+                          </div>
                         </div>
 
                       </div> {/* end of billing & shipping */}
@@ -588,9 +572,11 @@ export default class Checkout extends React.Component {
                     </div>
                   </ModalBody>
                   <ModalFooter>
-                    <Button color="primary" className="bg-primary text-white font-weight-bold" onClick={() => this.closeModal()}>Return To Checkout</Button>
+                    <Button
+                      onClick={() => this.closeModal()}
+                      color="primary"
+                      className="bg-primary text-white font-weight-bold">Return To Checkout</Button>
                     {modalButtonDisplay}
-                    {/* <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.placeOrder()}>Place Order</Button> */}
                   </ModalFooter>
                 </Modal>
 

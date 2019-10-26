@@ -18,8 +18,8 @@ export const CartSummary = props => {
     return (
       <div className="text-center" onClick={() => props.setView('catalog', '')}>
         <div className="h1 mt-5 mb-3">Your Cart Is Empty!</div>
-        <img src={imgSrc} alt="emptyCart" className="mx-auto d-block mb-5" onClick={() => props.setView('catalog', '')} />
-        <small>Please drink responsibly</small>
+        <img onClick={() => props.setView('catalog', '')} src={imgSrc} alt="emptyCart" className="mx-auto d-block mb-5"/>
+        <div className="drinkResponsible">Please drink responsibly</div>
       </div>
     );
   } else {
@@ -29,7 +29,7 @@ export const CartSummary = props => {
         <div className="d-flex flex-row mt-2">
           <div id="cartDetails" className="w-50 d-flex flex-column mr-4">
             <h2 className="d-inline border-bottom pb-2">
-              Cart <div className="cartSummaryCartQtyText d-inline text-muted ml-1">({cartQuantity} {itemsVerbiage})</div>
+              Cart <div className="cartQtyText d-inline text-muted ml-1">({cartQuantity} {itemsVerbiage})</div>
             </h2>
             {props.cart.map(item => {
               return (
