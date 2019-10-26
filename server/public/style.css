@@ -72,7 +72,7 @@ body {
   background-size: cover;
 }
 .productDetailsWrapper {
-  height: 50vh;
+  height: 40vh;
 }
 .productDetailsImgContainer {
   height: 75%;
@@ -102,17 +102,19 @@ body {
   /* background-image: url("./images/general/abv.png"); */
   /* background-image: url("./images/general/ibu.png"); */
 }
-.productDetailsModalBody {
-  height: 50vh;
+.modalBody {
+  height: 40vh;
+  width: 25vw;
 }
-.productDetailsModalImgWrapper {
+.modalContainer {
   height: 100%;
 }
-.productDetailsModalImgContainer {
+.modalImg {
   height: 100%;
 }
-.productDetailsModalImg {
-  height: 70%;
+.modalText {  /* productDetails, cart-summary-item */
+  position: relative;
+  top: 40%;
 }
 .productDetailsText {
   position: relative;
@@ -129,8 +131,8 @@ body {
   width: 30vw;
 }
 .csiOtherViewBody {
-  height: 33vh;
-  width: 30vw;
+  /* height: 33vh;
+  width: 30vw; */
 }
 .csiImgContainer {
   width: 10vw;
@@ -157,7 +159,7 @@ body {
   font-size:250%;
 }
 .checkoutConfirmationModal {
-  height: 40vh;
+  height: 36vh;
 }
 .confirmationFontSize {
   font-size: 60%;
@@ -166,6 +168,10 @@ body {
 .form-control:focus {
   border-color: rgb(226, 226, 226);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(155, 153, 153, 0.6);
+}
+.drinkResponsible {
+  font-size: 75%;
+  /* margin-bottom: 3%; */
 }
 
  /* ----------- Thinkpad x250 ----------- */
@@ -178,10 +184,6 @@ body {
     }
     .productListItemCardSize {
       height: 41vh;
-    }
-    .productDetailsModalText {  /* productDetails, cart-summary-item */
-      position: relative;
-      top: 34%;
     }
     .productDetailsTooltip {
       width: 5.5%;
@@ -198,7 +200,7 @@ body {
       height: 45%
     }
     .checkoutConfirmationModal {
-      height: 60vh;
+      height: 53vh;
     }
     .ccLogoWrapper {
       font-size: 200%;
@@ -226,11 +228,7 @@ body {
       height: 65%;
     }
     .drinkResponsible {
-      font-size: 75%;
-      margin-bottom: 3%;
-    }
-    .productDetailsModalText {  /* productDetails, cart-summary-item */
-      position: relative;
-      top: 34%;
+      /* font-size: 75%;
+      margin-bottom: 3%; */
     }
   }

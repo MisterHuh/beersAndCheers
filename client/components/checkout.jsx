@@ -45,7 +45,7 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: false,
+      modal: true,
       orderConfirmation: false
     };
 
@@ -528,22 +528,22 @@ export default class Checkout extends React.Component {
 
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Order Summary</ModalHeader>
-                  <ModalBody className="checkoutConfirmationModal py-4 px-0">
-                    <div className=" d-flex flex-column px-2 text-center">
+                  <ModalBody className="checkoutConfirmationModal py-3">
+                    <div className=" d-flex flex-column text-center">
 
-                      <div className="d-flex flex-row ">
+                      <div className="d-flex flex-row pb-3">
                         <div className="border-right w-50">
-                          <h4 className="mb-3 ">Shipping Info</h4>
-                          <div className="mb-2"><strong>{this.state.firstName} {this.state.lastName}</strong></div>
-                          <div className="mb-2">{this.state.streetAddress}</div>
+                          <h4 className="">Shipping Info</h4>
+                          <div className=""><strong>{this.state.firstName} {this.state.lastName}</strong></div>
+                          <div className="">{this.state.streetAddress}</div>
                           <div>{this.state.city}, {this.state.state}, {this.state.zipCode}</div>
                         </div>
 
                         <div className=" w-50">
-                          <h4 className="mb-3 ">Billing Info</h4>
-                          <div className="mb-2"><strong>{this.state.fullName}</strong></div>
-                          <div className="mb-2">cc ending in <strong>{ccLastFourDigits}</strong></div>
-                          <div className="mb-2">
+                          <h4 className=" ">Billing Info</h4>
+                          <div className=""><strong>{this.state.fullName}</strong></div>
+                          <div className="">cc ending in <strong>{ccLastFourDigits}</strong></div>
+                          <div className="">
                             exp: <strong>{this.state.monthYear}</strong>
                             <span className="px-1"></span>
                             cvv: <strong>{this.state.cvv}</strong>
@@ -553,15 +553,15 @@ export default class Checkout extends React.Component {
                       </div> {/* end of billing & shipping */}
 
                       <div className="">
-                        <div className="border-top mt-4">
+                        <div className="border-top pb-3">
                           <h4 className="pt-3">Order Summary</h4>
                           <div>Total Amount: <strong>$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</strong></div>
                           <div>Total Items: <strong>{count}</strong></div>
 
                         </div>{/* end of total amount & count */}
 
-                        <div className="border-top mt-4">
-                          <h4 className="pt-2">Disclaimer</h4>
+                        <div className="border-top">
+                          <h4 className="pt-3">Disclaimer</h4>
                           <Label check>
                             <Input id="disclaimer" type="checkbox" onClick={this.orderConfirmation}/>
                             I agree that this was not a <strong>real</strong> purchase
