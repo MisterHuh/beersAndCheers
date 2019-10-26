@@ -101,25 +101,23 @@ class CartSummaryItem extends React.Component {
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
               <ModalHeader toggle={this.toggle}>Remove From Cart</ModalHeader>
               <ModalBody>
-                <div className="productDetailsModalBody d-flex flex-row">
-                  <div className=" w-50 text-center border-right">
-                    <img src={item.image} alt="beerImg" className="productDetailsModalImg my-5" />
-                  </div>
+                <div className="modalBody d-flex flex-row">
+                  <img src={item.image} alt="beerImg" className="modalImg rounded w-50 text-center border-right p-3" />
                   <div className="w-50 text-center">
 
                     <div className="border-bottom rounded h-25">
-                      <div className="productDetailsModalText h-25">{item.name}</div>
+                      <div className="modalText h-25">{item.name}</div>
                     </div>
                     <div className="border-bottom rounded h-25">
-                      <div className="productDetailsModalText h-25">{item.brewery} </div>
+                      <div className="modalText h-25">{item.brewery} </div>
                     </div>
                     <div className="border-bottom rounded h-25">
-                      <div className="productDetailsModalText h-25">
+                      <div className="modalText h-25">
                         {'$ ' + ((item.price) / 100).toFixed(2)}
                       </div>
                     </div>
                     <div className="rounded h-25">
-                      <div className="productDetailsModalText h-25">Quantity: <strong>{this.state.count}</strong></div>
+                      <div className="modalText h-25">Quantity: <strong>{this.state.count}</strong></div>
                     </div>
                   </div>
                 </div>

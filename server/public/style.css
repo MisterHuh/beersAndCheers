@@ -102,19 +102,17 @@ body {
   /* background-image: url("./images/general/abv.png"); */
   /* background-image: url("./images/general/ibu.png"); */
 }
-.productDetailsModalBody {
-  height: 35vh;
+.modalBody {
+  height: 40vh;
+  width: 25vw;
 }
-.productDetailsModalImgWrapper {
+.modalContainer {
   height: 100%;
 }
-.productDetailsModalImgContainer {
+.modalImg {
   height: 100%;
 }
-.productDetailsModalImg {
-  height: 70%;
-}
-.productDetailsModalText {  /* productDetails, cart-summary-item */
+.modalText {  /* productDetails, cart-summary-item */
   position: relative;
   top: 40%;
 }

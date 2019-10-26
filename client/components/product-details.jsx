@@ -87,7 +87,7 @@ export default class ProductDetails extends React.Component {
           <div id="mainWrapper" className="productDetailsWrapper d-flex flex-row border rounded">
 
             <div id="imgContainer" className="productDetailsImgContainer text-center mx-auto h-100">
-              <img src={product.image} alt="img" className="productDetailsImg img-fluid"/>
+              <img src={product.image} alt="img" className="productDetailsImg img-fluid py-4"/>
             </div>
 
             <div id="infoWrapper" className="productDetailsInfoWrapper round d-flex flex-column border-left">
@@ -147,29 +147,27 @@ export default class ProductDetails extends React.Component {
                       onClick={this.addToCart}>Add To Cart</Button>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
-                      <ModalBody className="productDetailsModalBody">
-                        <div className="productDetailsModalImgWrapper d-flex flex-row">
+                      <ModalBody className="modalBody">
+                        <div className="modalContainer d-flex flex-row">
 
-                          <div className="productDetailsModalImgContainer w-50 text-center border-right rounded" >
-                            <img src={product.image} alt="beerImg" className=" productDetailsModalImg my-5"/>
-                          </div>
+                          <img src={product.image} alt="beerImg" className="modalImg rounded w-50 text-center border-right p-3"/>
 
                           <div className="w-50 text-center">
 
                             <div className="border-bottom rounded h-25">
-                              <div className="productDetailsModalText">{product.name}</div>
+                              <div className="modalText">{product.name}</div>
                             </div>
 
                             <div className="border-bottom rounded h-25">
-                              <div className="productDetailsModalText">{product.brewery}</div>
+                              <div className="modalText">{product.brewery}</div>
                             </div>
 
                             <div className="border-bottom rounded h-25">
-                              <div className="productDetailsModalText">{'$ ' + ((product.price) / 100).toFixed(2)}</div>
+                              <div className="modalText">{'$ ' + ((product.price) / 100).toFixed(2)}</div>
                             </div>
 
                             <div className="rounded h-25">
-                              <div className="productDetailsModalText">Quantity: <strong>{quantity}</strong></div>
+                              <div className="modalText">Quantity: <strong>{quantity}</strong></div>
                             </div>
 
                           </div>
