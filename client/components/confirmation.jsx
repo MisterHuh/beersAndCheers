@@ -47,7 +47,7 @@ export const Confirmation = props => {
             <h2 className="border-bottom pb-2">Shipping To:</h2>
 
             <div className="m-3">
-              <h5>{shipping.firstName} {shipping.lastName}</h5>
+              <h3>{shipping.firstName} {shipping.lastName}</h3>
             </div>
 
             <div className="m-3">
@@ -63,7 +63,7 @@ export const Confirmation = props => {
             <h2 className="border-bottom pb-2">Billing To:</h2>
 
             <div className="m-3">
-              <h5>{billing.fullName}  </h5>
+              <h3>{billing.fullName}</h3>
             </div>
 
             <div className="m-3">
