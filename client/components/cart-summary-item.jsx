@@ -78,7 +78,7 @@ class CartSummaryItem extends React.Component {
             >{item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{item.brewery}</div>
 
-            <div className=" mx-3 my-2">
+            <div className=" ml-4 my-2">
               <div className="d-inline mr-5">
                 {'$ ' + ((item.price) / 100).toFixed(2)}
               </div>
@@ -138,24 +138,31 @@ class CartSummaryItem extends React.Component {
 
         </div>
       );
+
     } else {
       return (
-        <div className="csiOtherViewBody d-flex flex-row m-auto p-4 border-bottom" key={this.props.key}>
-          <div className="csiImgContainer text-center">
-            <img src={item.image} alt="img" className="csiImg img-fluid " />
-          </div>
-          <div className="d-flex flex-column justify-content-center ml-2 text-left w-75">
-            <div
-              onClick={() => this.props.setView('details', item.product_id)}
-              className=" font-weight-bold ml-4 my-2 underline-on-hover"
-            >{item.name}
+
+        <React.Fragment>
+          {/* <h2 className="border-bottom pb-2"></h2> */}
+          <div className="csiCartViewBody w-50 d-flex flex-row mx-auto my-4 border-bottom pb-2" key={this.props.key} >
+
+            <div className="csiImgContainer text-center">
+              <img src={item.image} alt="img" className="csiImg img-fluid" />
             </div>
-            <div className=" font-weight-bold ml-4 my-2">{item.brewery}</div>
-            <div className="ml-4 my-2 d-inline">{'$ ' + ((item.price) / 100).toFixed(2)}
-              <div className="d-inline float-right pr-5 mr-5">Quantity: <strong>{this.state.count}</strong></div>
+
+            <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left w-75">
+
+              <div
+                onClick={() => this.props.setView('details', item.product_id)}
+                className=" font-weight-bold ml-4 my-2 underline-on-hover"
+              >{item.name}</div>
+              <div className=" font-weight-bold ml-4 my-2">{item.brewery}</div>
+              <div className="ml-4 my-2">{'$ ' + ((item.price) / 100).toFixed(2)}</div>
+              <div className="ml-4 my-2">Quantity: <strong>{this.state.count}</strong></div>
             </div>
+
           </div>
-        </div>
+        </React.Fragment>
       );
     }
 

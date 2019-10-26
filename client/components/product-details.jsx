@@ -94,8 +94,8 @@ export default class ProductDetails extends React.Component {
 
               <div id="titleBrewery" className="productDetailsHeaderSize rounded text-center border-bottom">
 
-                <div className="h-50 pt-4">
-                  <div className="pt-3">{product.name}</div>
+                <div className="h-50">
+                  <div className="pt-2">{product.name}</div>
                 </div>
 
                 <div className="h-50 ">

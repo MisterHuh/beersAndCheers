@@ -129,8 +129,8 @@ body {
   width: 30vw;
 }
 .csiOtherViewBody {
-  height: 33vh;
-  width: 30vw;
+  /* height: 33vh;
+  width: 30vw; */
 }
 .csiImgContainer {
   width: 10vw;
@@ -166,6 +166,10 @@ body {
 .form-control:focus {
   border-color: rgb(226, 226, 226);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(155, 153, 153, 0.6);
+}
+.drinkResponsible {
+  font-size: 75%;
+  /* margin-bottom: 3%; */
 }
 
  /* ----------- Thinkpad x250 ----------- */
@@ -226,8 +230,8 @@ body {
       height: 65%;
     }
     .drinkResponsible {
-      font-size: 75%;
-      margin-bottom: 3%;
+      /* font-size: 75%;
+      margin-bottom: 3%; */
     }
     .productDetailsModalText {  /* productDetails, cart-summary-item */
       position: relative;
