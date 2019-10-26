@@ -24,23 +24,27 @@ export default class PriceSummary extends React.Component {
   }
 
   render() {
-
     let cart = this.props.cart;
     let subTotal = 0;
+    let shipping;
+    let shippingAmount = 0;
     let taxRate = 0.075;
     let taxes = 0;
     let totalAmount = 0;
-    let shipping;
 
     if (cart.length > 0) {
       for (let index = 0; index < cart.length; index++) {
         subTotal += (cart[index].count * cart[index].price);
       }
+      if (subTotal >= 4000) {
+        shipping = 'Free';
+        shippingAmount = 0;
+      } else {
+        shipping = '$ 15.00';
+        shippingAmount = 1500;
+      }
       taxes = subTotal * taxRate;
-      subTotal >= 4000 ? shipping = 'Free' : shipping = '$ 15.00';
-
-      let shippingType = typeof (shipping);
-      shippingType === 'string' ? totalAmount = subTotal + taxes : totalAmount = subTotal + taxes + 1500;
+      totalAmount = subTotal + taxes + shippingAmount;
     }
 
     return (

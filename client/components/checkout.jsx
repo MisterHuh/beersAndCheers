@@ -45,7 +45,7 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: true,
+      modal: false,
       orderConfirmation: false
     };
 
@@ -453,24 +453,11 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <div className="ccLogoWrapper d-flex flex-row ml-3">
-
-                    <div className="mx-3" style={amexColor}>
-                      <i className="fab fa-cc-amex"></i>
-                    </div>
-
-                    <div className="mx-3" style={disColor} >
-                      <i className="fab fa-cc-discover"></i>
-                    </div>
-
-                    <div className="mx-3" style={mcColor} >
-                      <i className="fab fa-cc-mastercard"></i>
-                    </div>
-
-                    <div className="mx-3" style={visaColor} >
-                      <i className="fab fa-cc-visa"></i>
-                    </div>
-
+                  <div className="ccLogoWrapper d-flex text-align-center">
+                    <i className="ml-3 mr-2 fab fa-cc-amex d-inline vertical-align-middle" style={amexColor}></i>
+                    <i className="mx-2 fab fa-cc-discover d-inline vertical-align-middle" style={disColor}></i>
+                    <i className="mx-2 fab fa-cc-mastercard d-inline vertical-align-middle" style={mcColor}></i>
+                    <i className="mx-2 fab fa-cc-visa d-inline vertical-align-middle" style={visaColor}></i>
                   </div>
                 </Row>
 

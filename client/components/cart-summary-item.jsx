@@ -64,7 +64,7 @@ class CartSummaryItem extends React.Component {
 
     if (currentView === 'cart') {
       return (
-        <div className="csiCartViewBody d-flex flex-row mx-auto my-4 border-bottom pb-2" key={this.props.key} >
+        <div className="csiBody d-flex flex-row mx-auto my-4 border-bottom pb-2" key={this.props.key} >
 
           <div className="csiImgContainer text-center">
             <img src={item.image} alt="img" className="csiImg img-fluid"/>
@@ -142,7 +142,7 @@ class CartSummaryItem extends React.Component {
 
         <React.Fragment>
           {/* <h2 className="border-bottom pb-2"></h2> */}
-          <div className="csiCartViewBody w-50 d-flex flex-row mx-auto my-4 border-bottom pb-2" key={this.props.key} >
+          <div className="csiBody w-50 d-flex flex-row mx-auto my-4 border-bottom pb-2" key={this.props.key} >
 
             <div className="csiImgContainer text-center">
               <img src={item.image} alt="img" className="csiImg img-fluid" />

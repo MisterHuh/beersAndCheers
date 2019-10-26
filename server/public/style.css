@@ -126,13 +126,9 @@ body {
 .cartQtyText {
   font-size: 60%
 };
-.csiCartViewBody {
+.csiBody {
   height: 31vh;
   width: 30vw;
-}
-.csiOtherViewBody {
-  /* height: 33vh;
-  width: 30vw; */
 }
 .csiImgContainer {
   width: 10vw;
@@ -141,17 +137,6 @@ body {
   width: 100%;
   height: 100%;
 }
-.csiRemoveModal {
-  height: 50vh;
-}
-.csiModalImg {
-  height: 70%;
-}
-.csiRemoveMOdalText {
-  position: relative;
-  top: 30%;
-}
-
 .priceSummaryTooltip {
   vertical-align: top;
 }
