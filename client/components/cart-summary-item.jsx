@@ -33,7 +33,6 @@ class CartSummaryItem extends React.Component {
   updateCart() {
     let item = this.props.item;
     let newCount = this.state.count;
-    // need to send the item (for the product_id) and this.state.count, NOT the item.count
     this.props.updateCartItems(item, newCount);
     this.props.retrieveCart();
   }
@@ -60,22 +59,10 @@ class CartSummaryItem extends React.Component {
 
   render() {
 
-    const cardSize = {
-      height: '31vh',
-      width: '30vw'
-    };
-
     // this is for checkout and confirmatoin
     const cardSize2 = {
       height: '33vh',
       width: '30vw'
-    };
-    const imgWrapper = {
-      width: '10vw'
-    };
-    const imgSize = {
-      width: '100%',
-      height: '100%'
     };
     const modalBodyWrapper = {
       height: '50vh'
@@ -119,15 +106,18 @@ class CartSummaryItem extends React.Component {
 
     if (currentView === 'cart') {
       return (
-        <div className="d-flex flex-row mx-auto my-4 border-bottom pb-2" key={this.props.key} style={cardSize} > {/* mx-3 p-5 */}
+        <div className="csiCartViewBody d-flex flex-row mx-auto my-4 border-bottom pb-2" key={this.props.key} >
 
-          <div className=" text-center" style={imgWrapper}>
-            <img src={this.props.item.image} alt="img" className="img-fluid " style={imgSize} />
+          <div className="csiImgContainer text-center">
+            <img src={this.props.item.image} alt="img" className="csiImg img-fluid"/>
           </div>
 
           <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left w-75">
 
-            <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2 underline-on-hover" style={cursor}>{this.props.item.name}</div>
+            <div
+              onClick={() => this.props.setView('details', this.props.item.product_id)}
+              className=" font-weight-bold ml-4 my-2 underline-on-hover"
+              style={cursor}>{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
 
             <div className=" mx-3 my-2">
@@ -140,8 +130,12 @@ class CartSummaryItem extends React.Component {
             </div>
 
             <div className="ml-4 my-2 ">
-              <Button outline color="success" className="mr-3 bg-success text-white font-weight-bold" onClick={() => this.updateCart()}>Update</Button>
-              <Button outline color="danger" className="ml-3 bg-danger text-white font-weight-bold" onClick={() => this.toggle()}>Remove</Button>
+              <Button
+                onClick={() => this.updateCart()}
+                outline color="success" className="mr-3 bg-success text-white font-weight-bold">Update</Button>
+              <Button
+                onClick={() => this.toggle()}
+                outline color="danger" className="ml-3 bg-danger text-white font-weight-bold">Remove</Button>
             </div>
 
             {/* Remove Modal */}
@@ -162,7 +156,7 @@ class CartSummaryItem extends React.Component {
                     </div>
                     <div className="border-bottom rounded h-25 p-0">
                       <div className="h-25" style={testSize}>{'$ ' + ((this.props.item.price) / 100).toFixed(2)}</div>
-                    </div> {/* make sure to use this.state.count for qty */}
+                    </div>
                     <div className="rounded h-25 p-0">
                       <div className="h-25" style={testSize}>Quantity: <strong>{this.state.count}</strong></div>
                     </div>
@@ -170,8 +164,12 @@ class CartSummaryItem extends React.Component {
                 </div>
               </ModalBody>
               <ModalFooter style={removeBorder}>
-                <Button color="primary" className="bg-primary text-white font-weight-bold" onClick={() => this.closeModal()}>Keep In Cart</Button>
-                <Button color="danger" className="bg-danger text-white font-weight-bold" onClick={() => this.removeItems()}>Remove From Cart</Button>
+                <Button
+                  onClick={() => this.closeModal()}
+                  color="primary" className="bg-primary text-white font-weight-bold">Keep In Cart</Button>
+                <Button
+                  onClick={() => this.removeItems()}
+                  color="danger" className="bg-danger text-white font-weight-bold">Remove From Cart</Button>
               </ModalFooter>
             </Modal>
 
@@ -185,13 +183,16 @@ class CartSummaryItem extends React.Component {
 
         <div className="d-flex flex-row m-auto p-4 border-bottom" key={this.props.key} style={cardSize2}> {/* mx-3 p-5 */}
 
-          <div className=" text-center" style={imgWrapper}>
-            <img src={this.props.item.image} alt="img" className="img-fluid " style={imgSize} />
+          <div className="csiImgContainer text-center">
+            <img src={this.props.item.image} alt="img" className="csiImg img-fluid " />
           </div>
 
           <div className="d-flex flex-column justify-content-center ml-2 text-left w-75">
 
-            <div onClick={() => this.props.setView('details', this.props.item.product_id)} className=" font-weight-bold ml-4 my-2 underline-on-hover" style={cursor}>{this.props.item.name}</div>
+            <div
+              onClick={() => this.props.setView('details', this.props.item.product_id)}
+              className=" font-weight-bold ml-4 my-2 underline-on-hover"
+              style={cursor}>{this.props.item.name}</div>
             <div className=" font-weight-bold ml-4 my-2">{this.props.item.brewery}</div>
 
             <div className="ml-4 my-2 d-inline">{'$ ' + ((this.props.item.price) / 100).toFixed(2)}
