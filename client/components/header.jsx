@@ -13,7 +13,7 @@ export const Header = props => {
   return (
     <React.Fragment>
       <Navbar expand="md" className="sticky-top rounded border-bottom">
-        <NavbarBrand onClick={() => props.setView('catalog', '')} className="navbarBrand p-0" >
+        <NavbarBrand className="navbarBrand p-0" onClick={() => props.setView('catalog', '')}>
           <img src={logo} className="logo mr-2 mb-2 d-inline"/>
           <div className="d-inline">Beers & Cheers</div>
         </NavbarBrand>
