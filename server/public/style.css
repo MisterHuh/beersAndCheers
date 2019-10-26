@@ -117,10 +117,38 @@ body {
   top: 40%;
   /* top: 34% THIS IS FOR THINKPAD */
 }
+.emptyCartImg {
+  /* background-image: url("./images/general/emptyCart.png") */
+}
 .cartSummaryCartQtyText {
   font-size: 60%
 };
-
+.csiCartViewBody {
+  height: 31vh;
+  width: 30vw;
+}
+.csiImgContainer {
+  width: 10vw;
+}
+.csiImg {
+  width: 100%;
+  height: 100%;
+}
+.csiRemoveModal {
+  height: 50vh;
+}
+.csiModalImg {
+  height: 70%;
+}
+.csiRemoveMOdalText {
+  position: relative;
+  top: 30%;
+  /* top: 34% THIS IS FOR THINKPAD  */
+}
+.csiOtherViewBody {
+  /* height: 33vh;
+  width: 30vw; */
+}
 
 
 
