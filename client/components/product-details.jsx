@@ -154,25 +154,24 @@ export default class ProductDetails extends React.Component {
                             <img src={product.image} alt="beerImg" className=" productDetailsModalImg my-5"/>
                           </div>
 
-                          <div className="w-50 text-center d-flex flex-column justify-content-space-evenly align-items-center">
+                          <div className="w-50 text-center">
 
-                            {/* <div className="border-bottom rounded h-25"> */}
-                            {/* <div className="productDetailsModalText">{product.name}</div> */}
-                            <div className="rounded border w-100 m-auto">{product.name}</div>
+                            <div className="border-bottom rounded h-25">
+                              <div className="productDetailsModalText">{product.name}</div>
+                            </div>
 
-                            {/* </div> */}
+                            <div className="border-bottom rounded h-25">
+                              <div className="productDetailsModalText">{product.brewery}</div>
+                            </div>
 
-                            {/* <div className="border-bottom rounded h-25"> */}
-                            <div className="rounded border w-100 m-auto">{product.brewery}</div>
-                            {/* </div> */}
+                            <div className="border-bottom rounded h-25">
+                              <div className="productDetailsModalText">{'$ ' + ((product.price) / 100).toFixed(2)}</div>
+                            </div>
 
-                            {/* <div className="border-bottom rounded h-25"> */}
-                            <div className="rounded border w-100 m-auto">{'$ ' + ((product.price) / 100).toFixed(2)}</div>
-                            {/* </div> */}
+                            <div className="rounded h-25">
+                              <div className="productDetailsModalText">Quantity: <strong>{quantity}</strong></div>
+                            </div>
 
-                            {/* <div className="h-25"> */}
-                            <div className="w-100 m-auto border">Quantity: <strong>{quantity}</strong></div>
-                            {/* </div> */}
                           </div>
 
                         </div>

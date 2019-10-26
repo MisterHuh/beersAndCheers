@@ -114,6 +114,10 @@ body {
 .productDetailsModalImg {
   height: 70%;
 }
+.productDetailsModalText {  /* productDetails, cart-summary-item */
+  position: relative;
+  top: 40%;
+}
 .productDetailsText {
   position: relative;
   top: 40%;
@@ -183,10 +187,6 @@ body {
     .productListItemCardSize {
       height: 41vh;
     }
-    .productDetailsModalText {  /* productDetails, cart-summary-item */
-      position: relative;
-      top: 34%;
-    }
     .productDetailsTooltip {
       width: 5.5%;
       vertical-align: top;
@@ -232,9 +232,5 @@ body {
     .drinkResponsible {
       /* font-size: 75%;
       margin-bottom: 3%; */
-    }
-    .productDetailsModalText {  /* productDetails, cart-summary-item */
-      position: relative;
-      top: 34%;
     }
   }
