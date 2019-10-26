@@ -204,3 +204,33 @@ body {
       font-size: 200%;
     }
   }
+
+
+/* ----------- iPad ----------- */
+
+/* Portrait */
+@media only screen
+  and (max-width: 768px)
+  and (orientation: portrait) {
+    .jumbotronImgContainer {
+      height: 25vh;
+    }
+    .productListItemCardSize {
+      height: 30vh;
+      /* also need to apply col-3 on line 10*/
+    }
+    .productDetailsWrapper {
+      height: 40vh;
+    };
+    .productDetailsImgContainer {
+      height: 65%;
+    }
+    .drinkResponsible {
+      font-size: 75%;
+      margin-bottom: 3%;
+    }
+    .productDetailsModalText {  /* productDetails, cart-summary-item */
+      position: relative;
+      top: 34%;
+    }
+  }
