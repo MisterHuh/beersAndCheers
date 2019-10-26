@@ -157,7 +157,7 @@ body {
   font-size:250%;
 }
 .checkoutConfirmationModal {
-  height: 40vh;
+  height: 36vh;
 }
 .confirmationFontSize {
   font-size: 60%;
@@ -202,7 +202,7 @@ body {
       height: 45%
     }
     .checkoutConfirmationModal {
-      height: 60vh;
+      height: 53vh;
     }
     .ccLogoWrapper {
       font-size: 200%;
