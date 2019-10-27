@@ -19,7 +19,7 @@ export const ProductListItem = props => {
             <div className="h-25 d-flex flex-column justify-content-space-evenly align-items-center">
               <div className="mb-auto font-weight-bold">{item.name}</div>
               <div className="my-auto">{item.brewery}</div>
-              <div className="my-auto text-muted">{'$' + ((item.price) / 100).toFixed(2)}</div>
+              <div className="mt-auto pb-2 text-muted">{'$' + ((item.price) / 100).toFixed(2)}</div>
             </div>
           </div>
         );
