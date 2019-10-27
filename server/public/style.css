@@ -154,9 +154,8 @@ body {
   border-color: rgb(226, 226, 226);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(155, 153, 153, 0.6);
 }
-.drinkResponsible {
+.drinkResponsibly {
   font-size: 75%;
-  /* margin-bottom: 3%; */
 }
 
  /* ----------- Thinkpad x250 ----------- */
@@ -167,22 +166,29 @@ body {
       height: 20vh;
       font-size: 100%;
     }
-    .productListItemCardSize {
-      height: 41vh;
-    }
-    .productDetailsTooltip {
-      width: 5.5%;
-      vertical-align: top;
-    }
-    .drinkResponsible {
+    .drinkResponsibly {
       font-size: 75%;
       margin-bottom: 3%;
     }
-    .csiCartViewBody {
-      height: 30vh;
+    .productListItemCardSize {
+      height: 40vh;
     }
-    .csiOtherViewBody {
-      height: 45%
+    .productDetailsWrapper {
+      height: 50vh;
+    }
+    .productDetailsTooltip {
+      width: 5.5%;
+    }
+    .modalBody {
+      height: 55vh;
+      width: 35vw;
+    }
+    .modalText {  /* productDetails, cart-summary-item */
+      top: 35%;
+    }
+    .csiBody {
+      height: 30vh;
+      width: 30vw;
     }
     .checkoutConfirmationModal {
       height: 53vh;
@@ -211,9 +217,5 @@ body {
     };
     .productDetailsImgContainer {
       height: 65%;
-    }
-    .drinkResponsible {
-      /* font-size: 75%;
-      margin-bottom: 3%; */
     }
   }

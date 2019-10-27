@@ -22,7 +22,7 @@ export const CartSummary = props => {
       >
         <h1 className="border-bottom mt-3 pb-2">Your Cart Is Empty!</h1>
         <img onClick={() => props.setView('catalog', '')} src={imgSrc} alt="emptyCart" className="mx-auto d-block mb-5" />
-        <div className="drinkResponsible mb-3">Please drink responsibly</div>
+        <div className="drinkResponsibly mb-3">Please drink responsibly</div>
       </div>
     );
   } else {

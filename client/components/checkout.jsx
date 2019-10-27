@@ -15,7 +15,7 @@ export default class Checkout extends React.Component {
       city: 'Brea',
       state: 'CA',
       zipCode: '92821',
-      creditCardNumber: '1111473629195837',
+      creditCardNumber: '1111473629195833',
       fullName: 'Jaehyuk Huh',
       monthYear: '09/23',
       cvv: '4523',
@@ -274,7 +274,9 @@ export default class Checkout extends React.Component {
         };
       } else if (this.state.creditCardNumber[15] >= 3) {
         mcColor = {
-          color: '#0a3a82'
+          // color: '#0a3a82'
+          color: '#CC0000'
+          // background: 'linear-gradient(#CC0000, #FF9900, #000066)'
         };
       } else {
         visaColor = {

@@ -141,14 +141,13 @@ class CartSummaryItem extends React.Component {
       return (
 
         <React.Fragment>
-          {/* <h2 className="border-bottom pb-2"></h2> */}
-          <div className="csiBody w-50 d-flex flex-row mx-auto my-4 border-bottom pb-2" key={this.props.key} >
+          <div className="csiBody w-75 d-flex flex-row mx-5 my-4 border-bottom pb-2" key={this.props.key} >
 
             <div className="csiImgContainer text-center">
               <img src={item.image} alt="img" className="csiImg img-fluid" />
             </div>
 
-            <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left w-75">
+            <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left">
 
               <div
                 onClick={() => this.props.setView('details', item.product_id)}
