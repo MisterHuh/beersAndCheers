@@ -249,3 +249,23 @@ body {
       height: 34vh;
     }
   }
+
+  /* Portrait */
+@media only screen
+  and (max-width: 1024px)
+  and (orientation: landscape) {
+    .jumbotronImgContainer {
+      height: 40vh;
+    }
+    .cardSize {
+      height: 28vh;
+      font-size: 75%;
+    }
+  .productDetailsStatsSize {
+    /* height: 70%; */
+    /* font-size: 125%; */
+  }
+  .productDetailsButton {
+    font-size: 83%;
+  }
+}
