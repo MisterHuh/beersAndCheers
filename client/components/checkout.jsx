@@ -249,13 +249,22 @@ export default class Checkout extends React.Component {
     this.state.fullName.length >= 1 &&
     this.state.monthYear.length === 5 &&
     this.state.cvv.length >= 3
-      ? buttonDisplay = <Button outline color="success" onClick={this.toggle} className="w-50 bg-success text-white font-weight-bold">Place Order</Button>
-      : buttonDisplay = <Button outline color="secondary" className="w-50 bg-secondary text-white font-weight-bold">Fill In Form</Button>;
+      ? buttonDisplay = <div
+        onClick={this.toggle}
+        className="rounded m-auto px-2 py-1 w-50 bg-success text-white font-weight-bold"
+      >Place Order</div>
+      : buttonDisplay = <div
+        className="rounded m-auto px-2 py-1 w-50 bg-secondary text-white font-weight-bold"
+      >Fill In Form</div>;
 
     let modalButtonDisplay;
     this.state.orderConfirmation
-      ? modalButtonDisplay = <Button color="success" className="bg-success text-white font-weight-bold" onClick={() => this.placeOrder()}>Place Order</Button>
-      : modalButtonDisplay = <Button color="secondary" className="bg-secondary text-white font-weight-bold">Check the Box!</Button>;
+      ? modalButtonDisplay = <div
+        className="rounded px-2 py-1 bg-success text-white font-weight-bold" o
+        nClick={() => this.placeOrder()}
+      >Place Order</div>
+      : modalButtonDisplay = <div
+        className="rounded px-2 py-1 bg-secondary text-white font-weight-bold">Check the Box!</div>;
 
     let ccLastFourDigits;
     this.state.creditCardNumber.length === 16
@@ -511,10 +520,9 @@ export default class Checkout extends React.Component {
 
             <div className="text-center pt-1 border-bottom rounded py-4">
               <div className="m-3">
-                <Button
+                <div
                   onClick={() => this.props.setView('cart', '')}
-                  outline color="primary"
-                  className="w-50 bg-primary text-white font-weight-bold">Go Back To Cart</Button>
+                  className="rounded w-50 m-auto px-2 py-1 w-50 bg-primary text-white font-weight-bold">Go Back To Cart</div>
               </div>
               <div className="mx-3 mt-3 mb-5">
                 {buttonDisplay}
@@ -565,10 +573,9 @@ export default class Checkout extends React.Component {
                     </div>
                   </ModalBody>
                   <ModalFooter>
-                    <Button
+                    <div
                       onClick={() => this.closeModal()}
-                      color="primary"
-                      className="bg-primary text-white font-weight-bold">Return To Checkout</Button>
+                      className="rounded px-2 py-1 bg-primary text-white font-weight-bold">Return To Checkout</div>
                     {modalButtonDisplay}
                   </ModalFooter>
                 </Modal>

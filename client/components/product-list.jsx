@@ -41,9 +41,9 @@ class ProductList extends React.Component {
               <div className="mt-2">You must be at least 21 to enter</div>
               <div className=" my-3">Are you over 21?</div>
               <div className="d-flex flex-row">
-                <Button onClick={() => this.toggle()}className="bg-warning">Yes</Button>
+                <div onClick={() => this.toggle()}className="rounded text-white font-weight-bold m-auto px-2 py-1 bg-warning">Yes</div>
                 <div className="px-5">or</div>
-                <Button onClick={() => this.toggle()}className="bg-danger" >No</Button>
+                <div onClick={() => this.toggle()}className="rounded text-white font-weight-bold m-auto px-2 py-1 bg-danger" >No</div>
               </div>
             </div>
           </div>
