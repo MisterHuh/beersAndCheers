@@ -386,7 +386,7 @@ export default class Checkout extends React.Component {
                 </Row>
 
                 <Row form>
-                  <Col md={2}>
+                  <Col md={3}>
                     <FormGroup>
                       <Input
                         maxLength="2"
@@ -400,7 +400,7 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <Col md={2}>
+                  <Col md={3}>
                     <FormGroup>
                       <Input
                         maxLength="5"
@@ -425,7 +425,7 @@ export default class Checkout extends React.Component {
               <Form>
 
                 <Row form>
-                  <Col md={6}>
+                  <Col md={7}>
                     <FormGroup>
                       <Input
                         className={formErrors.fullName.length > 0 ? 'border border-danger' : null}
@@ -440,8 +440,17 @@ export default class Checkout extends React.Component {
                   </Col>
                 </Row>
 
+                <Row>
+                  <div className="ccLogoWrapper d-flex text-align-center mb-3">
+                    <i className="ml-3 mr-2 fab fa-cc-amex d-inline vertical-align-middle" style={amexColor}></i>
+                    <i className="mx-2 fab fa-cc-discover d-inline vertical-align-middle" style={disColor}></i>
+                    <i className="mx-2 fab fa-cc-mastercard d-inline vertical-align-middle" style={mcColor}></i>
+                    <i className="mx-2 fab fa-cc-visa d-inline vertical-align-middle" style={visaColor}></i>
+                  </div>
+                </Row>
+
                 <Row form>
-                  <Col md={6}>
+                  <Col md={7}>
                     <FormGroup>
                       <Input
                         maxLength="16"
@@ -455,16 +464,11 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <div className="ccLogoWrapper d-flex text-align-center">
-                    <i className="ml-3 mr-2 fab fa-cc-amex d-inline vertical-align-middle" style={amexColor}></i>
-                    <i className="mx-2 fab fa-cc-discover d-inline vertical-align-middle" style={disColor}></i>
-                    <i className="mx-2 fab fa-cc-mastercard d-inline vertical-align-middle" style={mcColor}></i>
-                    <i className="mx-2 fab fa-cc-visa d-inline vertical-align-middle" style={visaColor}></i>
-                  </div>
+
                 </Row>
 
                 <Row form>
-                  <Col md={2}>
+                  <Col md={3}>
                     <FormGroup>
                       <Input
                         maxLength="5"
@@ -478,7 +482,7 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <Col md={2}>
+                  <Col md={3}>
                     <FormGroup>
                       <Input
                         maxLength="4"
