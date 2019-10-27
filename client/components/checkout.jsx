@@ -15,7 +15,7 @@ export default class Checkout extends React.Component {
       city: 'Brea',
       state: 'CA',
       zipCode: '92821',
-      creditCardNumber: '1111473629195837',
+      creditCardNumber: '1111473629195833',
       fullName: 'Jaehyuk Huh',
       monthYear: '09/23',
       cvv: '4523',
@@ -45,7 +45,7 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: true,
+      modal: false,
       orderConfirmation: false
     };
 
@@ -274,7 +274,9 @@ export default class Checkout extends React.Component {
         };
       } else if (this.state.creditCardNumber[15] >= 3) {
         mcColor = {
-          color: '#0a3a82'
+          // color: '#0a3a82'
+          color: '#CC0000'
+          // background: 'linear-gradient(#CC0000, #FF9900, #000066)'
         };
       } else {
         visaColor = {
@@ -453,24 +455,11 @@ export default class Checkout extends React.Component {
                       )}
                     </FormGroup>
                   </Col>
-                  <div className="ccLogoWrapper d-flex flex-row ml-3">
-
-                    <div className="mx-3" style={amexColor}>
-                      <i className="fab fa-cc-amex"></i>
-                    </div>
-
-                    <div className="mx-3" style={disColor} >
-                      <i className="fab fa-cc-discover"></i>
-                    </div>
-
-                    <div className="mx-3" style={mcColor} >
-                      <i className="fab fa-cc-mastercard"></i>
-                    </div>
-
-                    <div className="mx-3" style={visaColor} >
-                      <i className="fab fa-cc-visa"></i>
-                    </div>
-
+                  <div className="ccLogoWrapper d-flex text-align-center">
+                    <i className="ml-3 mr-2 fab fa-cc-amex d-inline vertical-align-middle" style={amexColor}></i>
+                    <i className="mx-2 fab fa-cc-discover d-inline vertical-align-middle" style={disColor}></i>
+                    <i className="mx-2 fab fa-cc-mastercard d-inline vertical-align-middle" style={mcColor}></i>
+                    <i className="mx-2 fab fa-cc-visa d-inline vertical-align-middle" style={visaColor}></i>
                   </div>
                 </Row>
 
