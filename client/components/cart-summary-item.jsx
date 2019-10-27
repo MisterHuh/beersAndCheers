@@ -66,8 +66,9 @@ class CartSummaryItem extends React.Component {
       return (
         <div className="csiBody d-flex flex-row mx-auto my-4 border-bottom pb-2" key={this.props.key} >
 
-          <div className="csiImgContainer text-center">
-            <img src={item.image} alt="img" className="csiImg img-fluid"/>
+          <div className="csiImgContainer text-center text-align-center">
+            <span className="d-inline-block vertical-align-bottom h-50"></span>
+            <img src={item.image} alt="img" className="csiImg img-fluid vertical-align-bottom"/>
           </div>
 
           <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left w-75">
@@ -92,10 +93,10 @@ class CartSummaryItem extends React.Component {
             <div className="ml-4 my-2 ">
               <Button
                 onClick={() => this.updateCart()}
-                outline color="success" className="mr-3 bg-success text-white font-weight-bold">Update</Button>
+                outline color="success" className="csiButton mr-3 bg-success text-white font-weight-bold">Update</Button>
               <Button
                 onClick={() => this.toggle()}
-                outline color="danger" className="ml-3 bg-danger text-white font-weight-bold">Remove</Button>
+                outline color="danger" className="csiButton  ml-3 bg-danger text-white font-weight-bold">Remove</Button>
             </div>
 
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -143,8 +144,9 @@ class CartSummaryItem extends React.Component {
         <React.Fragment>
           <div className="csiBody w-75 d-flex flex-row mx-5 my-4 border-bottom pb-2" key={this.props.key} >
 
-            <div className="csiImgContainer text-center">
-              <img src={item.image} alt="img" className="csiImg img-fluid" />
+            <div className="csiImgContainer text-center text-align-center">
+              <span className="d-inline-block vertical-align-bottom h-50"></span>
+              <img src={item.image} alt="img" className="csiImg img-fluid vertical-align-bottom" />
             </div>
 
             <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left">

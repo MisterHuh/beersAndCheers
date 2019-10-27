@@ -215,9 +215,37 @@ body {
       font-size: 65%;
     }
     .productDetailsWrapper {
-      height: 40vh;
+      height: 30vh;
+      font-size: 80%;
     };
+    .productDetailsTooltip {
+      width: 9.5;
+    }
     .productDetailsImgContainer {
       height: 65%;
+    }
+    .modalBody {
+      height: 35vh;
+      width: 60vw;
+    }
+    .modalText {  /* productDetails, cart-summary-item */
+      top: 35%;
+    }
+    .csiBody {
+      height: 18vh;
+      width: 41vw;
+      font-size: 70%;
+    }
+    .csiImgContainer {
+      width: 11vw;
+    }
+    .csiImg {
+      height: 75%;
+    }
+    .csiButton {
+      font-size: 100%
+    }
+    .checkoutConfirmationModal {
+      height: 35vh;
     }
   }
