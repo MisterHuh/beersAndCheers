@@ -231,6 +231,12 @@ body {
     .modalText {  /* productDetails, cart-summary-item */
       top: 35%;
     }
+    .test {
+      width: 20%
+    }
+    #testID {
+      width: 20%
+    }
     .csiBody {
       height: 18vh;
       width: 41vw;
@@ -242,7 +248,7 @@ body {
     .csiImg {
       height: 75%;
     }
-    .csiButton {
+    .buttonSize {
       font-size: 100%
     }
     .checkoutConfirmationModal {
@@ -250,7 +256,7 @@ body {
     }
   }
 
-  /* Portrait */
+  /* Landscape */
 @media only screen
   and (max-width: 1024px)
   and (orientation: landscape) {
@@ -264,8 +270,5 @@ body {
   .productDetailsStatsSize {
     /* height: 70%; */
     /* font-size: 125%; */
-  }
-  .productDetailsButton {
-    font-size: 83%;
   }
 }

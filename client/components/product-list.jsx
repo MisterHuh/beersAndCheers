@@ -1,7 +1,7 @@
 import React from 'react';
 import { Jumbotron } from './jumbotron';
 import { ProductListItem } from './product-list-item';
-import { Button, Modal } from 'reactstrap';
+import { Modal } from 'reactstrap';
 
 class ProductList extends React.Component {
   constructor(props) {

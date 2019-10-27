@@ -126,7 +126,7 @@ export default class ProductDetails extends React.Component {
 
                   <div className=" w-100 m-auto">
                     <div
-                      className="productDetailsButton rounded w-50 bg-primary text-white font-weight-bold m-auto px-2 py-1"
+                      className="buttonSize rounded w-50 bg-primary text-white font-weight-bold m-auto px-2 py-1"
                       onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</div>
                   </div>
                 </div>
@@ -141,7 +141,7 @@ export default class ProductDetails extends React.Component {
                   </div>
                   <div className="w-100 m-auto">
                     <div
-                      className="productDetailsButton rounded w-50 bg-success text-white font-weight-bold m-auto px-2 py-1"
+                      className="buttonSize rounded w-50 bg-success text-white font-weight-bold m-auto px-2 py-1"
                       onClick={this.addToCart}>Add To Cart</div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
@@ -173,9 +173,9 @@ export default class ProductDetails extends React.Component {
                         </div>
                       </ModalBody>
                       <ModalFooter>
-                        <div className="rounded px-2 py-1 bg-primary text-white font-weight-bold"
+                        <div className="buttonSize rounded px-2 py-1 bg-primary text-white font-weight-bold"
                           onClick={() => this.props.setView('catalog', '')}>Continue Shopping</div>
-                        <div className="rounded px-2 py-1 bg-success text-white font-weight-bold"
+                        <div className="buttonSize rounded px-2 py-1 bg-success text-white font-weight-bold"
                           onClick={() => this.props.setView('cart', '')}>Go To Cart</div>
                       </ModalFooter>
                     </Modal>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PriceSummary from './priceSummary';
 import CartSummaryItem from './cart-summary-item';
-import { Button, Col, Row, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Col, Row, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default class Checkout extends React.Component {
   constructor(props) {
@@ -260,8 +260,8 @@ export default class Checkout extends React.Component {
     let modalButtonDisplay;
     this.state.orderConfirmation
       ? modalButtonDisplay = <div
-        className="rounded px-2 py-1 bg-success text-white font-weight-bold" o
-        nClick={() => this.placeOrder()}
+        className="rounded px-2 py-1 bg-success text-white font-weight-bold"
+        onClick={() => this.placeOrder()}
       >Place Order</div>
       : modalButtonDisplay = <div
         className="rounded px-2 py-1 bg-secondary text-white font-weight-bold">Check the Box!</div>;
