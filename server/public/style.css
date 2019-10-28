@@ -1,0 +1,379 @@
+/* @import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
+body {
+  font-family: 'Cinzel', cursive;
+} */
+
+/* @import url('https://fonts.googleapis.com/css?family=Cinzel:700&display=swap');
+body {
+  font-family: 'Cinzel:700', cursive;
+} */
+
+/* @import url('https://fonts.googleapis.com/css?family=Oldenburg&display=swap');
+body {
+  overflow-y:scroll;
+  font-family: 'Oldenburg', cursive;
+} */
+
+@import url('https://fonts.googleapis.com/css?family=El+Messiri&display=swap');
+
+body {
+  font-family: 'El+Messiri', sans-serif;
+  overflow-y:scroll;
+}
+.welcomeHodalHeader {
+  font-size: 125%;
+}
+.welcomeModal {
+  height: 14vh;
+  font-size: 100%;
+}
+.navbarWrapper {
+  height: 5vh;
+  background-color: #F9F9F9;
+}
+.navbarContainer {
+  height: 100%;
+}
+.logo {
+  /* background-image: url("./images/general/logo.png"); */
+  height: 100%
+}
+.aboutImg {
+  /* background-image: url("./images/general/aboutMe.gif"); */
+  width: 30%
+}
+.jumbotronImgContainer {
+  height: 55vh;
+}
+.jumbotronImg {
+  /* background-image: url("./images/general/jumbotron.jpg"); */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-Repeat: no-repeat;
+  object-fit: cover
+}
+.jumbotronText {
+  top: 15%;
+  right: 10%;
+  color: black;
+  text-shadow: 1px 1px white
+}
+.cardSize {
+  height: 40vh;
+  /* background-color: rgba(245, 245, 245, 0.6) */
+}
+.productListItemImgContainer {
+  /* height: 100%; */
+  height: 30vh;
+  width:  18vw;
+}
+.productListItemImg {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+}
+.productDetailsWrapper {
+  height: 40vh;
+}
+#mainWrapper {
+  /* height: 40vh; */
+}
+.productDetailsImgContainer {
+  height: 100%;
+  width: 30%;
+  display: inline-block
+}
+.productDetailsImg {
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat
+}
+.productDetailsInfoWrapper {
+  width: 70%
+}
+.productDetailsHeaderSize {
+  height: 30%;
+  width: 100%;
+  font-size: 150%
+}
+.productDetailsStatsSize {
+  height: 70%;
+  font-size: 125%;
+}
+.productDetailsTooltip {
+  width: 3.5%;
+  vertical-align: top;
+  /* background-image: url("./images/general/abv.png"); */
+  /* background-image: url("./images/general/ibu.png"); */
+}
+.modalBody {
+  height: 40vh;
+  width: 25vw;
+}
+.modalContainer {
+  height: 100%;
+}
+.modalImg {
+  height: 100%;
+}
+.modalText {  /* productDetails, cart-summary-item */
+  position: relative;
+  top: 40%;
+}
+.productDetailsText {
+  position: relative;
+  top: 40%;
+}
+.emptyCartContainer {
+  height: 90vh
+}
+.emptyCartImg {
+  /* background-image: url("./images/general/emptyCart.png") */
+  height: 100%;
+}
+.cartQtyText {
+  font-size: 60%
+};
+.csiBody {
+  height: 31vh;
+  width: 30vw;
+}
+.csiImgContainer {
+  width: 10vw;
+}
+.csiImg {
+  width: 100%;
+  height: 100%;
+}
+.priceSummaryTooltip {
+  vertical-align: top;
+}
+.ccLogoWrapper {
+  font-size:250%;
+}
+.checkoutConfirmationModal {
+  height: 36vh;
+}
+.confirmationFontSize {
+  font-size: 60%;
+}
+.form-control:focus {
+  border-color: rgb(226, 226, 226);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(155, 153, 153, 0.6);
+}
+.drinkResponsibly {
+  font-size: 75%;
+}
+
+ /* ----------- Thinkpad x250 ----------- */
+@media only screen
+  and (max-width: 1366px)
+  and (orientation: landscape) {
+    .navbarWrapper {
+      height: 8vh;
+    }
+    .welcomeModal {
+      height: 21vh;
+      font-size: 100%;
+    }
+    .drinkResponsibly {
+      font-size: 75%;
+      margin-bottom: 3%;
+    }
+    .aboutImg {
+      width: 40%
+    }
+    .cardSize {
+      /* height: 37vh; */
+      font-size: 75%;
+    }
+    .productDetailsWrapper {
+      height: 50vh;
+    }
+    .productDetailsTooltip {
+      width: 5.5%;
+    }
+    .modalBody {
+      height: 55vh;
+      width: 35vw;
+    }
+    .modalText {  /* productDetails, cart-summary-item */
+      top: 35%;
+    }
+    .csiBody {
+      height: 30vh;
+      width: 30vw;
+    }
+    .checkoutConfirmationModal {
+      height: 53vh;
+    }
+    .ccLogoWrapper {
+      font-size: 200%;
+    }
+  }
+
+
+/* ----------- iPad ----------- */
+
+/* Portrait */
+@media only screen
+  and (max-width: 768px)
+  and (orientation: portrait) {
+    body {
+      /* overflow: hidden; */
+      overflow-x: hidden;
+    }
+    .navbarWrapper {
+      height: 5vh;
+    }
+    .jumbotronImgContainer {
+      height: 30vh;
+    }
+    .aboutImg {
+      width: 40%
+    }
+    .emptyCartContainer {
+      height: 70vh
+    }
+    .cardSize {
+      height: 18vh;
+      font-size: 65%;
+    }
+    .productDetailsWrapper {
+      height: 30vh;
+      font-size: 80%;
+    }
+    .productDetailsTooltip {
+      width: 8.5%;
+    }
+    .productDetailsImgContainer {
+      height: 65%;
+    }
+    .modalBody {
+      height: 35vh;
+      width: 62vw;
+    }
+    .modalText {  /* productDetails, cart-summary-item */
+      top: 35%;
+    }
+    .csiBody {
+      height: 18vh;
+      width: 41vw;
+      font-size: 80%;
+    }
+    .csiImgContainer {
+      width: 11vw;
+    }
+    .csiImg {
+      height: 75%;
+    }
+    .buttonSize {
+      font-size: 110%
+    }
+    .checkoutConfirmationModal {
+      height: 34vh;
+    }
+  }
+
+  /* Landscape */
+@media only screen
+  and (max-width: 1024px)
+  and (orientation: landscape) {
+    .navbarWrapper {
+      height: 6vh;
+    }
+    .welcomeModal {
+      height: 18vh;
+    }
+    .jumbotronImgContainer {
+      height: 45vh;
+    }
+    .aboutImg {
+      width: 40%
+    }
+    .emptyCartContainer {
+      height: 75vh
+    }
+    .cardSize {
+      height: 28vh;
+      font-size: 75%;
+    }
+    .productDetailsTooltip {
+      width: 8.5%;
+    }
+    .buttonSize {
+      font-size: 83%
+    }
+    .modalBody {
+      height: 50vh;
+      width: 46vw;
+    }
+    .csiBody {
+      height: 21vh;
+      width: 32vw;
+      /* font-size: 70%; */
+    }
+    .checkoutConfirmationModal {
+      height: 46vh;
+    }
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait */
+@media only screen
+  and (max-width: 375px)
+  and (orientation: portrait) {
+    h1 {
+      font-size: 200%;
+    }
+    .navbarWrapper {
+      height: 5vh;
+      font-size: 90%
+    }
+    .jumbotronImgContainer {
+      height: 20vh;
+    }
+    .emptyCartContainer {
+      height: 37vh
+    }
+    .aboutImg {
+      width: 100%
+    }
+    .cardSize {
+      height: 25vh;
+      font-size: 70%;
+    }
+    .productListItemImgContainer {
+      width: 45vw;
+    }
+    .productListItemImg {
+      /* width: 50%; */
+      /* height: 100%; */
+    }
+    .productDetailsWrapper {
+      height: 28vh;
+      font-size: 60%
+    }
+    .productDetailsImgContainer {
+      width: 28%;
+    }
+    .productDetailsImg {
+      height: 96%;
+    }
+    .productDetailsTooltip {
+      width: 13.5%;
+    }
+    #productDesc {
+      font-size: 90%
+    }
+    .buttonSize {
+      font-size: 68%;
+    }
+    .modalBody {
+      height: 35vh;
+      width: 95vw;
+      font-size: 90%;
+    }
+  }
