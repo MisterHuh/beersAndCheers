@@ -207,6 +207,9 @@ body {
 @media only screen
   and (max-width: 768px)
   and (orientation: portrait) {
+    .navbarWrapper {
+      height: 5vh;
+    }
     .jumbotronImgContainer {
       height: 30vh;
     }
@@ -254,6 +257,9 @@ body {
 @media only screen
   and (max-width: 1024px)
   and (orientation: landscape) {
+    .navbarWrapper {
+      height: 6vh;
+    }
     .welcomeModal {
       height: 18vh;
     }
@@ -290,5 +296,7 @@ body {
 @media only screen
   and (max-width: 375px)
   and (orientation: portrait) {
-
+    .navbarWrapper {
+      height: 5vh;
+    }
   }
