@@ -315,6 +315,9 @@ body {
 @media only screen
   and (max-width: 375px)
   and (orientation: portrait) {
+    h1 {
+      font-size: 200%;
+    }
     .navbarWrapper {
       height: 5vh;
     }
@@ -326,5 +329,16 @@ body {
     }
     .aboutImg {
       width: 100%
+    }
+    .cardSize {
+      height: 18vh;
+      font-size: 58%;
+    }
+    .productListItemImgContainer {
+      width:  27vw;
+    }
+    .productListItemImg {
+      /* width: 50%; */
+      /* height: 100%; */
     }
   }
