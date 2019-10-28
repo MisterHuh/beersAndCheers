@@ -3,7 +3,7 @@ import CartSummaryItem from './cart-summary-item';
 import PriceSummary from './priceSummary';
 
 export const CartSummary = props => {
-  const imgSrc = './images/general/emptyCart.png';
+  const imgSrc = './images/general/emptyCart.pngTEST';
 
   let cartQuantity = props.cartQuantity;
   let itemsVerbiage;

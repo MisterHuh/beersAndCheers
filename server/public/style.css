@@ -20,7 +20,6 @@ body {
   font-family: 'El+Messiri', sans-serif;
   overflow-y:scroll;
 }
-
 .welcomeHodalHeader {
   font-size: 125%;
 }
@@ -28,19 +27,20 @@ body {
   height: 14vh;
   font-size: 100%;
 }
+.navbarWrapper {
+  height: 8vh;
+  background-color: #F9F9F9;
+}
+.navbarContainer {
+  height: 100%;
+}
+.logo {
+  /* background-image: url("./images/general/logo.png"); */
+  height: 100%
+}
 .aboutImg {
   /* background-image: url("./images/general/aboutMe.gif"); */
   width: 100%
-}
-.sticky-top {
-  background-color: #F9F9F9;
-}
-.navbarBrand {
-  /* background-image: url("./images/general/logo.png"); */
-  height: 4vh;
-}
-.logo {
-  height: 100%
 }
 .jumbotronImgContainer {
   height: 55vh;
@@ -283,3 +283,12 @@ body {
       height: 46vh;
     }
 }
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait */
+@media only screen
+  and (max-width: 375px)
+  and (orientation: portrait) {
+
+  }
