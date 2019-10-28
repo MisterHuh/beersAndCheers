@@ -76,8 +76,11 @@ body {
 .productDetailsWrapper {
   height: 40vh;
 }
+#mainWrapper {
+  /* height: 40vh; */
+}
 .productDetailsImgContainer {
-  height: 75%;
+  height: 100%;
   width: 30%;
   display: inline-block
 }
@@ -331,11 +334,11 @@ body {
       width: 100%
     }
     .cardSize {
-      height: 18vh;
+      height: 25vh;
       font-size: 58%;
     }
     .productListItemImgContainer {
-      width:  27vw;
+      width:  45vw;
     }
     .productListItemImg {
       /* width: 50%; */
