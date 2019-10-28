@@ -344,4 +344,13 @@ body {
       /* width: 50%; */
       /* height: 100%; */
     }
+    .productDetailsWrapper {
+      font-size: 60%
+    }
+    #productDesc {
+      font-size: 90%
+    }
+    .buttonSize {
+      font-size: 68%;
+    }
   }

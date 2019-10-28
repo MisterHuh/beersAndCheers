@@ -82,7 +82,7 @@ export default class ProductDetails extends React.Component {
     if (this.state.product) {
       return (
 
-        <div id="mainWrapper" className="p-5">
+        <div id="mainWrapper" className="p-3">
 
           <div id="mainWrapper" className="productDetailsWrapper d-flex flex-row border rounded">
 
@@ -122,7 +122,7 @@ export default class ProductDetails extends React.Component {
                       <strong> International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds
                     </Tooltip>
                   </div>
-                  <div className=" w-100 m-auto">{availabilityVerbiage}<div className="d-inline ml-1">{product.availability}</div></div>
+                  <div className=" w-100 m-auto"><div className="d-inline ml-1">{product.availability}</div></div>
 
                   <div className=" w-100 m-auto">
                     <div
