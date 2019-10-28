@@ -122,8 +122,12 @@ body {
   position: relative;
   top: 40%;
 }
+.emptyCartContainer {
+  height: 90vh
+}
 .emptyCartImg {
   /* background-image: url("./images/general/emptyCart.png") */
+  height: 100%;
 }
 .cartQtyText {
   font-size: 60%
@@ -213,6 +217,9 @@ body {
     .jumbotronImgContainer {
       height: 30vh;
     }
+    .emptyCartContainer {
+      height: 70vh
+    }
     .cardSize {
       height: 18vh;
       font-size: 65%;
@@ -266,6 +273,9 @@ body {
     .jumbotronImgContainer {
       height: 45vh;
     }
+    .emptyCartContainer {
+      height: 75vh
+    }
     .cardSize {
       height: 28vh;
       font-size: 75%;
@@ -298,5 +308,8 @@ body {
   and (orientation: portrait) {
     .navbarWrapper {
       height: 5vh;
+    }
+    .jumbotronImgContainer {
+      height: 20vh;
     }
   }

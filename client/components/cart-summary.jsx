@@ -3,7 +3,7 @@ import CartSummaryItem from './cart-summary-item';
 import PriceSummary from './priceSummary';
 
 export const CartSummary = props => {
-  const imgSrc = './images/general/emptyCart.pngTEST';
+  const imgSrc = './images/general/emptyCart.png';
 
   let cartQuantity = props.cartQuantity;
   let itemsVerbiage;
@@ -17,11 +17,13 @@ export const CartSummary = props => {
     return (
       <div
         onClick={() => props.setView('catalog', '')}
-        className="text-center px-5 pb-5"
+        className="text-center px-5"
       >
         <h1 className="border-bottom mt-3 pb-2">Your Cart Is Empty!</h1>
-        <img onClick={() => props.setView('catalog', '')} src={imgSrc} alt="emptyCart" className="mx-auto d-block mb-5" />
-        <div className="drinkResponsibly">Please drink responsibly</div>
+        <div className="emptyCartContainer">
+          <img onClick={() => props.setView('catalog', '')} src={imgSrc} alt="emptyCart" className="emptyCartImg" />
+        </div>
+        <div className="drinkResponsibly mt-3">Please drink responsibly</div>
       </div>
     );
   } else {
