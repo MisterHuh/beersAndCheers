@@ -28,7 +28,7 @@ body {
   font-size: 100%;
 }
 .navbarWrapper {
-  height: 8vh;
+  height: 5vh;
   background-color: #F9F9F9;
 }
 .navbarContainer {
@@ -170,6 +170,9 @@ body {
 @media only screen
   and (max-width: 1366px)
   and (orientation: landscape) {
+    .navbarWrapper {
+      height: 8vh;
+    }
     .welcomeModal {
       height: 21vh;
       font-size: 100%;
@@ -327,6 +330,7 @@ body {
     }
     .navbarWrapper {
       height: 5vh;
+      font-size: 90%
     }
     .jumbotronImgContainer {
       height: 20vh;
