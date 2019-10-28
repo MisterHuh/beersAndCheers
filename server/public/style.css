@@ -217,6 +217,10 @@ body {
 @media only screen
   and (max-width: 768px)
   and (orientation: portrait) {
+    body {
+      /* overflow: hidden; */
+      overflow-x: hidden;
+    }
     .navbarWrapper {
       height: 5vh;
     }
@@ -262,7 +266,7 @@ body {
       height: 75%;
     }
     .buttonSize {
-      font-size: 100%
+      font-size: 110%
     }
     .checkoutConfirmationModal {
       height: 34vh;
@@ -335,22 +339,37 @@ body {
     }
     .cardSize {
       height: 25vh;
-      font-size: 58%;
+      font-size: 70%;
     }
     .productListItemImgContainer {
-      width:  45vw;
+      width: 45vw;
     }
     .productListItemImg {
       /* width: 50%; */
       /* height: 100%; */
     }
     .productDetailsWrapper {
+      height: 28vh;
       font-size: 60%
+    }
+    .productDetailsImgContainer {
+      width: 28%;
+    }
+    .productDetailsImg {
+      height: 96%;
+    }
+    .productDetailsTooltip {
+      width: 13.5%;
     }
     #productDesc {
       font-size: 90%
     }
     .buttonSize {
       font-size: 68%;
+    }
+    .modalBody {
+      height: 35vh;
+      width: 95vw;
+      font-size: 90%;
     }
   }
