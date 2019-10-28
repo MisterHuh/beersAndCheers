@@ -59,7 +59,7 @@ export default class PriceSummary extends React.Component {
 
         <div className="m-3">
           <h4 className=" d-inline" >Shipping
-            <i id="shipping" className="priceSummaryTooltip ml-2 d-inline fas fa-question-circle"></i>
+            <i id="shipping" className="priceSummaryTooltip ml-1 d-inline fas fa-question-circle"></i>
             <div className=" d-inline float-right">{shipping}</div>
             <Tooltip placement="right" isOpen={this.state.shippingTooltipOpen} target="shipping" toggle={this.shippingToggle}>
               Free shipping on orders of <strong>$40</strong> or more <strong>before taxes</strong>
@@ -69,7 +69,7 @@ export default class PriceSummary extends React.Component {
 
         <div className="m-3">
           <h4 id="taxes" className=" d-inline">Taxes
-            <i id="taxes" className="priceSummaryTooltip ml-2 d-inline fas fa-question-circle"></i>
+            <i id="taxes" className="priceSummaryTooltip ml-1 d-inline fas fa-question-circle"></i>
             <div className=" d-inline float-right">$ {(taxes / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div>
             <Tooltip placement="right" isOpen={this.state.taxesTooltipOpen} target="taxes" toggle={this.taxesToggle}>
               Tax rate of <strong>7.5%</strong>

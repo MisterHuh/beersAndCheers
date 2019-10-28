@@ -18,7 +18,7 @@ export const Header = props => {
 
         <div className="navbarContainer d-flex flex-row align-items-center justify-content-center w-50" onClick={() => props.setView('catalog', '')}>
           <div className="navbarContainer mr-auto mr-3">
-            <img src={logo} className="ml-2 logo mr-2 mb-2 d-inline" />
+            <img src={logo} className="mx-2 logo mb-1 d-inline" />
             <div className="d-inline">Cheers & Beers</div>
           </div>
         </div>

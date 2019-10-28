@@ -82,7 +82,7 @@ export default class ProductDetails extends React.Component {
     if (this.state.product) {
       return (
 
-        <div id="mainWrapper" className="p-5">
+        <div className="p-3">
 
           <div id="mainWrapper" className="productDetailsWrapper d-flex flex-row border rounded">
 
@@ -108,21 +108,21 @@ export default class ProductDetails extends React.Component {
                 <div className="rounded border-right d-flex flex-column justify-content-space-evenly align-items-center h-100 w-50 p-3">
 
                   <div className=" w-100 m-auto">{product.abv}%
-                    <div className="d-inline ml-2 ">ABV</div>
-                    <img id="abvInfo" src={abvIcon} className="productDetailsTooltip ml-2 d-inline fas fa-question-circle"></img>
+                    <div className="d-inline ml-1">ABV</div>
+                    <img id="abvInfo" src={abvIcon} className="productDetailsTooltip ml-1 d-inline fas fa-question-circle"></img>
                     <Tooltip placement="right" isOpen={this.state.abvToolTipOpen} target="abvInfo" toggle={this.abvToggle}>
                       <strong>Alcohol By Volume</strong> measures how much alcohol is in the drink
                     </Tooltip>
                   </div>
 
                   <div className="  w-100 m-auto">{product.ibu}
-                    <div className="d-inline ml-2">IBU</div>
-                    <img id="ibuInfo" src={ibuIcon} className="productDetailsTooltip ml-2 d-inline fas fa-question-circle"></img>
+                    <div className="d-inline ml-1">IBU</div>
+                    <img id="ibuInfo" src={ibuIcon} className="productDetailsTooltip ml-1 d-inline fas fa-question-circle"></img>
                     <Tooltip placement="right" isOpen={this.state.ibuToolTipOpen} target="ibuInfo" toggle={this.ibuToggle}>
                       <strong> International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds
                     </Tooltip>
                   </div>
-                  <div className=" w-100 m-auto">{availabilityVerbiage}<div className="d-inline ml-1">{product.availability}</div></div>
+                  <div className=" w-100 m-auto"><div className="d-inline">{product.availability}</div></div>
 
                   <div className=" w-100 m-auto">
                     <div
