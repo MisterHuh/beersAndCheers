@@ -66,8 +66,9 @@ class CartSummaryItem extends React.Component {
       return (
         <div className="csiBody d-flex flex-row mx-auto my-4 border-bottom pb-2" key={this.props.key} >
 
-          <div className="csiImgContainer text-center">
-            <img src={item.image} alt="img" className="csiImg img-fluid"/>
+          <div className="csiImgContainer text-center text-align-center">
+            <span className="d-inline-block vertical-align-bottom h-50"></span>
+            <img src={item.image} alt="img" className="csiImg img-fluid vertical-align-bottom"/>
           </div>
 
           <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left w-75">
@@ -90,12 +91,12 @@ class CartSummaryItem extends React.Component {
             </div>
 
             <div className="ml-4 my-2 ">
-              <Button
+              <div
                 onClick={() => this.updateCart()}
-                outline color="success" className="mr-3 bg-success text-white font-weight-bold">Update</Button>
-              <Button
+                className="rounded w-50 d-inline px-2 py-2 bg-success text-white font-weight-bold">Update</div>
+              <div
                 onClick={() => this.toggle()}
-                outline color="danger" className="ml-3 bg-danger text-white font-weight-bold">Remove</Button>
+                className="rounded w-50 d-inline ml-5 px-2 py-2 bg-danger text-white font-weight-bold">Remove</div>
             </div>
 
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -123,12 +124,12 @@ class CartSummaryItem extends React.Component {
                 </div>
               </ModalBody>
               <ModalFooter>
-                <Button
+                <div
                   onClick={() => this.closeModal()}
-                  color="primary" className="bg-primary text-white font-weight-bold">Keep In Cart</Button>
-                <Button
+                  className="rounded px-2 py-1 bg-primary text-white font-weight-bold">Keep In Cart</div>
+                <div
                   onClick={() => this.removeItems()}
-                  color="danger" className="bg-danger text-white font-weight-bold">Remove From Cart</Button>
+                  className="rounded px-2 py-1 bg-danger text-white font-weight-bold">Remove From Cart</div>
               </ModalFooter>
             </Modal>
 
@@ -141,10 +142,11 @@ class CartSummaryItem extends React.Component {
       return (
 
         <React.Fragment>
-          <div className="csiBody w-75 d-flex flex-row mx-5 my-4 border-bottom pb-2" key={this.props.key} >
+          <div className="csiBody d-flex flex-row mx-5 my-4 border-bottom pb-2" key={this.props.key} >
 
-            <div className="csiImgContainer text-center">
-              <img src={item.image} alt="img" className="csiImg img-fluid" />
+            <div className="csiImgContainer text-center text-align-center">
+              <span className="d-inline-block vertical-align-bottom h-50"></span>
+              <img src={item.image} alt="img" className="csiImg img-fluid vertical-align-bottom" />
             </div>
 
             <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left">

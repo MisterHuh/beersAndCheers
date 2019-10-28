@@ -20,7 +20,6 @@ body {
   font-family: 'El+Messiri', sans-serif;
   overflow-y:scroll;
 }
-
 .welcomeHodalHeader {
   font-size: 125%;
 }
@@ -28,19 +27,20 @@ body {
   height: 14vh;
   font-size: 100%;
 }
+.navbarWrapper {
+  height: 8vh;
+  background-color: #F9F9F9;
+}
+.navbarContainer {
+  height: 100%;
+}
+.logo {
+  /* background-image: url("./images/general/logo.png"); */
+  height: 100%
+}
 .aboutImg {
   /* background-image: url("./images/general/aboutMe.gif"); */
   width: 100%
-}
-.sticky-top {
-  background-color: #F9F9F9;
-}
-.navbarBrand {
-  /* background-image: url("./images/general/logo.png"); */
-  height: 4vh;
-}
-.logo {
-  height: 100%
 }
 .jumbotronImgContainer {
   height: 55vh;
@@ -59,12 +59,14 @@ body {
   color: black;
   text-shadow: 1px 1px white
 }
-.productListItemCardSize {
-  height: 36vh;
-  background-color: rgba(245, 245, 245, 0.6)
+.cardSize {
+  height: 40vh;
+  /* background-color: rgba(245, 245, 245, 0.6) */
 }
 .productListItemImgContainer {
-  height: 100%;
+  /* height: 100%; */
+  height: 30vh;
+  width:  18vw;
 }
 .productListItemImg {
   width: 50%;
@@ -149,7 +151,6 @@ body {
 .confirmationFontSize {
   font-size: 60%;
 }
-
 .form-control:focus {
   border-color: rgb(226, 226, 226);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(155, 153, 153, 0.6);
@@ -163,15 +164,16 @@ body {
   and (max-width: 1366px)
   and (orientation: landscape) {
     .welcomeModal {
-      height: 20vh;
+      height: 21vh;
       font-size: 100%;
     }
     .drinkResponsibly {
       font-size: 75%;
       margin-bottom: 3%;
     }
-    .productListItemCardSize {
-      height: 40vh;
+    .cardSize {
+      /* height: 37vh; */
+      font-size: 75%;
     }
     .productDetailsWrapper {
       height: 50vh;
@@ -206,16 +208,87 @@ body {
   and (max-width: 768px)
   and (orientation: portrait) {
     .jumbotronImgContainer {
-      height: 25vh;
-    }
-    .productListItemCardSize {
       height: 30vh;
-      /* also need to apply col-3 on line 10*/
+    }
+    .cardSize {
+      height: 18vh;
+      font-size: 65%;
     }
     .productDetailsWrapper {
-      height: 40vh;
-    };
+      height: 30vh;
+      font-size: 80%;
+    }
+    .productDetailsTooltip {
+      width: 8.5%;
+    }
     .productDetailsImgContainer {
       height: 65%;
     }
+    .modalBody {
+      height: 35vh;
+      width: 62vw;
+    }
+    .modalText {  /* productDetails, cart-summary-item */
+      top: 35%;
+    }
+    .csiBody {
+      height: 18vh;
+      width: 41vw;
+      font-size: 80%;
+    }
+    .csiImgContainer {
+      width: 11vw;
+    }
+    .csiImg {
+      height: 75%;
+    }
+    .buttonSize {
+      font-size: 100%
+    }
+    .checkoutConfirmationModal {
+      height: 34vh;
+    }
+  }
+
+  /* Landscape */
+@media only screen
+  and (max-width: 1024px)
+  and (orientation: landscape) {
+    .welcomeModal {
+      height: 18vh;
+    }
+    .jumbotronImgContainer {
+      height: 45vh;
+    }
+    .cardSize {
+      height: 28vh;
+      font-size: 75%;
+    }
+    .productDetailsTooltip {
+      width: 8.5%;
+    }
+    .buttonSize {
+      font-size: 83%
+    }
+    .modalBody {
+      height: 50vh;
+      width: 46vw;
+    }
+    .csiBody {
+      height: 21vh;
+      width: 32vw;
+      /* font-size: 70%; */
+    }
+    .checkoutConfirmationModal {
+      height: 46vh;
+    }
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait */
+@media only screen
+  and (max-width: 375px)
+  and (orientation: portrait) {
+
   }

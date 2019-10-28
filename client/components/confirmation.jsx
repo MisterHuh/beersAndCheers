@@ -26,7 +26,7 @@ export const Confirmation = props => {
       <div id="productSummary" className="d-flex flex-row mt-2">
         <div id="cartDetails" className="w-50 d-flex flex-column mr-4">
           <h2 className="d-inline border-bottom pb-2">
-            Purchase Summary
+            Order Summary
             <div className="cartQtyText d-inline text-muted ml-1">({order.count} {itemsVerbiage})</div>
           </h2>
           {product.map(item => {

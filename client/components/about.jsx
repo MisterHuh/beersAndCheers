@@ -7,7 +7,7 @@ export const About = () => {
   return (
     <div className="d-flex flex-column px-5 pb-5">
 
-      <h1 className="border-bottom my-3 text-center pb-2">Beers & Cheers</h1>
+      <h1 className="border-bottom my-3 text-center pb-2">Cheers & Beers</h1>
 
       <div className=" d-flex flex-row">
         <div className="w-75 mr-3">

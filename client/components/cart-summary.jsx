@@ -1,10 +1,9 @@
 import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 import PriceSummary from './priceSummary';
-import { Button } from 'reactstrap';
 
 export const CartSummary = props => {
-  const imgSrc = './images/general/emptyCart.png';
+  const imgSrc = './images/general/emptyCart.pngTEST';
 
   let cartQuantity = props.cartQuantity;
   let itemsVerbiage;
@@ -22,7 +21,7 @@ export const CartSummary = props => {
       >
         <h1 className="border-bottom mt-3 pb-2">Your Cart Is Empty!</h1>
         <img onClick={() => props.setView('catalog', '')} src={imgSrc} alt="emptyCart" className="mx-auto d-block mb-5" />
-        <div className="drinkResponsibly mb-3">Please drink responsibly</div>
+        <div className="drinkResponsibly">Please drink responsibly</div>
       </div>
     );
   } else {
@@ -55,14 +54,14 @@ export const CartSummary = props => {
 
             <div className="text-center pt-4">
               <div className="m-3">
-                <Button outline color="primary"
+                <div
                   onClick={() => props.setView('catalog', '')}
-                  className="w-50 bg-primary text-white font-weight-bold">Continue Shopping</Button>
+                  className="test rounded w-50 m-auto px-2 py-1 bg-primary text-white font-weight-bold">Continue Shopping</div>
               </div>
               <div className="mx-3 mt-3 mb-5">
-                <Button outline color="success"
+                <div
                   onClick={() => props.setView('checkout', '')}
-                  className="w-50 bg-success text-white font-weight-bold">Checkout</Button>
+                  className="rounded w-50 m-auto px-2 py-1 bg-success text-white font-weight-bold">Checkout</div>
               </div>
             </div>
           </div>

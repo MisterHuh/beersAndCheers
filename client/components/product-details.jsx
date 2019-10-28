@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Tooltip, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Tooltip, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default class ProductDetails extends React.Component {
   constructor(props) {
@@ -125,10 +125,9 @@ export default class ProductDetails extends React.Component {
                   <div className=" w-100 m-auto">{availabilityVerbiage}<div className="d-inline ml-1">{product.availability}</div></div>
 
                   <div className=" w-100 m-auto">
-                    <Button
-                      className="w-50 bg-primary text-white font-weight-bold"
-                      outline color="primary"
-                      onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</Button>
+                    <div
+                      className="buttonSize rounded w-50 bg-primary text-white font-weight-bold m-auto px-2 py-1"
+                      onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</div>
                   </div>
                 </div>
 
@@ -141,10 +140,9 @@ export default class ProductDetails extends React.Component {
                     <i onClick={this.incrementQuantity} className="fas fa-plus-square"></i>
                   </div>
                   <div className="w-100 m-auto">
-                    <Button
-                      outline color="success"
-                      className="w-50 bg-success text-white font-weight-bold"
-                      onClick={this.addToCart}>Add To Cart</Button>
+                    <div
+                      className="buttonSize rounded w-50 bg-success text-white font-weight-bold m-auto px-2 py-1"
+                      onClick={this.addToCart}>Add To Cart</div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
                       <ModalBody className="modalBody">
@@ -175,10 +173,10 @@ export default class ProductDetails extends React.Component {
                         </div>
                       </ModalBody>
                       <ModalFooter>
-                        <Button color="primary" className="bg-primary text-white font-weight-bold"
-                          onClick={() => this.props.setView('catalog', '')}>Continue Shopping</Button>
-                        <Button color="success" className="bg-success text-white font-weight-bold"
-                          onClick={() => this.props.setView('cart', '')}>Go To Cart</Button>
+                        <div className="buttonSize rounded px-2 py-1 bg-primary text-white font-weight-bold"
+                          onClick={() => this.props.setView('catalog', '')}>Continue Shopping</div>
+                        <div className="buttonSize rounded px-2 py-1 bg-success text-white font-weight-bold"
+                          onClick={() => this.props.setView('cart', '')}>Go To Cart</div>
                       </ModalFooter>
                     </Modal>
                   </div>
