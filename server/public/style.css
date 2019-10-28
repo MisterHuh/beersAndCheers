@@ -164,7 +164,7 @@ body {
   and (max-width: 1366px)
   and (orientation: landscape) {
     .welcomeModal {
-      height: 20vh;
+      height: 21vh;
       font-size: 100%;
     }
     .drinkResponsibly {
@@ -208,7 +208,7 @@ body {
   and (max-width: 768px)
   and (orientation: portrait) {
     .jumbotronImgContainer {
-      height: 22vh;
+      height: 30vh;
     }
     .cardSize {
       height: 18vh;
@@ -217,30 +217,24 @@ body {
     .productDetailsWrapper {
       height: 30vh;
       font-size: 80%;
-    };
+    }
     .productDetailsTooltip {
-      width: 9.5;
+      width: 8.5%;
     }
     .productDetailsImgContainer {
       height: 65%;
     }
     .modalBody {
       height: 35vh;
-      width: 60vw;
+      width: 62vw;
     }
     .modalText {  /* productDetails, cart-summary-item */
       top: 35%;
     }
-    .test {
-      width: 20%
-    }
-    #testID {
-      width: 20%
-    }
     .csiBody {
       height: 18vh;
       width: 41vw;
-      font-size: 70%;
+      font-size: 80%;
     }
     .csiImgContainer {
       width: 11vw;
@@ -260,15 +254,32 @@ body {
 @media only screen
   and (max-width: 1024px)
   and (orientation: landscape) {
+    .welcomeModal {
+      height: 18vh;
+    }
     .jumbotronImgContainer {
-      height: 40vh;
+      height: 45vh;
     }
     .cardSize {
       height: 28vh;
       font-size: 75%;
     }
-  .productDetailsStatsSize {
-    /* height: 70%; */
-    /* font-size: 125%; */
-  }
+    .productDetailsTooltip {
+      width: 8.5%;
+    }
+    .buttonSize {
+      font-size: 83%
+    }
+    .modalBody {
+      height: 50vh;
+      width: 46vw;
+    }
+    .csiBody {
+      height: 21vh;
+      width: 32vw;
+      /* font-size: 70%; */
+    }
+    .checkoutConfirmationModal {
+      height: 46vh;
+    }
 }
