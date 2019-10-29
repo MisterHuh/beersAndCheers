@@ -79,6 +79,11 @@ body {
 #mainWrapper {
   /* height: 40vh; */
 }
+.productDetailsWrapper {
+  display: flex;
+  flex-direction: row;
+
+}
 .productDetailsImgContainer {
   height: 100%;
   width: 30%;
@@ -182,7 +187,7 @@ body {
       margin-bottom: 3%;
     }
     .aboutImg {
-      width: 40%
+      width: 20%
     }
     .cardSize {
       /* height: 37vh; */
@@ -352,15 +357,24 @@ body {
       /* width: 50%; */
       /* height: 100%; */
     }
+    /* #mainWrapper {
+      display: flex;
+      flex-direction: column;
+    } */
     .productDetailsWrapper {
-      height: 28vh;
-      font-size: 60%
+      height: 49vh;
+      font-size: 60%;
+      display: flex;
+      flex-direction: column;
     }
     .productDetailsImgContainer {
-      width: 28%;
+      /* width: 28%; */
     }
     .productDetailsImg {
       height: 96%;
+    }
+    .productDetailsInfoWrapper {
+      width: 100%;
     }
     .productDetailsTooltip {
       width: 13.5%;

@@ -84,7 +84,8 @@ export default class ProductDetails extends React.Component {
 
         <div className="p-3">
 
-          <div id="mainWrapper" className="productDetailsWrapper d-flex flex-row border rounded">
+          {/* <div id="mainWrapper" className="productDetailsWrapper d-flex flex-row border rounded"> */}
+          <div id="mainWrapper" className="productDetailsWrapper border rounded">
 
             <div id="imgContainer" className="productDetailsImgContainer text-center mx-auto h-100">
               <img src={product.image} alt="img" className="productDetailsImg img-fluid py-4"/>
@@ -92,14 +93,14 @@ export default class ProductDetails extends React.Component {
 
             <div id="infoWrapper" className="productDetailsInfoWrapper round d-flex flex-column border-left">
 
-              <div id="titleBrewery" className="productDetailsHeaderSize rounded text-center border-bottom">
+              <div id="titleBrewery" className="productDetailsHeaderSize rounded d-flex flex-column justify-content-space-evenly align-items-center border-bottom">
 
-                <div className="h-50">
-                  <div className="pt-2">{product.name}</div>
+                <div className="w-100 m-auto text-center">
+                  <div className="">{product.name}</div>
                 </div>
 
-                <div className="h-50 ">
-                  <div >{product.brewery}</div>
+                <div className="w-100 m-auto text-center">
+                  <div className="">{product.brewery}</div>
                 </div>
               </div>
 
