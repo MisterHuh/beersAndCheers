@@ -406,6 +406,11 @@ body {
       height: 5vh;
       line-height: 125%;
     }
+    .modalButtonSize {
+      font-size: 91%;
+      /* height: 5vh; */
+      line-height: 125%;
+    }
     .modalBody {
       height: 35vh;
       width: 95vw;

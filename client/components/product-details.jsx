@@ -174,9 +174,9 @@ export default class ProductDetails extends React.Component {
                         </div>
                       </ModalBody>
                       <ModalFooter>
-                        <div className="buttonSize rounded px-2 py-1 bg-primary text-white font-weight-bold"
+                        <div className="modalButtonSize rounded px-2 py-1 bg-primary text-white font-weight-bold"
                           onClick={() => this.props.setView('catalog', '')}>Continue Shopping</div>
-                        <div className="buttonSize rounded px-2 py-1 bg-success text-white font-weight-bold"
+                        <div className="modalButtonSize rounded px-2 py-1 bg-success text-white font-weight-bold"
                           onClick={() => this.props.setView('cart', '')}>Go To Cart</div>
                       </ModalFooter>
                     </Modal>
