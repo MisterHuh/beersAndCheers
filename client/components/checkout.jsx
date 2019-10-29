@@ -45,7 +45,7 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: false,
+      modal: true,
       orderConfirmation: false
     };
 
