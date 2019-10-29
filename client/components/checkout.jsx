@@ -295,11 +295,11 @@ export default class Checkout extends React.Component {
     }
 
     return (
-      <div className="d-flex flex-column px-5 pb-5">
+      <div className="d-flex flex-column px-5">
         <h1 className="border-bottom my-3 text-center pb-2">Checkout</h1>
-        <div className="d-flex flex-row mt-2">
+        <div className="responsiveWrapper mt-2">
 
-          <div id="personalInfo" className="w-50 d-flex flex-column mr-4">
+          <div id="personalInfo" className="responsiveDivider d-flex flex-column mr-4">
             <h2 className="border-bottom pb-2 ">Shipping Info</h2>
             <div className="mt-2 mx-3 mb-4">
               <Form>
@@ -512,7 +512,7 @@ export default class Checkout extends React.Component {
 
           </div> {/* END billingInfo container */}
 
-          <div id="pricing" className="w-50 d-flex flex-column ml-4">
+          <div id="pricing" className="responsiveDivider d-flex flex-column ml-4">
             <PriceSummary
               setView={this.props.setView}
               view={this.props.view}
