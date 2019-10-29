@@ -48,7 +48,7 @@ export default class PriceSummary extends React.Component {
     }
 
     return (
-      <div id="pricingDetails" className="ml-4">
+      <div id="pricingDetails" className="">
         <h2 className="border-bottom pb-2">Summary</h2>
 
         <div className="m-3">

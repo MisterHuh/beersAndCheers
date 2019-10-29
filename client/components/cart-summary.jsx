@@ -30,8 +30,9 @@ export const CartSummary = props => {
     return (
       <div className="d-flex flex-column px-5">
         <h1 className="border-bottom my-3 text-center pb-2">Cart Summary</h1>
-        <div className="d-flex flex-row mt-2">
-          <div id="cartDetails" className="w-50 d-flex flex-column mr-4">
+        <div className="cartSummaryWrapper mt-2">
+
+          <div id="cartDetails" className="cartSummaryDivider d-flex flex-column">
             <h2 className="d-inline border-bottom pb-2">
               Cart <div className="cartQtyText d-inline text-muted ml-1">({cartQuantity} {itemsVerbiage})</div>
             </h2>
@@ -48,7 +49,7 @@ export const CartSummary = props => {
               );
             })}
           </div>
-          <div id="pricing" className="w-50 d-flex flex-column ml-4">
+          <div id="pricing" className="cartSummaryDivider d-flex flex-column">
             <PriceSummary
               setView={props.setView}
               view={props.view}
@@ -67,6 +68,7 @@ export const CartSummary = props => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     );
