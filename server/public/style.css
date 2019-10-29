@@ -76,16 +76,12 @@ body {
 .productDetailsWrapper {
   height: 40vh;
 }
-#mainWrapper {
-  /* height: 40vh; */
-}
 .responsivePadding {
   padding: 5%
 }
 .productDetailsWrapper {
   display: flex;
   flex-direction: row;
-
 }
 .productDetailsImgContainer {
   height: 100%;
@@ -142,7 +138,7 @@ body {
 }
 .cartQtyText {
   font-size: 60%
-};
+}
 .csiBody {
   height: 31vh;
   width: 30vw;
@@ -193,7 +189,6 @@ body {
       width: 20%
     }
     .cardSize {
-      /* height: 37vh; */
       font-size: 75%;
     }
     .productDetailsWrapper {
@@ -228,10 +223,6 @@ body {
 @media only screen
   and (max-width: 768px)
   and (orientation: portrait) {
-    body {
-      /* overflow: hidden; */
-      overflow-x: hidden;
-    }
     .navbarWrapper {
       height: 5vh;
     }
@@ -320,7 +311,6 @@ body {
     .csiBody {
       height: 21vh;
       width: 32vw;
-      /* font-size: 70%; */
     }
     .checkoutConfirmationModal {
       height: 46vh;
@@ -360,10 +350,6 @@ body {
       /* width: 50%; */
       /* height: 100%; */
     }
-    /* #mainWrapper {
-      display: flex;
-      flex-direction: column;
-    } */
     .responsivePadding {
       padding: 0%;
     }
@@ -380,14 +366,7 @@ body {
       height: 96%;
     }
     .productDetailsInfoWrapper {
-      /* width: 100%; */
       height: 55vh;
-    }
-    .pdInfoText {
-
-    }
-    .productDetailsImgContainer {
-      border
     }
     .productDetailsHeaderSize {
       border-top: 2px solid #EEEEEE
@@ -408,7 +387,6 @@ body {
     }
     .modalButtonSize {
       font-size: 91%;
-      /* height: 5vh; */
       line-height: 125%;
     }
     .modalBody {
