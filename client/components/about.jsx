@@ -10,7 +10,7 @@ export const About = () => {
       <h1 className="border-bottom my-3 text-center pb-2">Cheers & Beers</h1>
 
       <div className="responsiveAbout">
-        <div className="border">
+        <div className="">
           <p>
             Beers & Cheers is a full stack shopping cart app, that allows users to browse the finest craft beers, add them to cart, and place an order.
             Over 100+ hours were spent on this application, and my goal is to continue updating it with new features and designs.
@@ -28,7 +28,7 @@ export const About = () => {
           <p>Enjoy!</p>
         </div>
 
-        <div className="aboutImgContainer border border-dark">
+        <div className="aboutImgContainer">
           <img src={beerMe} alt="beerMe" className="aboutImg" />
         </div>
 
