@@ -9,7 +9,6 @@ export const About = () => {
 
       <h1 className="test border-bottom my-3 text-center pb-2">Cheers & Beers</h1>
 
-      {/* <div className=" d-flex flex-row"> */}
       <div className="">
         <p>
             Beers & Cheers is a full stack shopping cart app, that allows users to browse the finest craft beers, add them to cart, and place an order.
@@ -22,7 +21,7 @@ export const About = () => {
         </p>
 
         <p>
-            Feel free to stop by my portfolio site (hyperlink here) or find this project on my github (hyperlink).
+          Feel free to stop by my <a href="https://www.jaehuh.network/">portfolio site</a> or find this project on my <a href="https://cheersandbeers.jaehuh.network/">github</a>.
         </p>
 
         <p>Enjoy!</p>

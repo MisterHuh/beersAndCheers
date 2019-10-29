@@ -30,7 +30,7 @@ export const Header = props => {
 
           <div className="mr-3">
             <div onClick={() => props.setView('cart', '')} className="d-inline">Cart </div>
-            <Badge pill className="test d-inline">{cartQuantity}</Badge></div>
+            <Badge pill className="d-inline">{cartQuantity}</Badge></div>
         </div>
 
       </div>

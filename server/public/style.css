@@ -22,9 +22,6 @@ body {
   /* background-image: url("./images/general/logo.png"); */
   height: 100%
 }
-.test {
-  vertical-align: middle;
-}
 .aboutImg {
   /* background-image: url("./images/general/aboutMe.gif"); */
   width: 30%
@@ -463,15 +460,21 @@ body {
     .buttonSize {
       font-size: 79%;
     }
+    #modalWrapper {
+      width: 40vw;
+    }
     .modalBody {
-      height: 50vh;
+      height: 60vh;
       width: 40vw;
     }
     .modalText {
-      font-size: 90%;
+      font-size: 85%;
     }
     .modalImg {
       height: 110%;
+    }
+    #removeModal {
+      width: 43vw;
     }
     .csiBody {
       height: 42vh;
@@ -513,6 +516,9 @@ body {
       font-size: 91%;
       height: 6vh;
     }
+    .emptyCartContainer {
+      height: 44vh
+    }
     .modalBody {
       height: 38%;
     }
@@ -522,7 +528,41 @@ body {
     #pricingDetails {
       font-size: 100%;
     }
-  .checkoutConfirmationModal {
+    .checkoutConfirmationModal {
     height: 53vh
+    }
   }
+
+  /* Landscape */
+@media only screen
+  and (max-width: 667px)
+  and (max-height: 375px)
+  and (orientation: landscape) {
+    .jumboImgContainer {
+      height: 50vh
+    }
+    .cardSize {
+      height: 42vh;
+      font-size: 58%;
+    }
+    .productDetailsInfoWrapper {
+      font-size: 80%;
+    }
+    .buttonSize {
+      /* font-size: 103%; */
+    }
+    .tooltip {
+      font-size: 80%
+    }
+    #modalWrapper {
+      width: 50vw;
+    }
+    .modalBody {
+      height: 57vh;
+      width: 50vw;
+      font-size: 90%
+    }
+    .modalText {
+      top: 30%
+    }
   }
