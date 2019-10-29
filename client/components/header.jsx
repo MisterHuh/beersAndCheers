@@ -18,7 +18,7 @@ export const Header = props => {
 
         <div className="navbarContainer d-flex flex-row align-items-center justify-content-center w-50" onClick={() => props.setView('catalog', '')}>
           <div className="navbarContainer mr-auto mr-3">
-            <img src={logo} className="mx-2 logo mb-1 d-inline" />
+            <img src={logo} className="mx-2 logo mb-2 d-inline" />
             <div className="d-inline">Cheers & Beers</div>
           </div>
         </div>
@@ -29,8 +29,8 @@ export const Header = props => {
           </div>
 
           <div className="mr-3">
-            <div onClick={() => props.setView('cart', '')} className="">Cart <Badge pill>{cartQuantity}</Badge></div>
-          </div>
+            <div onClick={() => props.setView('cart', '')} className="d-inline">Cart </div>
+            <Badge pill className="test d-inline">{cartQuantity}</Badge></div>
         </div>
 
       </div>

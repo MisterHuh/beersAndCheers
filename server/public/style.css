@@ -1,19 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
-body {
-  font-family: 'Cinzel', cursive;
-} */
-
-/* @import url('https://fonts.googleapis.com/css?family=Cinzel:700&display=swap');
-body {
-  font-family: 'Cinzel:700', cursive;
-} */
-
-/* @import url('https://fonts.googleapis.com/css?family=Oldenburg&display=swap');
-body {
-  overflow-y:scroll;
-  font-family: 'Oldenburg', cursive;
-} */
-
 @import url('https://fonts.googleapis.com/css?family=El+Messiri&display=swap');
 
 body {
@@ -37,6 +21,9 @@ body {
 .logo {
   /* background-image: url("./images/general/logo.png"); */
   height: 100%
+}
+.test {
+  vertical-align: middle;
 }
 .aboutImg {
   /* background-image: url("./images/general/aboutMe.gif"); */
@@ -64,7 +51,6 @@ body {
   /* background-color: rgba(245, 245, 245, 0.6) */
 }
 .productListItemImgContainer {
-  /* height: 100%; */
   height: 30vh;
   width:  18vw;
 }
@@ -76,8 +62,12 @@ body {
 .productDetailsWrapper {
   height: 40vh;
 }
-#mainWrapper {
-  /* height: 40vh; */
+.responsivePadding {
+  padding: 5%
+}
+.productDetailsWrapper {
+  display: flex;
+  flex-direction: row;
 }
 .productDetailsImgContainer {
   height: 100%;
@@ -117,7 +107,7 @@ body {
 .modalImg {
   height: 100%;
 }
-.modalText {  /* productDetails, cart-summary-item */
+.modalText {
   position: relative;
   top: 40%;
 }
@@ -132,12 +122,30 @@ body {
   /* background-image: url("./images/general/emptyCart.png") */
   height: 100%;
 }
+#pricingDetails {
+  font-size: 120%;
+}
+.total {
+  font-size: 150%;
+}
+.responsiveWrapper {
+  display: flex;
+  flex-direction: row;
+}
+.responsiveDivider {
+  width: 100%;
+  margin-right: 1%;
+  margin-left: 1%;
+}
 .cartQtyText {
-  font-size: 60%
-};
+  font-size: 60%;
+  display: inline;
+}
 .csiBody {
   height: 31vh;
   width: 30vw;
+  margin-right: 9%;
+  margin-left: 9%;
 }
 .csiImgContainer {
   width: 10vw;
@@ -182,10 +190,9 @@ body {
       margin-bottom: 3%;
     }
     .aboutImg {
-      width: 40%
+      width: 20%
     }
     .cardSize {
-      /* height: 37vh; */
       font-size: 75%;
     }
     .productDetailsWrapper {
@@ -198,7 +205,7 @@ body {
       height: 55vh;
       width: 35vw;
     }
-    .modalText {  /* productDetails, cart-summary-item */
+    .modalText {
       top: 35%;
     }
     .csiBody {
@@ -220,10 +227,6 @@ body {
 @media only screen
   and (max-width: 768px)
   and (orientation: portrait) {
-    body {
-      /* overflow: hidden; */
-      overflow-x: hidden;
-    }
     .navbarWrapper {
       height: 5vh;
     }
@@ -245,7 +248,7 @@ body {
       font-size: 80%;
     }
     .productDetailsTooltip {
-      width: 8.5%;
+      width: 7.5%;
     }
     .productDetailsImgContainer {
       height: 65%;
@@ -254,7 +257,7 @@ body {
       height: 35vh;
       width: 62vw;
     }
-    .modalText {  /* productDetails, cart-summary-item */
+    .modalText {
       top: 35%;
     }
     .csiBody {
@@ -269,7 +272,7 @@ body {
       height: 75%;
     }
     .buttonSize {
-      font-size: 110%
+      font-size: 130%
     }
     .checkoutConfirmationModal {
       height: 34vh;
@@ -300,7 +303,7 @@ body {
       font-size: 75%;
     }
     .productDetailsTooltip {
-      width: 8.5%;
+      width: 6.5%;
     }
     .buttonSize {
       font-size: 83%
@@ -312,7 +315,6 @@ body {
     .csiBody {
       height: 21vh;
       width: 32vw;
-      /* font-size: 70%; */
     }
     .checkoutConfirmationModal {
       height: 46vh;
@@ -324,9 +326,16 @@ body {
 /* Portrait */
 @media only screen
   and (max-width: 375px)
+  and (max-height: 812px)
   and (orientation: portrait) {
     h1 {
       font-size: 200%;
+    }
+    h2 {
+      text-align: center
+    }
+    .welcomeModal {
+      height: 17vh;
     }
     .navbarWrapper {
       height: 5vh;
@@ -348,32 +357,171 @@ body {
     .productListItemImgContainer {
       width: 45vw;
     }
-    .productListItemImg {
-      /* width: 50%; */
-      /* height: 100%; */
+    .responsivePadding {
+      padding: 0%;
     }
     .productDetailsWrapper {
-      height: 28vh;
-      font-size: 60%
-    }
-    .productDetailsImgContainer {
-      width: 28%;
+      height: 60vh;
+      font-size: 65%;
+      display: flex;
+      flex-direction: column;
     }
     .productDetailsImg {
       height: 96%;
     }
+    .productDetailsInfoWrapper {
+      height: 55vh;
+    }
+    .productDetailsHeaderSize {
+      border-top: 2px solid #EEEEEE
+    }
+    .productDetailsStatsSize {
+      font-size: 145%;
+    }
     .productDetailsTooltip {
-      width: 13.5%;
+      width: 8.5%;
     }
     #productDesc {
       font-size: 90%
     }
+    .modalText {
+      top: 30%;
+    }
     .buttonSize {
-      font-size: 68%;
+      font-size: 91%;
+      height: 5vh;
+      line-height: 125%;
+    }
+    .modalButtonSize {
+      font-size: 91%;
+      line-height: 125%;
     }
     .modalBody {
-      height: 35vh;
-      width: 95vw;
+      height: 32vh;
+      width: 91vw;
+      font-size: 85%;
+    }
+    .responsiveWrapper {
+      direction: flex;
+      flex-direction: column;
+    }
+    .responsiveDivider {
+      width: 100%;
+    }
+    .csiBody {
+      height: 20vh;
+      width: 75vw;
+    }
+    .csiImgContainer {
+      width: 10vw;
+    }
+    .csiImg {
+      height: 50%;
+    }
+    #pricingDetails {
+      margin-top: 10%;
+    }
+    .checkoutConfirmationModal {
+      height: 43vh;
+    }
+    #shipping {
+      margin-top: 9%
+    }
+    .cartQtyText {
+      display: block;
+    }
+  }
+
+  /* Landscape */
+@media only screen
+  and (max-width: 812px)
+  and (max-height: 375px)
+  and (orientation: landscape) {
+    h1 {
+      font-size: 275%;
+    }
+    h2 {
+      text-align: center;
+    }
+    .welcomeModal {
+      height: 37vh;
+    }
+    .navbarWrapper {
+      height: 8vh;
+      font-size: 80%
+    }
+    .jumbotronImgContainer {
+      height: 55vh;
+    }
+    .cardSize {
+      height: 45vh;
+      font-size: 66%;
+    }
+    .productDetailsWrapper {
+      height: 70vh;
+    }
+    .buttonSize {
+      font-size: 79%;
+    }
+    .modalBody {
+      height: 50vh;
+      width: 40vw;
+    }
+    .modalText {
       font-size: 90%;
     }
+    .modalImg {
+      height: 110%;
+    }
+    .csiBody {
+      height: 42vh;
+      width: 43vw;
+    }
+    .csiImgContainer {
+      width: 12vw;
+    }
+    .checkoutConfirmationModal {
+      height: 94vh;
+    }
+  }
+
+
+  /* ----------- iPhone 6/7/8 ----------- */
+
+/* Portrait */
+@media only screen
+  and (max-width: 375px)
+  and (max-height: 667px)
+  and (orientation: portrait) {
+    h1 {
+      font-size: 200%;
+    }
+    h2 {
+      font-size: 150%;
+    }
+    .navbarWrapper {
+      height: 4vh;
+      font-size: 80%;
+    }
+    .jumbotronImgContainer{
+      height: 28vh;
+    }
+    .cardSize {
+      height: 30vh;
+    }
+    .buttonSize {
+      font-size: 91%;
+      height: 6vh;
+    }
+    .modalBody {
+      height: 38%;
+    }
+    .csiBody {
+      height: 22vh;
+    }
+    #pricingDetails {
+      font-size: 100%;
+    }
+  }.checkoutConfirmationModal {
+    height: 53vh
   }

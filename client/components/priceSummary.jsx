@@ -48,37 +48,37 @@ export default class PriceSummary extends React.Component {
     }
 
     return (
-      <div id="pricingDetails" className="ml-4">
+      <div id="pricingDetails" className="">
         <h2 className="border-bottom pb-2">Summary</h2>
 
         <div className="m-3">
-          <h4 className=" d-inline">Subtotal
+          <div className=" d-inline">Subtotal
             <div className=" d-inline float-right">$ {(subTotal / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div>
-          </h4>
+          </div>
         </div>
 
         <div className="m-3">
-          <h4 className=" d-inline" >Shipping
+          <div className=" d-inline" >Shipping
             <i id="shipping" className="priceSummaryTooltip ml-1 d-inline fas fa-question-circle"></i>
             <div className=" d-inline float-right">{shipping}</div>
             <Tooltip placement="right" isOpen={this.state.shippingTooltipOpen} target="shipping" toggle={this.shippingToggle}>
               Free shipping on orders of <strong>$40</strong> or more <strong>before taxes</strong>
             </Tooltip>
-          </h4>
+          </div>
         </div>
 
         <div className="m-3">
-          <h4 id="taxes" className=" d-inline">Taxes
+          <div id="taxes" className=" d-inline">Taxes
             <i id="taxes" className="priceSummaryTooltip ml-1 d-inline fas fa-question-circle"></i>
             <div className=" d-inline float-right">$ {(taxes / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div>
             <Tooltip placement="right" isOpen={this.state.taxesTooltipOpen} target="taxes" toggle={this.taxesToggle}>
               Tax rate of <strong>7.5%</strong>
             </Tooltip>
-          </h4>
+          </div>
         </div>
         <hr />
-        <div className="m-3">
-          <h3 className=" d-inline">Total <div className=" d-inline float-right">$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div> </h3>
+        <div className="m-3 total">
+          <div className=" d-inline">Total <div className=" d-inline float-right">$ {(totalAmount / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div> </div>
         </div>
       </div>
     );

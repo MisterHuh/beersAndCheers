@@ -295,11 +295,11 @@ export default class Checkout extends React.Component {
     }
 
     return (
-      <div className="d-flex flex-column px-5 pb-5">
+      <div className="d-flex flex-column px-5">
         <h1 className="border-bottom my-3 text-center pb-2">Checkout</h1>
-        <div className="d-flex flex-row mt-2">
+        <div className="responsiveWrapper mt-2">
 
-          <div id="personalInfo" className="w-50 d-flex flex-column mr-4">
+          <div id="personalInfo" className="responsiveDivider d-flex flex-column mr-4">
             <h2 className="border-bottom pb-2 ">Shipping Info</h2>
             <div className="mt-2 mx-3 mb-4">
               <Form>
@@ -512,7 +512,7 @@ export default class Checkout extends React.Component {
 
           </div> {/* END billingInfo container */}
 
-          <div id="pricing" className="w-50 d-flex flex-column ml-4">
+          <div id="pricing" className="responsiveDivider d-flex flex-column">
             <PriceSummary
               setView={this.props.setView}
               view={this.props.view}
@@ -540,8 +540,8 @@ export default class Checkout extends React.Component {
                           <div>{this.state.city}, {this.state.state}, {this.state.zipCode}</div>
                         </div>
 
-                        <div className=" w-50">
-                          <h4 className=" ">Billing Info</h4>
+                        <div className="w-50">
+                          <h4 className="">Billing Info</h4>
                           <div className=""><strong>{this.state.fullName}</strong></div>
                           <div className="">cc ending in <strong>{ccLastFourDigits}</strong></div>
                           <div className="">

@@ -82,32 +82,33 @@ export default class ProductDetails extends React.Component {
     if (this.state.product) {
       return (
 
-        <div className="p-3">
+        <div className="responsivePadding">
 
-          <div id="mainWrapper" className="productDetailsWrapper d-flex flex-row border rounded">
+          {/* <div id="mainWrapper" className="productDetailsWrapper d-flex flex-row rounded"> */}
+          <div id="mainWrapper" className="productDetailsWrapper border-right border-bottom border-left rounded">
 
-            <div id="imgContainer" className="productDetailsImgContainer text-center mx-auto h-100">
+            <div id="imgContainer" className="productDetailsImgContainer border-top text-center mx-auto h-100">
               <img src={product.image} alt="img" className="productDetailsImg img-fluid py-4"/>
             </div>
 
-            <div id="infoWrapper" className="productDetailsInfoWrapper round d-flex flex-column border-left">
+            <div id="infoWrapper" className="productDetailsInfoWrapper round d-flex flex-column w-100 border-left">
 
-              <div id="titleBrewery" className="productDetailsHeaderSize rounded text-center border-bottom">
+              <div id="titleBrewery" className="productDetailsHeaderSize rounded d-flex flex-column justify-content-space-evenly align-items-center border-top border-bottom">
 
-                <div className="h-50">
-                  <div className="pt-2">{product.name}</div>
+                <div className="w-100 m-auto text-center">
+                  <div className="">{product.name}</div>
                 </div>
 
-                <div className="h-50 ">
-                  <div >{product.brewery}</div>
+                <div className="w-100 m-auto text-center">
+                  <div className="">{product.brewery}</div>
                 </div>
               </div>
 
               <div id="infoContainer" className="productDetailsStatsSize d-flex flex-row text-center">
 
-                <div className="rounded border-right d-flex flex-column justify-content-space-evenly align-items-center h-100 w-50 p-3">
+                <div className="rounded border-right d-flex flex-column justify-content-space-evenly align-items-center h-100 w-50 pdInfoText">
 
-                  <div className=" w-100 m-auto">{product.abv}%
+                  <div className="w-100 m-auto">{product.abv}%
                     <div className="d-inline ml-1">ABV</div>
                     <img id="abvInfo" src={abvIcon} className="productDetailsTooltip ml-1 d-inline fas fa-question-circle"></img>
                     <Tooltip placement="right" isOpen={this.state.abvToolTipOpen} target="abvInfo" toggle={this.abvToggle}>
@@ -115,37 +116,37 @@ export default class ProductDetails extends React.Component {
                     </Tooltip>
                   </div>
 
-                  <div className="  w-100 m-auto">{product.ibu}
+                  <div className="w-100 m-auto">{product.ibu}
                     <div className="d-inline ml-1">IBU</div>
                     <img id="ibuInfo" src={ibuIcon} className="productDetailsTooltip ml-1 d-inline fas fa-question-circle"></img>
                     <Tooltip placement="right" isOpen={this.state.ibuToolTipOpen} target="ibuInfo" toggle={this.ibuToggle}>
                       <strong> International Bitterness Units</strong> are a chemical measurement of the number of bittering compounds
                     </Tooltip>
                   </div>
-                  <div className=" w-100 m-auto"><div className="d-inline">{product.availability}</div></div>
+                  <div className="w-100 m-auto"><div className="d-inline">{product.availability}</div></div>
 
-                  <div className=" w-100 m-auto">
+                  <div className="w-100 m-auto">
                     <div
-                      className="buttonSize rounded w-50 bg-primary text-white font-weight-bold m-auto px-2 py-1"
+                      className="buttonSize text-align-center rounded w-50 bg-primary text-white font-weight-bold m-auto px-2 py-1"
                       onClick={() => { this.props.setView('catalog'); }}>Back To Catalog</div>
                   </div>
                 </div>
 
-                <div className="rounded d-flex flex-column justify-content-space-evenly align-items-center h-100 w-50 p-3">
-                  <div className=" w-100 m-auto">{product.type}</div>
-                  <div className=" w-100 m-auto">$ <div className="d-inline">{((product.price) / 100).toFixed(2)}</div></div>
-                  <div className=" w-100 m-auto">
+                <div className="rounded d-flex flex-column justify-content-space-evenly align-items-center h-100 w-50">
+                  <div className="w-100 m-auto">{product.type}</div>
+                  <div className="w-100 m-auto">$ <div className="d-inline">{((product.price) / 100).toFixed(2)}</div></div>
+                  <div className="w-100 m-auto">
                     <i onClick={this.decrementQuantity} className="fas fa-minus-square"></i>
                     <div className="d-inline px-3 ">{quantity}</div>
                     <i onClick={this.incrementQuantity} className="fas fa-plus-square"></i>
                   </div>
                   <div className="w-100 m-auto">
                     <div
-                      className="buttonSize rounded w-50 bg-success text-white font-weight-bold m-auto px-2 py-1"
+                      className="buttonSize text-align-center rounded w-50 bg-success text-white font-weight-bold m-auto px-2 py-1"
                       onClick={this.addToCart}>Add To Cart</div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
-                      <ModalBody className="modalBody">
+                      <ModalBody className="modalBody m-auto">
                         <div className="modalContainer d-flex flex-row">
 
                           <img src={product.image} alt="beerImg" className="modalImg rounded w-50 text-center border-right p-3"/>
@@ -173,9 +174,9 @@ export default class ProductDetails extends React.Component {
                         </div>
                       </ModalBody>
                       <ModalFooter>
-                        <div className="buttonSize rounded px-2 py-1 bg-primary text-white font-weight-bold"
+                        <div className="modalButtonSize rounded px-2 py-1 bg-primary text-white font-weight-bold"
                           onClick={() => this.props.setView('catalog', '')}>Continue Shopping</div>
-                        <div className="buttonSize rounded px-2 py-1 bg-success text-white font-weight-bold"
+                        <div className="modalButtonSize rounded px-2 py-1 bg-success text-white font-weight-bold"
                           onClick={() => this.props.setView('cart', '')}>Go To Cart</div>
                       </ModalFooter>
                     </Modal>
