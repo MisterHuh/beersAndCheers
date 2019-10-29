@@ -7,28 +7,29 @@ export const About = () => {
   return (
     <div className="d-flex flex-column px-5 pb-5">
 
-      <h1 className="test border-bottom my-3 text-center pb-2">Cheers & Beers</h1>
+      <h1 className="border-bottom my-3 text-center pb-2">Cheers & Beers</h1>
 
-      <div className="">
-        <p>
+      <div className="responsiveAbout">
+        <div className="border">
+          <p>
             Beers & Cheers is a full stack shopping cart app, that allows users to browse the finest craft beers, add them to cart, and place an order.
             Over 100+ hours were spent on this application, and my goal is to continue updating it with new features and designs.
-          <p>If you have any questions about the app or want to grab a beer, don't hesitate to contact me! </p>
-        </p>
+            If you have any questions about the app or want to grab a beer, don't hesitate to contact me!
+          </p>
 
-        <p>
-          <strong>Please note that this is simply a demo site and not a real e-commerce store.</strong>
-        </p>
+          <p>
+            <strong>Please note that this is simply a demo site and not a real e-commerce store.</strong>
+          </p>
 
-        <p>
+          <p>
           Feel free to stop by my <a href="https://www.jaehuh.network/">portfolio site</a> or find this project on my <a href="https://cheersandbeers.jaehuh.network/">github</a>.
-        </p>
+          </p>
 
-        <p>Enjoy!</p>
-        {/* </div> */}
+          <p>Enjoy!</p>
+        </div>
 
-        <div className="m-auto">
-          <img src={beerMe} alt="beerMe" className="aboutImg d-block m-auto"/>
+        <div className="aboutImgContainer border border-dark">
+          <img src={beerMe} alt="beerMe" className="aboutImg" />
         </div>
 
       </div>

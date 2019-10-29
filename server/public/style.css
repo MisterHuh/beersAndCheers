@@ -11,6 +11,10 @@ body {
   height: 14vh;
   font-size: 100%;
 }
+.responsiveAbout {
+  display: flex;
+  flex-direction: row;
+}
 .navbarWrapper {
   height: 5vh;
   background-color: #F9F9F9;
@@ -22,9 +26,12 @@ body {
   /* background-image: url("./images/general/logo.png"); */
   height: 100%
 }
+.aboutImgContainer {
+  width: 25vw;
+}
 .aboutImg {
   /* background-image: url("./images/general/aboutMe.gif"); */
-  width: 30%
+  width: 100%
 }
 .jumbotronImgContainer {
   height: 55vh;
@@ -186,8 +193,11 @@ body {
       font-size: 75%;
       margin-bottom: 3%;
     }
+    .aboutImgContainer {
+      width: 52vw;
+    }
     .aboutImg {
-      width: 20%
+      width: 100%
     }
     .cardSize {
       font-size: 75%;
