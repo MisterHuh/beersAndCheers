@@ -157,6 +157,8 @@ body {
 .csiBody {
   height: 31vh;
   width: 30vw;
+  margin-right: 9%;
+  margin-left: 9%;
 }
 .csiImgContainer {
   width: 10vw;
@@ -434,5 +436,8 @@ body {
     #pricingDetails {
       margin-top: 10%;
       /* font-size: 90%; */
+    }
+    .checkoutConfirmationModal {
+      height: 43vh;
     }
   }

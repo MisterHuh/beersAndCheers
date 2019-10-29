@@ -512,7 +512,7 @@ export default class Checkout extends React.Component {
 
           </div> {/* END billingInfo container */}
 
-          <div id="pricing" className="responsiveDivider d-flex flex-column ml-4">
+          <div id="pricing" className="responsiveDivider d-flex flex-column">
             <PriceSummary
               setView={this.props.setView}
               view={this.props.view}

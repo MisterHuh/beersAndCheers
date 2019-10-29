@@ -142,7 +142,7 @@ class CartSummaryItem extends React.Component {
       return (
 
         <React.Fragment>
-          <div className="csiBody d-flex flex-row mx-5 my-4 border-bottom pb-2" key={this.props.key} >
+          <div className="csiBody d-flex flex-row my-4 border-bottom pb-2" key={this.props.key} >
 
             <div className="csiImgContainer text-center text-align-center">
               <span className="d-inline-block vertical-align-bottom h-50"></span>
