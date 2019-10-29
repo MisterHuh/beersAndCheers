@@ -558,11 +558,25 @@ body {
       width: 50vw;
     }
     .modalBody {
-      height: 57vh;
+      height: 65vh;
       width: 50vw;
-      font-size: 90%
+    }
+    .modalContainer {
+      height: 100%;
     }
     .modalText {
-      top: 30%
+      top: 30%;
+      font-size: 83%
+    }
+    .csiBody {
+      height: 36vh;
+      width: 44vw;
+      font-size: 75%;
+    }
+    #removeModal {
+      width: 54vw;
+    }
+    #pricingDetails {
+     font-size: 100%;
     }
   }
