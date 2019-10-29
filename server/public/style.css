@@ -376,6 +376,12 @@ body {
     .productDetailsInfoWrapper {
       width: 100%;
     }
+    .productDetailsImgContainer {
+      border
+    }
+    .productDetailsHeaderSize {
+      border-top: 2px solid #EEEEEE
+    }
     .productDetailsTooltip {
       width: 13.5%;
     }
