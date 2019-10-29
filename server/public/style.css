@@ -350,6 +350,9 @@ body {
     h2 {
       text-align: center
     }
+    .welcomeModal {
+      height: 17vh;
+    }
     .navbarWrapper {
       height: 5vh;
       font-size: 90%
@@ -419,7 +422,7 @@ body {
     .modalBody {
       height: 32vh;
       width: 91vw;
-      font-size: 75%;
+      font-size: 85%;
     }
     .responsiveWrapper {
       direction: flex;
@@ -452,5 +455,47 @@ body {
     }
     .cartQtyText {
       display: block;
+    }
+  }
+
+  /* Landscape */
+@media only screen
+  and (max-width: 812px)
+  and (orientation: landscape) {
+    .welcomeModal {
+      height: 37vh;
+    }
+    .navbarWrapper {
+      height: 6vh;
+      font-size: 80%
+    }
+    .jumbotronImgContainer {
+      height: 55vh;
+    }
+    h1 {
+      font-size: 200%;
+    }
+    h2 {
+      /* text-align: center */
+    }
+    .cardSize {
+      height: 45vh;
+      font-size: 66%;
+    }
+    .productDetailsWrapper {
+      height: 70vh;
+    }
+    .buttonSize {
+      font-size: 79%;
+    }
+    .modalBody {
+      height: 50vh;
+      width: 40vw;
+    }
+    .modalText {
+      font-size: 90%;
+    }
+    .modalImg {
+      height: 110%;
     }
   }

@@ -146,7 +146,7 @@ export default class ProductDetails extends React.Component {
                       onClick={this.addToCart}>Add To Cart</div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
-                      <ModalBody className="modalBody">
+                      <ModalBody className="modalBody m-auto">
                         <div className="modalContainer d-flex flex-row">
 
                           <img src={product.image} alt="beerImg" className="modalImg rounded w-50 text-center border-right p-3"/>
