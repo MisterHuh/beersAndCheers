@@ -23,11 +23,11 @@ export const Confirmation = props => {
     <div className="d-flex flex-column px-5 pb-5">
       <h1 className="border-bottom my-3 text-center pb-2">Order Confirmation #{orderNumber}</h1>
 
-      <div id="productSummary" className="d-flex flex-row mt-2">
-        <div id="cartDetails" className="w-50 d-flex flex-column mr-4">
+      <div id="productSummary" className="responsiveWrapper mt-2">
+        <div id="cartDetails" className="responsiveDivider d-flex flex-column mr-4">
           <h2 className="d-inline border-bottom pb-2">
             Order Summary
-            <div className="cartQtyText d-inline text-muted ml-1">({order.count} {itemsVerbiage})</div>
+            <div className="cartQtyText text-muted ml-1">({order.count} {itemsVerbiage})</div>
           </h2>
           {product.map(item => {
             return (
@@ -41,9 +41,9 @@ export const Confirmation = props => {
           })}
         </div>
 
-        <div id="orderSummary" className="w-50 d-flex flex-column ml-4 ">
+        <div id="orderSummary" className="responsiveDivider text-center d-flex flex-column">
 
-          <div id="shipping" className="ml-4">
+          <div id="shipping" className="">
             <h2 className="border-bottom pb-2">Shipping To:</h2>
 
             <div className="m-3">
@@ -59,7 +59,7 @@ export const Confirmation = props => {
             </div>
           </div>
 
-          <div id="billing" className="ml-4 mt-2">
+          <div id="billing" className="mt-4">
             <h2 className="border-bottom pb-2">Billing To:</h2>
 
             <div className="m-3">

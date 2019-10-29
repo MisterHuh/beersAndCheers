@@ -152,7 +152,8 @@ body {
   margin-left: 1%;
 }
 .cartQtyText {
-  font-size: 60%
+  font-size: 60%;
+  display: inline;
 }
 .csiBody {
   height: 31vh;
@@ -400,6 +401,9 @@ body {
     #productDesc {
       font-size: 90%
     }
+    .modalText {
+      top: 30%;
+    }
     .buttonSize {
       font-size: 91%;
       height: 5vh;
@@ -411,8 +415,8 @@ body {
     }
     .modalBody {
       height: 32vh;
-      width: 90vw;
-      font-size: 90%;
+      width: 91vw;
+      font-size: 75%;
     }
     .responsiveWrapper {
       direction: flex;
@@ -439,5 +443,11 @@ body {
     }
     .checkoutConfirmationModal {
       height: 43vh;
+    }
+    #shipping {
+      margin-top: 9%
+    }
+    .cartQtyText {
+      display: block;
     }
   }

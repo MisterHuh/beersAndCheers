@@ -540,8 +540,8 @@ export default class Checkout extends React.Component {
                           <div>{this.state.city}, {this.state.state}, {this.state.zipCode}</div>
                         </div>
 
-                        <div className=" w-50">
-                          <h4 className=" ">Billing Info</h4>
+                        <div className="w-50">
+                          <h4 className="">Billing Info</h4>
                           <div className=""><strong>{this.state.fullName}</strong></div>
                           <div className="">cc ending in <strong>{ccLastFourDigits}</strong></div>
                           <div className="">
