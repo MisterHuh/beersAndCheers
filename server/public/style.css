@@ -253,7 +253,7 @@ body {
       font-size: 80%;
     }
     .productDetailsTooltip {
-      width: 8.5%;
+      width: 7.5%;
     }
     .productDetailsImgContainer {
       height: 65%;
@@ -277,7 +277,7 @@ body {
       height: 75%;
     }
     .buttonSize {
-      font-size: 110%
+      font-size: 130%
     }
     .checkoutConfirmationModal {
       height: 34vh;
@@ -308,7 +308,7 @@ body {
       font-size: 75%;
     }
     .productDetailsTooltip {
-      width: 8.5%;
+      width: 6.5%;
     }
     .buttonSize {
       font-size: 83%
@@ -368,8 +368,8 @@ body {
       padding: 0%;
     }
     .productDetailsWrapper {
-      height: 49vh;
-      font-size: 60%;
+      height: 60vh;
+      font-size: 65%;
       display: flex;
       flex-direction: column;
     }
@@ -380,7 +380,11 @@ body {
       height: 96%;
     }
     .productDetailsInfoWrapper {
-      width: 100%;
+      /* width: 100%; */
+      height: 55vh;
+    }
+    .pdInfoText {
+
     }
     .productDetailsImgContainer {
       border
@@ -392,13 +396,15 @@ body {
       font-size: 145%;
     }
     .productDetailsTooltip {
-      width: 13.5%;
+      width: 8.5%;
     }
     #productDesc {
       font-size: 90%
     }
     .buttonSize {
-      font-size: 80%;
+      font-size: 91%;
+      height: 5vh;
+      line-height: 125%;
     }
     .modalBody {
       height: 35vh;
