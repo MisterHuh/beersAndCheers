@@ -38,6 +38,9 @@ body {
   /* background-image: url("./images/general/logo.png"); */
   height: 100%
 }
+.test {
+  vertical-align: middle;
+}
 .aboutImg {
   /* background-image: url("./images/general/aboutMe.gif"); */
   width: 30%
