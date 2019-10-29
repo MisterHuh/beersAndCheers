@@ -486,6 +486,9 @@ body {
     .checkoutConfirmationModal {
       height: 94vh;
     }
+    .cartQtyText {
+      /* display: block; */
+    }
   }
 
 
@@ -531,6 +534,9 @@ body {
     .checkoutConfirmationModal {
     height: 53vh
     }
+    .cartQtyText {
+      display: inline
+    }
   }
 
   /* Landscape */
@@ -545,11 +551,11 @@ body {
       height: 42vh;
       font-size: 58%;
     }
+    .emptyCartContainer {
+      height: 100vh;
+    }
     .productDetailsInfoWrapper {
       font-size: 80%;
-    }
-    .buttonSize {
-      /* font-size: 103%; */
     }
     .tooltip {
       font-size: 80%
@@ -578,5 +584,8 @@ body {
     }
     #pricingDetails {
      font-size: 100%;
+    }
+    .cartQtyText {
+      display: block;
     }
   }
