@@ -82,18 +82,18 @@ export default class ProductDetails extends React.Component {
     if (this.state.product) {
       return (
 
-        <div className="p-3">
+        <div className="responsivePadding">
 
           {/* <div id="mainWrapper" className="productDetailsWrapper d-flex flex-row border rounded"> */}
-          <div id="mainWrapper" className="productDetailsWrapper border rounded">
+          <div id="mainWrapper" className="productDetailsWrapper border-right border-bottom border-left rounded">
 
-            <div id="imgContainer" className="productDetailsImgContainer text-center mx-auto h-100">
+            <div id="imgContainer" className="productDetailsImgContainer border-top text-center mx-auto h-100">
               <img src={product.image} alt="img" className="productDetailsImg img-fluid py-4"/>
             </div>
 
             <div id="infoWrapper" className="productDetailsInfoWrapper round d-flex flex-column border-left">
 
-              <div id="titleBrewery" className="productDetailsHeaderSize rounded d-flex flex-column justify-content-space-evenly align-items-center border-bottom">
+              <div id="titleBrewery" className="productDetailsHeaderSize rounded d-flex flex-column justify-content-space-evenly align-items-center border-top border-bottom">
 
                 <div className="w-100 m-auto text-center">
                   <div className="">{product.name}</div>

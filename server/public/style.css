@@ -79,6 +79,9 @@ body {
 #mainWrapper {
   /* height: 40vh; */
 }
+.responsivePadding {
+  padding: 5%
+}
 .productDetailsWrapper {
   display: flex;
   flex-direction: row;
@@ -361,6 +364,9 @@ body {
       display: flex;
       flex-direction: column;
     } */
+    .responsivePadding {
+      padding: 0%;
+    }
     .productDetailsWrapper {
       height: 49vh;
       font-size: 60%;
@@ -382,6 +388,9 @@ body {
     .productDetailsHeaderSize {
       border-top: 2px solid #EEEEEE
     }
+    .productDetailsStatsSize {
+      font-size: 145%;
+    }
     .productDetailsTooltip {
       width: 13.5%;
     }
@@ -389,7 +398,7 @@ body {
       font-size: 90%
     }
     .buttonSize {
-      font-size: 68%;
+      font-size: 80%;
     }
     .modalBody {
       height: 35vh;
