@@ -473,10 +473,11 @@ body {
       height: 55vh;
     }
     h1 {
-      font-size: 200%;
+      font-size: 275%;
     }
     h2 {
-      /* text-align: center */
+      text-align: center;
+      /* font-size: 200%; */
     }
     .cardSize {
       height: 45vh;
@@ -498,4 +499,15 @@ body {
     .modalImg {
       height: 110%;
     }
+    .csiBody {
+      height: 42vh;
+      width: 43vw;
+    }
+    .csiImgContainer {
+      width: 12vw;
+    }
+    .checkoutConfirmationModal {
+      height: 94vh;
+    }
+
   }

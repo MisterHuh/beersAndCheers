@@ -102,7 +102,7 @@ class CartSummaryItem extends React.Component {
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
               <ModalHeader toggle={this.toggle}>Remove From Cart</ModalHeader>
               <ModalBody>
-                <div className="modalBody d-flex flex-row">
+                <div className="modalBody m-auto d-flex flex-row">
                   <img src={item.image} alt="beerImg" className="modalImg rounded w-50 text-center border-right p-3" />
                   <div className="w-50 text-center">
 
