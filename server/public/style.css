@@ -522,6 +522,7 @@ body {
     #pricingDetails {
       font-size: 100%;
     }
-  }.checkoutConfirmationModal {
+  .checkoutConfirmationModal {
     height: 53vh
+  }
   }
