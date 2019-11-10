@@ -16,7 +16,9 @@ Please note that this is for demonstration purposes only.
 
 ```$ git clone https://github.com/[user_name]/cheersAndBeers.git```
 
-2. Navigate to, and open the `cheersAndBeers` directory, then install the necessary dependencies. ``` $ npm install ```
+2. Navigate to, and open the `cheersAndBeers` directory, then install the necessary dependencies. 
+
+``` $ npm install ```
 
 3. Start a dev environment with Apache2 and MySQL
    * Make sure that the port is directed to ```300```
@@ -25,7 +27,9 @@ Please note that this is for demonstration purposes only.
 
    * Create a new db_connections.php with your own credentials
 
-4. Initiate the dev server ``` $ npm run dev ```
+4. Initiate the dev server 
+
+``` $ npm run dev ```
 
 5. Go to `localhost:3000` and enjoy!
 
