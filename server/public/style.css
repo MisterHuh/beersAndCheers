@@ -213,6 +213,8 @@ body {
     }
     .cardSize {
       font-size: 75%;
+      height: 50vh;
+
     }
     .productDetailsWrapper {
       height: 50vh;
@@ -231,6 +233,9 @@ body {
       height: 30vh;
       width: 30vw;
     }
+    .csiImg {
+      width: 90%;
+    }
     .checkoutConfirmationModal {
       height: 53vh;
     }
@@ -246,6 +251,9 @@ body {
 @media only screen
   and (max-width: 768px)
   and (orientation: portrait) {
+    .welcomeModal {
+      height: 15vh;
+    }
     .navbarWrapper {
       height: 5vh;
     }
@@ -314,7 +322,8 @@ body {
       height: 6vh;
     }
     .welcomeModal {
-      height: 18vh;
+      height: 20vh;
+      font-size: 120%;
     }
     .jumbotronImgContainer {
       height: 45vh;
@@ -367,7 +376,7 @@ body {
       text-align: center
     }
     .welcomeModal {
-      height: 17vh;
+      height: 18vh;
     }
     .navbarWrapper {
       height: 5vh;
@@ -484,7 +493,7 @@ body {
       text-align: center;
     }
     .welcomeModal {
-      height: 37vh;
+      height: 38vh;
     }
     .navbarWrapper {
       height: 8vh;
@@ -551,6 +560,9 @@ body {
     .navbarWrapper {
       height: 4vh;
       font-size: 80%;
+    }
+    .welcomeModal {
+      height: 22vh;
     }
     .jumbotronImgContainer{
       height: 28vh;
