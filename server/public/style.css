@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=El+Messiri&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Rye&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Gentium+Basic:400i&display=swap");
 
 body {
   font-family: 'El+Messiri', sans-serif;
@@ -48,6 +49,7 @@ body {
   object-fit: cover
 }
 .jumbotronText1, .jumbotronText2, .jumbotronText3  {
+  font-family: 'Gentium Basic', sans-serif;
   /* top: 15%; */
   left: 8%;
   color: white;
