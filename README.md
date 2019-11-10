@@ -5,7 +5,7 @@ Cheers & Beers is a full stack shopping cart app that allows users to browse loc
 Please note that this is for demonstration purposes only.
 
 ## [Live Demo](https://cheersandbeers.jaehuh.network/)
-![picture](/server/images/general/readMe.gif)
+![picture](./server/images/general/readMe.gif)
 
 
 ## Getting Started
