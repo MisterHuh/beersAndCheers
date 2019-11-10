@@ -13,26 +13,22 @@ Please note that this is for demonstration purposes only.
 
 ### Initial Setup
 
-1. Fork this repo and clone your fork from the terminal.
+1. Fork this repo and clone your fork from the terminal.   ```$ git clone https://github.com/[user_name]/cheersAndBeers.git```
 
-```$ git clone https://github.com/[user_name]/cheersAndBeers.git```
-
-2. Navigate to, and open the `cheersAndBeers` directory.
-
-3. Install the necessary dependencies.
+2. Navigate to, and open the `cheersAndBeers` directory, then install the necessary dependencies.
 
 ``` $ npm install ```
 
-4. Start a dev environment with Apache2 and MySQL
+3. Start a dev environment with Apache2 and MySQL
     * Make sure that the port is directed to ```300```
     * Create a database in phpMyAdmin and import the sql file
     * Create a new db_connections.php with your own credentials
 
-5. Initiate the dev server
+4. Initiate the dev server
 
 ``` $ npm run dev ```
 
-6. Go to `localhost:3000` and enjoy!
+5. Go to `localhost:3000` and enjoy!
 
 ## Contributing
 
