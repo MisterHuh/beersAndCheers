@@ -17,11 +17,24 @@ Please note that this is for demonstration purposes only.
 
 1. Fork this repo and clone your fork from the terminal.
 
-```$ git clone https://github.com/[user_name]/gotMatch.git```
+```$ git clone https://github.com/[user_name]/cheersAndBeers.git```
 
-2. Navigate to, and open the `gotMatch` directory.
+2. Navigate to, and open the `cheersAndBeers` directory.
 
-3. Open the `index.html` and emjoy!
+3. Install the necessary dependencies.
+
+``` $ npm install ```
+
+4. Start a dev environment with Apache2 and MySQL
+* Make sure that the port is directed to ```300```
+* Create a database in phpMyAdmin and import the sql file
+* Create a new db_connections.php with your own credentials
+
+5. Initiate the dev server
+
+``` $ npm run dev ```
+
+6. Go to `localhost:3000` and enjoy!
 
 ## Contributing
 
@@ -30,9 +43,13 @@ Please feel free to fork this repo, make changes, submit pull requests, and send
 ## Built With
 
 * JavaScript
-* jQuery
+* React
+* Booststrap 4
+* Reactstrap
 * HTML5
 * CSS3
+* MySQL + phpMyAdmin
+* PHP
 
 ## License
 [MIT License](https://opensource.org/licenses/mit-license.php)
