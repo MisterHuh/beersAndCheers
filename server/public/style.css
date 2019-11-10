@@ -50,7 +50,6 @@ body {
 }
 .jumbotronText1, .jumbotronText2, .jumbotronText3  {
   font-family: 'Gentium Basic', sans-serif;
-  /* top: 15%; */
   left: 8%;
   color: white;
   text-shadow: 1px 1px black
@@ -205,6 +204,10 @@ body {
       font-size: 75%;
       margin-bottom: 3%;
     }
+    .jumbotronText2 {
+      top: 40%;
+      left: 22%;
+    }
     .aboutImgContainer {
       width: 52vw;
     }
@@ -214,7 +217,6 @@ body {
     .cardSize {
       font-size: 75%;
       height: 50vh;
-
     }
     .productDetailsWrapper {
       height: 50vh;
@@ -259,6 +261,10 @@ body {
     }
     .jumbotronImgContainer {
       height: 30vh;
+    }
+    .jumbotronText2 {
+      top: 42%;
+      left: 33%;
     }
     .responsiveAbout {
       display: flex;
@@ -328,6 +334,10 @@ body {
     .jumbotronImgContainer {
       height: 45vh;
     }
+    .jumbotronText2 {
+      top: 40%;
+      left: 27%;
+    }
     .responsiveAbout {
       display: flex;
       flex-direction: column;
@@ -384,6 +394,13 @@ body {
     }
     .jumbotronImgContainer {
       height: 20vh;
+    }
+    .jumbotronText1, .jumbotronText2 {
+      font-size: 130%;
+    }
+    .jumbotronText2 {
+      top: 42%;
+      left: 34%;
     }
     .emptyCartContainer {
       height: 37vh
@@ -502,6 +519,13 @@ body {
     .jumbotronImgContainer {
       height: 55vh;
     }
+    .jumbotronText1, .jumbotronText2 {
+      font-size: 180%;
+    }
+    .jumbotronText2 {
+      top: 45%;
+      left: 25%;
+    }
     .cardSize {
       height: 45vh;
       font-size: 66%;
@@ -601,6 +625,10 @@ body {
   and (orientation: landscape) {
     .jumboImgContainer {
       height: 50vh
+    }
+    .jumbotronText2 {
+      top: 45%;
+      left: 28%;
     }
     .cardSize {
       height: 42vh;
