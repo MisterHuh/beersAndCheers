@@ -1,7 +1,10 @@
+# Cheers & Beers
+
 Cheers & Beers is a full stack shopping cart app, that allows users to 
 * browse the finest craft beers
 * add them to cart
 * and place an order.
+
 
 Please note that this is for demonstration purposes only.
 
