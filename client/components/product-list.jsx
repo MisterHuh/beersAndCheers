@@ -36,7 +36,7 @@ class ProductList extends React.Component {
       <React.Fragment>
         <Modal isOpen={this.state.welcomeModal} backdrop="static" keyboard={false} className="">
           <div className="rounded text-center">
-            <div className="mt-3">Age Verification</div>
+            <div className="welcomeModalHeader mt-3">Age Verification</div>
             <div className="welcomeModal d-flex flex-column align-items-center">
               <div className="mt-2">You must be at least 21 to enter</div>
               <div className=" my-3">Are you over 21?</div>
