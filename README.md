@@ -1,11 +1,11 @@
 # Cheers & Beers
 
-Cheers & Beers is a full stack shopping cart app that allows users to browse local craft beers, add them to cart, and place an order.
+Cheers & Beers is a full stack e-commerce website that allows users to browse local craft beers, add them to cart, and place an order.
 
 Please note that this is for demonstration purposes only.
 
 ## [Live Demo](https://cheersandbeers.jaehuh.network/)
-![picture](/server/images/general/readMe.gif)
+![picture](server/public/images/general/readMe.gif)
 
 
 ## Getting Started
@@ -16,16 +16,18 @@ Please note that this is for demonstration purposes only.
 
 ```$ git clone https://github.com/[user_name]/cheersAndBeers.git```
 
-2. Navigate to, and open the `cheersAndBeers` directory, then install the necessary dependencies.
+2. Navigate to, and open the `cheersAndBeers` directory, then install the necessary dependencies. 
 
 ``` $ npm install ```
 
 3. Start a dev environment with Apache2 and MySQL
    * Make sure that the port is directed to ```300```
+
    * Create a database in phpMyAdmin and import the sql file
+
    * Create a new db_connections.php with your own credentials
 
-4. Initiate the dev server
+4. Initiate the dev server 
 
 ``` $ npm run dev ```
 
