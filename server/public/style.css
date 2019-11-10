@@ -44,11 +44,18 @@ body {
   background-Repeat: no-repeat;
   object-fit: cover
 }
-.jumbotronText {
-  top: 15%;
-  right: 10%;
-  color: black;
-  text-shadow: 1px 1px white
+.jumbotronText1, .jumbotronText2, .jumbotronText3  {
+  /* top: 15%; */
+  left: 8%;
+  color: white;
+  text-shadow: 1px 1px black
+}
+.jumbotronText1 {
+  top: 25%
+}
+.jumbotronText2 {
+  top: 38%;
+  left: 15%;
 }
 .cardSize {
   height: 40vh;
