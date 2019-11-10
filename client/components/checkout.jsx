@@ -45,7 +45,7 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: false,
+      modal: true,
       orderConfirmation: false
     };
 
@@ -283,9 +283,7 @@ export default class Checkout extends React.Component {
         };
       } else if (this.state.creditCardNumber[15] >= 3) {
         mcColor = {
-          // color: '#0a3a82'
           color: '#CC0000'
-          // background: 'linear-gradient(#CC0000, #FF9900, #000066)'
         };
       } else {
         visaColor = {
@@ -312,6 +310,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="firstName"
                         placeholder="First Name"
+                        value={this.state.firstName}
                       />
                       {formErrors.firstName.length > 0 && (
                         <small className="text-danger">{formErrors.firstName}</small>
@@ -326,6 +325,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="lastName"
                         placeholder="Last Name"
+                        value={this.state.lastName}
                       />
                       {formErrors.lastName.length > 0 && (
                         <small className="text-danger">{formErrors.lastName}</small>
@@ -342,6 +342,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="eMail"
                         placeholder="E-mail"
+                        value={this.state.eMail}
                       />
                       {formErrors.eMail.length > 0 && (
                         <small className="text-danger">{formErrors.eMail}</small>
@@ -357,6 +358,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="phoneNumber"
                         placeholder="Phone Number"
+                        value={this.state.phoneNumber}
                       />
                       {formErrors.phoneNumber.length > 0 && (
                         <small className="text-danger">{formErrors.phoneNumber}</small>
@@ -373,6 +375,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="streetAddress"
                         placeholder="Street Address"
+                        value={this.state.streetAddress}
                       />
                       {formErrors.streetAddress.length > 0 && (
                         <small className="text-danger">{formErrors.streetAddress}</small>
@@ -386,6 +389,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="city"
                         placeholder="City"
+                        value={this.state.city}
                       />
                       {formErrors.city.length > 0 && (
                         <small className="text-danger">{formErrors.city}</small>
@@ -403,6 +407,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="state"
                         placeholder="State"
+                        value={this.state.state}
                       />
                       {formErrors.state.length > 0 && (
                         <small className="text-danger">{formErrors.state}</small>
@@ -417,6 +422,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="zipCode"
                         placeholder="Zipcode"
+                        value={this.state.zipCode}
                       />
                       {formErrors.zipCode.length > 0 && (
                         <small className="text-danger">{formErrors.zipCode}</small>
@@ -441,6 +447,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="fullName"
                         placeholder="Full Name"
+                        value={this.state.fullName}
                       />
                       {formErrors.fullName.length > 0 && (
                         <small className="text-danger">{formErrors.fullName}</small>
@@ -467,6 +474,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="creditCardNumber"
                         placeholder="Card Number"
+                        value={this.state.creditCardNumber}
                       />
                       {formErrors.creditCardNumber.length > 0 && (
                         <small className="text-danger">{formErrors.creditCardNumber}</small>
@@ -485,6 +493,8 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="monthYear"
                         placeholder="MM/YY"
+                        value-={this.state.monthYear}
+                        value={this.state.monthYear}
                       />
                       {formErrors.monthYear.length > 0 && (
                         <small className="text-danger">{formErrors.monthYear}</small>
@@ -499,6 +509,7 @@ export default class Checkout extends React.Component {
                         onChange={this.handleInput}
                         name="cvv"
                         placeholder="CVV"
+                        value={this.state.cvv}
                       />
                       {formErrors.cvv.length > 0 && (
                         <small className="text-danger">{formErrors.cvv}</small>

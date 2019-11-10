@@ -84,7 +84,6 @@ export default class ProductDetails extends React.Component {
 
         <div className="responsivePadding">
 
-          {/* <div id="mainWrapper" className="productDetailsWrapper d-flex flex-row rounded"> */}
           <div id="mainWrapper" className="productDetailsWrapper border-right border-bottom border-left rounded">
 
             <div id="imgContainer" className="productDetailsImgContainer border-top text-center mx-auto h-100">
@@ -144,7 +143,7 @@ export default class ProductDetails extends React.Component {
                     <div
                       className="buttonSize text-align-center rounded w-50 bg-success text-white font-weight-bold m-auto px-2 py-1"
                       onClick={this.addToCart}>Add To Cart</div>
-                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <Modal id="modalWrapper" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>Added To Cart!</ModalHeader>
                       <ModalBody className="modalBody m-auto">
                         <div className="modalContainer d-flex flex-row">

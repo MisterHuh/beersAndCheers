@@ -99,7 +99,7 @@ class CartSummaryItem extends React.Component {
                 className="rounded w-50 d-inline ml-5 px-2 py-2 bg-danger text-white font-weight-bold">Remove</div>
             </div>
 
-            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+            <Modal id="removeModal" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
               <ModalHeader toggle={this.toggle}>Remove From Cart</ModalHeader>
               <ModalBody>
                 <div className="modalBody m-auto d-flex flex-row">
