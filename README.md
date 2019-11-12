@@ -21,7 +21,7 @@ Please note that this is for demonstration purposes only.
 ``` $ npm install ```
 
 3. Start a dev environment with Apache2 and MySQL
-   * Make sure that the port is directed to ```300```
+   * Make sure that the port is directed to ```3000```
 
    * Create a database in phpMyAdmin and import the `cheers_and_beers.1sq` file
 
