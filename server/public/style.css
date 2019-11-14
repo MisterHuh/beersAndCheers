@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=El+Messiri&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Rye&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Gentium+Basic:400i&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Caveat&display=swap");
 
 body {
   font-family: 'El+Messiri', sans-serif;
@@ -23,7 +24,6 @@ body {
   height: 100%;
 }
 .logo {
-  /* background-image: url("./images/general/logo.png"); */
   height: 100%;
 }
 .responsiveAbout {
@@ -34,14 +34,12 @@ body {
   width: 25vw;
 }
 .aboutImg {
-  /* background-image: url("./images/general/aboutMe.gif"); */
   width: 100%
 }
 .jumbotronImgContainer {
   height: 55vh;
 }
 .jumbotronImg {
-  /* background-image: url("./images/general/jumbotron.jpg"); */
   width: 100%;
   height: 100%;
   position: relative;
@@ -49,10 +47,10 @@ body {
   object-fit: cover
 }
 .jumbotronText1, .jumbotronText2, .jumbotronText3  {
-  font-family: 'Gentium Basic', sans-serif;
+  font-family: 'Caveat','Gentium Basic', sans-serif;
   left: 8%;
-  color: white;
-  text-shadow: 1px 1px black
+  color: rgb(223, 220, 205);
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
 }
 .jumbotronText1 {
   top: 25%
@@ -63,7 +61,6 @@ body {
 }
 .cardSize {
   height: 40vh;
-  /* background-color: rgba(245, 245, 245, 0.6) */
 }
 .productListItemImgContainer {
   height: 30vh;
@@ -109,8 +106,6 @@ body {
 .productDetailsTooltip {
   width: 3.5%;
   vertical-align: top;
-  /* background-image: url("./images/general/abv.png"); */
-  /* background-image: url("./images/general/ibu.png"); */
 }
 .modalBody {
   height: 40vh;
@@ -134,7 +129,6 @@ body {
   height: 90vh
 }
 .emptyCartImg {
-  /* background-image: url("./images/general/emptyCart.png") */
   height: 100%;
 }
 #pricingDetails {
