@@ -39,23 +39,4 @@ switch($method) {
 
 
 
-
-
-// if ($method == "GET") {
-//   http_response_code(200);
-//   require_once('cartGet.php');
-// } else if ($method == "POST") {
-//   http_response_code(201);
-//   require_once("cartAdd.php");
-// } else if ($method == "DELETE") {
-//   require_once(`cartDelete.php`);
-// } else {
-//   http_response_code(404);
-//   print(json_encode([
-//     "error" => "Not Found",
-//     "message" => "Cannot $method /api/cart.php"
-//   ]));
-// }
-
-
 ?>

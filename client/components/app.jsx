@@ -69,9 +69,6 @@ export default class App extends React.Component {
       .catch(error => {
         // console.error('delete error: ', error);
       });
-
-    /* updates the cart once the fetch is completed */
-    /* is this necessary?? */
     this.retrieveCart();
   }
 

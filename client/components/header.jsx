@@ -7,7 +7,6 @@ export const Header = props => {
 
   let cartQuantity = props.cartQuantity;
   if (cartQuantity > 99) {
-
     cartQuantity = '99+';
   }
 
