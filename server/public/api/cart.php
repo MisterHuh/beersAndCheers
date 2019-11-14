@@ -1,7 +1,5 @@
 <?php
 
-// to check if cartAdd is being called from whoever defined INTERNAL constant
-// defines a INTERNAL, set to the value true  || case sensitive too?
 define("INTERNAL", true);
 
 require_once("functions.php");
@@ -10,8 +8,6 @@ set_exception_handler("error_handler");
 session_start();
 startUp();
 
-/*  accessing the "REQUESTED_METHOD" key from the server, which was found using $_SERVER
-    looking for GET / POST / DELETE */
 $method = $_SERVER["REQUEST_METHOD"];
 
 switch($method) {
