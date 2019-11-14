@@ -9,20 +9,18 @@ if (!INTERNAL) {
 $item = file_get_contents('php://input');
 $jsonBody = getBodyData($item);
 
-if ($jsonBody["id"]) {          // if $jsonBody["id"] exists, proceed. Making that we are getting SOMETHING back
-  $id = $jsonBody["id"];        // set the value of $jsonBody["id"] to $id
-  if (intval($id) < 1) {        // convert $id to a number. if $id is LESS THAN 1
-    throw new Exception("id must be greater than 0");   // we got something back, but it's not what we want.
+if ($jsonBody["id"]) {
+  $id = $jsonBody["id"];
+  if (intval($id) < 1) {
+    throw new Exception("id must be greater than 0");
   }
-  if (getType($id) !== "integer") {   // if $id is not an integer, we got something back but it's not what we want.
-    throw new Exception("id must be a number");   // form of error checking to see what the problem could be
+  if (getType($id) !== "integer") {
+    throw new Exception("id must be a number");
   }
 } else {
   throw new Exception("id required to add to cart");
 }
 
-// var_dump($jsonBody["count"]);
-// this is to grab the count of each item from this.state.count, not from item.product_id
 if ($jsonBody["count"]) {
   $count = $jsonBody["count"];
 } else {
@@ -30,10 +28,10 @@ if ($jsonBody["count"]) {
 
 }
 
-if (array_key_exists("cartId", $_SESSION)) {   /* if the "cartID" from $_SESSION is empty */
-  $cartId = $_SESSION['cartId'];               /* $cartId will take the value of the $_SESSION() */
+if (array_key_exists("cartId", $_SESSION)) {
+  $cartId = $_SESSION['cartId'];
 } else {
-  $cartId = false;                             /* $cartId will not exist */
+  $cartId = false;
 };
 
 $query = "UPDATE cartItems SET count = {$count} WHERE productID = ${id}";

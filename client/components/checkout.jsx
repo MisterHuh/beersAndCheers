@@ -7,18 +7,6 @@ export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // firstName: 'Jae',
-      // lastName: 'Huh',
-      // eMail: 'jaehuh86@yahoo.com',
-      // phoneNumber: '5628339674',
-      // streetAddress: '1234 Johnson Ave',
-      // city: 'Brea',
-      // state: 'CA',
-      // zipCode: '92821',
-      // creditCardNumber: '1111473629195833',
-      // fullName: 'Jaehyuk Huh',
-      // monthYear: '09/23',
-      // cvv: '4523',
       firstName: '',
       lastName: '',
       eMail: '',
@@ -237,39 +225,39 @@ export default class Checkout extends React.Component {
 
     const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
     let buttonDisplay;
-    this.state.firstName.length >= 1 &&
-    this.state.lastName.length >= 1 &&
-    emailRegex.test(this.state.eMail) &&
-    this.state.phoneNumber.length === 10 &&
-    this.state.streetAddress.length >= 1 &&
-    this.state.city.length >= 1 &&
-    this.state.state.length === 2 &&
-    this.state.zipCode.length === 5 &&
-    this.state.creditCardNumber.length === 16 &&
-    this.state.fullName.length >= 1 &&
-    this.state.monthYear.length === 5 &&
-    this.state.cvv.length >= 3
-      ? buttonDisplay = <div
-        onClick={this.toggle}
-        className="rounded m-auto px-2 py-1 w-50 bg-success text-white font-weight-bold"
-      >Place Order</div>
-      : buttonDisplay = <div
-        className="rounded m-auto px-2 py-1 w-50 bg-secondary text-white font-weight-bold"
-      >Fill In Form</div>;
+
+    if (this.state.firstName.length >= 1 &&
+        this.state.lastName.length >= 1 &&
+        emailRegex.test(this.state.eMail) &&
+        this.state.phoneNumber.length === 10 &&
+        this.state.streetAddress.length >= 1 &&
+        this.state.city.length >= 1 &&
+        this.state.state.length === 2 &&
+        this.state.zipCode.length === 5 &&
+        this.state.creditCardNumber.length === 16 &&
+        this.state.fullName.length >= 1 &&
+        this.state.monthYear.length === 5 &&
+        this.state.cvv.length >= 3) {
+      buttonDisplay = <div onClick={this.toggle} className="rounded m-auto px-2 py-1 w-50 bg-success text-white font-weight-bold">Place Order</div>;
+    } else {
+      buttonDisplay = <div className="rounded m-auto px-2 py-1 w-50 bg-secondary text-white font-weight-bold">Fill In Form</div>;
+    }
 
     let modalButtonDisplay;
-    this.state.orderConfirmation
-      ? modalButtonDisplay = <div
+    if (this.state.orderConfirmation) {
+      modalButtonDisplay = <div
         className="rounded px-2 py-1 bg-success text-white font-weight-bold"
         onClick={() => this.placeOrder()}
-      >Place Order</div>
-      : modalButtonDisplay = <div
+      >Place Order</div>;
+    } else {
+      modalButtonDisplay = <div
         className="rounded px-2 py-1 bg-secondary text-white font-weight-bold">Check the Box!</div>;
+    }
 
     let ccLastFourDigits;
-    this.state.creditCardNumber.length === 16
-      ? ccLastFourDigits = this.state.creditCardNumber[12] + this.state.creditCardNumber[13] + this.state.creditCardNumber[14] + this.state.creditCardNumber[14]
-      : false;
+    if (this.state.creditCardNumber.length === 16) {
+      ccLastFourDigits = this.state.creditCardNumber[12] + this.state.creditCardNumber[13] + this.state.creditCardNumber[14] + this.state.creditCardNumber[14];
+    }
 
     let amexColor, disColor, mcColor, visaColor;
     if (this.state.creditCardNumber.length === 16) {
