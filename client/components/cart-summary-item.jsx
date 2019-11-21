@@ -68,16 +68,22 @@ class CartSummaryItem extends React.Component {
 
           <div className="csiImgContainer text-center text-align-center">
             <span className="d-inline-block vertical-align-bottom h-50"></span>
-            <img src={item.image} alt="img" className="csiImg img-fluid vertical-align-bottom"/>
+            <img
+              onClick={() => this.props.setView('details', item.product_id)}
+              src={item.image}
+              alt="img"
+              className="csiImg img-fluid vertical-align-bottom"/>
           </div>
 
           <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left w-75">
 
             <div
               onClick={() => this.props.setView('details', item.product_id)}
-              className=" font-weight-bold ml-4 my-2 underline-on-hover"
+              className="csiLabel font-weight-bold ml-4 my-2 underline-on-hover"
             >{item.name}</div>
-            <div className=" font-weight-bold ml-4 my-2">{item.brewery}</div>
+            <div
+              onClick={() => this.props.setView('details', item.product_id)}
+              className="csiBrewery font-weight-bold ml-4 my-2">{item.brewery}</div>
 
             <div className=" ml-4 my-2">
               <div className="d-inline mr-5">
@@ -93,10 +99,10 @@ class CartSummaryItem extends React.Component {
             <div className="ml-4 my-2 ">
               <div
                 onClick={() => this.updateCart()}
-                className="rounded w-50 d-inline px-2 py-2 bg-success text-white font-weight-bold">Update</div>
+                className="csiUpdateRemoveButton rounded w-50 d-inline px-2 py-2 bg-success text-white font-weight-bold">Update</div>
               <div
                 onClick={() => this.toggle()}
-                className="rounded w-50 d-inline ml-5 px-2 py-2 bg-danger text-white font-weight-bold">Remove</div>
+                className="csiUpdateRemoveButton rounded w-50 d-inline ml-5 px-2 py-2 bg-danger text-white font-weight-bold">Remove</div>
             </div>
 
             <Modal id="removeModal" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -126,10 +132,10 @@ class CartSummaryItem extends React.Component {
               <ModalFooter>
                 <div
                   onClick={() => this.closeModal()}
-                  className="rounded px-2 py-1 bg-primary text-white font-weight-bold">Keep In Cart</div>
+                  className="csiRemoveButton rounded px-2 py-1 bg-primary text-white font-weight-bold">Keep In Cart</div>
                 <div
                   onClick={() => this.removeItems()}
-                  className="rounded px-2 py-1 bg-danger text-white font-weight-bold">Remove From Cart</div>
+                  className="csiRemoveButton rounded px-2 py-1 bg-danger text-white font-weight-bold">Remove From Cart</div>
               </ModalFooter>
             </Modal>
 
@@ -146,16 +152,22 @@ class CartSummaryItem extends React.Component {
 
             <div className="csiImgContainer text-center text-align-center">
               <span className="d-inline-block vertical-align-bottom h-50"></span>
-              <img src={item.image} alt="img" className="csiImg img-fluid vertical-align-bottom" />
+              <img
+                onClick={() => this.props.setView('details', item.product_id)}
+                src={item.image}
+                alt="img"
+                className="csiImg img-fluid vertical-align-bottom" />
             </div>
 
             <div className=" d-flex flex-column justify-content-center align-items-flex-end ml-2 text-left">
 
               <div
                 onClick={() => this.props.setView('details', item.product_id)}
-                className=" font-weight-bold ml-4 my-2 underline-on-hover"
+                className="csiLabel font-weight-bold ml-4 my-2 underline-on-hover"
               >{item.name}</div>
-              <div className=" font-weight-bold ml-4 my-2">{item.brewery}</div>
+              <div
+                onClick={() => this.props.setView('details', item.product_id)}
+                className="csiBrewery font-weight-bold ml-4 my-2">{item.brewery}</div>
               <div className="ml-4 my-2">{'$ ' + ((item.price) / 100).toFixed(2)}</div>
               <div className="ml-4 my-2">Quantity: <strong>{this.state.count}</strong></div>
             </div>

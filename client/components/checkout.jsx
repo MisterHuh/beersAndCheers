@@ -7,30 +7,30 @@ export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: 'Jae',
-      lastName: 'Huh',
-      eMail: 'jaehuh86@yaoo.com',
-      phoneNumber: '5621234678',
-      streetAddress: '1234 Leeds Cir',
-      city: 'Westminster',
-      state: 'CA',
-      zipCode: '92821',
-      creditCardNumber: '1234123412348574',
-      fullName: 'Jaehyuk Huh',
-      monthYear: '12/14',
-      cvv: '5430',
-      // firstName: '',
-      // lastName: '',
-      // eMail: '',
-      // phoneNumber: '',
-      // streetAddress: '',
-      // city: '',
-      // state: '',
-      // zipCode: '',
-      // creditCardNumber: '',
-      // fullName: '',
-      // monthYear: '',
-      // cvv: '',
+      // firstName: 'Jae',
+      // lastName: 'Huh',
+      // eMail: 'jaehuh86@yaoo.com',
+      // phoneNumber: '5621234678',
+      // streetAddress: '1234 Leeds Cir',
+      // city: 'Westminster',
+      // state: 'CA',
+      // zipCode: '92821',
+      // creditCardNumber: '1234123412348574',
+      // fullName: 'Jaehyuk Huh',
+      // monthYear: '12/14',
+      // cvv: '5430',
+      firstName: '',
+      lastName: '',
+      eMail: '',
+      phoneNumber: '',
+      streetAddress: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      creditCardNumber: '',
+      fullName: '',
+      monthYear: '',
+      cvv: '',
       formErrors: {
         firstName: '',
         lastName: '',
@@ -45,7 +45,7 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: true,
+      modal: false,
       orderConfirmation: false
     };
 
@@ -251,20 +251,20 @@ export default class Checkout extends React.Component {
         this.state.fullName.length >= 1 &&
         this.state.monthYear.length === 5 &&
         this.state.cvv.length >= 3) {
-      buttonDisplay = <div onClick={this.toggle} className="rounded m-auto px-2 py-1 w-50 bg-success text-white font-weight-bold">Place Order</div>;
+      buttonDisplay = <div onClick={this.toggle} className="checkoutButton rounded m-auto px-2 py-1 w-50 bg-success text-white font-weight-bold">Place Order</div>;
     } else {
-      buttonDisplay = <div className="rounded m-auto px-2 py-1 w-50 bg-secondary text-white font-weight-bold">Fill In Form</div>;
+      buttonDisplay = <div className="checkoutButton rounded m-auto px-2 py-1 w-50 bg-secondary text-white font-weight-bold">Fill In Form</div>;
     }
 
     let modalButtonDisplay;
     if (this.state.orderConfirmation) {
       modalButtonDisplay = <div
-        className="rounded px-2 py-1 bg-success text-white font-weight-bold"
+        className="checkoutButton rounded px-2 py-1 bg-success text-white font-weight-bold"
         onClick={() => this.placeOrder()}
       >Place Order</div>;
     } else {
       modalButtonDisplay = <div
-        className="rounded px-2 py-1 bg-secondary text-white font-weight-bold">Check the Box!</div>;
+        className="checkoutButton rounded px-2 py-1 bg-secondary text-white font-weight-bold">Check the Box!</div>;
     }
 
     let ccLastFourDigits;
@@ -534,7 +534,7 @@ export default class Checkout extends React.Component {
               <div className="m-3">
                 <div
                   onClick={() => this.props.setView('cart', '')}
-                  className="rounded w-50 m-auto px-2 py-1 w-50 bg-primary text-white font-weight-bold">Go Back To Cart</div>
+                  className="checkoutButton rounded w-50 m-auto px-2 py-1 w-50 bg-primary text-white font-weight-bold">Go Back To Cart</div>
               </div>
               <div className="mx-3 mt-3 mb-5">
                 {buttonDisplay}
@@ -587,7 +587,7 @@ export default class Checkout extends React.Component {
                   <ModalFooter>
                     <div
                       onClick={() => this.closeModal()}
-                      className="rounded px-2 py-1 bg-primary text-white font-weight-bold">Return To Checkout</div>
+                      className="checkoutButton rounded px-2 py-1 bg-primary text-white font-weight-bold">Return To Checkout</div>
                     {modalButtonDisplay}
                   </ModalFooter>
                 </Modal>
