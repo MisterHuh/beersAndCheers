@@ -58,7 +58,7 @@ class ProductList extends React.Component {
 
         <Modal isOpen={this.state.noModal} backdrop="static" keyboard={false} className="">
           <div className="rounded text-center">
-            <div className="welcomeModalHeader mt-3">Age Verification</div>
+            <div className="welcomeModalHeader mt-3">DISCLAIMER</div>
             <div className="welcomeModal d-flex flex-column align-items-center">
               <div className="mt-2">Please know that this is for</div>
               <div className=" my-3">demonstration purposes only.</div>
