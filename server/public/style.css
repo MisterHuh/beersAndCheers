@@ -5,7 +5,7 @@
 
 body {
   font-family: 'El+Messiri', sans-serif;
-  overflow-y:scroll;
+  overflow-y: auto;
 }
 .welcomeModalHeader {
   font-size: 180%;
@@ -15,6 +15,7 @@ body {
   height: 16vh;
   font-size: 120%;
   font-family: 'Rye', sans-serif;
+  overflow-y: auto;
 }
 .navbarWrapper {
   height: 5vh;
