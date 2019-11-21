@@ -7,18 +7,6 @@ export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // firstName: 'Jae',
-      // lastName: 'Huh',
-      // eMail: 'jaehuh86@yaoo.com',
-      // phoneNumber: '5621234678',
-      // streetAddress: '1234 Leeds Cir',
-      // city: 'Westminster',
-      // state: 'CA',
-      // zipCode: '92821',
-      // creditCardNumber: '1234123412348574',
-      // fullName: 'Jaehyuk Huh',
-      // monthYear: '12/14',
-      // cvv: '5430',
       firstName: '',
       lastName: '',
       eMail: '',

@@ -7,7 +7,7 @@ body {
   font-family: 'El+Messiri', sans-serif;
   overflow-y: auto;
 }
-.logo, .title, .about, .cart, .welcomeButton, .cardSize ,.productDetailsTooltip, .fa-minus-square, .fa-plus-square, .buttonSize, .modalButtonSize, .csiImg, .csiLabel, .csiBrewery, .csiUpdateRemoveButton, .csiRemoveButton, .priceSummaryTooltip, .cartSummaryButton, .checkoutButton, #disclaimer, .emptyCartImg  {
+.logo, .title, .about, .cart, .welcomeButton,.productDetailsTooltip, .fa-minus-square, .fa-plus-square, .buttonSize, .modalButtonSize, .csiImg, .csiLabel, .csiBrewery, .csiUpdateRemoveButton, .csiRemoveButton, .priceSummaryTooltip, .cartSummaryButton, .checkoutButton, #disclaimer, .emptyCartImg, .productListItemImg, .productListInfo {
   cursor: pointer;
 }
 .welcomeModalHeader {
