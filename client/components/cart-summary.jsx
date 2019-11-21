@@ -59,12 +59,12 @@ export const CartSummary = props => {
               <div className="m-3">
                 <div
                   onClick={() => props.setView('catalog', '')}
-                  className="test rounded w-50 m-auto px-2 py-1 bg-primary text-white font-weight-bold">Continue Shopping</div>
+                  className="cartSummaryButton test rounded w-50 m-auto px-2 py-1 bg-primary text-white font-weight-bold">Continue Shopping</div>
               </div>
               <div className="mx-3 mt-3 mb-5">
                 <div
                   onClick={() => props.setView('checkout', '')}
-                  className="rounded w-50 m-auto px-2 py-1 bg-success text-white font-weight-bold">Checkout</div>
+                  className="cartSummaryButton rounded w-50 m-auto px-2 py-1 bg-success text-white font-weight-bold">Checkout</div>
               </div>
             </div>
           </div>

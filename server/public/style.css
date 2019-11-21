@@ -5,7 +5,10 @@
 
 body {
   font-family: 'El+Messiri', sans-serif;
-  overflow-y:scroll;
+  overflow-y: auto;
+}
+.logo, .title, .about, .cart, .welcomeButton,.productDetailsTooltip, .fa-minus-square, .fa-plus-square, .buttonSize, .modalButtonSize, .csiImg, .csiLabel, .csiBrewery, .csiUpdateRemoveButton, .csiRemoveButton, .priceSummaryTooltip, .cartSummaryButton, .checkoutButton, #disclaimer, .emptyCartImg, .productListItemImg, .productListInfo {
+  cursor: pointer;
 }
 .welcomeModalHeader {
   font-size: 180%;
@@ -15,6 +18,7 @@ body {
   height: 16vh;
   font-size: 120%;
   font-family: 'Rye', sans-serif;
+  overflow-y: auto;
 }
 .navbarWrapper {
   height: 5vh;
@@ -70,6 +74,10 @@ body {
   width: 50%;
   height: 100%;
   background-size: cover;
+  transition: all .4s ease-in-out;
+}
+.productListItemImg:hover {
+  transform: scale(1.08);
 }
 .productDetailsWrapper {
   height: 40vh;

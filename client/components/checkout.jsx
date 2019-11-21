@@ -103,9 +103,7 @@ export default class Checkout extends React.Component {
   }
 
   orderConfirmation() {
-    if (!this.state.orderConfirmation) {
-      this.setState({ orderConfirmation: !this.state.orderConfirmation });
-    }
+    this.setState({ orderConfirmation: !this.state.orderConfirmation });
   }
 
   closeModal() {
@@ -115,80 +113,83 @@ export default class Checkout extends React.Component {
 
   handleInput(e) {
     e.preventDefault();
+
+    const firstLastWhiteSpace = RegExp(/\s+$/, '');
     const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
+    const numberChecker = RegExp(/[^0-9.,]+/);
 
     const { name, value } = e.target;
     let formErrors = this.state.formErrors;
 
     switch (name) {
       case 'firstName':
-        formErrors.firstName = value.length < 1
+        formErrors.firstName = value.length < 1 || firstLastWhiteSpace.test(value)
           ? 'enter your first name'
           : '';
         break;
 
       case 'lastName':
-        formErrors.lastName = value.length < 1
+        formErrors.lastName = value.length < 1 || firstLastWhiteSpace.test(value)
           ? 'enter your last name'
           : '';
         break;
 
       case 'eMail':
-        formErrors.eMail = emailRegex.test(value)
+        formErrors.eMail = emailRegex.test(value) || firstLastWhiteSpace.test(value)
           ? ''
           : 'invalid email address';
         break;
 
       case 'phoneNumber':
-        formErrors.phoneNumber = value.length !== 10
+        formErrors.phoneNumber = value.length !== 10 || firstLastWhiteSpace.test(value) || numberChecker.test(value)
           ? 'enter a valid 10-digit phone number'
           : '';
         break;
 
       case 'streetAddress':
-        formErrors.streetAddress = value.length < 1
+        formErrors.streetAddress = value.length < 1 || firstLastWhiteSpace.test(value)
           ? 'enter a valid street address'
           : '';
         break;
 
       case 'city':
-        formErrors.city = value.length < 1
+        formErrors.city = value.length < 1 || firstLastWhiteSpace.test(value)
           ? 'enter a valid city'
           : '';
         break;
 
       case 'state':
-        formErrors.state = value.length !== 2
+        formErrors.state = value.length !== 2 || firstLastWhiteSpace.test(value)
           ? 'invalid state'
           : '';
         break;
 
       case 'zipCode':
-        formErrors.zipCode = value.length !== 5
+        formErrors.zipCode = value.length !== 5 || firstLastWhiteSpace.test(value) || numberChecker.test(value)
           ? 'invalid zipcode'
           : '';
         break;
 
       case 'creditCardNumber':
-        formErrors.creditCardNumber = value.length !== 16
+        formErrors.creditCardNumber = value.length !== 16 || firstLastWhiteSpace.test(value) || numberChecker.test(value)
           ? 'enter a valid 16-digit credit card number'
           : '';
         break;
 
       case 'fullName':
-        formErrors.fullName = value.length < 1
+        formErrors.fullName = value.length < 1 || firstLastWhiteSpace.test(value)
           ? 'enter your full name'
           : '';
         break;
 
       case 'monthYear':
-        formErrors.monthYear = value.length !== 5
+        formErrors.monthYear = value.length !== 5 || firstLastWhiteSpace.test(value)
           ? 'invalid mm/yy'
           : '';
         break;
 
       case 'cvv':
-        formErrors.cvv = value.length !== 3 && value.length !== 4
+        formErrors.cvv = (value.length !== 3 && value.length !== 4) || numberChecker.test(value)
           ? 'invalid cvv'
           : '';
         break;
@@ -238,20 +239,20 @@ export default class Checkout extends React.Component {
         this.state.fullName.length >= 1 &&
         this.state.monthYear.length === 5 &&
         this.state.cvv.length >= 3) {
-      buttonDisplay = <div onClick={this.toggle} className="rounded m-auto px-2 py-1 w-50 bg-success text-white font-weight-bold">Place Order</div>;
+      buttonDisplay = <div onClick={this.toggle} className="checkoutButton rounded m-auto px-2 py-1 w-50 bg-success text-white font-weight-bold">Place Order</div>;
     } else {
-      buttonDisplay = <div className="rounded m-auto px-2 py-1 w-50 bg-secondary text-white font-weight-bold">Fill In Form</div>;
+      buttonDisplay = <div className="checkoutButton rounded m-auto px-2 py-1 w-50 bg-secondary text-white font-weight-bold">Fill In Form</div>;
     }
 
     let modalButtonDisplay;
     if (this.state.orderConfirmation) {
       modalButtonDisplay = <div
-        className="rounded px-2 py-1 bg-success text-white font-weight-bold"
+        className="checkoutButton rounded px-2 py-1 bg-success text-white font-weight-bold"
         onClick={() => this.placeOrder()}
       >Place Order</div>;
     } else {
       modalButtonDisplay = <div
-        className="rounded px-2 py-1 bg-secondary text-white font-weight-bold">Check the Box!</div>;
+        className="checkoutButton rounded px-2 py-1 bg-secondary text-white font-weight-bold">Check the Box!</div>;
     }
 
     let ccLastFourDigits;
@@ -521,7 +522,7 @@ export default class Checkout extends React.Component {
               <div className="m-3">
                 <div
                   onClick={() => this.props.setView('cart', '')}
-                  className="rounded w-50 m-auto px-2 py-1 w-50 bg-primary text-white font-weight-bold">Go Back To Cart</div>
+                  className="checkoutButton rounded w-50 m-auto px-2 py-1 w-50 bg-primary text-white font-weight-bold">Go Back To Cart</div>
               </div>
               <div className="mx-3 mt-3 mb-5">
                 {buttonDisplay}
@@ -574,7 +575,7 @@ export default class Checkout extends React.Component {
                   <ModalFooter>
                     <div
                       onClick={() => this.closeModal()}
-                      className="rounded px-2 py-1 bg-primary text-white font-weight-bold">Return To Checkout</div>
+                      className="checkoutButton rounded px-2 py-1 bg-primary text-white font-weight-bold">Return To Checkout</div>
                     {modalButtonDisplay}
                   </ModalFooter>
                 </Modal>
