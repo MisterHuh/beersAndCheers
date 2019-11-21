@@ -7,18 +7,30 @@ export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      eMail: '',
-      phoneNumber: '',
-      streetAddress: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      creditCardNumber: '',
-      fullName: '',
-      monthYear: '',
-      cvv: '',
+      firstName: 'Jae',
+      lastName: 'Huh',
+      eMail: 'jaehuh86@yaoo.com',
+      phoneNumber: '5621234678',
+      streetAddress: '1234 Leeds Cir',
+      city: 'Westminster',
+      state: 'CA',
+      zipCode: '92821',
+      creditCardNumber: '1234123412348574',
+      fullName: 'Jaehyuk Huh',
+      monthYear: '12/14',
+      cvv: '5430',
+      // firstName: '',
+      // lastName: '',
+      // eMail: '',
+      // phoneNumber: '',
+      // streetAddress: '',
+      // city: '',
+      // state: '',
+      // zipCode: '',
+      // creditCardNumber: '',
+      // fullName: '',
+      // monthYear: '',
+      // cvv: '',
       formErrors: {
         firstName: '',
         lastName: '',
@@ -33,7 +45,7 @@ export default class Checkout extends React.Component {
         monthYear: '',
         cvv: ''
       },
-      modal: false,
+      modal: true,
       orderConfirmation: false
     };
 
@@ -103,9 +115,7 @@ export default class Checkout extends React.Component {
   }
 
   orderConfirmation() {
-    if (!this.state.orderConfirmation) {
-      this.setState({ orderConfirmation: !this.state.orderConfirmation });
-    }
+    this.setState({ orderConfirmation: !this.state.orderConfirmation });
   }
 
   closeModal() {
@@ -116,16 +126,11 @@ export default class Checkout extends React.Component {
   handleInput(e) {
     e.preventDefault();
 
-    // const whiteSpaceTrim = RegExp(/\s/g, '');
     const firstLastWhiteSpace = RegExp(/\s+$/, '');
     const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
-    // const numberChecker = RegExp(/^[0-9]*$/);
-    // const numberChecker = RegExp(/[2-9]{2}\d{8}/);
     const numberChecker = RegExp(/[^0-9.,]+/);
-    // const ccExpDate = RegExp(/^(?:0?[1-9]|1[0-2]) *\/ *[1-9][0-9]$/);
 
     const { name, value } = e.target;
-
     let formErrors = this.state.formErrors;
 
     switch (name) {
