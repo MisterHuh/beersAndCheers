@@ -7,6 +7,9 @@ body {
   font-family: 'El+Messiri', sans-serif;
   overflow-y: auto;
 }
+.logo, .title, .about, .cart {
+  cursor: pointer;
+}
 .welcomeModalHeader {
   font-size: 180%;
   font-family: 'Rye', sans-serif;
