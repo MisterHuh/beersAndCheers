@@ -115,80 +115,88 @@ export default class Checkout extends React.Component {
 
   handleInput(e) {
     e.preventDefault();
+
+    // const whiteSpaceTrim = RegExp(/\s/g, '');
+    const firstLastWhiteSpace = RegExp(/\s+$/, '');
     const emailRegex = RegExp(/[^@]+@[^\.]+\..+/);
+    // const numberChecker = RegExp(/^[0-9]*$/);
+    // const numberChecker = RegExp(/[2-9]{2}\d{8}/);
+    const numberChecker = RegExp(/[^0-9.,]+/);
+    // const ccExpDate = RegExp(/^(?:0?[1-9]|1[0-2]) *\/ *[1-9][0-9]$/);
 
     const { name, value } = e.target;
+
     let formErrors = this.state.formErrors;
 
     switch (name) {
       case 'firstName':
-        formErrors.firstName = value.length < 1
+        formErrors.firstName = value.length < 1 || firstLastWhiteSpace.test(value)
           ? 'enter your first name'
           : '';
         break;
 
       case 'lastName':
-        formErrors.lastName = value.length < 1
+        formErrors.lastName = value.length < 1 || firstLastWhiteSpace.test(value)
           ? 'enter your last name'
           : '';
         break;
 
       case 'eMail':
-        formErrors.eMail = emailRegex.test(value)
+        formErrors.eMail = emailRegex.test(value) || firstLastWhiteSpace.test(value)
           ? ''
           : 'invalid email address';
         break;
 
       case 'phoneNumber':
-        formErrors.phoneNumber = value.length !== 10
+        formErrors.phoneNumber = value.length !== 10 || firstLastWhiteSpace.test(value) || numberChecker.test(value)
           ? 'enter a valid 10-digit phone number'
           : '';
         break;
 
       case 'streetAddress':
-        formErrors.streetAddress = value.length < 1
+        formErrors.streetAddress = value.length < 1 || firstLastWhiteSpace.test(value)
           ? 'enter a valid street address'
           : '';
         break;
 
       case 'city':
-        formErrors.city = value.length < 1
+        formErrors.city = value.length < 1 || firstLastWhiteSpace.test(value)
           ? 'enter a valid city'
           : '';
         break;
 
       case 'state':
-        formErrors.state = value.length !== 2
+        formErrors.state = value.length !== 2 || firstLastWhiteSpace.test(value)
           ? 'invalid state'
           : '';
         break;
 
       case 'zipCode':
-        formErrors.zipCode = value.length !== 5
+        formErrors.zipCode = value.length !== 5 || firstLastWhiteSpace.test(value) || numberChecker.test(value)
           ? 'invalid zipcode'
           : '';
         break;
 
       case 'creditCardNumber':
-        formErrors.creditCardNumber = value.length !== 16
+        formErrors.creditCardNumber = value.length !== 16 || firstLastWhiteSpace.test(value) || numberChecker.test(value)
           ? 'enter a valid 16-digit credit card number'
           : '';
         break;
 
       case 'fullName':
-        formErrors.fullName = value.length < 1
+        formErrors.fullName = value.length < 1 || firstLastWhiteSpace.test(value)
           ? 'enter your full name'
           : '';
         break;
 
       case 'monthYear':
-        formErrors.monthYear = value.length !== 5
+        formErrors.monthYear = value.length !== 5 || firstLastWhiteSpace.test(value)
           ? 'invalid mm/yy'
           : '';
         break;
 
       case 'cvv':
-        formErrors.cvv = value.length !== 3 && value.length !== 4
+        formErrors.cvv = (value.length !== 3 && value.length !== 4) || numberChecker.test(value)
           ? 'invalid cvv'
           : '';
         break;
