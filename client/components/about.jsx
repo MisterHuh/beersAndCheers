@@ -22,7 +22,7 @@ export const About = () => {
           </p>
 
           <p>
-          Feel free to stop by my <a href="https://www.jaehuh.network/">portfolio site</a> or find this project on my <a href="https://cheersandbeers.jaehuh.network/">github</a>.
+            Feel free to stop by my <a href="https://www.jaehuh.network/" target="_blank">portfolio site</a> or find this project on my <a href="https://github.com/MisterHuh/cheersAndBeers/" target="_blank">github</a>.
           </p>
 
           <p>Enjoy!</p>

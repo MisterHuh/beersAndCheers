@@ -13,7 +13,6 @@ class ProductList extends React.Component {
     };
     this.getProducts = this.getProducts.bind(this);
     this.ageVerified = this.ageVerified.bind(this);
-    // this.ageVerifiedNo = this.ageVerifiedNo.bind(this);
     this.proceed = this.proceed.bind(this);
   }
 
@@ -24,11 +23,6 @@ class ProductList extends React.Component {
         this.setState({ products });
       });
   }
-
-  // ageVerified() {
-  //   localStorage.setItem('ageVerified', 'true');
-  //   this.setState({ welcomeModal: !this.state.welcomeModal });
-  // }
 
   ageVerified() {
     this.setState({ welcomeModal: !this.state.welcomeModal });
@@ -71,10 +65,6 @@ class ProductList extends React.Component {
 
               <div className="d-flex flex-row">
                 <div onClick={() => this.proceed()} className="rounded text-white font-weight-bold m-auto px-2 py-1 bg-warning">Proceed</div>
-
-                {/* <div className="px-5">or</div> */}
-                {/* <div onClick={() => this.toggle()} className="rounded text-white font-weight-bold m-auto px-2 py-1 bg-danger" >No</div> */}
-
               </div>
 
             </div>
