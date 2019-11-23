@@ -20,6 +20,10 @@ body {
   font-family: 'Rye', sans-serif;
   overflow-y: auto;
 }
+.refreshModal {
+  font-size: 180%;
+  margin-top: 2%;
+}
 .navbarWrapper {
   height: 5vh;
   background-color: #F9F9F9;
@@ -202,6 +206,10 @@ body {
       height: 21vh;
       font-size: 100%;
     }
+    .refreshModal {
+      font-size: 180%;
+      margin-top: 0%;
+    }
     .drinkResponsibly {
       font-size: 75%;
       margin-bottom: 3%;
@@ -333,6 +341,10 @@ body {
       height: 20vh;
       font-size: 120%;
     }
+    .refreshModal {
+      font-size: 180%;
+      margin-top: 2%;
+    }
     .jumbotronImgContainer {
       height: 45vh;
     }
@@ -389,6 +401,10 @@ body {
     }
     .welcomeModal {
       height: 18vh;
+    }
+    .refreshModal {
+      font-size: 135%;
+      margin-top: 2%;
     }
     .navbarWrapper {
       height: 5vh;

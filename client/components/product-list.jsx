@@ -9,11 +9,13 @@ class ProductList extends React.Component {
     this.state = {
       products: [],
       welcomeModal: !localStorage.ageVerified,
-      noModal: false
+      noModal: false,
+      refreshModal: false
     };
     this.getProducts = this.getProducts.bind(this);
     this.ageVerified = this.ageVerified.bind(this);
     this.proceed = this.proceed.bind(this);
+    this.refresh = this.refresh.bind(this);
   }
 
   getProducts() {
@@ -34,6 +36,11 @@ class ProductList extends React.Component {
     this.setState({ noModal: !this.state.noModal });
   }
 
+  refresh() {
+    this.setState({ noModal: !this.state.noModal });
+    this.setState({ refreshModal: !this.refreshModal });
+  }
+
   componentDidMount() {
     this.getProducts();
   }
@@ -50,7 +57,7 @@ class ProductList extends React.Component {
               <div className="d-flex flex-row">
                 <div onClick={() => this.ageVerified()} className="welcomeButton rounded text-white font-weight-bold m-auto px-2 py-1 bg-warning">Yes</div>
                 <div className="px-5">or</div>
-                <div onClick={() => this.ageVerified()} className="welcomeButton rounded text-white font-weight-bold m-auto px-2 py-1 bg-danger" >No</div>
+                <div onClick={() => this.refresh()} className="welcomeButton rounded text-white font-weight-bold m-auto px-2 py-1 bg-danger" >No</div>
               </div>
             </div>
           </div>
@@ -67,6 +74,16 @@ class ProductList extends React.Component {
                 <div onClick={() => this.proceed()} className="welcomeButton rounded text-white font-weight-bold m-auto px-2 py-1 bg-warning">Proceed</div>
               </div>
 
+            </div>
+          </div>
+        </Modal>
+
+        <Modal isOpen={this.state.refreshModal} backdrop="static" keyboard={false} className="">
+          <div className="rounded text-center">
+            <div className="welcomeModalHeader mt-3">DISCLAIMER</div>
+            <div className="welcomeModal refreshModal d-flex flex-column align-items-center">
+              <div className="mt-2">You must be at least <strong>21 years</strong></div>
+              <div className=" my-3"><strong>or older</strong> to enter this website</div>
             </div>
           </div>
         </Modal>
